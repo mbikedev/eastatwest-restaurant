@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_SUPABASE_URL,RESEND_API_KEY,RESEND_FROM_EMAIL,NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID"
+
+# Environment variables should be set in Netlify dashboard:
+# NEXT_PUBLIC_SUPABASE_URL
+# NEXT_PUBLIC_SUPABASE_ANON_KEY
+# RESEND_API_KEY
+# RESEND_FROM_EMAIL
+# NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+# NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs" 

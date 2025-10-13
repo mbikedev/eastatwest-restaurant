@@ -1,0 +1,23 @@
+/* Firefox-specific fixes */
+@-moz-document url-prefix() {
+  /* Force borders to be visible in Firefox dark mode */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    border-style: solid !important;
+    border-color: #A8D5BA !important;
+    border-width: 4px !important;
+    outline: 2px solid #A8D5BA !important;
+    outline-offset: -2px !important;
+  }
+
+  /* Ensure logo is visible */
+  img[alt*="Logo"],
+  img[alt*="logo"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}

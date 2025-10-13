@@ -1,0 +1,83 @@
+{
+  "name": "eastatwest",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@stripe/react-stripe-js": "^3.9.0",
+    "@stripe/stripe-js": "^7.8.0",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.50.2",
+    "autoprefixer": "^10.4.21",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "critters": "^0.0.23",
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.2.1",
+    "framer-motion": "^12.23.0",
+    "i18next": "^25.2.1",
+    "i18next-http-backend": "^3.0.2",
+    "lucide-react": "^0.536.0",
+    "next": "15.3.4",
+    "postcss": "^8.5.6",
+    "react": "^19.0.0",
+    "react-day-picker": "^9.11.1",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2",
+    "react-i18next": "^15.5.3",
+    "resend": "^4.6.0",
+    "stripe": "^18.4.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.54.2",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/google.maps": "^3.58.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/tailwindcss": "^3.0.11",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5"
+  },
+  "browserslist": {
+    "production": [
+      "Chrome >= 90",
+      "Firefox >= 88",
+      "Safari >= 14.1",
+      "Edge >= 90",
+      "> 0.25%",
+      "last 2 versions",
+      "not dead",
+      "not IE 11",
+      "not op_mini all"
+    ],
+    "modern": [
+      "Chrome >= 95",
+      "Firefox >= 95",
+      "Safari >= 15",
+      "Edge >= 95",
+      "> 1%",
+      "last 1 version",
+      "not dead"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
