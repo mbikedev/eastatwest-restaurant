@@ -34,6 +34,7 @@
     "title": "Notre Menu",
     "subtitle": "Tout notre menu est disponible à emporter sur demande.",
     "description": "Découvrez nos plats authentiques préparés avec des ingrédients frais. Sur place ou à emporter sur demande.",
+    "notification": "Cliquez sur l'un des boutons ci-dessous pour voir notre menu",
     "buttons": {
       "menu": "Menu",
       "menuTakeawayOnly": "Menu uniquement à emporter"
@@ -1213,7 +1214,10 @@
       "types": "Types Communs de Restaurants Végétariens à Bruxelles",
       "conclusion": "Conclusion",
       "bestRestaurants": "Meilleurs Restaurants Végétariens Bruxelles, Belgique"
-    }
+    },
+    "visitRestaurant": "Prêt à Découvrir la Cuisine Libanaise Authentique ?",
+    "experienceText": "Visitez notre restaurant à Bruxelles et découvrez les riches saveurs des plats libanais traditionnels préparés avec amour et authenticité.",
+    "bookTable": "Réserver une Table"
   },
   "awards": {
     "title": "Fièrement reconnu par Restaurant Guru",

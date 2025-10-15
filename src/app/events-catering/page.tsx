@@ -66,6 +66,20 @@ export default function EventsCateringPage() {
     )
   }
 
+  // Handle email click
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    window.location.href = 'mailto:contact@eastatwest.com'
+  }
+
+  // Handle phone click
+  const handlePhoneClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    window.location.href = 'tel:+32465206024'
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -171,7 +185,7 @@ export default function EventsCateringPage() {
       </Head>
       
       <div className={`min-h-screen pt-16 transition-colors duration-300 ${
-        theme === 'dark' ? 'bg-[#1A1A1A] text-white' : 'bg-white text-black'
+        theme === 'dark' ? 'bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white' : 'bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900'
       }`}>
       {/* Hero Section */}
       <section 
@@ -244,9 +258,9 @@ export default function EventsCateringPage() {
       {/* For All Your Events Section */}
       <motion.section
         className={`relative py-20 px-4 sm:px-8 ${
-          theme === 'dark' 
-            ? 'bg-gradient-to-br from-[#1A1A1A]/90 to-orange-200' 
-            : 'bg-gradient-to-br from-gray-100 to-gray-300'
+          theme === 'dark'
+            ? 'bg-gradient-to-br from-gray-900 via-emerald-900/20 to-gray-900'
+            : 'bg-gradient-to-br from-emerald-50 via-white to-emerald-50'
         }`}
         variants={containerVariants}
         initial="hidden"
@@ -264,7 +278,7 @@ export default function EventsCateringPage() {
               </h2>
               <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] rounded-full mb-8"></div>
               <p className={`text-lg leading-relaxed ${
-                theme === 'dark' ? 'text-white' : 'text-black'
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
               }`}>
                 {t('events.forAllEvents.description')}
               </p>
@@ -305,9 +319,9 @@ export default function EventsCateringPage() {
       {/* Kibbeh Vegan Section */}
       <motion.section
         className={`relative py-20 px-4 sm:px-8 ${
-          theme === 'dark' 
-            ? 'bg-gradient-to-br from-[#1A1A1A] via-[#A8D5BA]/20 to-[#1A1A1A]' 
-            : 'bg-gradient-to-br from-[#F5F0E6] via-[#A8D5BA]/30 to-[#F5F0E6]'
+          theme === 'dark'
+            ? 'bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800'
+            : 'bg-gradient-to-br from-white via-gray-50 to-white'
         }`}
         variants={containerVariants}
         initial="hidden"
@@ -348,18 +362,26 @@ export default function EventsCateringPage() {
             <motion.div className="order-1 lg:order-2" variants={itemVariants}>
               <div className="text-6xl mb-6">🌱</div>
               <h3 className={`text-2xl font-bold mb-4 ${
-                theme === 'dark' ? 'text-white' : 'text-black'
+                theme === 'dark' ? 'text-emerald-300' : 'text-emerald-700'
               }`}>
                 {t('events.kibbehVegan.subtitle')}
               </h3>
               <h2 className="text-4xl sm:text-5xl font-black mb-8">
-                <span className="bg-gradient-to-r from-[#A8D5BA] to-[#1A1A1A] bg-clip-text text-transparent">
+                <span className={`bg-gradient-to-r ${
+                  theme === 'dark'
+                    ? 'from-emerald-400 to-teal-400'
+                    : 'from-emerald-600 to-teal-600'
+                } bg-clip-text text-transparent`}>
                   {t('events.kibbehVegan.title')}
                 </span>
               </h2>
-              <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#1A1A1A] rounded-full mb-8"></div>
+              <div className={`w-32 h-1.5 ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-r from-emerald-400 to-teal-400'
+                  : 'bg-gradient-to-r from-emerald-600 to-teal-600'
+              } rounded-full mb-8`}></div>
               <p className={`text-lg leading-relaxed ${
-                theme === 'dark' ? 'text-white' : 'text-black'
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
               }`}>
                 {t('events.kibbehVegan.description')}
               </p>
@@ -371,9 +393,9 @@ export default function EventsCateringPage() {
       {/* Our Specialities Section */}
       <motion.section
         className={`relative py-20 px-4 sm:px-8 ${
-          theme === 'dark' 
-            ? 'bg-gradient-to-br from-[#1A1A1A]/90 to-orange-200' 
-            : 'bg-gradient-to-br from-gray-100 to-gray-300'
+          theme === 'dark'
+            ? 'bg-gradient-to-br from-gray-900 via-amber-900/20 to-gray-900'
+            : 'bg-gradient-to-br from-amber-50 via-white to-amber-50'
         }`}
         variants={containerVariants}
         initial="hidden"
@@ -385,13 +407,21 @@ export default function EventsCateringPage() {
             <motion.div variants={itemVariants}>
               <div className="text-6xl mb-6">⭐</div>
               <h2 className="text-4xl sm:text-5xl font-black mb-8">
-                <span className="bg-gradient-to-r from-[#A8D5BA] to-[#1A1A1A] bg-clip-text text-transparent">
+                <span className={`bg-gradient-to-r ${
+                  theme === 'dark'
+                    ? 'from-amber-400 to-orange-400'
+                    : 'from-amber-600 to-orange-600'
+                } bg-clip-text text-transparent`}>
                   {t('events.specialities.title')}
                 </span>
               </h2>
-              <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#1A1A1A] rounded-full mb-8"></div>
+              <div className={`w-32 h-1.5 ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-r from-amber-400 to-orange-400'
+                  : 'bg-gradient-to-r from-amber-600 to-orange-600'
+              } rounded-full mb-8`}></div>
               <p className={`text-lg leading-relaxed ${
-                theme === 'dark' ? 'text-white' : 'text-black'
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
               }`}>
                 {t('events.specialities.description')}
               </p>
@@ -429,14 +459,18 @@ export default function EventsCateringPage() {
 
       {/* Book Your Event Section */}
       <motion.section
-        className="relative py-20 px-4 sm:px-8 bg-black text-white overflow-hidden"
+        className={`relative py-20 px-4 sm:px-8 overflow-hidden ${
+          theme === 'dark'
+            ? 'bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950'
+            : 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'
+        } text-white`}
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
         {/* Floating Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-[#A8D5BA]/10 to-[#A8D5BA]/10 rounded-full "
             variants={floatingVariants}
@@ -464,29 +498,29 @@ export default function EventsCateringPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-              <motion.a
-                href={`mailto:${t('events.bookEvent.email')}`}
-                className="group relative inline-flex items-center bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] hover:from-[#A8D5BA] hover:to-[#1A1A1A] text-white px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl"
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.95 }}
+              <button
+                type="button"
+                onClick={handleEmailClick}
+                style={{ border: '2px solid #A8D5BA' }}
+                className="group relative inline-flex items-center bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] hover:from-[#A8D5BA] hover:to-[#1A1A1A] text-white px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl cursor-pointer"
               >
                 <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 {t('events.bookEvent.emailLabel')}
-              </motion.a>
+              </button>
 
-              <motion.a
-                href={`tel:${t('events.bookEvent.phone')}`}
-                className="group relative inline-flex items-center border-3 border-white bg-white/10  text-white hover:bg-white hover:text-black px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl"
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.95 }}
+              <button
+                type="button"
+                onClick={handlePhoneClick}
+                style={{ border: '2px solid white' }}
+                className="group relative inline-flex items-center bg-white/10 text-white hover:bg-white hover:text-black px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl cursor-pointer"
               >
                 <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 {t('events.bookEvent.phoneLabel')}
-              </motion.a>
+              </button>
             </div>
           </motion.div>
         </div>
@@ -540,9 +574,9 @@ export default function EventsCateringPage() {
       {/* Catering Gallery Section */}
       <motion.section
         className={`relative py-20 px-4 sm:px-8 ${
-          theme === 'dark' 
-            ? 'bg-gradient-to-br from-[#1A1A1A] via-[#A8D5BA]/20 to-[#1A1A1A]' 
-            : 'bg-gradient-to-br from-[#F5F0E6] via-[#A8D5BA]/30 to-[#F5F0E6]'
+          theme === 'dark'
+            ? 'bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800'
+            : 'bg-gradient-to-br from-gray-50 via-white to-gray-50'
         }`}
         variants={containerVariants}
         initial="hidden"
@@ -553,13 +587,21 @@ export default function EventsCateringPage() {
           <motion.div className="text-center mb-16" variants={itemVariants}>
             <div className="text-6xl mb-6">🖼️</div>
             <h2 className="text-4xl sm:text-5xl font-black mb-8">
-              <span className="bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] bg-clip-text text-transparent">
+              <span className={`bg-gradient-to-r ${
+                theme === 'dark'
+                  ? 'from-emerald-400 to-teal-400'
+                  : 'from-emerald-600 to-teal-600'
+              } bg-clip-text text-transparent`}>
                 {t('events.catering.title')}
               </span>
             </h2>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] mx-auto rounded-full mb-8"></div>
+            <div className={`w-32 h-1.5 ${
+              theme === 'dark'
+                ? 'bg-gradient-to-r from-emerald-400 to-teal-400'
+                : 'bg-gradient-to-r from-emerald-600 to-teal-600'
+            } mx-auto rounded-full mb-8`}></div>
             <p className={`text-lg max-w-3xl mx-auto ${
-              theme === 'dark' ? 'text-white' : 'text-black'
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
             }`}>
               {t('events.catering.description')}
             </p>

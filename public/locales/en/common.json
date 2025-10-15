@@ -34,6 +34,7 @@
     "title": "Our Menu",
     "subtitle": "All our Menu can be Take away on demand.",
     "description": "Discover our authentic dishes crafted with fresh ingredients. Order to dine in or take away on request.",
+    "notification": "Click one of the buttons below to view our menu",
     "buttons": {
       "menu": "Menu",
       "menuTakeawayOnly": "Menu Only Take-away"
@@ -1221,7 +1222,10 @@
       "types": "Common Types of Vegetarian Restaurants in Brussels",
       "conclusion": "Conclusion",
       "bestRestaurants": "Best Vegetarian Restaurants Brussels, Belgium"
-    }
+    },
+    "visitRestaurant": "Ready to Experience Authentic Lebanese Cuisine?",
+    "experienceText": "Visit our restaurant in Brussels and discover the rich flavors of traditional Lebanese dishes prepared with love and authenticity.",
+    "bookTable": "Book a Table"
   },
   "awards": {
     "title": "Proudly Recognized by Restaurant Guru",

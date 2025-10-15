@@ -34,6 +34,7 @@
     "title": "Ons Menu",
     "subtitle": "Ons volledige menu is op aanvraag af te halen.",
     "description": "Ontdek onze authentieke gerechten met verse ingrediënten. Ter plaatse of op aanvraag als afhaal.",
+    "notification": "Klik op een van de onderstaande knoppen om ons menu te bekijken",
     "buttons": {
       "menu": "Menu",
       "menuTakeawayOnly": "Menu enkel Afhaal"
@@ -1221,8 +1222,11 @@
       "conclusion": "Conclusie",
       "bestRestaurants": "Beste Vegetarische Restaurants Brussel, België"
     },
-
-    "restaurantGuru": {
+    "visitRestaurant": "Klaar om Authentieke Libanese Keuken te Ervaren?",
+    "experienceText": "Bezoek ons restaurant in Brussel en ontdek de rijke smaken van traditionele Libanese gerechten bereid met liefde en authenticiteit.",
+    "bookTable": "Reserveer een Tafel"
+  },
+  "awards": {
       "title": "Trots erkend door Restaurant Guru",
       "subtitle": "Viering van jaren van uitmuntendheid van 2021 tot 2024"
     }
