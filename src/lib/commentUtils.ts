@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient'
+import { createClient } from '../utils/supabase/client'
 import type { Comment } from '../types/comments'
 
 /**
@@ -6,6 +6,7 @@ import type { Comment } from '../types/comments'
  */
 export const fetchComments = async (blogPostId: string, includeUnapproved = false): Promise<Comment[]> => {
   try {
+    const supabase = createClient()
     let query = supabase
       .from('comments')
       .select('*')
@@ -39,6 +40,7 @@ export const submitComment = async (commentData: {
   is_admin_reply?: boolean
 }): Promise<{ success: boolean; error?: string }> => {
   try {
+    const supabase = createClient()
     const { error } = await supabase
       .from('comments')
       .insert([{
@@ -59,6 +61,7 @@ export const submitComment = async (commentData: {
  */
 export const approveComment = async (commentId: string): Promise<{ success: boolean; error?: string }> => {
   try {
+    const supabase = createClient()
     const { error } = await supabase
       .from('comments')
       .update({ is_approved: true })
@@ -77,6 +80,7 @@ export const approveComment = async (commentId: string): Promise<{ success: bool
  */
 export const deleteComment = async (commentId: string): Promise<{ success: boolean; error?: string }> => {
   try {
+    const supabase = createClient()
     const { error } = await supabase
       .from('comments')
       .delete()
