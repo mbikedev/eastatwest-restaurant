@@ -13,6 +13,9 @@ export default function CommentsAdminPage() {
   const { loading: authLoading, isAuthenticated } = useAdminAuth()
   const [comments, setComments] = useState<Comment[]>([])
   const [loading, setLoading] = useState(true)
+  const [filter, setFilter] = useState<'all' | 'pending' | 'approved'>('all')
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedBlogPost, setSelectedBlogPost] = useState<string>('all')
 
   if (authLoading || !isAuthenticated) {
     return (
@@ -24,9 +27,6 @@ export default function CommentsAdminPage() {
       </div>
     )
   }
-  const [filter, setFilter] = useState<'all' | 'pending' | 'approved'>('all')
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedBlogPost, setSelectedBlogPost] = useState<string>('all')
 
   // Set page title
   useEffect(() => {

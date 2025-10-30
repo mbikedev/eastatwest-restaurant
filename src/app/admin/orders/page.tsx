@@ -45,22 +45,12 @@ export default function AdminOrdersPage() {
   const { theme } = useTheme();
   const { loading: authLoading, isAuthenticated } = useAdminAuth();
   const router = useRouter();
+
+  // State declarations - must all be declared before any conditional returns
   const [orders, setOrders] = useState<Order[]>([]);
   const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
-
   const [isStaff, setIsStaff] = useState(false);
-
-  if (authLoading || !isAuthenticated) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-        <div className="text-center">
-          <div className="w-16 h-16 mx-auto mb-4 border-4 border-t-transparent border-[#A8D5BA] rounded-full animate-spin"></div>
-          <p className="text-lg text-gray-900 dark:text-white">Verifying authentication...</p>
-        </div>
-      </div>
-    );
-  }
 
   // Filters and search
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
@@ -88,6 +78,18 @@ export default function AdminOrdersPage() {
     canceled: 0,
     completed: 0
   });
+
+  // Auth check - must come after all hooks
+  if (authLoading || !isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <div className="text-center">
+          <div className="w-16 h-16 mx-auto mb-4 border-4 border-t-transparent border-[#A8D5BA] rounded-full animate-spin"></div>
+          <p className="text-lg text-gray-900 dark:text-white">Verifying authentication...</p>
+        </div>
+      </div>
+    );
+  }
 
   // Check if user is staff
   useEffect(() => {
