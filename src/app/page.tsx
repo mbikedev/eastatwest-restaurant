@@ -267,7 +267,7 @@ export default function HomePage() {
               fetchPriority="high"
               sizes="100vw"
               quality={75}
-              className="absolute inset-0 w-full h-full object-cover z-10"
+              className="object-cover z-10"
             />
 
             {/* Background video (deferred) */}
