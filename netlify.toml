@@ -1,0 +1,46 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_ANON_KEY,NEXT_PUBLIC_SUPABASE_URL,SUPABASE_SERVICE_ROLE_KEY,RESEND_API_KEY,RESEND_FROM_EMAIL,NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID"
+
+# Environment variables should be set in Netlify dashboard:
+# NEXT_PUBLIC_SUPABASE_URL
+# NEXT_PUBLIC_SUPABASE_ANON_KEY
+# SUPABASE_SERVICE_ROLE_KEY
+# RESEND_API_KEY
+# RESEND_FROM_EMAIL
+# NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+# NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Headers to prevent WordPress caching
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Clear any WordPress-related caching
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Static assets can have longer cache
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable" 

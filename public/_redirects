@@ -1,0 +1,44 @@
+# WordPress to Next.js URL redirects
+# 301 redirects preserve SEO rankings
+
+# Block WordPress admin and login pages completely
+/wp-admin                       /                       301!
+/wp-admin/*                     /                       301!
+/wp-login.php                   /                       301!
+/wp-login                       /                       301!
+/xmlrpc.php                     /                       301!
+
+# Block WordPress backend files
+/wp-content/*                   /                       301!
+/wp-includes/*                  /                       301!
+/wp-json/*                      /                       301!
+
+# Old WordPress page URLs to new Next.js routes (exact paths only)
+/about-snack-halal              /about                  301
+/gallery-vegan-dessert          /gallery                301
+/take-away                      /takeaway               301
+/take-away2                     /takeaway               301
+/restaurant-east-at-west-in-brussels  /about            301
+/welcome-to-east-at-west        /                       301
+
+# Common WordPress URLs
+/index.php                      /                       301
+/home                           /                       301
+# /blog is a valid Next.js route - DO NOT redirect
+/page/*                         /                       301
+/category/*                     /blog                   301
+/tag/*                          /blog                   301
+/author/*                       /blog                   301
+
+# French language URLs (if WordPress had /fr/ prefix)
+/fr/*                           /:splat                 301
+
+# Catch-all for any WordPress product URLs
+/product/*                      /takeaway               301
+
+# Ensure www redirects to non-www (force with !)
+https://www.eastatwest.com/*    https://eastatwest.com/:splat  301!
+
+# Force HTTPS (force with !)
+http://eastatwest.com/*         https://eastatwest.com/:splat  301!
+http://www.eastatwest.com/*     https://eastatwest.com/:splat  301!
