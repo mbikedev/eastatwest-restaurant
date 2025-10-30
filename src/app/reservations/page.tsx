@@ -20,10 +20,11 @@ function getFirstDayOfWeek(year: number, month: number) {
 }
 
 // Helper function to send reservation email via API
-async function sendReservationEmail({ email, guests, language, reservationData }: { 
-  email: string, 
-  guests: number, 
+async function sendReservationEmail({ email, guests, language, invoiceNumber, reservationData }: {
+  email: string,
+  guests: number,
   language: string,
+  invoiceNumber?: string,
   reservationData: {
     name: string;
     email: string;
@@ -41,7 +42,7 @@ async function sendReservationEmail({ email, guests, language, reservationData }
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, guests, language, reservationData }),
+      body: JSON.stringify({ email, guests, language, invoiceNumber, reservationData }),
     });
 
     const result = await response.json();
@@ -305,7 +306,10 @@ export default function ReservationsPage() {
       if (guest_count >= 7 && guest_count <= 22) {
         status = 'pending';
       }
-      
+
+      // Generate invoice number
+      const invoiceNumber = `INV-${String(Date.now()).slice(-4)}${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}`;
+
       const { error } = await supabase
         .from('reservations')
         .insert({
@@ -317,6 +321,7 @@ export default function ReservationsPage() {
           end_time: form.endTime,
           guests: guest_count,
           special_requests: form.specialRequests,
+          invoice_number: invoiceNumber,
           status
         });
 
@@ -470,6 +475,7 @@ export default function ReservationsPage() {
           email: reservationData.email,
           guests: guest_count,
           language,
+          invoiceNumber,
           reservationData
         });
 
