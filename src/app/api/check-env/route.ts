@@ -13,12 +13,37 @@ export async function GET(req: NextRequest) {
   const authHeader = req.headers.get('authorization');
   const validToken = process.env.ADMIN_CHECK_TOKEN || 'dev-token';
 
-  // In production, you might want to restrict this endpoint
-  if (process.env.NODE_ENV === 'production' && authHeader !== `Bearer ${validToken}`) {
+  // Check if public mode is requested (basic health check without details)
+  const url = new URL(req.url);
+  const publicMode = url.searchParams.get('public') === 'true';
+
+  // In production, require auth unless public mode
+  if (process.env.NODE_ENV === 'production' && !publicMode && authHeader !== `Bearer ${validToken}`) {
     return NextResponse.json(
-      { error: 'Unauthorized' },
+      {
+        error: 'Unauthorized',
+        hint: 'Add ?public=true for basic health check'
+      },
       { status: 401 }
     );
+  }
+
+  // Public mode returns minimal info
+  if (publicMode) {
+    const criticalMissing = [];
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL) criticalMissing.push('NEXT_PUBLIC_SUPABASE_URL');
+    if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) criticalMissing.push('NEXT_PUBLIC_SUPABASE_ANON_KEY');
+    if (!process.env.SUPABASE_SERVICE_ROLE_KEY) criticalMissing.push('SUPABASE_SERVICE_ROLE_KEY');
+    if (!process.env.RESEND_API_KEY) criticalMissing.push('RESEND_API_KEY');
+    if (!process.env.RESEND_FROM_EMAIL) criticalMissing.push('RESEND_FROM_EMAIL');
+
+    return NextResponse.json({
+      status: criticalMissing.length === 0 ? 'healthy' : 'missing_config',
+      environment: process.env.NODE_ENV,
+      allConfigured: criticalMissing.length === 0,
+      criticalMissing,
+      timestamp: new Date().toISOString()
+    });
   }
 
   const envStatus = {
