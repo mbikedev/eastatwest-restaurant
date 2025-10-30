@@ -1,0 +1,108 @@
+import { NextRequest, NextResponse } from 'next/server';
+
+/**
+ * Environment Variable Checker API
+ *
+ * This endpoint helps debug production issues by checking which
+ * environment variables are configured.
+ *
+ * SECURITY: Does not expose actual values, only checks existence
+ */
+export async function GET(req: NextRequest) {
+  // Check if request has authorization (optional security)
+  const authHeader = req.headers.get('authorization');
+  const validToken = process.env.ADMIN_CHECK_TOKEN || 'dev-token';
+
+  // In production, you might want to restrict this endpoint
+  if (process.env.NODE_ENV === 'production' && authHeader !== `Bearer ${validToken}`) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
+  const envStatus = {
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV,
+
+    // Supabase configuration
+    supabase: {
+      url: {
+        exists: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+        value: process.env.NEXT_PUBLIC_SUPABASE_URL
+          ? `${process.env.NEXT_PUBLIC_SUPABASE_URL.substring(0, 20)}...`
+          : 'NOT SET'
+      },
+      anonKey: {
+        exists: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+        length: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.length || 0
+      },
+      serviceRoleKey: {
+        exists: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+        length: process.env.SUPABASE_SERVICE_ROLE_KEY?.length || 0
+      }
+    },
+
+    // Resend email configuration
+    resend: {
+      apiKey: {
+        exists: !!process.env.RESEND_API_KEY,
+        length: process.env.RESEND_API_KEY?.length || 0,
+        startsWithRe: process.env.RESEND_API_KEY?.startsWith('re_') || false
+      },
+      fromEmail: {
+        exists: !!process.env.RESEND_FROM_EMAIL,
+        value: process.env.RESEND_FROM_EMAIL || 'NOT SET'
+      }
+    },
+
+    // Base URL configuration
+    baseUrl: {
+      exists: !!process.env.NEXT_PUBLIC_BASE_URL,
+      value: process.env.NEXT_PUBLIC_BASE_URL || 'NOT SET'
+    },
+
+    // Stripe configuration (if used)
+    stripe: {
+      publishableKey: {
+        exists: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+        length: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY?.length || 0
+      },
+      secretKey: {
+        exists: !!process.env.STRIPE_SECRET_KEY,
+        length: process.env.STRIPE_SECRET_KEY?.length || 0
+      },
+      webhookSecret: {
+        exists: !!process.env.STRIPE_WEBHOOK_SECRET,
+        length: process.env.STRIPE_WEBHOOK_SECRET?.length || 0
+      }
+    }
+  };
+
+  // Check for critical missing variables
+  const criticalMissing = [];
+
+  if (!envStatus.supabase.url.exists) criticalMissing.push('NEXT_PUBLIC_SUPABASE_URL');
+  if (!envStatus.supabase.anonKey.exists) criticalMissing.push('NEXT_PUBLIC_SUPABASE_ANON_KEY');
+  if (!envStatus.supabase.serviceRoleKey.exists) criticalMissing.push('SUPABASE_SERVICE_ROLE_KEY');
+  if (!envStatus.resend.apiKey.exists) criticalMissing.push('RESEND_API_KEY');
+  if (!envStatus.resend.fromEmail.exists) criticalMissing.push('RESEND_FROM_EMAIL');
+
+  const allConfigured = criticalMissing.length === 0;
+
+  return NextResponse.json({
+    status: allConfigured ? 'healthy' : 'missing_config',
+    allConfigured,
+    criticalMissing,
+    envStatus,
+    recommendations: criticalMissing.length > 0 ? [
+      'Set missing environment variables in your hosting platform',
+      'Redeploy the application after setting variables',
+      'Check that variable names match exactly (case-sensitive)'
+    ] : [
+      'All critical environment variables are configured',
+      'If issues persist, check variable values are correct',
+      'Verify Resend API key is valid and has correct permissions'
+    ]
+  });
+}

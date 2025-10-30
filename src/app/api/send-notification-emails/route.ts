@@ -4,28 +4,48 @@ import { Resend } from 'resend';
 export async function POST(req: NextRequest) {
   try {
     console.log('📧 Notification email API called');
+    console.log('📍 Environment:', process.env.NODE_ENV);
+    console.log('🔑 RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
+    console.log('📧 RESEND_FROM_EMAIL:', process.env.RESEND_FROM_EMAIL || 'NOT SET');
+
     const { reservationData } = await req.json();
 
     if (!reservationData) {
       console.error('❌ Missing reservation data');
       return NextResponse.json(
-        { success: false, error: 'Missing reservation data' },
+        {
+          success: false,
+          error: 'Missing reservation data',
+          debug: {
+            receivedData: req.body,
+            timestamp: new Date().toISOString()
+          }
+        },
         { status: 400 }
       );
     }
 
     console.log('✅ Reservation data received:', reservationData);
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
     if (!process.env.RESEND_API_KEY) {
       console.error('❌ RESEND_API_KEY is not configured');
+      console.error('💡 Please set RESEND_API_KEY environment variable in your hosting platform');
       return NextResponse.json(
-        { success: false, error: 'Email service not configured' },
+        {
+          success: false,
+          error: 'Email service not configured - RESEND_API_KEY missing',
+          debug: {
+            environment: process.env.NODE_ENV,
+            hasApiKey: false,
+            hasFromEmail: !!process.env.RESEND_FROM_EMAIL,
+            timestamp: new Date().toISOString()
+          }
+        },
         { status: 500 }
       );
     }
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
     console.log('✅ Resend API key found, initializing...');
 
     // The three email addresses to notify
@@ -261,8 +281,24 @@ Bld de l'Empereur 26, 1000 Brussels, Belgium
 
   } catch (error) {
     console.error('❌ Critical error in notification email API:', error);
+    console.error('🔍 Error details:', {
+      name: error instanceof Error ? error.name : 'Unknown',
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined
+    });
+
     return NextResponse.json(
-      { success: false, error: error instanceof Error ? error.message : 'Unknown error' },
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+        debug: {
+          errorType: error instanceof Error ? error.name : typeof error,
+          environment: process.env.NODE_ENV,
+          hasApiKey: !!process.env.RESEND_API_KEY,
+          hasFromEmail: !!process.env.RESEND_FROM_EMAIL,
+          timestamp: new Date().toISOString()
+        }
+      },
       { status: 500 }
     );
   }
