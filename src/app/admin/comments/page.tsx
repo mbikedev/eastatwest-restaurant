@@ -17,26 +17,6 @@ export default function CommentsAdminPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedBlogPost, setSelectedBlogPost] = useState<string>('all')
 
-  if (authLoading || !isAuthenticated) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-        <div className="text-center">
-          <div className="w-16 h-16 mx-auto mb-4 border-4 border-t-transparent border-[#A8D5BA] rounded-full animate-spin"></div>
-          <p className="text-lg text-gray-900 dark:text-white">Verifying authentication...</p>
-        </div>
-      </div>
-    )
-  }
-
-  // Set page title
-  useEffect(() => {
-    document.title = 'Comment Moderation - Admin Dashboard'
-  }, [])
-
-  useEffect(() => {
-    loadComments()
-  }, [])
-
   const loadComments = async () => {
     setLoading(true)
     try {
@@ -47,6 +27,28 @@ export default function CommentsAdminPage() {
     } finally {
       setLoading(false)
     }
+  }
+
+  // Set page title
+  useEffect(() => {
+    document.title = 'Comment Moderation - Admin Dashboard'
+  }, [])
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      loadComments()
+    }
+  }, [isAuthenticated])
+
+  if (authLoading || !isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <div className="text-center">
+          <div className="w-16 h-16 mx-auto mb-4 border-4 border-t-transparent border-[#A8D5BA] rounded-full animate-spin"></div>
+          <p className="text-lg text-gray-900 dark:text-white">Verifying authentication...</p>
+        </div>
+      </div>
+    )
   }
 
   const handleApprove = async (commentId: string) => {

@@ -79,52 +79,6 @@ export default function AdminOrdersPage() {
     completed: 0
   });
 
-  // Auth check - must come after all hooks
-  if (authLoading || !isAuthenticated) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-        <div className="text-center">
-          <div className="w-16 h-16 mx-auto mb-4 border-4 border-t-transparent border-[#A8D5BA] rounded-full animate-spin"></div>
-          <p className="text-lg text-gray-900 dark:text-white">Verifying authentication...</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Check if user is staff
-  useEffect(() => {
-    const checkStaffAccess = async () => {
-      try {
-        const { data: refreshData, error: refreshError } = await supabase.auth.refreshSession();
-
-        if (refreshError) {
-          console.log('Token refresh failed, using current session:', refreshError.message);
-        }
-
-        const { data: { user } } = await supabase.auth.getUser();
-
-        if (!user) {
-          setIsStaff(false);
-          return;
-        }
-
-        const ALLOWED_ADMIN_EMAILS = [
-          'mbagnickg@gmail.com',
-          'infos.east.west@gmail.com',
-          'hannamoubayed@hotmail.com'
-        ];
-
-        const isAllowedEmail = ALLOWED_ADMIN_EMAILS.includes(user.email?.toLowerCase() || '');
-        setIsStaff(isAllowedEmail);
-      } catch (error) {
-        console.error('Error checking staff access:', error);
-        setIsStaff(false);
-      }
-    };
-
-    checkStaffAccess();
-  }, []);
-
   // Fetch all orders
   const fetchOrders = async () => {
     if (!isStaff) return;
@@ -167,6 +121,40 @@ export default function AdminOrdersPage() {
     }
   };
 
+  // Check if user is staff
+  useEffect(() => {
+    const checkStaffAccess = async () => {
+      try {
+        const { data: refreshData, error: refreshError } = await supabase.auth.refreshSession();
+
+        if (refreshError) {
+          console.log('Token refresh failed, using current session:', refreshError.message);
+        }
+
+        const { data: { user } } = await supabase.auth.getUser();
+
+        if (!user) {
+          setIsStaff(false);
+          return;
+        }
+
+        const ALLOWED_ADMIN_EMAILS = [
+          'mbagnickg@gmail.com',
+          'infos.east.west@gmail.com',
+          'hannamoubayed@hotmail.com'
+        ];
+
+        const isAllowedEmail = ALLOWED_ADMIN_EMAILS.includes(user.email?.toLowerCase() || '');
+        setIsStaff(isAllowedEmail);
+      } catch (error) {
+        console.error('Error checking staff access:', error);
+        setIsStaff(false);
+      }
+    };
+
+    checkStaffAccess();
+  }, []);
+
   useEffect(() => {
     if (isStaff) {
       fetchOrders();
@@ -196,6 +184,18 @@ export default function AdminOrdersPage() {
     setFilteredOrders(filtered);
     setCurrentPage(1);
   }, [orders, statusFilter, searchTerm]);
+
+  // Auth check - must come after all hooks
+  if (authLoading || !isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+        <div className="text-center">
+          <div className="w-16 h-16 mx-auto mb-4 border-4 border-t-transparent border-[#A8D5BA] rounded-full animate-spin"></div>
+          <p className="text-lg text-gray-900 dark:text-white">Verifying authentication...</p>
+        </div>
+      </div>
+    );
+  }
 
   // Update order status
   const updateOrderStatus = async (orderId: string, newStatus: Order['status']) => {
