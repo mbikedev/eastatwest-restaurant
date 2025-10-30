@@ -5,7 +5,7 @@
 ### Environment Variables Required
 
 ```bash
-RESEND_API_KEY=re_6urjn6gZ_MFw2mTfkg7hVAR6WjAKHx4xM
+RESEND_API_KEY=your_resend_api_key_here
 RESEND_FROM_EMAIL=onboarding@resend.dev  # Temporary - see below
 ```
 

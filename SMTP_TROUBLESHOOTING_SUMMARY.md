@@ -9,7 +9,7 @@
 ## ✅ What Works
 
 ### 1. Resend API - FULLY FUNCTIONAL
-- **API Key:** Valid and working (`re_6urjn6gZ_...`)
+- **API Key:** Valid and working (`re_XXXXXXXX_...`)
 - **Domain:** `eastatwest.com` - Verified in Resend
 - **Region:** EU-WEST-1
 - **Direct Email Test:** ✅ SUCCESS
@@ -22,7 +22,7 @@
 NEXT_PUBLIC_SUPABASE_URL=https://whixskigyxeligukorrm.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
-RESEND_API_KEY=re_6urjn6gZ_MFw2mTfkg7hVAR6WjAKHx4xM
+RESEND_API_KEY=re_XXXXXXXX_MFw2mTfkg7hVAR6WjAKHx4xM
 RESEND_FROM_EMAIL=contact@eastatwest.com
 ```
 
@@ -52,7 +52,7 @@ Enable Custom SMTP: ON
 Host: smtp.resend.com
 Port: 465 (also tried 587)
 Username: resend
-Password: re_6urjn6gZ_MFw2mTfkg7hVAR6WjAKHx4xM
+Password: re_XXXXXXXX_MFw2mTfkg7hVAR6WjAKHx4xM
 Sender Email: onboarding@resend.dev (also tried contact@eastatwest.com)
 Sender Name: East at West Restaurant
 ```
@@ -106,7 +106,7 @@ Password: YOUR_API_KEY
 Host: smtp.resend.com ✅
 Port: 465 ✅
 Username: resend ✅
-Password: re_6urjn6gZ_MFw2mTfkg7hVAR6WjAKHx4xM ✅
+Password: re_XXXXXXXX_MFw2mTfkg7hVAR6WjAKHx4xM ✅
 ```
 
 **Result:** Still fails despite matching exactly

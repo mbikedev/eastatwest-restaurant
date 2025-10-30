@@ -16,7 +16,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOi...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOi...
 
 # Resend Configuration
-RESEND_API_KEY=re_6urjn6gZ_MFw2mTfkg7hVAR6WjAKHx4xM
+RESEND_API_KEY=your_resend_api_key_here
 RESEND_FROM_EMAIL=contact@eastatwest.com
 ```
 
@@ -110,7 +110,7 @@ If browser login doesn't work:
 │ Port: 465                                       │
 │                                                 │
 │ Username: resend                                │
-│ Password: re_6urjn6gZ_MFw2mTfkg7hVAR6WjAKHx4xM │
+│ Password: your_resend_api_key_here         │
 │                                                 │
 │ Minimum interval: 60 seconds                   │
 └─────────────────────────────────────────────────┘
