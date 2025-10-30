@@ -173,42 +173,62 @@ East@West Restaurant
 Bld de l'Empereur 26, 1000 Brussels, Belgium
 `;
 
-    // Send emails to all notification addresses
-    console.log('📤 Sending emails...');
-    const emailPromises = notificationEmails.map(email => {
-      console.log(`  → Preparing email for ${email}`);
-      return resend.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || 'contact@eastatwest.com',
-        to: email,
-        subject,
-        text: emailText,
-        html: emailHTML,
-        headers: {
-          'X-Priority': '1',
-          'X-MSMail-Priority': 'High',
-          'Importance': 'high',
-          'X-Mailer': 'East at West Restaurant'
-        }
-      });
-    });
+    // Send emails one at a time with delays to avoid rate limiting
+    // Resend free tier: 2 requests per second
+    console.log('📤 Sending emails with rate limiting...');
+    const results: Array<{ email: string; success: boolean; result?: any; error?: any }> = [];
 
-    // Wait for all emails to be sent
-    console.log('⏳ Waiting for email delivery...');
-    const results = await Promise.allSettled(emailPromises);
+    for (let i = 0; i < notificationEmails.length; i++) {
+      const email = notificationEmails[i];
+      console.log(`  → Sending email ${i + 1}/${notificationEmails.length} to ${email}`);
+
+      try {
+        const result = await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL || 'contact@eastatwest.com',
+          to: email,
+          subject,
+          text: emailText,
+          html: emailHTML,
+          headers: {
+            'X-Priority': '1',
+            'X-MSMail-Priority': 'High',
+            'Importance': 'high',
+            'X-Mailer': 'East at West Restaurant'
+          }
+        });
+
+        // Check if Resend returned an error in the response
+        if (result.error) {
+          console.error(`❌ Failed to send to ${email}:`, result.error);
+          results.push({ email, success: false, error: result.error });
+        } else {
+          console.log(`✅ Successfully sent to ${email}:`, result.data);
+          results.push({ email, success: true, result: result.data });
+        }
+      } catch (error) {
+        console.error(`❌ Exception sending to ${email}:`, error);
+        results.push({ email, success: false, error });
+      }
+
+      // Add delay between emails to respect rate limit (600ms = ~1.6 requests/sec)
+      if (i < notificationEmails.length - 1) {
+        console.log('  ⏳ Waiting 600ms to respect rate limit...');
+        await new Promise(resolve => setTimeout(resolve, 600));
+      }
+    }
 
     // Log results
     console.log('📊 Email delivery results:');
-    results.forEach((result, index) => {
-      if (result.status === 'fulfilled') {
-        console.log(`✅ Notification email sent successfully to ${notificationEmails[index]}:`, result.value);
+    const successCount = results.filter(r => r.success).length;
+    const failureCount = results.filter(r => !r.success).length;
+
+    results.forEach(r => {
+      if (r.success) {
+        console.log(`✅ ${r.email}: Sent successfully`);
       } else {
-        console.error(`❌ Failed to send notification email to ${notificationEmails[index]}:`, result.reason);
+        console.error(`❌ ${r.email}: Failed -`, r.error);
       }
     });
-
-    // Return success if at least one email was sent
-    const successCount = results.filter(result => result.status === 'fulfilled').length;
-    const failureCount = results.length - successCount;
 
     console.log(`📈 Summary: ${successCount} succeeded, ${failureCount} failed`);
 
