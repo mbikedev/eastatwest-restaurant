@@ -1104,7 +1104,8 @@
     }
   },
   "hero": {
-    "headline": "Libanees Restaurant Brussel - East At West",
+    "headline": "Libanees Restaurant<br class='md:hidden'/>Brussel<br class='md:hidden'/>East At West",
+    "headlineDesktop": "Libanees Restaurant Brussel - East At West",
     "description": "Ervaar de authentieke smaken van de Middellandse Zee in ons moderne culinaire heiligdom",
     "cta": "Reserveer Uw Tafel",
     "viewMenu": "Bekijk Ons Menu",
