@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
           <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <!-- Header -->
             <div style="background: linear-gradient(135deg, #1f2937 0%, #374151 100%); padding: 30px; text-align: center;">
-              <img src="${process.env.NEXT_PUBLIC_BASE_URL || 'https://eastatwest.com'}/images/logo.webp" alt="East at West Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;" />
+              <img src="${process.env.NEXT_PUBLIC_BASE_URL || 'https://eastatwest.com'}/images/east-logo.webp" alt="East at West Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;" />
               <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">East at West</h1>
               <p style="color: #d1d5db; margin: 10px 0 0 0; font-size: 16px;">Restaurant & Take-Away</p>
             </div>
