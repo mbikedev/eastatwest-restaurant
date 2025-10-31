@@ -1098,7 +1098,7 @@
     }
   },
   "hero": {
-    "headline": "Lebanese Restaurant<br class='md:hidden'/>Brussels<br class='md:hidden'/>East At West",
+    "headline": "Lebanese Restaurant<br class='md:hidden'/> Brussels<br class='md:hidden'/> East At West",
     "description": "Experience the authentic flavors of the Mediterranean in our modern culinary sanctuary",
     "cta": "Reserve Your Table",
     "viewMenu": "View our Menu",

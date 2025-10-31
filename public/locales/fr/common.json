@@ -1097,7 +1097,7 @@
     }
   },
   "hero": {
-    "headline": "Restaurant Libanais<br class='md:hidden'/>Bruxelles<br class='md:hidden'/>East At West",
+    "headline": "Restaurant Libanais<br class='md:hidden'/> Bruxelles<br class='md:hidden'/> East At West",
     "description": "Découvrez les saveurs authentiques de la Méditerranée dans notre sanctuaire culinaire moderne",
     "cta": "Réservez Vôtre Table",
     "viewMenu": "Voir Notre Carte",
