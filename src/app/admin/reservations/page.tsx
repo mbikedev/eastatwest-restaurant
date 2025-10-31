@@ -778,7 +778,7 @@ export default function AdminReservationsPage() {
                 </tr>
               ) : (
                 getPaginatedData().map((reservation) => (
-                  <tr key={reservation.id} className={`hover:bg-gray-50 dark:hover:bg-gray-700 ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}>
+                  <tr key={reservation.id} className={`${theme === "dark" ? "hover:bg-gray-700 border-gray-700" : "hover:bg-gray-100 border-gray-200"}`}>
                     <td className="px-1 sm:px-2 py-2">
                       <input
                         type="checkbox"
@@ -1146,7 +1146,11 @@ export default function AdminReservationsPage() {
                 <button
                   onClick={handleUpdateReservation}
                   disabled={isUpdating}
-                  className="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className={`px-4 py-2 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed ${
+                    theme === "dark"
+                      ? "bg-purple-500 hover:bg-purple-600 text-white"
+                      : "bg-purple-500 hover:bg-purple-600 text-black"
+                  }`}
                 >
                   {isUpdating ? 'Updating...' : 'Update Reservation'}
                 </button>
