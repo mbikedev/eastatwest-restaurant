@@ -326,9 +326,8 @@ export default function HomePage() {
                     display: 'inline-block',
                     whiteSpace: 'normal'
                   }}
-                >
-                  {t("hero.headline")}
-                </span>
+                  dangerouslySetInnerHTML={{ __html: t("hero.headline") }}
+                />
               </motion.h1>
 
               <HeroButtons />
