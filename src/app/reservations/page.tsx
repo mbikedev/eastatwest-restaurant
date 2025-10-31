@@ -1029,7 +1029,7 @@ export default function ReservationsPage() {
 
           <div className="flex flex-col text-center w-full">
             <div className={`text-2xl font-bold mb-1 ${theme === "dark" ? "text-white" : "text-black"}`}>
-              12:00 – 14:00
+              12:00 – 14:30
             </div>
             <div className={`text-2xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`}>
               18:00 – 22:00
@@ -1041,8 +1041,8 @@ export default function ReservationsPage() {
               🍽️ LUNCH
             </div>
             <div className={`text-center ${theme === "dark" ? "text-white" : "text-black"}`}>
-              <p className="text-2xl font-semibold">12:00 – 14:00</p>
-              <p className="text-2xl font-medium mt-6">Last reservation at 13:30</p>
+              <p className="text-2xl font-semibold">12:00 – 14:30</p>
+              <p className="text-2xl font-medium mt-6">Last reservation at 14:30</p>
             </div>
 
             <div className={`text-2xl font-black text-center mb-4 mt-6 ${theme === "dark" ? "text-white" : "text-black"}`}>
