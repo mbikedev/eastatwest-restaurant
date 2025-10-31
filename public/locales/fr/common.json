@@ -84,9 +84,9 @@
       "ice_cream_desc": "Glace rafraîchissante au litchi avec baies fraîches"
     },
     "menuDisplay": {
-      "title": "Menu East@West",
+      "title": "Menu East At West",
       "pricePerPerson": "67.50€/2pers.",
-      "setMenuTitle": "Menu Fixe East @ West 67.50€/2pers",
+      "setMenuTitle": "Menu Fixe East At West 67.50€/2pers",
       "items": {
         "fattoush": "Salade Fattoush",
         "hummus": "Houmous",
@@ -995,7 +995,7 @@
   },
   "footer": {
     "design": "Design par Mbagnick Gaye",
-    "copyright": "Copyright © 2025 Tous droits réservés east@west",
+    "copyright": "Copyright © 2025 Tous droits réservés east at west",
     "phone": "+32 465 20 60 24",
     "email": "contact@eastatwest.com",
     "address": "Boulevard de l'Empereur 26 1000 Bruxelles-Belgique",
@@ -1040,12 +1040,12 @@
   "about": {
     "title": "Découvrez la cuisine libanaise à Bruxelles",
     "heroSubtitle": "Découvrez notre passion pour la cuisine méditerranéenne et notre parcours",
-    "part1": "Bienvenue sur notre site, célébrant le monde captivant de la cuisine libanaise ! Chez \u201c East @ West \u201c, nous nous engageons à présenter les saveurs riches, les couleurs vibrantes et l'héritage culturel des traditions culinaires libanaises, au cœur de Bruxelles !",
+    "part1": "Bienvenue sur notre site, célébrant le monde captivant de la cuisine libanaise ! Chez \u201c East At West \u201c, nous nous engageons à présenter les saveurs riches, les couleurs vibrantes et l'héritage culturel des traditions culinaires libanaises, au cœur de Bruxelles !",
     "part2": "La cuisine libanaise est un véritable chef-d'œuvre culinaire, fusionnant le meilleur des saveurs méditerranéennes, arabes et levantines. Nous vous invitons à embarquer pour un voyage qui vous fera découvrir une gamme d'épices aromatiques, d'ingrédients frais, de repas sains et une diversité de plats aussi exquis que satisfaisants.",
     "chefSectionTitle": "Rencontrez Notre Chef Étoilé",
     "heading": "Chef Hanna !",
     "subheading": "Un Maître de la Cuisine",
-    "paragraph1": "Découvrez le Chef Hanna, le maître culinaire derrière les saveurs extraordinaires et l'art gastronomique du restaurant \"East @ West\" à Bruxelles. Animé par une profonde passion pour la cuisine libanaise et doté d'une grande expérience, le Chef Hanna est à l'origine de l'art de nos plats. Avec des racines profondément ancrées dans les traditions culinaires libanaises, il a perfectionné ses compétences dans des cuisines renommées et adopte la philosophie d'utiliser uniquement les meilleurs ingrédients frais pour créer des expériences culinaires mémorables.",
+    "paragraph1": "Découvrez le Chef Hanna, le maître culinaire derrière les saveurs extraordinaires et l'art gastronomique du restaurant \"East At West\" à Bruxelles. Animé par une profonde passion pour la cuisine libanaise et doté d'une grande expérience, le Chef Hanna est à l'origine de l'art de nos plats. Avec des racines profondément ancrées dans les traditions culinaires libanaises, il a perfectionné ses compétences dans des cuisines renommées et adopte la philosophie d'utiliser uniquement les meilleurs ingrédients frais pour créer des expériences culinaires mémorables.",
     "paragraph2": "Avec des racines profondément ancrées dans les traditions culinaires libanaises, il a perfectionné ses compétences dans des cuisines renommées et adopte la philosophie d'utiliser uniquement les meilleurs ingrédients frais pour créer des expériences culinaires mémorables. Son parcours culinaire l'a mené à travers le Liban, où il a appris auprès de chefs locaux, découvrant la richesse des saveurs, des techniques et des nuances culturelles qui définissent la cuisine libanaise. Animé par la passion d'explorer la diversité de cette cuisine, le Chef Hanna continue d'expérimenter de nouveaux ingrédients, saveurs et méthodes de cuisson pour élever les recettes traditionnelles à un niveau culinaire moderne. Son talent pour équilibrer les saveurs et créer des expériences uniques lui a valu des éloges tant des locaux que des visiteurs. Au-delà de son expertise culinaire, le Chef Hanna incarne l'hospitalité libanaise avec chaleur et convivialité, s'assurant que chaque invité se sente chez lui dans son restaurant. Son dévouement à offrir un service exceptionnel et des expériences culinaires inoubliables témoigne de son engagement envers l'excellence.",
     "featuresDescription": "Découvrez ce qui rend notre expérience culinaire extraordinaire"
   },
@@ -1053,7 +1053,7 @@
     "title": "Notre Restaurant en Images",
     "description": "Un aperçu de nos plats, ambiance et service.",
     "image_alt_1": "Plateau de mezze libanais",
-    "image_alt_2": "Espace de restauration East@West",
+    "image_alt_2": "Espace de restauration East At West",
     "image_alt_3": "Brochettes fraîches grillées",
     "aish": {
       "title": "Aïsh El Saraya",
@@ -1103,7 +1103,7 @@
     "viewMenu": "Voir Notre Carte",
     "viewGallery": "Voir Notre Galerie",
     "takeAwayOnly": "À Emporter Uniquement",
-    "imageAlt": "East @ West hero"
+    "imageAlt": "East At West hero"
   },
   "realtime": {
     "todaysSpecials": "Suggestions du Jour",
@@ -1145,7 +1145,7 @@
     "title": "Événements & Traiteur",
     "subtitle": "Créer des Expériences Culinaires Mémorables",
     "hero": {
-      "welcome": "Bienvenue chez East@West",
+      "welcome": "Bienvenue chez East At West",
       "breadcrumb": "Accueil / Événements & Traiteur"
     },
     "forAllEvents": {

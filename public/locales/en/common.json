@@ -84,9 +84,9 @@
       "ice_cream_desc": "Refreshing lychee ice cream with fresh berries"
     },
     "menuDisplay": {
-      "title": "Menu East@West",
+      "title": "Menu East At West",
       "pricePerPerson": "67.50€/2per.",
-      "setMenuTitle": "Set Menu East @ West 67.50€/2per",
+      "setMenuTitle": "Set Menu East At West 67.50€/2per",
       "items": {
         "fattoush": "Fattoush salad",
         "hummus": "Hummus",
@@ -996,7 +996,7 @@
   },
   "footer": {
     "design": "Design by Mbagnick Gaye",
-    "copyright": "Copyright © 2025 All rights reserved east@west",
+    "copyright": "Copyright © 2025 All rights reserved east at west",
     "phone": "+32 465 20 60 24",
     "email": "contact@eastatwest.com",
     "address": "Bld de l'Empereur 26\n1000 Brussels\nBelgium",
@@ -1041,12 +1041,12 @@
   "about": {
     "title": "Discover Lebanese Cuisine in Brussels",
     "heroSubtitle": "Learn about our passion for Mediterranean cuisine and our journey",
-    "part1": "Welcome to our website, celebrating the captivating world of Lebanese cuisine! At \u201d East @ West \u201d we are dedicated to present the rich flavors, vibrant colors, and cultural heritage of Lebanese culinary traditions, in the heart of Brussels!",
+    "part1": "Welcome to our website, celebrating the captivating world of Lebanese cuisine! At \u201d East At West \u201d we are dedicated to present the rich flavors, vibrant colors, and cultural heritage of Lebanese culinary traditions, in the heart of Brussels!",
     "part2": "Lebanese cuisine is a true culinary masterpiece, fusing the best of Mediterranean, Arabic, and Levantine flavors. We invite you to embark on a journey that will introduce you to an array of aromatic spices, fresh ingredients, healthy meals and a diverse range of dishes that are as exquisite as they are satisfying.",
     "chefSectionTitle": "Meet Our Master Chef",
     "heading": "Chef Hanna!",
     "subheading": "A Culinary Maestro",
-    "paragraph1": "Introducing Chef Hanna, the culinary mastermind behind the extraordinary flavors and culinary artistry at \"East @ West\" in Brussels. With a deep passion for Lebanese cuisine and a wealth of experience, Chef Hanna is the one behind the art of our dishes. With a background deeply rooted in Lebanese culinary traditions, he honed his skills in renowned kitchens and embraced the philosophy of using only the finest, freshest ingredients to create memorable culinary experiences.",
+    "paragraph1": "Introducing Chef Hanna, the culinary mastermind behind the extraordinary flavors and culinary artistry at \"East At West\" in Brussels. With a deep passion for Lebanese cuisine and a wealth of experience, Chef Hanna is the one behind the art of our dishes. With a background deeply rooted in Lebanese culinary traditions, he honed his skills in renowned kitchens and embraced the philosophy of using only the finest, freshest ingredients to create memorable culinary experiences.",
     "paragraph2": "With a background deeply rooted in Lebanese culinary traditions, he honed his skills in renowned kitchens and embraced the philosophy of using only the finest, freshest ingredients to create memorable culinary experiences. His culinary journey has taken him across Lebanon, where he learned from local chefs, delving into the rich tapestry of flavors, techniques, and cultural nuances that define Lebanese cuisine. Driven by a passion for exploring the diversity of Lebanese cuisine, Chef Hanna keeps experimenting with new ingredients, flavors, and cooking methods to elevate traditional recipes to modern culinary heights. His ability to balance flavors and create unique dining experiences has earned him accolades from both locals and visitors alike. Beyond his culinary expertise, Chef Hanna embodies the spirit of Lebanese hospitality. With a warm and welcoming demeanor, he strives to ensure that every guest feels at home in his restaurant. His dedication to providing exceptional service and creating memorable dining experiences is a testament to his commitment to excellence.",
     "featuresDescription": "Discover what makes our culinary experience extraordinary"
   },
@@ -1054,7 +1054,7 @@
     "title": "Our Restaurant in Pictures",
     "description": "A glimpse into our dishes, ambiance, and service.",
     "image_alt_1": "Lebanese mezze platter",
-    "image_alt_2": "East@West dining space",
+    "image_alt_2": "East At West dining space",
     "image_alt_3": "Fresh grilled skewers",
     "aish": {
       "title": "Aish El Saraya",
@@ -1104,7 +1104,7 @@
     "viewMenu": "View our Menu",
     "viewGallery": "View Our Gallery",
     "takeAwayOnly": "Take-Away-Only",
-    "imageAlt": "East @ West hero"
+    "imageAlt": "East At West hero"
   },
   "realtime": {
     "todaysSpecials": "Today's Specials",
@@ -1147,7 +1147,7 @@
     "title": "Events & Catering",
     "subtitle": "Creating Memorable Culinary Experiences",
     "hero": {
-      "welcome": "Welcome to East@West",
+      "welcome": "Welcome to East At West",
       "breadcrumb": "Home / Events & Catering"
     },
     "forAllEvents": {
@@ -1276,8 +1276,8 @@
     "replyAsAdmin": "Reply as admin...",
     "reply": "Reply",
     "vegetarianPost": {
-      "title": "Vegetarian Restaurant Brussels – East @ West",
-      "excerpt": "Meat, fish, and poultry are not served at vegetarian restaurant Brussels East @ West. Discover our diverse vegetarian options and the rich culinary heritage of Belgian plant-based cuisine.",
+      "title": "Vegetarian Restaurant Brussels – East At West",
+      "excerpt": "Meat, fish, and poultry are not served at vegetarian restaurant Brussels East At West. Discover our diverse vegetarian options and the rich culinary heritage of Belgian plant-based cuisine.",
       "whyChoose": "Why Choose a Vegetarian Restaurant in Brussels?",
       "whatIs": "What Is a Vegetarian Restaurant?",
       "history": "How Long Have There Been Vegetarian Eateries?",
