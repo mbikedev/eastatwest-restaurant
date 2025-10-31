@@ -326,8 +326,16 @@ export default function HomePage() {
                     display: 'inline-block',
                     whiteSpace: 'normal'
                   }}
-                  dangerouslySetInnerHTML={{ __html: t("hero.headline") }}
-                />
+                >
+                  {t("hero.headline").split('East At West').map((part, i, arr) => (
+                    i === arr.length - 1 ? part : (
+                      <span key={i}>
+                        {part}
+                        <span style={{ whiteSpace: 'nowrap' }}>East At West</span>
+                      </span>
+                    )
+                  ))}
+                </span>
               </motion.h1>
 
               <HeroButtons />
