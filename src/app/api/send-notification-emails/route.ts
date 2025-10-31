@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
 
     console.log('📬 Will send notifications to:', notificationEmails);
 
-    const subject = 'New Reservation Received – East@West';
+    const subject = 'New Reservation Received – East At West';
 
     const emailHTML = `
       <!DOCTYPE html>
@@ -71,8 +71,8 @@ export async function POST(req: NextRequest) {
         <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
           <!-- Header -->
           <div style="background: linear-gradient(135deg, #1f2937 0%, #374151 100%); padding: 30px; text-align: center;">
-            <img src="${process.env.NEXT_PUBLIC_BASE_URL || 'https://eastatwest.com'}/images/east-logo.webp" alt="East at West Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;" />
-            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">East at West</h1>
+            <img src="${process.env.NEXT_PUBLIC_BASE_URL || 'https://eastatwest.com'}/images/east-logo.webp" alt="East At West Logo" style="max-width: 180px; height: auto; margin-bottom: 15px;" />
+            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">East At West</h1>
             <p style="color: #d1d5db; margin: 10px 0 0 0; font-size: 16px;">Restaurant & Take-Away</p>
           </div>
 
@@ -157,7 +157,7 @@ export async function POST(req: NextRequest) {
           <!-- Footer -->
           <div style="background-color: #1f2937; padding: 20px; text-align: center;">
             <p style="color: #d1d5db; margin: 0; font-size: 14px;">
-              East@West Restaurant Management System
+              East At West Restaurant Management System
             </p>
             <p style="color: #9ca3af; margin: 10px 0 0 0; font-size: 12px;">
               Bld de l'Empereur 26, 1000 Brussels, Belgium
@@ -169,7 +169,7 @@ export async function POST(req: NextRequest) {
     `;
 
     const emailText = `
-New Reservation Received – East@West
+New Reservation Received – East At West
 
 Hello,
 
@@ -190,7 +190,7 @@ ${reservationData.guests >= 7 ?
 
 Please check the reservation system or contact the client if needed.
 
-East@West Restaurant
+East At West Restaurant
 Bld de l'Empereur 26, 1000 Brussels, Belgium
 `;
 
@@ -214,7 +214,7 @@ Bld de l'Empereur 26, 1000 Brussels, Belgium
             'X-Priority': '1',
             'X-MSMail-Priority': 'High',
             'Importance': 'high',
-            'X-Mailer': 'East at West Restaurant'
+            'X-Mailer': 'East At West Restaurant'
           }
         });
 

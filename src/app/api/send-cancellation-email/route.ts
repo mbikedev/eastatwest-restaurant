@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
           <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <!-- Header -->
             <div style="background: linear-gradient(135deg, #1f2937 0%, #374151 100%); padding: 30px; text-align: center;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">East at West</h1>
+              <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">East At West</h1>
               <p style="color: #d1d5db; margin: 10px 0 0 0; font-size: 16px;">Restaurant & Take-Away</p>
             </div>
 
@@ -177,7 +177,7 @@ export async function POST(req: NextRequest) {
         'X-Priority': '1',
         'X-MSMail-Priority': 'High',
         'Importance': 'high',
-        'X-Mailer': 'East at West Restaurant'
+        'X-Mailer': 'East At West Restaurant'
       }
     });
 

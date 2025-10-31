@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
 
     const isApproved = action === 'approved';
     const actionText = isApproved ? 'CONFIRMED' : 'CANCELLED';
-    const subject = `Your Reservation at East@West is ${actionText}`;
+    const subject = `Your Reservation at East At West is ${actionText}`;
     const statusColor = isApproved ? '#10b981' : '#ef4444';
     const statusBg = isApproved ? '#dcfce7' : '#fee2e2';
 
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
         <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
           <!-- Header -->
           <div style="background: linear-gradient(135deg, #1f2937 0%, #374151 100%); padding: 30px; text-align: center;">
-            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">East at West</h1>
+            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 300;">East At West</h1>
             <p style="color: #d1d5db; margin: 10px 0 0 0; font-size: 16px;">Restaurant & Take-Away</p>
           </div>
 
@@ -59,8 +59,8 @@ export async function POST(req: NextRequest) {
 
             <p style="color: #374151; margin: 0 0 30px 0; font-size: 16px; line-height: 1.6;">
               ${isApproved ?
-                'Great news! Your reservation at East at West has been <strong style="color: #10b981;">confirmed</strong>. We look forward to welcoming you!' :
-                'We regret to inform you that your reservation at East at West has been <strong style="color: #ef4444;">cancelled</strong>. We apologize for any inconvenience.'
+                'Great news! Your reservation at East At West has been <strong style="color: #10b981;">confirmed</strong>. We look forward to welcoming you!' :
+                'We regret to inform you that your reservation at East At West has been <strong style="color: #ef4444;">cancelled</strong>. We apologize for any inconvenience.'
               }
             </p>
 
@@ -135,14 +135,14 @@ export async function POST(req: NextRequest) {
                 'We look forward to serving you!' :
                 'We apologize for any inconvenience and hope to see you soon.'
               }<br><br>
-              <strong>East at West Team</strong>
+              <strong>East At West Team</strong>
             </p>
           </div>
 
           <!-- Footer -->
           <div style="background-color: #1f2937; padding: 20px; text-align: center;">
             <p style="color: #d1d5db; margin: 0; font-size: 14px;">
-              East at West
+              East At West
             </p>
             <p style="color: #9ca3af; margin: 10px 0 0 0; font-size: 12px;">
               Bld de l'Empereur 26, 1000 Brussels, Belgium<br>
@@ -155,13 +155,13 @@ export async function POST(req: NextRequest) {
     `;
 
     const emailText = `
-Your Reservation at East@West is ${actionText}
+Your Reservation at East At West is ${actionText}
 
 Dear ${reservationData.name},
 
 ${isApproved ?
-  'Great news! Your reservation at East at West has been CONFIRMED. We look forward to welcoming you!' :
-  'We regret to inform you that your reservation at East at West has been CANCELLED. We apologize for any inconvenience.'
+  'Great news! Your reservation at East At West has been CONFIRMED. We look forward to welcoming you!' :
+  'We regret to inform you that your reservation at East At West has been CANCELLED. We apologize for any inconvenience.'
 }
 
 Reservation Details:
@@ -187,7 +187,7 @@ Contact us at +32 2 508 38 38 or email contact@eastatwest.com`
 
 ${isApproved ? 'We look forward to serving you!' : 'We apologize for any inconvenience and hope to see you soon.'}
 
-East at West Team
+East At West Team
 Bld de l'Empereur 26, 1000 Brussels, Belgium
 Tel: +32 2 508 38 38 | Email: contact@eastatwest.com
 `;
@@ -200,7 +200,7 @@ Tel: +32 2 508 38 38 | Email: contact@eastatwest.com
       text: emailText,
       html: emailHTML,
       headers: {
-        'X-Mailer': 'East at West Restaurant'
+        'X-Mailer': 'East At West Restaurant'
       }
     });
 
