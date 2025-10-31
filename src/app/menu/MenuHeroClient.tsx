@@ -53,7 +53,7 @@ export default function MenuHeroClient() {
                 →
               </motion.span>
               <a
-                href="/pdfs/menus.pdf"
+                href="/pdfs/menu.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('menu.buttons.menu')}
