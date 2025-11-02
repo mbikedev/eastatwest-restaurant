@@ -240,16 +240,26 @@ export default function AdminReservationsPage() {
     setUpdatingIds(prev => new Set(prev).add(reservationId));
 
     try {
-      const { error } = await supabase
+      console.log('Attempting to update reservation:', { reservationId, newStatus });
+
+      const { data, error } = await supabase
         .from('reservations')
         .update({ status: newStatus })
-        .eq('id', reservationId);
+        .eq('id', reservationId)
+        .select();
 
       if (error) {
-        toast.error('Failed to update status');
-        console.error('Error updating status:', error);
+        console.error('Error updating status:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        });
+        toast.error(`Failed to update status: ${error.message}`);
         return;
       }
+
+      console.log('Update successful:', data);
 
       // Get the reservation data for email notifications
       const reservation = reservations.find(r => r.id === reservationId);
