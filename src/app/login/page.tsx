@@ -247,11 +247,13 @@ export default function LoginPage() {
               <button
                 onClick={handleResetPassword}
                 disabled={loading || !email}
-                className={`w-full px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors ${
-                  theme === 'dark'
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                    : 'bg-blue-600 hover:bg-blue-700 text-white'
-                }`}
+                style={{
+                  backgroundColor: '#2563eb',
+                  color: '#FFFFFF',
+                  opacity: (loading || !email) ? 0.5 : 1,
+                  cursor: (loading || !email) ? 'not-allowed' : 'pointer'
+                }}
+                className="w-full px-4 py-2 rounded-lg font-medium transition-colors hover:bg-blue-700"
               >
                 {loading ? 'Sending...' : 'Send Reset Link'}
               </button>
