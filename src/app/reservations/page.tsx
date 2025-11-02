@@ -221,23 +221,67 @@ export default function ReservationsPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Debug Supabase configuration
     debugSupabaseConfig();
-    
+
     // Run validation before submitting
     const validationResult = ReservationValidator.validate(form, t);
-    
+
     if (!validationResult.isValid) {
       setValidationErrors(validationResult.errors);
       setValidationWarnings(validationResult.warnings);
-      
+
       // Show first error in toast
       if (validationResult.errors.length > 0) {
         toast.error(validationResult.errors[0].message);
       }
       setIsSubmitting(false);
       return;
+    }
+
+    // Check for duplicate reservations before submitting
+    try {
+      // Check if Supabase is configured for duplicate detection
+      if (checkSupabaseConfig()) {
+        // Check for overlapping reservations using the database function
+        const { data: overlappingReservations, error: overlapError } = await supabase
+          .rpc('check_reservation_overlap', {
+            p_reservation_date: form.date,
+            p_start_time: form.startTime,
+            p_end_time: form.endTime,
+            p_exclude_id: null
+          });
+
+        if (overlapError) {
+          console.warn('Could not check for overlapping reservations:', overlapError);
+          // Continue with submission - don't block due to overlap check failure
+        } else if (overlappingReservations && overlappingReservations.length > 0) {
+          toast.error(t('reservations.duplicateError') || 'This time slot is already booked. Please choose a different time.');
+          setIsSubmitting(false);
+          return;
+        }
+
+        // Check for duplicate reservation by same email/phone on same date
+        const { data: existingReservations, error: existingError } = await supabase
+          .from('reservations')
+          .select('id, start_time, end_time')
+          .eq('email', form.email)
+          .eq('date', form.date)
+          .neq('status', 'cancelled');
+
+        if (existingError) {
+          console.warn('Could not check for existing reservations:', existingError);
+          // Continue with submission - don't block due to existing check failure
+        } else if (existingReservations && existingReservations.length > 0) {
+          toast.error(t('reservations.alreadyReserved') || 'You already have a reservation on this date. Please contact us to modify your existing reservation.');
+          setIsSubmitting(false);
+          return;
+        }
+      }
+    } catch (duplicateCheckError) {
+      console.warn('Error checking for duplicates:', duplicateCheckError);
+      // Continue with submission - don't block the user if duplicate check fails
     }
     
     try {

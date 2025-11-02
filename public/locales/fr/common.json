@@ -679,6 +679,8 @@
     "approvalRequiredMessage": "Les réservations pour 10 personnes ou plus nécessitent une approbation. Votre réservation sera marquée comme en attente jusqu'à confirmation par notre équipe.",
     "contactPhone": "+32 465 20 60 24",
     "contactEmail": "contact@eastatwest.com",
+    "duplicateError": "Ce créneau horaire est déjà réservé. Veuillez choisir une heure différente.",
+    "alreadyReserved": "Vous avez déjà une réservation à cette date. Veuillez nous contacter pour modifier votre réservation existante.",
     "contactAddress": "Bld de l'Empereur 26\n1000 Brussels\nBelgium",
     "form": {
       "name": "Nom Complet",

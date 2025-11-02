@@ -686,6 +686,8 @@
     "approvalRequiredMessage": "Reserveringen voor 10 personen of meer vereisen goedkeuring. Uw reservatie wordt als in behandeling gemarkeerd totdat ons personeel deze bevestigt.",
     "contactPhone": "+32 465 20 60 24",
     "contactEmail": "contact@eastatwest.com",
+    "duplicateError": "Dit tijdslot is al geboekt. Kies een andere tijd.",
+    "alreadyReserved": "U heeft al een reservering op deze datum. Neem contact met ons op om uw bestaande reservering te wijzigen.",
     "contactAddress": "Keizerslaan 26\n1000 Brussel\nBelgië",
     "form": {
       "name": "Volledige Naam",
