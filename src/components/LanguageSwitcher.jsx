@@ -2,6 +2,7 @@
 
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../context/ThemeContext'
+import { safeSetItem } from '../utils/storage'
 import Image from 'next/image'
 
 const LanguageSwitcher = () => {
@@ -16,7 +17,7 @@ const LanguageSwitcher = () => {
 
   const handleLanguageChange = (langCode) => {
     i18n.changeLanguage(langCode)
-    localStorage.setItem('language', langCode)
+    safeSetItem('language', langCode)
   }
 
   return (
