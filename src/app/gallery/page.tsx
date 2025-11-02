@@ -165,10 +165,10 @@ export default function GalleryPage() {
     
   ], [])
 
-  // Randomize and select 12 images each time the page loads
+  // Randomize and select 24 images each time the page loads
   const randomizedImages = useMemo(() => {
     const shuffled = [...allImages].sort(() => Math.random() - 0.5)
-    return shuffled.slice(0, 12)
+    return shuffled.slice(0, 24)
   }, [allImages])
 
   // Generate titles and descriptions for images based on their path
