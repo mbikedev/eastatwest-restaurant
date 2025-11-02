@@ -165,9 +165,22 @@ export default function GalleryPage() {
     
   ], [])
 
-  // Randomize and select 24 images each time the page loads
+  // Randomize and select 24 unique images each time the page loads
   const randomizedImages = useMemo(() => {
-    const shuffled = [...allImages].sort(() => Math.random() - 0.5)
+    // Create a map to track unique dishes by their filename (not full path)
+    const uniqueImages = new Map<string, string>()
+
+    allImages.forEach(imagePath => {
+      const filename = imagePath.split('/').pop() || ''
+      // Only add if this filename hasn't been seen before
+      if (!uniqueImages.has(filename)) {
+        uniqueImages.set(filename, imagePath)
+      }
+    })
+
+    // Convert back to array and shuffle
+    const uniqueArray = Array.from(uniqueImages.values())
+    const shuffled = uniqueArray.sort(() => Math.random() - 0.5)
     return shuffled.slice(0, 24)
   }, [allImages])
 
