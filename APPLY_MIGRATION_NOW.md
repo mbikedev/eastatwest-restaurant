@@ -1,7 +1,14 @@
-# ⚠️ URGENT: Apply Database Migration for "Completed" Status
+# ⚠️ URGENT: Apply Database Migrations for "Completed" Status
 
 ## Problem
-The reservation status "completed" cannot be saved because the database CHECK constraint doesn't allow it.
+The reservation status "completed" cannot be saved because:
+1. ~~Database CHECK constraint doesn't allow it~~ ✅ FIXED (migration was applied)
+2. **RLS (Row Level Security) policies prevent admins from updating customer reservations** ❌ NEEDS FIX
+
+## Root Cause Found
+The console showed: `✅ Update response from database: []`
+
+An empty array means the database **rejected** the update due to RLS policies. Currently, only users can update their own reservations. Admins need special permission.
 
 ## Solution - Takes 2 Minutes
 
@@ -13,24 +20,51 @@ The reservation status "completed" cannot be saved because the database CHECK co
 
 Copy **ONLY** the SQL below (NOT the markdown code fences):
 
+**IMPORTANT: Run BOTH migration blocks below:**
+
+#### Migration 1: Add "Completed" to CHECK Constraint (Already Applied ✅)
+
+This migration was already applied - Lucy's reservation shows as "completed" in the database.
+
+#### Migration 2: Fix RLS Policies for Admin Access (APPLY THIS NOW ❌)
+
 ```
-DO $$
-BEGIN
-    IF EXISTS (
-        SELECT 1
-        FROM pg_constraint
-        WHERE conname = 'reservations_status_check'
-        AND conrelid = 'public.reservations'::regclass
-    ) THEN
-        ALTER TABLE public.reservations DROP CONSTRAINT reservations_status_check;
-    END IF;
-END $$;
+-- Drop existing restrictive policies
+DROP POLICY IF EXISTS "Users can update own reservations" ON public.reservations;
+DROP POLICY IF EXISTS "Users can view own reservations" ON public.reservations;
 
-ALTER TABLE public.reservations
-ADD CONSTRAINT reservations_status_check
-CHECK (status IN ('pending', 'confirmed', 'cancelled', 'completed'));
+-- Create new policies that allow admins to manage all reservations
+CREATE POLICY "Users and admins can update reservations" ON public.reservations
+  FOR UPDATE
+  USING (
+    auth.email() = email OR
+    auth.email() IN (
+      'mbagnickg@gmail.com',
+      'infos.east.west@gmail.com',
+      'east.westbrussels@gmail.com'
+    )
+  );
 
-COMMENT ON COLUMN public.reservations.status IS 'Reservation status: pending (for 7+ guests), confirmed, cancelled, completed';
+CREATE POLICY "Users and admins can view reservations" ON public.reservations
+  FOR SELECT
+  USING (
+    auth.email() = email OR
+    auth.email() IN (
+      'mbagnickg@gmail.com',
+      'infos.east.west@gmail.com',
+      'east.westbrussels@gmail.com'
+    )
+  );
+
+CREATE POLICY "Admins can delete reservations" ON public.reservations
+  FOR DELETE
+  USING (
+    auth.email() IN (
+      'mbagnickg@gmail.com',
+      'infos.east.west@gmail.com',
+      'east.westbrussels@gmail.com'
+    )
+  );
 ```
 
 ### Step 3: Paste and Run
