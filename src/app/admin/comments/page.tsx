@@ -233,7 +233,7 @@ export default function CommentsAdminPage() {
                     ? 'bg-gradient-to-r from-[#A8D5BA] to-[#8BC5A8] text-white shadow-lg scale-105'
                     : theme === 'dark'
                       ? 'bg-white/10 text-white/70 hover:bg-white/20'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                      : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-[#A8D5BA] hover:text-gray-900 hover:shadow-md'
                 }`}
               >
                 {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
