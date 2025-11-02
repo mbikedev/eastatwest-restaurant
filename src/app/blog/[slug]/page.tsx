@@ -681,7 +681,7 @@ export default function BlogPostPage() {
           <SocialShare
             url={typeof window !== 'undefined' ? window.location.href : `https://eastatwest.com/blog/${blog.slug}`}
             title={blog.title}
-            description={blog.excerpt}
+            description={blog.excerpt ?? undefined}
           />
         </section>
 
