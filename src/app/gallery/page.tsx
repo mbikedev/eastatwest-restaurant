@@ -131,9 +131,9 @@ export default function GalleryPage() {
     '/images/hot-mezzes/foul-moudamas.webp',
     
     // Salads
-    '/images/Salads/fattoush.webp',
-    '/images/Salads/falafel.webp',
-    '/images/Salads/taboule.webp',
+    '/images/Salads/fattouche-vegan.webp',
+    '/images/Salads/falafel-vegan-salad.webp',
+    '/images/Salads/original-taboule.webp',
     
     // Lunch dishes
     '/images/lunch-dishes/alepo-mix.webp',
@@ -183,9 +183,10 @@ export default function GalleryPage() {
 
     // Priority dishes that should always appear
     const priorityDishes = [
-      'fattoush.webp',
-      'taboule.webp',
+      'fattouche-vegan.webp',
+      'original-taboule.webp',
       'falafel.webp',
+      'falafel-vegan-salad.webp',
       'houmos.webp',
       'kebbe.webp',
       'muhamara.webp',
@@ -252,7 +253,10 @@ export default function GalleryPage() {
 
       // Salads
       'fattoush': { title: 'Fattoush', description: 'Mixed salad with crispy pita bread' },
+      'fattouche-vegan': { title: 'Fattoush', description: 'Mixed salad with crispy pita bread' },
       'taboule': { title: 'Tabbouleh', description: 'Fresh parsley salad with bulgur and tomatoes' },
+      'original-taboule': { title: 'Tabbouleh', description: 'Fresh parsley salad with bulgur and tomatoes' },
+      'falafel-vegan-salad': { title: 'Falafel Salad', description: 'Fresh falafel served over mixed greens' },
 
       // Lunch dishes
       'alepo-mix': { title: 'Aleppo Mixed Grill', description: 'Assorted grilled meats from Aleppo' },
