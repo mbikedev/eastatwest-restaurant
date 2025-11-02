@@ -6,11 +6,12 @@ import initI18next from '../lib/i18n'
 
 const I18nProvider = ({ children }) => {
   const [i18nInstance, setI18nInstance] = useState(null)
-  const [language, setLanguage] = useState(
-    typeof window !== 'undefined'
-      ? localStorage.getItem('language') || 'en'
-      : 'en'
-  )
+  const [language, setLanguage] = useState(() => {
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+      return localStorage.getItem('language') || 'en'
+    }
+    return 'en'
+  })
 
   useEffect(() => {
     const onStorage = () => {
