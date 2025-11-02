@@ -240,11 +240,13 @@ export default function ReservationsPage() {
       return;
     }
 
-    // Check for duplicate reservations before submitting
+    // Check for capacity and duplicate reservations before submitting
     try {
-      // Check if Supabase is configured for duplicate detection
+      // Check if Supabase is configured for capacity detection
       if (checkSupabaseConfig()) {
-        // Check for overlapping reservations using the database function
+        const requestedGuests = Number(form.guests);
+
+        // Check for overlapping reservations to calculate total capacity
         const { data: overlappingReservations, error: overlapError } = await supabase
           .rpc('check_reservation_overlap', {
             p_reservation_date: form.date,
@@ -257,12 +259,29 @@ export default function ReservationsPage() {
           console.warn('Could not check for overlapping reservations:', overlapError);
           // Continue with submission - don't block due to overlap check failure
         } else if (overlappingReservations && overlappingReservations.length > 0) {
-          toast.error(t('reservations.duplicateError') || 'This time slot is already booked. Please choose a different time.');
-          setIsSubmitting(false);
-          return;
+          // Calculate total guests in overlapping time slots
+          const totalGuests = overlappingReservations.reduce((sum: number, res: any) => {
+            return sum + (res.number_of_guests || 0);
+          }, 0);
+
+          const remainingCapacity = 22 - totalGuests;
+
+          // Check if adding this reservation would exceed capacity
+          if (requestedGuests > remainingCapacity) {
+            if (remainingCapacity > 0) {
+              toast.error(
+                t('reservations.capacityPartiallyAvailable', { remaining: remainingCapacity }) ||
+                `Sorry, only ${remainingCapacity} seats are available for this time slot. The restaurant capacity is 22 people maximum.`
+              );
+            } else {
+              toast.error(t('reservations.capacityFull') || 'This time slot is fully booked. Please choose a different time.');
+            }
+            setIsSubmitting(false);
+            return;
+          }
         }
 
-        // Check for duplicate reservation by same email/phone on same date
+        // Check for duplicate reservation by same email on same date
         const { data: existingReservations, error: existingError } = await supabase
           .from('reservations')
           .select('id, start_time, end_time')
@@ -280,8 +299,8 @@ export default function ReservationsPage() {
         }
       }
     } catch (duplicateCheckError) {
-      console.warn('Error checking for duplicates:', duplicateCheckError);
-      // Continue with submission - don't block the user if duplicate check fails
+      console.warn('Error checking for capacity:', duplicateCheckError);
+      // Continue with submission - don't block the user if capacity check fails
     }
     
     try {

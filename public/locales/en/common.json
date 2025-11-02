@@ -682,6 +682,8 @@
     "contactEmail": "contact@eastatwest.com",
     "duplicateError": "This time slot is already booked. Please choose a different time.",
     "alreadyReserved": "You already have a reservation on this date. Please contact us to modify your existing reservation.",
+    "capacityFull": "This time slot is fully booked (22 people maximum). Please choose a different time.",
+    "capacityPartiallyAvailable": "Sorry, only {{remaining}} seats are available for this time slot. The restaurant capacity is 22 people maximum.",
     "contactAddress": "Bld de l'Empereur 26\n1000 Brussels\nBelgium",
     "form": {
       "name": "Full Name",
