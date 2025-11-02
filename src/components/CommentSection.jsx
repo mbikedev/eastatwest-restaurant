@@ -557,7 +557,7 @@ const CommentSection = ({
 
               {/* Comment Content */}
               <div className="mb-4">
-                <p className="text-lg leading-relaxed">{comment.content}</p>
+                <p className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{comment.content}</p>
               </div>
 
               {/* Admin Reply Form */}
@@ -617,7 +617,7 @@ const CommentSection = ({
                           </p>
                         </div>
                       </div>
-                      <p className="leading-relaxed">{reply.content}</p>
+                      <p className={`leading-relaxed ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{reply.content}</p>
                     </motion.div>
                   ))}
                 </div>
