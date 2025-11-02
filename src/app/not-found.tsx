@@ -10,6 +10,7 @@ export default function NotFound() {
   const { theme } = useTheme()
   const { i18n } = useTranslation('common')
   const [menuPdfUrl, setMenuPdfUrl] = useState('/pdfs/menu_english.pdf')
+  const [menuDownloadName, setMenuDownloadName] = useState('east-at-west-menu-english.pdf')
 
   // Update menu PDF URL when language changes
   useEffect(() => {
@@ -17,10 +18,13 @@ export default function NotFound() {
 
     if (language.startsWith('fr')) {
       setMenuPdfUrl('/pdfs/menu_francais.pdf')
+      setMenuDownloadName('east-at-west-menu-french.pdf')
     } else if (language.startsWith('nl')) {
       setMenuPdfUrl('/pdfs/menu_nederlands.pdf')
+      setMenuDownloadName('east-at-west-menu-dutch.pdf')
     } else {
       setMenuPdfUrl('/pdfs/menu_english.pdf')
+      setMenuDownloadName('east-at-west-menu-english.pdf')
     }
   }, [i18n.language])
 
@@ -92,7 +96,7 @@ export default function NotFound() {
             </motion.button>
           </Link>
           
-          <Link href={menuPdfUrl} target="_blank" rel="noopener noreferrer">
+          <a href={menuPdfUrl} download={menuDownloadName} target="_blank" rel="noopener noreferrer">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -104,7 +108,7 @@ export default function NotFound() {
             >
               🍽️ View Menu
             </motion.button>
-          </Link>
+          </a>
         </motion.div>
       </motion.div>
     </div>

@@ -12,6 +12,7 @@ const HeroVideo = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [menuPdfUrl, setMenuPdfUrl] = useState('/pdfs/menu_english.pdf');
+  const [menuDownloadName, setMenuDownloadName] = useState('east-at-west-menu-english.pdf');
   const videoRef = useRef(null);
 
   // Update menu PDF URL when language changes
@@ -20,10 +21,13 @@ const HeroVideo = () => {
 
     if (language.startsWith('fr')) {
       setMenuPdfUrl('/pdfs/menu_francais.pdf');
+      setMenuDownloadName('east-at-west-menu-french.pdf');
     } else if (language.startsWith('nl')) {
       setMenuPdfUrl('/pdfs/menu_nederlands.pdf');
+      setMenuDownloadName('east-at-west-menu-dutch.pdf');
     } else {
       setMenuPdfUrl('/pdfs/menu_english.pdf');
+      setMenuDownloadName('east-at-west-menu-english.pdf');
     }
   }, [i18n.language]);
 
@@ -177,14 +181,15 @@ const HeroVideo = () => {
             >
               {t("hero.cta")}
             </Link>
-            <Link
+            <a
               href={menuPdfUrl}
+              download={menuDownloadName}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
               {t("hero.viewMenu")}
-            </Link>
+            </a>
           </motion.div>
         </div>
       </div>

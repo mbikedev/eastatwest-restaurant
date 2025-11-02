@@ -9,6 +9,8 @@ export default function HeroButtons() {
   const { t, i18n } = useTranslation('common')
   const [menuPdfUrl, setMenuPdfUrl] = useState('/pdfs/menu_english.pdf')
   const [takeawayPdfUrl, setTakeawayPdfUrl] = useState('/pdfs/menu_takeaway_only_english.pdf')
+  const [menuDownloadName, setMenuDownloadName] = useState('east-at-west-menu-english.pdf')
+  const [takeawayDownloadName, setTakeawayDownloadName] = useState('east-at-west-takeaway-menu-english.pdf')
 
   // Update menu PDF URLs when language changes
   useEffect(() => {
@@ -17,12 +19,18 @@ export default function HeroButtons() {
     if (language.startsWith('fr')) {
       setMenuPdfUrl('/pdfs/menu_francais.pdf')
       setTakeawayPdfUrl('/pdfs/menu_takeaway_only_french.pdf')
+      setMenuDownloadName('east-at-west-menu-french.pdf')
+      setTakeawayDownloadName('east-at-west-takeaway-menu-french.pdf')
     } else if (language.startsWith('nl')) {
       setMenuPdfUrl('/pdfs/menu_nederlands.pdf')
       setTakeawayPdfUrl('/pdfs/menu_takeaway_only_dutch.pdf')
+      setMenuDownloadName('east-at-west-menu-dutch.pdf')
+      setTakeawayDownloadName('east-at-west-takeaway-menu-dutch.pdf')
     } else {
       setMenuPdfUrl('/pdfs/menu_english.pdf')
       setTakeawayPdfUrl('/pdfs/menu_takeaway_only_english.pdf')
+      setMenuDownloadName('east-at-west-menu-english.pdf')
+      setTakeawayDownloadName('east-at-west-takeaway-menu-english.pdf')
     }
   }, [i18n.language])
 
@@ -57,8 +65,9 @@ export default function HeroButtons() {
       </Link>
 
       {/* Secondary CTA - View Menu */}
-      <Link
+      <a
         href={menuPdfUrl}
+        download={menuDownloadName}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 text-base px-6 py-3 border-2 font-semibold shadow-xl transition-all duration-300 rounded-md"
@@ -83,11 +92,12 @@ export default function HeroButtons() {
         }}
       >
         {t('hero.viewMenu')}
-      </Link>
+      </a>
 
       {/* Tertiary CTA - Take Away */}
-      <Link
+      <a
         href={takeawayPdfUrl}
+        download={takeawayDownloadName}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 text-base px-6 py-3 border-2 font-semibold shadow-xl transition-all duration-300 rounded-md"
@@ -112,7 +122,7 @@ export default function HeroButtons() {
         }}
       >
         {t('hero.takeAwayOnly')}
-      </Link>
+      </a>
 
       {/* Tertiary CTA - Gallery */}
       <Link
