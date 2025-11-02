@@ -46,10 +46,7 @@ export default function MenuHeroClient() {
             ? 'bg-gradient-to-b from-gray-100 via-gray-300 to-gray-900 bg-clip-text text-transparent'
             : 'text-gray-400'}
 `}>{t('menu.title')}</h1>
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl opacity-90 text-white ${theme === 'dark'
-                ? ' text-[#1A1A1A] focus:ring-white/30 text-white'
-                :  text-white focus:ring-[#1A1A1A]/30'}
-              `}">{t('menu.subtitle')}</p>
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl opacity-90 text-white">{t('menu.subtitle')}</p>
 
           <div className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-4 sm:gap-6 w-full max-w-2xl mx-auto px-4">
             {/* Menu button with left arrow pointing right */}
