@@ -49,7 +49,7 @@ const zcool = ZCOOL_XiaoWei({
 });
 
 // Cache busting version for favicon - increment this to force favicon refresh
-const FAVICON_VERSION = 'v4';
+const FAVICON_VERSION = 'v5';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://eastatwest.com'),
@@ -143,6 +143,12 @@ export default function RootLayout({
               "@type": "Restaurant",
               "name": "East @ West",
               "image": "https://eastatwest.com/images/banner.webp",
+              "logo": {
+                "@type": "ImageObject",
+                "url": `https://eastatwest.com/android-chrome-512x512.png?${FAVICON_VERSION}`,
+                "width": "512",
+                "height": "512"
+              },
               "url": "https://eastatwest.com",
               "telephone": "+32-2-503-5303",
               "email": "infos.east.west@gmail.com",
