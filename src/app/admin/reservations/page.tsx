@@ -407,28 +407,40 @@ export default function AdminReservationsPage() {
     setIsUpdating(true);
 
     try {
-      const { error } = await supabase
+      const updateData = {
+        name: editingReservation.name,
+        email: editingReservation.email,
+        phone: editingReservation.phone,
+        date: editingReservation.date,
+        start_time: editingReservation.start_time,
+        end_time: editingReservation.end_time,
+        guests: editingReservation.guests,
+        special_requests: editingReservation.special_requests,
+        status: editingReservation.status,
+        language: editingReservation.language,
+        updated_at: new Date().toISOString()
+      };
+
+      console.log('🔄 Updating reservation:', {
+        id: editingReservation.id,
+        currentStatus: reservations.find(r => r.id === editingReservation.id)?.status,
+        newStatus: editingReservation.status,
+        updateData
+      });
+
+      const { data, error } = await supabase
         .from('reservations')
-        .update({
-          name: editingReservation.name,
-          email: editingReservation.email,
-          phone: editingReservation.phone,
-          date: editingReservation.date,
-          start_time: editingReservation.start_time,
-          end_time: editingReservation.end_time,
-          guests: editingReservation.guests,
-          special_requests: editingReservation.special_requests,
-          status: editingReservation.status,
-          language: editingReservation.language,
-          updated_at: new Date().toISOString()
-        })
-        .eq('id', editingReservation.id);
+        .update(updateData)
+        .eq('id', editingReservation.id)
+        .select();
 
       if (error) {
-        console.error('Error updating reservation:', error);
+        console.error('❌ Error updating reservation:', error);
         toast.error('Failed to update reservation');
         return;
       }
+
+      console.log('✅ Update response from database:', data);
 
       // Update local state
       setReservations(prev =>
