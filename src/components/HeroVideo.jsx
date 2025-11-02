@@ -7,11 +7,25 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const HeroVideo = () => {
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
   const { theme } = useTheme();
   const [isMuted, setIsMuted] = useState(true);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [menuPdfUrl, setMenuPdfUrl] = useState('/pdfs/menu_english.pdf');
   const videoRef = useRef(null);
+
+  // Update menu PDF URL when language changes
+  useEffect(() => {
+    const language = i18n.language || 'en';
+
+    if (language.startsWith('fr')) {
+      setMenuPdfUrl('/pdfs/menu_francais.pdf');
+    } else if (language.startsWith('nl')) {
+      setMenuPdfUrl('/pdfs/menu_nederlands.pdf');
+    } else {
+      setMenuPdfUrl('/pdfs/menu_english.pdf');
+    }
+  }, [i18n.language]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -164,7 +178,7 @@ const HeroVideo = () => {
               {t("hero.cta")}
             </Link>
             <Link
-              href="/pdfs/allmenus.pdf"
+              href={menuPdfUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
