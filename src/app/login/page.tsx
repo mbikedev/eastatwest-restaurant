@@ -247,7 +247,11 @@ export default function LoginPage() {
               <button
                 onClick={handleResetPassword}
                 disabled={loading || !email}
-                className="w-full px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors"
+                className={`w-full px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors ${
+                  theme === 'dark'
+                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                    : 'bg-blue-600 hover:bg-blue-700 text-white'
+                }`}
               >
                 {loading ? 'Sending...' : 'Send Reset Link'}
               </button>
