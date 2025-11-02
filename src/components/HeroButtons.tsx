@@ -8,17 +8,21 @@ import { useTranslation } from 'react-i18next'
 export default function HeroButtons() {
   const { t, i18n } = useTranslation('common')
   const [menuPdfUrl, setMenuPdfUrl] = useState('/pdfs/menu_english.pdf')
+  const [takeawayPdfUrl, setTakeawayPdfUrl] = useState('/pdfs/menu_takeaway_only_english.pdf')
 
-  // Update menu PDF URL when language changes
+  // Update menu PDF URLs when language changes
   useEffect(() => {
     const language = i18n.language || 'en'
 
     if (language.startsWith('fr')) {
       setMenuPdfUrl('/pdfs/menu_francais.pdf')
+      setTakeawayPdfUrl('/pdfs/menu_takeaway_only_french.pdf')
     } else if (language.startsWith('nl')) {
       setMenuPdfUrl('/pdfs/menu_nederlands.pdf')
+      setTakeawayPdfUrl('/pdfs/menu_takeaway_only_dutch.pdf')
     } else {
       setMenuPdfUrl('/pdfs/menu_english.pdf')
+      setTakeawayPdfUrl('/pdfs/menu_takeaway_only_english.pdf')
     }
   }, [i18n.language])
 
@@ -83,7 +87,7 @@ export default function HeroButtons() {
 
       {/* Tertiary CTA - Take Away */}
       <Link
-        href="/pdfs/take-away-only.pdf"
+        href={takeawayPdfUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 text-base px-6 py-3 border-2 font-semibold shadow-xl transition-all duration-300 rounded-md"
