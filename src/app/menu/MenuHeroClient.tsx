@@ -6,8 +6,23 @@ import { useTheme } from '@/context/ThemeContext'
 import { motion } from 'framer-motion'
 
 export default function MenuHeroClient() {
-  const { t } = useTranslation('common')
+  const { t, i18n } = useTranslation('common')
   const { theme } = useTheme()
+
+  // Get the appropriate menu PDF based on current language
+  const getMenuPdf = () => {
+    const language = i18n.language || 'en'
+
+    if (language.startsWith('fr')) {
+      return '/pdfs/menu_francais.pdf'
+    } else if (language.startsWith('nl')) {
+      return '/pdfs/menu_nederlands.pdf'
+    } else {
+      return '/pdfs/menu_english.pdf'
+    }
+  }
+
+  const menuPdfUrl = getMenuPdf()
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -53,7 +68,7 @@ export default function MenuHeroClient() {
                 →
               </motion.span>
               <a
-                href="/pdfs/menu.pdf"
+                href={menuPdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('menu.buttons.menu')}
