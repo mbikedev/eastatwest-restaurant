@@ -1,9 +1,19 @@
 -- Migration to add 'completed' status to reservations table
 -- This allows reservations to be marked as completed after the dining service
 
--- Drop the old constraint
-ALTER TABLE public.reservations
-DROP CONSTRAINT IF EXISTS reservations_status_check;
+-- First, check if the constraint exists and drop it
+DO $$
+BEGIN
+    -- Drop the constraint if it exists
+    IF EXISTS (
+        SELECT 1
+        FROM pg_constraint
+        WHERE conname = 'reservations_status_check'
+        AND conrelid = 'public.reservations'::regclass
+    ) THEN
+        ALTER TABLE public.reservations DROP CONSTRAINT reservations_status_check;
+    END IF;
+END $$;
 
 -- Add new constraint including 'completed' status
 ALTER TABLE public.reservations

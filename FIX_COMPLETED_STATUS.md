@@ -24,9 +24,18 @@ Run the following SQL migration to add `'completed'` to the allowed status value
 5. Copy and paste the following SQL:
 
 ```sql
--- Drop the old constraint
-ALTER TABLE public.reservations
-DROP CONSTRAINT IF EXISTS reservations_status_check;
+-- First, check if the constraint exists and drop it
+DO $$
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM pg_constraint
+        WHERE conname = 'reservations_status_check'
+        AND conrelid = 'public.reservations'::regclass
+    ) THEN
+        ALTER TABLE public.reservations DROP CONSTRAINT reservations_status_check;
+    END IF;
+END $$;
 
 -- Add new constraint including 'completed' status
 ALTER TABLE public.reservations
