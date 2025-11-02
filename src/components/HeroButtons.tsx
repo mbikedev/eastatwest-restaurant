@@ -1,11 +1,26 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 export default function HeroButtons() {
-  const { t } = useTranslation('common')
+  const { t, i18n } = useTranslation('common')
+  const [menuPdfUrl, setMenuPdfUrl] = useState('/pdfs/menu_english.pdf')
+
+  // Update menu PDF URL when language changes
+  useEffect(() => {
+    const language = i18n.language || 'en'
+
+    if (language.startsWith('fr')) {
+      setMenuPdfUrl('/pdfs/menu_francais.pdf')
+    } else if (language.startsWith('nl')) {
+      setMenuPdfUrl('/pdfs/menu_nederlands.pdf')
+    } else {
+      setMenuPdfUrl('/pdfs/menu_english.pdf')
+    }
+  }, [i18n.language])
 
   return (
     <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mt-4">
@@ -39,7 +54,7 @@ export default function HeroButtons() {
 
       {/* Secondary CTA - View Menu */}
       <Link
-        href="/pdfs/menus.pdf"
+        href={menuPdfUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 text-base px-6 py-3 border-2 font-semibold shadow-xl transition-all duration-300 rounded-md"

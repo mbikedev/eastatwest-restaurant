@@ -1,11 +1,28 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useTheme } from '@/context/ThemeContext'
+import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 
 export default function NotFound() {
   const { theme } = useTheme()
+  const { i18n } = useTranslation('common')
+  const [menuPdfUrl, setMenuPdfUrl] = useState('/pdfs/menu_english.pdf')
+
+  // Update menu PDF URL when language changes
+  useEffect(() => {
+    const language = i18n.language || 'en'
+
+    if (language.startsWith('fr')) {
+      setMenuPdfUrl('/pdfs/menu_francais.pdf')
+    } else if (language.startsWith('nl')) {
+      setMenuPdfUrl('/pdfs/menu_nederlands.pdf')
+    } else {
+      setMenuPdfUrl('/pdfs/menu_english.pdf')
+    }
+  }, [i18n.language])
 
   return (
     <div className={`min-h-screen flex items-center justify-center px-4 ${
@@ -75,7 +92,7 @@ export default function NotFound() {
             </motion.button>
           </Link>
           
-          <Link href="/pdfs/allmenus.pdf" target="_blank" rel="noopener noreferrer">
+          <Link href={menuPdfUrl} target="_blank" rel="noopener noreferrer">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
