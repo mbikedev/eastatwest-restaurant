@@ -178,10 +178,41 @@ export default function GalleryPage() {
       }
     })
 
-    // Convert back to array and shuffle
+    // Convert to array
     const uniqueArray = Array.from(uniqueImages.values())
-    const shuffled = uniqueArray.sort(() => Math.random() - 0.5)
-    return shuffled.slice(0, 24)
+
+    // Priority dishes that should always appear
+    const priorityDishes = [
+      'fattoush.webp',
+      'taboule.webp',
+      'falafel.webp',
+      'houmos.webp',
+      'kebbe.webp',
+      'muhamara.webp',
+      'makdous.webp',
+      'nakanek.webp'
+    ]
+
+    // Separate priority and non-priority images
+    const priorityImages: string[] = []
+    const otherImages: string[] = []
+
+    uniqueArray.forEach(imagePath => {
+      const filename = imagePath.split('/').pop() || ''
+      if (priorityDishes.includes(filename)) {
+        priorityImages.push(imagePath)
+      } else {
+        otherImages.push(imagePath)
+      }
+    })
+
+    // Shuffle the non-priority images
+    const shuffledOthers = otherImages.sort(() => Math.random() - 0.5)
+
+    // Combine: priority images first, then fill with random others
+    const combined = [...priorityImages, ...shuffledOthers]
+
+    return combined.slice(0, 24)
   }, [allImages])
 
   // Generate titles and descriptions for images based on their path
