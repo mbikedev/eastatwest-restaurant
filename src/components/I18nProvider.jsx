@@ -14,8 +14,10 @@ const I18nProvider = ({ children }) => {
 
   useEffect(() => {
     const onStorage = () => {
-      const lang = localStorage.getItem('language') || 'en'
-      setLanguage(lang)
+      if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+        const lang = localStorage.getItem('language') || 'en'
+        setLanguage(lang)
+      }
     }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)

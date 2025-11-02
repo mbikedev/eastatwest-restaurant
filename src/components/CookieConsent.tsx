@@ -19,16 +19,18 @@ export default function CookieConsent() {
 
   useEffect(() => {
     // Check if user has already given consent
-    const consent = localStorage.getItem('cookieConsent')
-    if (consent) {
-      // Load saved preferences
-      try {
-        const saved = JSON.parse(consent)
-        setPreferences(saved)
-      } catch (e) {
-        // Error parsing cookie consent
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+      const consent = localStorage.getItem('cookieConsent')
+      if (consent) {
+        // Load saved preferences
+        try {
+          const saved = JSON.parse(consent)
+          setPreferences(saved)
+        } catch (e) {
+          // Error parsing cookie consent
+        }
+        return
       }
-      return
     }
 
     // Store initial language
@@ -47,9 +49,11 @@ export default function CookieConsent() {
   // If user changes language before timer expires, show banner immediately
   useEffect(() => {
     if (initialLanguage && currentLanguage !== initialLanguage) {
-      const consent = localStorage.getItem('cookieConsent')
-      if (!consent) {
-        setShowBanner(true)
+      if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+        const consent = localStorage.getItem('cookieConsent')
+        if (!consent) {
+          setShowBanner(true)
+        }
       }
     }
   }, [currentLanguage, initialLanguage])
@@ -61,7 +65,9 @@ export default function CookieConsent() {
       marketing: true,
     }
     setPreferences(allAccepted)
-    localStorage.setItem('cookieConsent', JSON.stringify(allAccepted))
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.setItem === 'function') {
+      localStorage.setItem('cookieConsent', JSON.stringify(allAccepted))
+    }
     setShowBanner(false)
     setShowPreferences(false)
   }
@@ -73,13 +79,17 @@ export default function CookieConsent() {
       marketing: false,
     }
     setPreferences(necessaryOnly)
-    localStorage.setItem('cookieConsent', JSON.stringify(necessaryOnly))
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.setItem === 'function') {
+      localStorage.setItem('cookieConsent', JSON.stringify(necessaryOnly))
+    }
     setShowBanner(false)
     setShowPreferences(false)
   }
 
   const savePreferences = () => {
-    localStorage.setItem('cookieConsent', JSON.stringify(preferences))
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.setItem === 'function') {
+      localStorage.setItem('cookieConsent', JSON.stringify(preferences))
+    }
     setShowBanner(false)
     setShowPreferences(false)
   }

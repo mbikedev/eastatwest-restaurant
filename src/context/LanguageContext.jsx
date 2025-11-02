@@ -19,14 +19,18 @@ export const LanguageProvider = ({ children }) => {
 
   useEffect(() => {
     // Get language from localStorage or default to 'en'
-    const savedLanguage = localStorage.getItem('language') || 'en'
-    setCurrentLanguage(savedLanguage)
-    i18n.changeLanguage(savedLanguage)
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+      const savedLanguage = localStorage.getItem('language') || 'en'
+      setCurrentLanguage(savedLanguage)
+      i18n.changeLanguage(savedLanguage)
+    }
   }, [i18n])
 
   const changeLanguage = (locale) => {
     setCurrentLanguage(locale)
-    localStorage.setItem('language', locale)
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.setItem === 'function') {
+      localStorage.setItem('language', locale)
+    }
     i18n.changeLanguage(locale)
   }
 

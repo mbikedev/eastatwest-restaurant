@@ -79,20 +79,24 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Load cart from localStorage on mount
   useEffect(() => {
-    const savedCart = localStorage.getItem('takeaway-cart')
-    if (savedCart) {
-      try {
-        const parsedCart = JSON.parse(savedCart)
-        dispatch({ type: 'LOAD_CART', payload: parsedCart })
-      } catch (error) {
-        // Error loading cart from localStorage
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+      const savedCart = localStorage.getItem('takeaway-cart')
+      if (savedCart) {
+        try {
+          const parsedCart = JSON.parse(savedCart)
+          dispatch({ type: 'LOAD_CART', payload: parsedCart })
+        } catch (error) {
+          // Error loading cart from localStorage
+        }
       }
     }
   }, [])
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('takeaway-cart', JSON.stringify(cartItems))
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.setItem === 'function') {
+      localStorage.setItem('takeaway-cart', JSON.stringify(cartItems))
+    }
   }, [cartItems])
 
   // Calculate cart totals

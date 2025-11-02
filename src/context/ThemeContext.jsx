@@ -17,15 +17,19 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme') || 'light'
-    setTheme(savedTheme)
-    document.documentElement.classList.toggle('dark', savedTheme === 'dark')
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+      const savedTheme = localStorage.getItem('theme') || 'light'
+      setTheme(savedTheme)
+      document.documentElement.classList.toggle('dark', savedTheme === 'dark')
+    }
   }, [])
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
     setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.setItem === 'function') {
+      localStorage.setItem('theme', newTheme)
+    }
     document.documentElement.classList.toggle('dark', newTheme === 'dark')
   }
 
