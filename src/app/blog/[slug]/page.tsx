@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { getBlogPostBySlug, getRelatedBlogPosts, getAdjacentBlogPosts, formatBlogDate, detectLanguageFromSlug } from '@/lib/blog'
 import type { Blog } from '@/types/blog'
 import CommentSection from '../../../components/CommentSection'
+import SocialShare from '../../../components/SocialShare'
 import Head from 'next/head'
 
 export default function BlogPostPage() {
@@ -665,6 +666,15 @@ export default function BlogPostPage() {
             </div>
           </section>
         )}
+
+        {/* Social Share Section */}
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <SocialShare
+            url={typeof window !== 'undefined' ? window.location.href : `https://eastatwest.com/blog/${blog.slug}`}
+            title={blog.title}
+            description={blog.excerpt}
+          />
+        </section>
 
         {/* Comment Section */}
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
