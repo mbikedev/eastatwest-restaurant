@@ -133,3 +133,48 @@ export async function sendNewReservationNotification(
     };
   }
 }
+
+export interface CommentData {
+  id?: string;
+  blog_post_id: string;
+  author_name: string;
+  author_email: string;
+  content: string;
+  blog_post_title?: string;
+  blog_post_slug?: string;
+}
+
+/**
+ * Send notification email to admins when a new comment is submitted
+ */
+export async function sendNewCommentNotification(
+  commentData: CommentData
+): Promise<{ success: boolean; message?: string; error?: string }> {
+  try {
+    const response = await fetch('/api/send-comment-notification', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ commentData }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Failed to send comment notification');
+    }
+
+    return {
+      success: true,
+      message: result.message
+    };
+
+  } catch (error) {
+    console.error('Error sending comment notification:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error'
+    };
+  }
+}

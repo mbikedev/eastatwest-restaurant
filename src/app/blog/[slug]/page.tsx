@@ -687,7 +687,11 @@ export default function BlogPostPage() {
 
         {/* Comment Section */}
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <CommentSection blogPostId={blog.slug} />
+          <CommentSection
+            blogPostId={blog.slug}
+            blogPostTitle={blog.title}
+            blogPostSlug={blog.slug}
+          />
         </section>
       </div>
     </>

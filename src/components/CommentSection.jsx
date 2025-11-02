@@ -6,8 +6,13 @@ import { useTheme } from '../context/ThemeContext'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabaseClient'
 import { debugSupabaseConfig } from '../lib/envCheck'
+import { sendNewCommentNotification } from '../lib/emailNotifications'
 
-const CommentSection = ({ blogPostId = 'vegetarian-restaurant-brussels' }) => {
+const CommentSection = ({
+  blogPostId = 'vegetarian-restaurant-brussels',
+  blogPostTitle = '',
+  blogPostSlug = ''
+}) => {
   const { theme } = useTheme()
   const { t } = useTranslation('common')
   const [comments, setComments] = useState([])
@@ -162,6 +167,20 @@ const CommentSection = ({ blogPostId = 'vegetarian-restaurant-brussels' }) => {
           throw new Error(error.message || 'Failed to submit comment')
         }
 
+        // Send email notification to admins (don't block on this)
+        sendNewCommentNotification({
+          id: data[0]?.id,
+          blog_post_id: blogPostId,
+          author_name: user.user_metadata?.full_name || user.email.split('@')[0],
+          author_email: user.email,
+          content: formData.content.trim(),
+          blog_post_title: blogPostTitle,
+          blog_post_slug: blogPostSlug
+        }).catch(err => {
+          console.error('Failed to send comment notification email:', err)
+          // Don't block user experience if email fails
+        })
+
         // Reset form
         setFormData({
           author_name: '',
@@ -207,6 +226,20 @@ const CommentSection = ({ blogPostId = 'vegetarian-restaurant-brussels' }) => {
           console.error('Supabase error:', error)
           throw new Error(error.message || 'Failed to submit comment')
         }
+
+        // Send email notification to admins (don't block on this)
+        sendNewCommentNotification({
+          id: data[0]?.id,
+          blog_post_id: blogPostId,
+          author_name: formData.author_name.trim(),
+          author_email: formData.author_email.trim(),
+          content: formData.content.trim(),
+          blog_post_title: blogPostTitle,
+          blog_post_slug: blogPostSlug
+        }).catch(err => {
+          console.error('Failed to send comment notification email:', err)
+          // Don't block user experience if email fails
+        })
 
         // Reset form
         setFormData({
