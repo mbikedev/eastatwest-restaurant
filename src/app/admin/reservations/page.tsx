@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "../../../context/ThemeContext";
 import { useAdminAuth } from '../../../hooks/useAdminAuth';
 import { supabase } from '@/lib/supabaseClient';
+import { safeClear } from "@/utils/storage";
 import toast from 'react-hot-toast';
 import { Reservation } from '@/types/supabase';
 
@@ -545,7 +546,7 @@ export default function AdminReservationsPage() {
 
     const handleForceSignOut = async () => {
       try {
-        localStorage.clear();
+        safeClear();
         sessionStorage.clear();
         await supabase.auth.signOut();
         window.location.href = '/';
