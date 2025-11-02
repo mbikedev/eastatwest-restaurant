@@ -67,7 +67,6 @@ export default function HeroButtons() {
       {/* Secondary CTA - View Menu */}
       <a
         href={menuPdfUrl}
-        download={menuDownloadName}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 text-base px-6 py-3 border-2 font-semibold shadow-xl transition-all duration-300 rounded-md"
@@ -97,7 +96,6 @@ export default function HeroButtons() {
       {/* Tertiary CTA - Take Away */}
       <a
         href={takeawayPdfUrl}
-        download={takeawayDownloadName}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 text-base px-6 py-3 border-2 font-semibold shadow-xl transition-all duration-300 rounded-md"

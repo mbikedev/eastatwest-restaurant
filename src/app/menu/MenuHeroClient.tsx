@@ -78,7 +78,6 @@ export default function MenuHeroClient() {
               </motion.span>
               <a
                 href={menuPdfUrl}
-                download={menuDownloadName}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('menu.buttons.menu')}
@@ -121,7 +120,6 @@ export default function MenuHeroClient() {
               </motion.span>
               <a
                 href={takeawayPdfUrl}
-                download={takeawayDownloadName}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('menu.buttons.menuTakeawayOnly')}

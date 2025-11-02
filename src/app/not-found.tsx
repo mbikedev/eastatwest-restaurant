@@ -96,7 +96,7 @@ export default function NotFound() {
             </motion.button>
           </Link>
           
-          <a href={menuPdfUrl} download={menuDownloadName} target="_blank" rel="noopener noreferrer">
+          <a href={menuPdfUrl} target="_blank" rel="noopener noreferrer">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
