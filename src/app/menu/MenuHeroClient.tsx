@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/context/ThemeContext'
@@ -8,21 +9,20 @@ import { motion } from 'framer-motion'
 export default function MenuHeroClient() {
   const { t, i18n } = useTranslation('common')
   const { theme } = useTheme()
+  const [menuPdfUrl, setMenuPdfUrl] = useState('/pdfs/menu_english.pdf')
 
-  // Get the appropriate menu PDF based on current language
-  const getMenuPdf = () => {
+  // Update menu PDF URL when language changes
+  useEffect(() => {
     const language = i18n.language || 'en'
 
     if (language.startsWith('fr')) {
-      return '/pdfs/menu_francais.pdf'
+      setMenuPdfUrl('/pdfs/menu_francais.pdf')
     } else if (language.startsWith('nl')) {
-      return '/pdfs/menu_nederlands.pdf'
+      setMenuPdfUrl('/pdfs/menu_nederlands.pdf')
     } else {
-      return '/pdfs/menu_english.pdf'
+      setMenuPdfUrl('/pdfs/menu_english.pdf')
     }
-  }
-
-  const menuPdfUrl = getMenuPdf()
+  }, [i18n.language])
 
   const jsonLd = {
     '@context': 'https://schema.org',
