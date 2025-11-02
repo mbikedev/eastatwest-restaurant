@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useParams, notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
+import Script from 'next/script'
 import { motion } from 'framer-motion'
 import { useTheme } from '../../../context/ThemeContext'
 import { useTranslation } from 'react-i18next'
@@ -298,6 +299,14 @@ export default function BlogPostPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
+
+      {/* Google reCAPTCHA v3 Script */}
+      {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy="lazyOnload"
+        />
+      )}
 
       <div className={`min-h-screen transition-colors duration-500 ${
         theme === 'dark' ? 'bg-gradient-to-br from-[#1A1A1A] via-[#1A1A1A] to-[#1A1A1A]' : 'bg-gradient-to-br from-[#F5F0E6] via-[#FFFFFF] to-[#F5F0E6]'

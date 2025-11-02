@@ -1281,6 +1281,8 @@
     "team": "Team",
     "replyAsAdmin": "Reply as admin...",
     "reply": "Reply",
+    "recaptchaFailed": "Spam protection verification failed. Please try again.",
+    "recaptchaError": "Error verifying you are human. Please try again.",
     "vegetarianPost": {
       "title": "Vegetarian Restaurant Brussels – East At West",
       "excerpt": "Meat, fish, and poultry are not served at vegetarian restaurant Brussels East At West. Discover our diverse vegetarian options and the rich culinary heritage of Belgian plant-based cuisine.",

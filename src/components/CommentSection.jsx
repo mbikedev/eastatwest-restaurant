@@ -109,7 +109,32 @@ const CommentSection = ({ blogPostId = 'vegetarian-restaurant-brussels' }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
+    // Verify reCAPTCHA first (if configured)
+    if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && typeof window !== 'undefined' && window.grecaptcha) {
+      try {
+        const token = await window.grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, { action: 'submit_comment' })
+
+        // Verify token with server
+        const verifyResponse = await fetch('/api/verify-recaptcha', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token })
+        })
+
+        const verifyResult = await verifyResponse.json()
+
+        if (!verifyResult.success) {
+          alert(t('blog.recaptchaFailed') || 'reCAPTCHA verification failed. Please try again.')
+          return
+        }
+      } catch (error) {
+        console.error('reCAPTCHA error:', error)
+        alert(t('blog.recaptchaError') || 'Error verifying you are human. Please try again.')
+        return
+      }
+    }
+
     // Check if user is authenticated
     if (user) {
       // ✅ THIS IS WHERE YOUR AUTHENTICATED CODE GOES:
