@@ -42,7 +42,7 @@ export default function LebaneseRestaurantBrusselsPage() {
     },
     {
       question: "What are the opening hours of East At West Brussels?",
-      answer: "We're open Tuesday through Sunday with the following hours:\n\nTuesday - Friday:\n🍽️ Lunch: 12:00 - 14:30 (last reservation at 14:30)\n🍽️ Dinner: 18:00 - 22:00 (last reservation at 20:30)\n\nSaturday:\n🎉 Dinner only: 18:00 - 22:00 (last reservation at 20:30)\n\nSunday:\nLunch & Dinner: 12:00 - 14:30, 18:00 - 22:00\n\nWe're closed on Mondays. For reservations, call us at +32 2 503 5303 or book online."
+      answer: "We're open Tuesday through Sunday with the following hours:\n\nTuesday - Friday:\n🍽️ Lunch: 12:00 - 14:30 (last reservation at 14:30)\n🍽️ Dinner: 18:00 - 22:00 (last reservation at 20:30)\n\nSaturday:\n🎉 Dinner only: 18:00 - 22:00 (last reservation at 20:30)\n\nSunday:\nLunch & Dinner: 12:00 - 14:30, 18:00 - 22:00\n\nWe're closed on Mondays. For reservations, call us at +32 465 20 60 24 or book online."
     },
     {
       question: "Do you offer vegetarian and vegan Lebanese dishes?",
@@ -50,7 +50,7 @@ export default function LebaneseRestaurantBrusselsPage() {
     },
     {
       question: "Can I make a reservation at East At West?",
-      answer: "Yes, we highly recommend making reservations, especially for dinner and weekends. You can book a table online through our website, call us at +32 2 503 5303, or email infos.east.west@gmail.com. Walk-ins are welcome based on availability."
+      answer: "Yes, we highly recommend making reservations, especially for dinner and weekends. You can book a table online through our website, call us at +32 465 20 60 24, or email infos.east.west@gmail.com. Walk-ins are welcome based on availability."
     },
     {
       question: "Do you offer catering services for events in Brussels?",
@@ -100,7 +100,7 @@ export default function LebaneseRestaurantBrusselsPage() {
     "url": "https://eastatwest.com/lebanese-restaurant-brussels",
     "image": "https://eastatwest.com/images/banner.webp",
     "logo": "https://eastatwest.com/android-chrome-512x512.png",
-    "telephone": "+32-2-503-5303",
+    "telephone": "+32-465-20-60-24",
     "email": "infos.east.west@gmail.com",
     "address": {
       "@type": "PostalAddress",
@@ -468,7 +468,7 @@ export default function LebaneseRestaurantBrusselsPage() {
                       theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'
                     }`}>{t('lebaneseRestaurantBrussels.location.contactTitle')}</h3>
                     <p className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
-                      {t('lebaneseRestaurantBrussels.location.phone')}: <a href="tel:+3225035303" className="text-[#A8D5BA] hover:underline">+32 2 503 5303</a><br />
+                      {t('lebaneseRestaurantBrussels.location.phone')}: <a href="tel:+32465206024" className="text-[#A8D5BA] hover:underline">+32 465 20 60 24</a><br />
                       {t('lebaneseRestaurantBrussels.location.email')}: <a href="mailto:infos.east.west@gmail.com" className="text-[#A8D5BA] hover:underline">infos.east.west@gmail.com</a>
                     </p>
                   </div>
