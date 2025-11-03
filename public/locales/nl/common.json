@@ -1012,6 +1012,38 @@
     "cta": {
       "text": "Geweldige ervaring gehad? Deel uw review!",
       "button": "Laat een Google Review Achter"
+    },
+    "reviews": {
+      "sarah": {
+        "name": "Sarah M.",
+        "review": "Absoluut geweldig! Het mezze-plateau was vers en smaakvol. Verreweg het beste Libanese restaurant in Brussel. Het personeel was warm en gastvrij. Zeer aan te bevelen!",
+        "location": "Brussel, België"
+      },
+      "ahmed": {
+        "name": "Ahmed K.",
+        "review": "Authentieke Libanese keuken die me aan thuis doet denken. De hummus en falafel zijn perfectie. Geweldige halal opties. Ik kom zeker terug!",
+        "location": "Antwerpen, België"
+      },
+      "emma": {
+        "name": "Emma L.",
+        "review": "Het beste veganistische Libanese eten dat ik ooit heb gehad! De veganistische kibbeh was ongelofelijk. Zo blij om een plek te vinden met uitgebreide plantaardige opties. De sfeer is ook heerlijk.",
+        "location": "Brussel, België"
+      },
+      "marc": {
+        "name": "Marc D.",
+        "review": "Perfecte plek voor zakenlunches. Snelle service, heerlijk eten en geweldige locatie in het stadscentrum. De kip shawarma is mijn favoriet.",
+        "location": "Brussel, België"
+      },
+      "fatima": {
+        "name": "Fatima R.",
+        "review": "Nam mijn familie hier mee naartoe voor het diner en iedereen vond het geweldig! De porties zijn royaal en de prijzen zijn eerlijk. Kinderen waren dol op de falafel. Absoluut ons nieuwe favoriete restaurant!",
+        "location": "Gent, België"
+      },
+      "jeanpierre": {
+        "name": "Jean-Pierre B.",
+        "review": "Uitstekende service en voortreffelijk eten. De lamskafta kebabs smolten in mijn mond. De wijnselectie past perfect bij de gerechten. Een echte parel!",
+        "location": "Brussel, België"
+      }
     }
   },
   "footer": {

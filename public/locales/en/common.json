@@ -1006,6 +1006,38 @@
     "cta": {
       "text": "Had a great experience? Share your review!",
       "button": "Leave a Google Review"
+    },
+    "reviews": {
+      "sarah": {
+        "name": "Sarah M.",
+        "review": "Absolutely amazing! The mezze platter was fresh and flavorful. Best Lebanese restaurant in Brussels by far. The staff was warm and welcoming. Highly recommend!",
+        "location": "Brussels, Belgium"
+      },
+      "ahmed": {
+        "name": "Ahmed K.",
+        "review": "Authentic Lebanese cuisine that reminds me of home. The hummus and falafel are perfection. Great halal options. Will definitely return!",
+        "location": "Antwerp, Belgium"
+      },
+      "emma": {
+        "name": "Emma L.",
+        "review": "Best vegan Lebanese food I've ever had! The vegan kibbeh was incredible. So happy to find a place with extensive plant-based options. The atmosphere is lovely too.",
+        "location": "Brussels, Belgium"
+      },
+      "marc": {
+        "name": "Marc D.",
+        "review": "Perfect spot for business lunches. Quick service, delicious food, and great location in the city center. The chicken shawarma is my go-to.",
+        "location": "Brussels, Belgium"
+      },
+      "fatima": {
+        "name": "Fatima R.",
+        "review": "Took my family here for dinner and everyone loved it! The portions are generous and the prices are fair. Kids loved the falafel. Definitely our new favorite restaurant!",
+        "location": "Ghent, Belgium"
+      },
+      "jeanpierre": {
+        "name": "Jean-Pierre B.",
+        "review": "Excellent service and outstanding food. The lamb kafta kebabs melted in my mouth. The wine selection pairs perfectly with the dishes. A true gem!",
+        "location": "Brussels, Belgium"
+      }
     }
   },
   "footer": {

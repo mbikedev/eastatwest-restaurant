@@ -74,46 +74,46 @@ export default function HomePage() {
   // Testimonials data
   const testimonials = [
     {
-      name: "Sarah M.",
+      name: t('testimonials.reviews.sarah.name'),
       rating: 5,
-      review: "Absolutely amazing! The mezze platter was fresh and flavorful. Best Lebanese restaurant in Brussels by far. The staff was warm and welcoming. Highly recommend!",
+      review: t('testimonials.reviews.sarah.review'),
       date: "2024-10-15",
-      location: "Brussels, Belgium"
+      location: t('testimonials.reviews.sarah.location')
     },
     {
-      name: "Ahmed K.",
+      name: t('testimonials.reviews.ahmed.name'),
       rating: 5,
-      review: "Authentic Lebanese cuisine that reminds me of home. The hummus and falafel are perfection. Great halal options. Will definitely return!",
+      review: t('testimonials.reviews.ahmed.review'),
       date: "2024-10-20",
-      location: "Antwerp, Belgium"
+      location: t('testimonials.reviews.ahmed.location')
     },
     {
-      name: "Emma L.",
+      name: t('testimonials.reviews.emma.name'),
       rating: 5,
-      review: "Best vegan Lebanese food I've ever had! The vegan kibbeh was incredible. So happy to find a place with extensive plant-based options. The atmosphere is lovely too.",
+      review: t('testimonials.reviews.emma.review'),
       date: "2024-11-01",
-      location: "Brussels, Belgium"
+      location: t('testimonials.reviews.emma.location')
     },
     {
-      name: "Marc D.",
+      name: t('testimonials.reviews.marc.name'),
       rating: 5,
-      review: "Perfect spot for business lunches. Quick service, delicious food, and great location in the city center. The chicken shawarma is my go-to.",
+      review: t('testimonials.reviews.marc.review'),
       date: "2024-09-28",
-      location: "Brussels, Belgium"
+      location: t('testimonials.reviews.marc.location')
     },
     {
-      name: "Fatima R.",
+      name: t('testimonials.reviews.fatima.name'),
       rating: 5,
-      review: "Took my family here for dinner and everyone loved it! The portions are generous and the prices are fair. Kids loved the falafel. Definitely our new favorite restaurant!",
+      review: t('testimonials.reviews.fatima.review'),
       date: "2024-10-05",
-      location: "Ghent, Belgium"
+      location: t('testimonials.reviews.fatima.location')
     },
     {
-      name: "Jean-Pierre B.",
+      name: t('testimonials.reviews.jeanpierre.name'),
       rating: 5,
-      review: "Excellent service and outstanding food. The lamb kafta kebabs melted in my mouth. The wine selection pairs perfectly with the dishes. A true gem!",
+      review: t('testimonials.reviews.jeanpierre.review'),
       date: "2024-10-12",
-      location: "Brussels, Belgium"
+      location: t('testimonials.reviews.jeanpierre.location')
     }
   ]
 

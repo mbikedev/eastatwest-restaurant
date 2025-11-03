@@ -1005,6 +1005,38 @@
     "cta": {
       "text": "Vous avez passé un bon moment ? Partagez votre avis !",
       "button": "Laisser un Avis Google"
+    },
+    "reviews": {
+      "sarah": {
+        "name": "Sarah M.",
+        "review": "Absolument incroyable ! Le plateau de mezze était frais et savoureux. De loin le meilleur restaurant libanais de Bruxelles. Le personnel était chaleureux et accueillant. Je recommande vivement !",
+        "location": "Bruxelles, Belgique"
+      },
+      "ahmed": {
+        "name": "Ahmed K.",
+        "review": "Cuisine libanaise authentique qui me rappelle la maison. Le houmous et les falafels sont parfaits. Excellentes options halal. Je reviendrai certainement !",
+        "location": "Anvers, Belgique"
+      },
+      "emma": {
+        "name": "Emma L.",
+        "review": "La meilleure cuisine libanaise végétalienne que j'aie jamais mangée ! Le kibbeh végétalien était incroyable. Tellement heureuse de trouver un endroit avec de nombreuses options végétales. L'ambiance est également charmante.",
+        "location": "Bruxelles, Belgique"
+      },
+      "marc": {
+        "name": "Marc D.",
+        "review": "Endroit parfait pour les déjeuners d'affaires. Service rapide, nourriture délicieuse et excellent emplacement en centre-ville. Le shawarma de poulet est mon préféré.",
+        "location": "Bruxelles, Belgique"
+      },
+      "fatima": {
+        "name": "Fatima R.",
+        "review": "J'ai emmené ma famille ici pour dîner et tout le monde a adoré ! Les portions sont généreuses et les prix sont justes. Les enfants ont adoré les falafels. C'est définitivement notre nouveau restaurant préféré !",
+        "location": "Gand, Belgique"
+      },
+      "jeanpierre": {
+        "name": "Jean-Pierre B.",
+        "review": "Excellent service et cuisine exceptionnelle. Les brochettes de kafta d'agneau fondaient dans ma bouche. La sélection de vins s'accorde parfaitement avec les plats. Un vrai bijou !",
+        "location": "Bruxelles, Belgique"
+      }
     }
   },
   "footer": {
