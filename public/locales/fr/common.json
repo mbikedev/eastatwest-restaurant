@@ -999,6 +999,14 @@
       "backToHome": "Retour à l'Accueil"
     }
   },
+  "testimonials": {
+    "title": "Ce Que Disent Nos Clients",
+    "subtitle": "Ne nous croyez pas sur parole - écoutez nos précieux clients",
+    "cta": {
+      "text": "Vous avez passé un bon moment ? Partagez votre avis !",
+      "button": "Laisser un Avis Google"
+    }
+  },
   "footer": {
     "design": "Design par Mbagnick Gaye",
     "copyright": "Copyright © 2025 Tous droits réservés east at west",

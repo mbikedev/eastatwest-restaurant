@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
+import { useTranslation } from 'react-i18next'
 import { useState, useEffect } from 'react'
 
 interface Testimonial {
@@ -20,10 +21,11 @@ interface TestimonialsSectionProps {
 
 export default function TestimonialsSection({
   testimonials,
-  title = "What Our Customers Say",
+  title,
   showSchema = true
 }: TestimonialsSectionProps) {
   const { theme } = useTheme()
+  const { t } = useTranslation('common')
   const [currentIndex, setCurrentIndex] = useState(0)
 
   // Auto-rotate testimonials every 5 seconds
@@ -122,13 +124,13 @@ export default function TestimonialsSection({
             <h2 className={`text-4xl sm:text-5xl font-black mb-4 ${
               theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'
             }`}>
-              {title}
+              {title || t('testimonials.title')}
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] mx-auto rounded-full mb-6"></div>
             <p className={`text-lg ${
               theme === 'dark' ? 'text-white/80' : 'text-gray-600'
             }`}>
-              Don't just take our word for it - hear from our valued customers
+              {t('testimonials.subtitle')}
             </p>
           </motion.div>
 
@@ -254,7 +256,7 @@ export default function TestimonialsSection({
             <p className={`text-lg mb-6 ${
               theme === 'dark' ? 'text-white/80' : 'text-gray-700'
             }`}>
-              Had a great experience? Share your review!
+              {t('testimonials.cta.text')}
             </p>
             <a
               href="https://www.google.com/search?q=east+at+west+brussels"
@@ -262,7 +264,7 @@ export default function TestimonialsSection({
               rel="noopener noreferrer"
               className="inline-block bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              Leave a Google Review
+              {t('testimonials.cta.button')}
             </a>
           </motion.div>
         </div>

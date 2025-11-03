@@ -1000,6 +1000,14 @@
       "backToHome": "Back to Home"
     }
   },
+  "testimonials": {
+    "title": "What Our Customers Say",
+    "subtitle": "Don't just take our word for it - hear from our valued customers",
+    "cta": {
+      "text": "Had a great experience? Share your review!",
+      "button": "Leave a Google Review"
+    }
+  },
   "footer": {
     "design": "Design by Mbagnick Gaye",
     "copyright": "Copyright © 2025 All rights reserved east at west",

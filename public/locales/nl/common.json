@@ -1006,6 +1006,14 @@
       "backToHome": "Terug naar Home"
     }
   },
+  "testimonials": {
+    "title": "Wat Onze Klanten Zeggen",
+    "subtitle": "Geloof ons niet zomaar - luister naar onze gewaardeerde klanten",
+    "cta": {
+      "text": "Geweldige ervaring gehad? Deel uw review!",
+      "button": "Laat een Google Review Achter"
+    }
+  },
   "footer": {
     "design": "Ontwerp door Mbagnick Gaye",
     "copyright": "Copyright © 2025 Alle rechten voorbehouden east@west",
