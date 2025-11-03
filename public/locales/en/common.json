@@ -946,7 +946,8 @@
       "online": "Online Payment",
       "onlineDescription": "Pay securely with credit card",
       "cash": "Cash on Pickup",
-      "cashDescription": "Pay when you collect your order"
+      "cashDescription": "Pay when you collect your order",
+      "cashOnly": "Currently only accepting cash payments on pickup"
     },
     "validation": {
       "nameRequired": "Name is required",
