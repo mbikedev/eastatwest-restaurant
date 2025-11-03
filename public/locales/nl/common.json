@@ -1331,5 +1331,95 @@
       "time": "14:00",
       "description": "Leer authentieke mediterrane gerechten bereiden met onze hoofdkok."
     }
+  },
+  "lebaneseRestaurantBrussels": {
+    "hero": {
+      "title": "Libanees Restaurant Brussel",
+      "subtitle": "Ervaar Authentieke Libanese Keuken in het Hart van Brussel",
+      "bookTable": "Reserveer een Tafel",
+      "viewMenu": "Bekijk Menu"
+    },
+    "whyChoose": {
+      "title": "Waarom East At West?",
+      "authentic": {
+        "title": "100% Authentiek Libanees",
+        "description": "Traditionele recepten uit Libanon, bereid door ervaren Libanese chefs met de beste ingrediënten en kruiden rechtstreeks geïmporteerd uit het Midden-Oosten."
+      },
+      "halal": {
+        "title": "Halal Gecertificeerd",
+        "description": "Al onze vleesgerechten zijn halal gecertificeerd, zodat u kunt genieten van authentieke Libanese keuken met volledige gemoedsrust."
+      },
+      "vegan": {
+        "title": "Veganistische & Vegetarische Opties",
+        "description": "Uitgebreid plantaardig menu met falafel, hummus, baba ganoush, veganistische kibbeh en vele andere Libanese specialiteiten."
+      },
+      "location": {
+        "title": "Centrale Locatie in Brussel",
+        "description": "Gelegen aan de Keizerslaan 26 in het hart van Brussel, gemakkelijk bereikbaar met het openbaar vervoer en op loopafstand van de belangrijkste attracties."
+      },
+      "catering": {
+        "title": "Cateringdiensten",
+        "description": "Professionele Libanese catering voor zakelijke evenementen, bruiloften en privéfeesten. Aangepaste menu's beschikbaar voor groepen van elke grootte."
+      },
+      "award": {
+        "title": "Bekroond",
+        "description": "Erkend door Restaurant Guru en zeer gewaardeerd door klanten voor onze uitzonderlijke voedsekwaliteit, service en authentieke sfeer."
+      }
+    },
+    "dishes": {
+      "title": "Onze Signature Libanese Gerechten",
+      "subtitle": "Ontdek de rijke smaken van Libanon met ons zorgvuldig samengesteld menu van traditionele en moderne gerechten",
+      "mezze": {
+        "title": "Mezze Schotel",
+        "description": "Een prachtig assortiment Libanese voorgerechten met hummus, baba ganoush, tabbouleh, falafel, gevulde druivenbladeren en vers pitabrood. Perfect om te delen!",
+        "keywords": "vegetarisch, veganistische opties, glutenvrij beschikbaar"
+      },
+      "shawarma": {
+        "title": "Kip Shawarma",
+        "description": "Malse gemarineerde kip, langzaam geroosterd en geserveerd met tahinisaus, augurken en Libanese knoflooksaus. Een Libanese streetfood klassieker!",
+        "keywords": "halal, signature gerecht, klantfavoriet"
+      },
+      "kibbeh": {
+        "title": "Kibbeh (Traditioneel & Veganistisch)",
+        "description": "Onze beroemde kibbeh - bulgur tarweschillen gevuld met gekruid vlees of onze innovatieve veganistische vulling. Knapperig van buiten, smaakvol van binnen.",
+        "keywords": "traditioneel Libanees, veganistische optie beschikbaar"
+      },
+      "kafta": {
+        "title": "Lamsvlees Kafta Kebabs",
+        "description": "Met de hand gerolde lamsvlees gemengd met peterselie, uien en kruiden uit het Midden-Oosten, perfect gegrild. Geserveerd met rijst en gegrilde groenten.",
+        "keywords": "halal, gegrild, glutenvrij"
+      },
+      "viewFullMenu": "Bekijk Volledig Menu"
+    },
+    "location": {
+      "title": "Bezoek Ons in Brussel",
+      "address": "Adres",
+      "addressLine1": "Keizerslaan 26",
+      "addressLine2": "1000 Brussel",
+      "addressLine3": "België",
+      "contactTitle": "Contact",
+      "phone": "Telefoon",
+      "email": "E-mail",
+      "transport": "Openbaar Vervoer",
+      "transportDetails": "Metro: Beurs of De Brouckère stations\nTram/Bus: Meerdere lijnen stoppen in de buurt"
+    },
+    "hours": {
+      "title": "Openingstijden",
+      "monday": "Maandag",
+      "closed": "Gesloten",
+      "tuesdayToSunday": "Dinsdag - Zondag",
+      "hours": "12:00 - 14:00, 18:00 - 22:00",
+      "makeReservation": "Maak een Reservering"
+    },
+    "faq": {
+      "title": "Libanees Restaurant Brussel - Uw Vragen Beantwoord",
+      "subtitle": "Alles wat u moet weten over East At West"
+    },
+    "cta": {
+      "title": "Klaar om Authentieke Libanese Keuken te Ervaren?",
+      "subtitle": "Boek nu uw tafel en ontdek waarom East At West het favoriete Libanese restaurant van Brussel is",
+      "reserveTable": "Reserveer een Tafel",
+      "orderTakeaway": "Bestel Afhaal"
+    }
   }
 } 

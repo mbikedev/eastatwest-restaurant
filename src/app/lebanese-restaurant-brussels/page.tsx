@@ -20,7 +20,7 @@ export default function LebaneseRestaurantBrusselsPage() {
     },
     {
       question: "Where is East At West Lebanese restaurant located in Brussels?",
-      answer: "We're conveniently located at Rue de la Bourse 15, 1000 Brussels (Bruxelles), right in the heart of the city center. We're easily accessible by metro (Bourse/De Brouckère stations), tram, and bus. Street parking and public parking garages are available nearby."
+      answer: "We're conveniently located at Bld de l'Empereur 26, 1000 Brussels (Bruxelles), right in the heart of the city center. We're easily accessible by metro (Bourse/De Brouckère stations), tram, and bus. Street parking and public parking garages are available nearby."
     },
     {
       question: "Do you serve halal food at your Lebanese restaurant?",
@@ -90,7 +90,7 @@ export default function LebaneseRestaurantBrusselsPage() {
     "email": "infos.east.west@gmail.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Rue de la Bourse 15",
+      "streetAddress": "Bld de l'Empereur 26",
       "addressLocality": "Brussels",
       "addressRegion": "Brussels-Capital",
       "postalCode": "1000",
@@ -130,7 +130,7 @@ export default function LebaneseRestaurantBrusselsPage() {
         <title>Lebanese Restaurant Brussels | East At West - Authentic Lebanese Cuisine</title>
         <meta
           name="description"
-          content="Best Lebanese restaurant in Brussels ⭐ Authentic halal mezze, shawarma, falafel & more. Located at Rue de la Bourse 15. Dine-in, takeaway & catering. Book now!"
+          content="Best Lebanese restaurant in Brussels ⭐ Authentic halal mezze, shawarma, falafel & more. Located at Bld de l'Empereur 26. Dine-in, takeaway & catering. Book now!"
         />
         <meta
           name="keywords"
@@ -188,7 +188,7 @@ export default function LebaneseRestaurantBrusselsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
             >
-              Lebanese Restaurant Brussels
+              {t('lebaneseRestaurantBrussels.hero.title')}
             </motion.h1>
 
             <motion.p
@@ -197,7 +197,7 @@ export default function LebaneseRestaurantBrusselsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              Experience Authentic Lebanese Cuisine in the Heart of Brussels
+              {t('lebaneseRestaurantBrussels.hero.subtitle')}
             </motion.p>
 
             <motion.div
@@ -208,12 +208,12 @@ export default function LebaneseRestaurantBrusselsPage() {
             >
               <Link href="/reservations">
                 <button className="bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] text-white px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl">
-                  Book a Table
+                  {t('lebaneseRestaurantBrussels.hero.bookTable')}
                 </button>
               </Link>
               <Link href="/menu">
                 <button className="border-3 border-white bg-white/10 text-white hover:bg-white hover:text-black px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl">
-                  View Menu
+                  {t('lebaneseRestaurantBrussels.hero.viewMenu')}
                 </button>
               </Link>
             </motion.div>
@@ -236,7 +236,7 @@ export default function LebaneseRestaurantBrusselsPage() {
             <motion.div className="text-center mb-16" variants={itemVariants}>
               <h2 className="text-4xl sm:text-5xl font-black mb-6">
                 <span className="bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] bg-clip-text text-transparent">
-                  Why East At West?
+                  {t('lebaneseRestaurantBrussels.whyChoose.title')}
                 </span>
               </h2>
               <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] mx-auto rounded-full"></div>
@@ -246,33 +246,33 @@ export default function LebaneseRestaurantBrusselsPage() {
               {[
                 {
                   emoji: "🥙",
-                  title: "100% Authentic Lebanese",
-                  description: "Traditional recipes from Lebanon, prepared by experienced Lebanese chefs with the finest ingredients and spices imported directly from the Middle East."
+                  titleKey: "lebaneseRestaurantBrussels.whyChoose.authentic.title",
+                  descKey: "lebaneseRestaurantBrussels.whyChoose.authentic.description"
                 },
                 {
                   emoji: "🥩",
-                  title: "Halal Certified",
-                  description: "All our meat dishes are halal certified, ensuring you can enjoy authentic Lebanese cuisine with complete peace of mind."
+                  titleKey: "lebaneseRestaurantBrussels.whyChoose.halal.title",
+                  descKey: "lebaneseRestaurantBrussels.whyChoose.halal.description"
                 },
                 {
                   emoji: "🌱",
-                  title: "Vegan & Vegetarian Options",
-                  description: "Extensive plant-based menu featuring falafel, hummus, baba ganoush, vegan kibbeh, and many other Lebanese specialties."
+                  titleKey: "lebaneseRestaurantBrussels.whyChoose.vegan.title",
+                  descKey: "lebaneseRestaurantBrussels.whyChoose.vegan.description"
                 },
                 {
                   emoji: "📍",
-                  title: "Central Brussels Location",
-                  description: "Located at Rue de la Bourse 15 in the heart of Brussels, easily accessible by public transport and within walking distance of major attractions."
+                  titleKey: "lebaneseRestaurantBrussels.whyChoose.location.title",
+                  descKey: "lebaneseRestaurantBrussels.whyChoose.location.description"
                 },
                 {
                   emoji: "🎉",
-                  title: "Catering Services",
-                  description: "Professional Lebanese catering for corporate events, weddings, and private parties. Custom menus available for groups of all sizes."
+                  titleKey: "lebaneseRestaurantBrussels.whyChoose.catering.title",
+                  descKey: "lebaneseRestaurantBrussels.whyChoose.catering.description"
                 },
                 {
                   emoji: "⭐",
-                  title: "Award-Winning",
-                  description: "Recognized by Restaurant Guru and highly rated by customers for our exceptional food quality, service, and authentic atmosphere."
+                  titleKey: "lebaneseRestaurantBrussels.whyChoose.award.title",
+                  descKey: "lebaneseRestaurantBrussels.whyChoose.award.description"
                 }
               ].map((feature, index) => (
                 <motion.div
@@ -288,12 +288,12 @@ export default function LebaneseRestaurantBrusselsPage() {
                   <h3 className={`text-2xl font-bold mb-4 text-center ${
                     theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'
                   }`}>
-                    {feature.title}
+                    {t(feature.titleKey)}
                   </h3>
                   <p className={`text-center leading-relaxed ${
                     theme === 'dark' ? 'text-white/80' : 'text-gray-700'
                   }`}>
-                    {feature.description}
+                    {t(feature.descKey)}
                   </p>
                 </motion.div>
               ))}
@@ -318,38 +318,38 @@ export default function LebaneseRestaurantBrusselsPage() {
               <div className="text-6xl mb-6">🍽️</div>
               <h2 className="text-4xl sm:text-5xl font-black mb-6">
                 <span className="bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] bg-clip-text text-transparent">
-                  Our Signature Lebanese Dishes
+                  {t('lebaneseRestaurantBrussels.dishes.title')}
                 </span>
               </h2>
               <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] mx-auto rounded-full mb-6"></div>
               <p className={`text-lg max-w-3xl mx-auto ${
                 theme === 'dark' ? 'text-white' : 'text-black'
               }`}>
-                Discover the rich flavors of Lebanon with our carefully curated menu of traditional and modern dishes
+                {t('lebaneseRestaurantBrussels.dishes.subtitle')}
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
               {[
                 {
-                  title: "Mezze Platter",
-                  description: "A beautiful assortment of Lebanese appetizers including hummus, baba ganoush, tabbouleh, falafel, stuffed grape leaves, and fresh pita bread. Perfect for sharing!",
-                  keywords: "vegetarian, vegan options, gluten-free available"
+                  titleKey: "lebaneseRestaurantBrussels.dishes.mezze.title",
+                  descKey: "lebaneseRestaurantBrussels.dishes.mezze.description",
+                  keywordsKey: "lebaneseRestaurantBrussels.dishes.mezze.keywords"
                 },
                 {
-                  title: "Chicken Shawarma",
-                  description: "Tender marinated chicken, slowly roasted and served with tahini sauce, pickles, and Lebanese garlic sauce. A Lebanese street food classic!",
-                  keywords: "halal, signature dish, customer favorite"
+                  titleKey: "lebaneseRestaurantBrussels.dishes.shawarma.title",
+                  descKey: "lebaneseRestaurantBrussels.dishes.shawarma.description",
+                  keywordsKey: "lebaneseRestaurantBrussels.dishes.shawarma.keywords"
                 },
                 {
-                  title: "Kibbeh (Traditional & Vegan)",
-                  description: "Our famous kibbeh - bulgur wheat shells stuffed with spiced meat or our innovative vegan filling. Crispy outside, flavorful inside.",
-                  keywords: "traditional Lebanese, vegan option available"
+                  titleKey: "lebaneseRestaurantBrussels.dishes.kibbeh.title",
+                  descKey: "lebaneseRestaurantBrussels.dishes.kibbeh.description",
+                  keywordsKey: "lebaneseRestaurantBrussels.dishes.kibbeh.keywords"
                 },
                 {
-                  title: "Lamb Kafta Kebabs",
-                  description: "Hand-rolled ground lamb mixed with parsley, onions, and Middle Eastern spices, grilled to perfection. Served with rice and grilled vegetables.",
-                  keywords: "halal, grilled, gluten-free"
+                  titleKey: "lebaneseRestaurantBrussels.dishes.kafta.title",
+                  descKey: "lebaneseRestaurantBrussels.dishes.kafta.description",
+                  keywordsKey: "lebaneseRestaurantBrussels.dishes.kafta.keywords"
                 }
               ].map((dish, index) => (
                 <motion.div
@@ -364,17 +364,17 @@ export default function LebaneseRestaurantBrusselsPage() {
                   <h3 className={`text-2xl font-bold mb-4 ${
                     theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'
                   }`}>
-                    {dish.title}
+                    {t(dish.titleKey)}
                   </h3>
                   <p className={`leading-relaxed mb-4 ${
                     theme === 'dark' ? 'text-white/80' : 'text-gray-700'
                   }`}>
-                    {dish.description}
+                    {t(dish.descKey)}
                   </p>
                   <div className={`text-sm font-semibold ${
                     theme === 'dark' ? 'text-[#A8D5BA]' : 'text-[#A8D5BA]'
                   }`}>
-                    {dish.keywords}
+                    {t(dish.keywordsKey)}
                   </div>
                 </motion.div>
               ))}
@@ -383,7 +383,7 @@ export default function LebaneseRestaurantBrusselsPage() {
             <motion.div className="text-center mt-12" variants={itemVariants}>
               <Link href="/menu">
                 <button className="bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] text-white px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl">
-                  View Full Menu
+                  {t('lebaneseRestaurantBrussels.dishes.viewFullMenu')}
                 </button>
               </Link>
             </motion.div>
@@ -409,7 +409,7 @@ export default function LebaneseRestaurantBrusselsPage() {
                 <h2 className={`text-4xl font-black mb-6 ${
                   theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'
                 }`}>
-                  Visit Us in Brussels
+                  {t('lebaneseRestaurantBrussels.location.title')}
                 </h2>
                 <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] rounded-full mb-8"></div>
 
@@ -417,31 +417,30 @@ export default function LebaneseRestaurantBrusselsPage() {
                   <div>
                     <h3 className={`text-xl font-bold mb-2 ${
                       theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'
-                    }`}>Address</h3>
+                    }`}>{t('lebaneseRestaurantBrussels.location.address')}</h3>
                     <p className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
-                      Rue de la Bourse 15<br />
-                      1000 Brussels (Bruxelles)<br />
-                      Belgium
+                      {t('lebaneseRestaurantBrussels.location.addressLine1')}<br />
+                      {t('lebaneseRestaurantBrussels.location.addressLine2')}<br />
+                      {t('lebaneseRestaurantBrussels.location.addressLine3')}
                     </p>
                   </div>
 
                   <div>
                     <h3 className={`text-xl font-bold mb-2 ${
                       theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'
-                    }`}>Contact</h3>
+                    }`}>{t('lebaneseRestaurantBrussels.location.contactTitle')}</h3>
                     <p className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
-                      Phone: <a href="tel:+3225035303" className="text-[#A8D5BA] hover:underline">+32 2 503 5303</a><br />
-                      Email: <a href="mailto:infos.east.west@gmail.com" className="text-[#A8D5BA] hover:underline">infos.east.west@gmail.com</a>
+                      {t('lebaneseRestaurantBrussels.location.phone')}: <a href="tel:+3225035303" className="text-[#A8D5BA] hover:underline">+32 2 503 5303</a><br />
+                      {t('lebaneseRestaurantBrussels.location.email')}: <a href="mailto:infos.east.west@gmail.com" className="text-[#A8D5BA] hover:underline">infos.east.west@gmail.com</a>
                     </p>
                   </div>
 
                   <div>
                     <h3 className={`text-xl font-bold mb-2 ${
                       theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'
-                    }`}>Public Transport</h3>
+                    }`}>{t('lebaneseRestaurantBrussels.location.transport')}</h3>
                     <p className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
-                      Metro: Bourse or De Brouckère stations<br />
-                      Tram/Bus: Multiple lines stop nearby
+                      {t('lebaneseRestaurantBrussels.location.transportDetails')}
                     </p>
                   </div>
                 </div>
@@ -452,7 +451,7 @@ export default function LebaneseRestaurantBrusselsPage() {
                 <h2 className={`text-4xl font-black mb-6 ${
                   theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'
                 }`}>
-                  Opening Hours
+                  {t('lebaneseRestaurantBrussels.hours.title')}
                 </h2>
                 <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] rounded-full mb-8"></div>
 
@@ -464,18 +463,18 @@ export default function LebaneseRestaurantBrusselsPage() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'}`}>
-                        Monday
+                        {t('lebaneseRestaurantBrussels.hours.monday')}
                       </span>
                       <span className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
-                        Closed
+                        {t('lebaneseRestaurantBrussels.hours.closed')}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'}`}>
-                        Tuesday - Sunday
+                        {t('lebaneseRestaurantBrussels.hours.tuesdayToSunday')}
                       </span>
                       <span className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
-                        12:00 - 14:00, 18:00 - 22:00
+                        {t('lebaneseRestaurantBrussels.hours.hours')}
                       </span>
                     </div>
                   </div>
@@ -483,7 +482,7 @@ export default function LebaneseRestaurantBrusselsPage() {
                   <div className="mt-8 pt-8 border-t border-[#A8D5BA]/20">
                     <Link href="/reservations">
                       <button className="w-full bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] text-white py-4 rounded-xl text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        Make a Reservation
+                        {t('lebaneseRestaurantBrussels.hours.makeReservation')}
                       </button>
                     </Link>
                   </div>
@@ -496,8 +495,8 @@ export default function LebaneseRestaurantBrusselsPage() {
         {/* FAQ Section */}
         <FAQSection
           faqs={faqs}
-          title="Lebanese Restaurant Brussels - Your Questions Answered"
-          subtitle="Everything you need to know about East At West"
+          title={t('lebaneseRestaurantBrussels.faq.title')}
+          subtitle={t('lebaneseRestaurantBrussels.faq.subtitle')}
         />
 
         {/* CTA Section */}
@@ -513,23 +512,23 @@ export default function LebaneseRestaurantBrusselsPage() {
               <div className="text-6xl mb-6">🎯</div>
               <h2 className="text-4xl sm:text-5xl font-black mb-8">
                 <span className="bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] bg-clip-text text-transparent">
-                  Ready to Experience Authentic Lebanese Cuisine?
+                  {t('lebaneseRestaurantBrussels.cta.title')}
                 </span>
               </h2>
               <div className="w-32 h-1.5 bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] mx-auto rounded-full mb-8"></div>
               <p className="text-xl mb-12 max-w-3xl mx-auto">
-                Book your table now and discover why East At West is Brussels' favorite Lebanese restaurant
+                {t('lebaneseRestaurantBrussels.cta.subtitle')}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
                 <Link href="/reservations">
                   <button className="bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] text-white px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl">
-                    Reserve a Table
+                    {t('lebaneseRestaurantBrussels.cta.reserveTable')}
                   </button>
                 </Link>
                 <Link href="/takeaway">
                   <button className="border-3 border-white bg-white/10 text-white hover:bg-white hover:text-black px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl">
-                    Order Takeaway
+                    {t('lebaneseRestaurantBrussels.cta.orderTakeaway')}
                   </button>
                 </Link>
               </div>

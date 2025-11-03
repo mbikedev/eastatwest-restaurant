@@ -1322,5 +1322,95 @@
       "time": "2:00 PM",
       "description": "Learn to prepare authentic Mediterranean dishes with our head chef."
     }
+  },
+  "lebaneseRestaurantBrussels": {
+    "hero": {
+      "title": "Lebanese Restaurant Brussels",
+      "subtitle": "Experience Authentic Lebanese Cuisine in the Heart of Brussels",
+      "bookTable": "Book a Table",
+      "viewMenu": "View Menu"
+    },
+    "whyChoose": {
+      "title": "Why East At West?",
+      "authentic": {
+        "title": "100% Authentic Lebanese",
+        "description": "Traditional recipes from Lebanon, prepared by experienced Lebanese chefs with the finest ingredients and spices imported directly from the Middle East."
+      },
+      "halal": {
+        "title": "Halal Certified",
+        "description": "All our meat dishes are halal certified, ensuring you can enjoy authentic Lebanese cuisine with complete peace of mind."
+      },
+      "vegan": {
+        "title": "Vegan & Vegetarian Options",
+        "description": "Extensive plant-based menu featuring falafel, hummus, baba ganoush, vegan kibbeh, and many other Lebanese specialties."
+      },
+      "location": {
+        "title": "Central Brussels Location",
+        "description": "Located at Bld de l'Empereur 26 in the heart of Brussels, easily accessible by public transport and within walking distance of major attractions."
+      },
+      "catering": {
+        "title": "Catering Services",
+        "description": "Professional Lebanese catering for corporate events, weddings, and private parties. Custom menus available for groups of all sizes."
+      },
+      "award": {
+        "title": "Award-Winning",
+        "description": "Recognized by Restaurant Guru and highly rated by customers for our exceptional food quality, service, and authentic atmosphere."
+      }
+    },
+    "dishes": {
+      "title": "Our Signature Lebanese Dishes",
+      "subtitle": "Discover the rich flavors of Lebanon with our carefully curated menu of traditional and modern dishes",
+      "mezze": {
+        "title": "Mezze Platter",
+        "description": "A beautiful assortment of Lebanese appetizers including hummus, baba ganoush, tabbouleh, falafel, stuffed grape leaves, and fresh pita bread. Perfect for sharing!",
+        "keywords": "vegetarian, vegan options, gluten-free available"
+      },
+      "shawarma": {
+        "title": "Chicken Shawarma",
+        "description": "Tender marinated chicken, slowly roasted and served with tahini sauce, pickles, and Lebanese garlic sauce. A Lebanese street food classic!",
+        "keywords": "halal, signature dish, customer favorite"
+      },
+      "kibbeh": {
+        "title": "Kibbeh (Traditional & Vegan)",
+        "description": "Our famous kibbeh - bulgur wheat shells stuffed with spiced meat or our innovative vegan filling. Crispy outside, flavorful inside.",
+        "keywords": "traditional Lebanese, vegan option available"
+      },
+      "kafta": {
+        "title": "Lamb Kafta Kebabs",
+        "description": "Hand-rolled ground lamb mixed with parsley, onions, and Middle Eastern spices, grilled to perfection. Served with rice and grilled vegetables.",
+        "keywords": "halal, grilled, gluten-free"
+      },
+      "viewFullMenu": "View Full Menu"
+    },
+    "location": {
+      "title": "Visit Us in Brussels",
+      "address": "Address",
+      "addressLine1": "Bld de l'Empereur 26",
+      "addressLine2": "1000 Brussels",
+      "addressLine3": "Belgium",
+      "contactTitle": "Contact",
+      "phone": "Phone",
+      "email": "Email",
+      "transport": "Public Transport",
+      "transportDetails": "Metro: Bourse or De Brouckère stations\nTram/Bus: Multiple lines stop nearby"
+    },
+    "hours": {
+      "title": "Opening Hours",
+      "monday": "Monday",
+      "closed": "Closed",
+      "tuesdayToSunday": "Tuesday - Sunday",
+      "hours": "12:00 - 14:00, 18:00 - 22:00",
+      "makeReservation": "Make a Reservation"
+    },
+    "faq": {
+      "title": "Lebanese Restaurant Brussels - Your Questions Answered",
+      "subtitle": "Everything you need to know about East At West"
+    },
+    "cta": {
+      "title": "Ready to Experience Authentic Lebanese Cuisine?",
+      "subtitle": "Book your table now and discover why East At West is Brussels' favorite Lebanese restaurant",
+      "reserveTable": "Reserve a Table",
+      "orderTakeaway": "Order Takeaway"
+    }
   }
 } 

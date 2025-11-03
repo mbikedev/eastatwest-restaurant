@@ -1316,5 +1316,95 @@
       "time": "14h00",
       "description": "Apprenez à préparer des plats méditerranéens authentiques avec notre chef principal."
     }
+  },
+  "lebaneseRestaurantBrussels": {
+    "hero": {
+      "title": "Restaurant Libanais Bruxelles",
+      "subtitle": "Découvrez la Cuisine Libanaise Authentique au Cœur de Bruxelles",
+      "bookTable": "Réserver une Table",
+      "viewMenu": "Voir le Menu"
+    },
+    "whyChoose": {
+      "title": "Pourquoi East At West ?",
+      "authentic": {
+        "title": "100% Authentique Libanais",
+        "description": "Recettes traditionnelles du Liban, préparées par des chefs libanais expérimentés avec les meilleurs ingrédients et épices importés directement du Moyen-Orient."
+      },
+      "halal": {
+        "title": "Certifié Halal",
+        "description": "Tous nos plats de viande sont certifiés halal, vous permettant de savourer une cuisine libanaise authentique en toute tranquillité d'esprit."
+      },
+      "vegan": {
+        "title": "Options Végétariennes et Véganes",
+        "description": "Menu végétal étendu avec falafels, houmous, baba ganoush, kibbeh végétalien et de nombreuses autres spécialités libanaises."
+      },
+      "location": {
+        "title": "Emplacement Central à Bruxelles",
+        "description": "Situé au Bld de l'Empereur 26 au cœur de Bruxelles, facilement accessible en transports publics et à distance de marche des principales attractions."
+      },
+      "catering": {
+        "title": "Services Traiteur",
+        "description": "Traiteur libanais professionnel pour événements d'entreprise, mariages et fêtes privées. Menus personnalisés disponibles pour tous les groupes."
+      },
+      "award": {
+        "title": "Primé",
+        "description": "Reconnu par Restaurant Guru et très apprécié par les clients pour la qualité exceptionnelle de nos plats, notre service et notre atmosphère authentique."
+      }
+    },
+    "dishes": {
+      "title": "Nos Plats Libanais Signature",
+      "subtitle": "Découvrez les saveurs riches du Liban avec notre menu soigneusement sélectionné de plats traditionnels et modernes",
+      "mezze": {
+        "title": "Plateau de Mezze",
+        "description": "Un bel assortiment d'entrées libanaises comprenant houmous, baba ganoush, taboulé, falafels, feuilles de vigne farcies et pain pita frais. Parfait à partager !",
+        "keywords": "végétarien, options véganes, sans gluten disponible"
+      },
+      "shawarma": {
+        "title": "Shawarma de Poulet",
+        "description": "Poulet mariné tendre, rôti lentement et servi avec sauce tahini, cornichons et sauce à l'ail libanaise. Un classique de la street food libanaise !",
+        "keywords": "halal, plat signature, favori des clients"
+      },
+      "kibbeh": {
+        "title": "Kibbeh (Traditionnel & Végan)",
+        "description": "Notre célèbre kibbeh - coques de blé bulgur farcies de viande épicée ou de notre garniture végane innovante. Croustillant à l'extérieur, savoureux à l'intérieur.",
+        "keywords": "libanais traditionnel, option végane disponible"
+      },
+      "kafta": {
+        "title": "Brochettes de Kafta d'Agneau",
+        "description": "Agneau haché roulé à la main mélangé avec persil, oignons et épices du Moyen-Orient, grillé à la perfection. Servi avec riz et légumes grillés.",
+        "keywords": "halal, grillé, sans gluten"
+      },
+      "viewFullMenu": "Voir le Menu Complet"
+    },
+    "location": {
+      "title": "Visitez-nous à Bruxelles",
+      "address": "Adresse",
+      "addressLine1": "Bld de l'Empereur 26",
+      "addressLine2": "1000 Bruxelles",
+      "addressLine3": "Belgique",
+      "contactTitle": "Contact",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "transport": "Transports Publics",
+      "transportDetails": "Métro : Stations Bourse ou De Brouckère\nTram/Bus : Plusieurs lignes s'arrêtent à proximité"
+    },
+    "hours": {
+      "title": "Horaires d'Ouverture",
+      "monday": "Lundi",
+      "closed": "Fermé",
+      "tuesdayToSunday": "Mardi - Dimanche",
+      "hours": "12:00 - 14:00, 18:00 - 22:00",
+      "makeReservation": "Réserver une Table"
+    },
+    "faq": {
+      "title": "Restaurant Libanais Bruxelles - Vos Questions Répondues",
+      "subtitle": "Tout ce que vous devez savoir sur East At West"
+    },
+    "cta": {
+      "title": "Prêt à Découvrir la Cuisine Libanaise Authentique ?",
+      "subtitle": "Réservez votre table maintenant et découvrez pourquoi East At West est le restaurant libanais préféré de Bruxelles",
+      "reserveTable": "Réserver une Table",
+      "orderTakeaway": "Commander à Emporter"
+    }
   }
 } 
