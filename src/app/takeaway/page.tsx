@@ -415,12 +415,13 @@ export default function TakeawayPage() {
                     
                     <button
                       onClick={() => addItem(product)}
-                      className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-                        theme === 'dark'
-                          ? 'bg-gradient-to-r from-[#f99747] to-[#bc906b] hover:from-[#bc906b] hover:to-[#5C4300] shadow-lg shadow-[#f99747]/50 hover:shadow-xl hover:shadow-[#f99747]/60'
-                          : 'bg-gradient-to-r from-[#f99747] to-[#bc906b] hover:from-[#e88636] hover:to-[#aa855a] shadow-lg shadow-[#f99747]/30 hover:shadow-xl'
-                      }`}
-                      style={{ color: 'white' }}
+                      style={{
+                        background: theme === 'dark'
+                          ? 'linear-gradient(to right, #f99747, #bc906b)'
+                          : 'linear-gradient(to right, #f99747, #bc906b)',
+                        color: '#FFFFFF'
+                      }}
+                      className="w-full py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                     >
                       {t('takeaway.addToCart')}
                     </button>
