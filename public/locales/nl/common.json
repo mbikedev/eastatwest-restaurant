@@ -1407,8 +1407,15 @@
       "title": "Openingstijden",
       "monday": "Maandag",
       "closed": "Gesloten",
-      "tuesdayToSunday": "Dinsdag - Zondag",
-      "hours": "12:00 - 14:00, 18:00 - 22:00",
+      "tuesdayToFriday": "Dinsdag - Vrijdag",
+      "lunchHours": "12:00 - 14:30",
+      "dinnerHours": "18:00 - 22:00",
+      "saturday": "Zaterdag",
+      "saturdayHours": "18:00 - 22:00 (Alleen diner)",
+      "sunday": "Zondag",
+      "sundayHours": "12:00 - 14:30, 18:00 - 22:00",
+      "lastReservationLunch": "Laatste reservering om 14:30",
+      "lastReservationDinner": "Laatste reservering om 20:30",
       "makeReservation": "Maak een Reservering"
     },
     "faq": {

@@ -23,7 +23,8 @@ export default function LebaneseRestaurantBrusselsPage() {
     if (lng && (lng === 'en' || lng === 'fr' || lng === 'nl')) {
       changeLanguage(lng)
     }
-  }, [searchParams, changeLanguage])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]) // Only depend on searchParams, not changeLanguage
 
   // SEO-optimized FAQs for Lebanese Restaurant Brussels
   const faqs = [
@@ -41,7 +42,7 @@ export default function LebaneseRestaurantBrusselsPage() {
     },
     {
       question: "What are the opening hours of East At West Brussels?",
-      answer: "We're open Tuesday through Sunday:\nLunch: 12:00 PM - 2:00 PM\nDinner: 6:00 PM - 10:00 PM\n\nWe're closed on Mondays. For reservations or special events, please call us at +32 2 503 5303 or book online through our website."
+      answer: "We're open Tuesday through Sunday with the following hours:\n\nTuesday - Friday:\n🍽️ Lunch: 12:00 - 14:30 (last reservation at 14:30)\n🍽️ Dinner: 18:00 - 22:00 (last reservation at 20:30)\n\nSaturday:\n🎉 Dinner only: 18:00 - 22:00 (last reservation at 20:30)\n\nSunday:\nLunch & Dinner: 12:00 - 14:30, 18:00 - 22:00\n\nWe're closed on Mondays. For reservations, call us at +32 2 503 5303 or book online."
     },
     {
       question: "Do you offer vegetarian and vegan Lebanese dishes?",
@@ -119,8 +120,32 @@ export default function LebaneseRestaurantBrusselsPage() {
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "12:00",
+        "closes": "14:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "18:00",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "18:00",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "12:00",
+        "closes": "14:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "18:00",
         "closes": "22:00"
       }
     ],
@@ -473,22 +498,85 @@ export default function LebaneseRestaurantBrusselsPage() {
                     ? 'bg-[#2A2A2A] border border-[#A8D5BA]/20'
                     : 'bg-white border border-gray-200'
                 } shadow-xl`}>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'}`}>
-                        {t('lebaneseRestaurantBrussels.hours.monday')}
-                      </span>
-                      <span className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
-                        {t('lebaneseRestaurantBrussels.hours.closed')}
-                      </span>
+                  <div className="space-y-6">
+                    {/* Monday - Closed */}
+                    <div className="pb-4 border-b border-[#A8D5BA]/20">
+                      <div className="flex justify-between items-center">
+                        <span className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'}`}>
+                          {t('lebaneseRestaurantBrussels.hours.monday')}
+                        </span>
+                        <span className={`font-medium ${theme === 'dark' ? 'text-red-400' : 'text-red-600'}`}>
+                          {t('lebaneseRestaurantBrussels.hours.closed')}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'}`}>
-                        {t('lebaneseRestaurantBrussels.hours.tuesdayToSunday')}
-                      </span>
-                      <span className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
-                        {t('lebaneseRestaurantBrussels.hours.hours')}
-                      </span>
+
+                    {/* Tuesday - Friday */}
+                    <div className="pb-4 border-b border-[#A8D5BA]/20">
+                      <div className="mb-3">
+                        <span className={`font-semibold text-lg ${theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'}`}>
+                          {t('lebaneseRestaurantBrussels.hours.tuesdayToFriday')}
+                        </span>
+                      </div>
+                      <div className="space-y-2 ml-4">
+                        <div className="flex justify-between items-center">
+                          <span className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
+                            🍽️ Lunch
+                          </span>
+                          <span className={`font-medium ${theme === 'dark' ? 'text-[#A8D5BA]' : 'text-[#A8D5BA]'}`}>
+                            {t('lebaneseRestaurantBrussels.hours.lunchHours')}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
+                            🍽️ Dinner
+                          </span>
+                          <span className={`font-medium ${theme === 'dark' ? 'text-[#A8D5BA]' : 'text-[#A8D5BA]'}`}>
+                            {t('lebaneseRestaurantBrussels.hours.dinnerHours')}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Saturday */}
+                    <div className="pb-4 border-b border-[#A8D5BA]/20">
+                      <div className="mb-3">
+                        <span className={`font-semibold text-lg ${theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'}`}>
+                          🎉 {t('lebaneseRestaurantBrussels.hours.saturday')}
+                        </span>
+                      </div>
+                      <div className="ml-4">
+                        <div className="flex justify-between items-center">
+                          <span className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
+                            {t('lebaneseRestaurantBrussels.hours.saturdayHours')}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Sunday */}
+                    <div className="pb-4 border-b border-[#A8D5BA]/20">
+                      <div className="mb-3">
+                        <span className={`font-semibold text-lg ${theme === 'dark' ? 'text-white' : 'text-[#1A1A1A]'}`}>
+                          {t('lebaneseRestaurantBrussels.hours.sunday')}
+                        </span>
+                      </div>
+                      <div className="space-y-2 ml-4">
+                        <div className="flex justify-between items-center">
+                          <span className={theme === 'dark' ? 'text-white/80' : 'text-gray-700'}>
+                            🍽️ Lunch & Dinner
+                          </span>
+                          <span className={`font-medium ${theme === 'dark' ? 'text-[#A8D5BA]' : 'text-[#A8D5BA]'}`}>
+                            {t('lebaneseRestaurantBrussels.hours.sundayHours')}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Reservation Notes */}
+                    <div className={`text-sm italic ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
+                      <div>📅 {t('lebaneseRestaurantBrussels.hours.lastReservationLunch')}</div>
+                      <div>📅 {t('lebaneseRestaurantBrussels.hours.lastReservationDinner')}</div>
                     </div>
                   </div>
 
