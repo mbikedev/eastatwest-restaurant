@@ -541,12 +541,6 @@ export default function LebaneseRestaurantBrusselsPage() {
                         </span>
                       </div>
                     </div>
-
-                    {/* Reservation Notes */}
-                    <div className={`text-sm italic ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
-                      <div>📅 {t('lebaneseRestaurantBrussels.hours.lastReservationLunch')}</div>
-                      <div>📅 {t('lebaneseRestaurantBrussels.hours.lastReservationDinner')}</div>
-                    </div>
                   </div>
 
                   <div className="mt-8 pt-8 border-t border-[#A8D5BA]/20">
