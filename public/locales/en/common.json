@@ -1396,15 +1396,13 @@
     },
     "hours": {
       "title": "Opening Hours",
-      "monday": "Monday",
-      "closed": "Closed",
-      "tuesdayToFriday": "Tuesday - Friday",
+      "mondayToFriday": "Monday - Friday",
       "lunchHours": "12:00 - 14:30",
       "dinnerHours": "18:00 - 22:00",
       "saturday": "Saturday",
       "saturdayHours": "18:00 - 22:00 (Dinner only)",
       "sunday": "Sunday",
-      "sundayHours": "12:00 - 14:30, 18:00 - 22:00",
+      "closed": "Closed",
       "lastReservationLunch": "Last reservation at 14:30",
       "lastReservationDinner": "Last reservation at 20:30",
       "makeReservation": "Make a Reservation"

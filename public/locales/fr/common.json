@@ -1390,15 +1390,13 @@
     },
     "hours": {
       "title": "Horaires d'Ouverture",
-      "monday": "Lundi",
-      "closed": "Fermé",
-      "tuesdayToFriday": "Mardi - Vendredi",
+      "mondayToFriday": "Lundi - Vendredi",
       "lunchHours": "12:00 - 14:30",
       "dinnerHours": "18:00 - 22:00",
       "saturday": "Samedi",
       "saturdayHours": "18:00 - 22:00 (Dîner uniquement)",
       "sunday": "Dimanche",
-      "sundayHours": "12:00 - 14:30, 18:00 - 22:00",
+      "closed": "Fermé",
       "lastReservationLunch": "Dernière réservation à 14:30",
       "lastReservationDinner": "Dernière réservation à 20:30",
       "makeReservation": "Réserver une Table"
