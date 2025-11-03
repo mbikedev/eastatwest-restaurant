@@ -418,9 +418,9 @@ export default function TakeawayPage() {
                       className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
                         theme === 'dark'
                           ? 'bg-gradient-to-r from-[#f99747] to-[#bc906b] hover:from-[#bc906b] hover:to-[#5C4300] shadow-lg shadow-[#f99747]/50 hover:shadow-xl hover:shadow-[#f99747]/60'
-                          : '!bg-[#1A1A1A] hover:!bg-[#5C4300]'
+                          : 'bg-gradient-to-r from-[#f99747] to-[#bc906b] hover:from-[#e88636] hover:to-[#aa855a] shadow-lg shadow-[#f99747]/30 hover:shadow-xl'
                       }`}
-                      style={{ color: 'white !important' }}
+                      style={{ color: 'white' }}
                     >
                       {t('takeaway.addToCart')}
                     </button>
