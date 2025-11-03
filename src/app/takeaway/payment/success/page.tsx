@@ -170,7 +170,11 @@ export default function PaymentSuccessPage() {
             <div className="space-y-4">
               <div>
                 <span className="font-semibold">{t('payment.success.orderId')}: </span>
-                <span className="font-mono bg-gray-100 px-2 py-1 rounded text-sm">
+                <span className={`font-mono px-2 py-1 rounded text-sm ${
+                  theme === 'dark'
+                    ? 'bg-gray-700 text-[#F5F0E6]'
+                    : 'bg-gray-100 text-[#1A1A1A]'
+                }`}>
                   {orderDetails.id}
                 </span>
               </div>
