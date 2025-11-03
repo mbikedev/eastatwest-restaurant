@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabaseServer'
+import { createClient as createServiceClient } from '@supabase/supabase-js'
 
 export async function GET(
   request: NextRequest,
@@ -102,7 +103,12 @@ export async function DELETE(
 ) {
   const { id } = await params
   try {
-    const supabase = await createClient()
+    // Use service role client to bypass RLS for admin operations
+    const supabase = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+      process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+    )
+
     const orderId = id
 
     if (!orderId) {
