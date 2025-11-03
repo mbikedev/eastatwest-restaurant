@@ -1444,7 +1444,49 @@
     },
     "faq": {
       "title": "Restaurant Libanais Bruxelles - Vos Questions Répondues",
-      "subtitle": "Tout ce que vous devez savoir sur East At West"
+      "subtitle": "Tout ce que vous devez savoir sur East At West",
+      "questions": {
+        "bestRestaurant": {
+          "question": "Qu'est-ce qui fait d'East At West le meilleur restaurant libanais de Bruxelles ?",
+          "answer": "East At West combine des recettes libanaises authentiques transmises de génération en génération avec des ingrédients frais d'origine locale. Nos chefs apportent des décennies d'expérience en cuisine libanaise, créant des plats traditionnels comme le mezze, les falafels, le houmous et le shawarma avec une présentation moderne. Nous sommes reconnus par Restaurant Guru et appréciés par les habitants et les touristes pour notre hospitalité chaleureuse et les saveurs authentiques du Liban."
+        },
+        "location": {
+          "question": "Où se trouve le restaurant libanais East At West à Bruxelles ?",
+          "answer": "Nous sommes idéalement situés au Bld de l'Empereur 26, 1000 Bruxelles, en plein cœur du centre-ville. Nous sommes facilement accessibles en métro (stations Bourse/De Brouckère), tramway et bus. Des parkings de rue et des parkings publics sont disponibles à proximité."
+        },
+        "halal": {
+          "question": "Servez-vous de la nourriture halal dans votre restaurant libanais ?",
+          "answer": "Oui, tous nos plats de viande sont préparés selon les normes halal. Nous sommes fiers de servir une cuisine libanaise halal authentique, notamment du shawarma au poulet, des kebabs d'agneau, des kafta et bien plus encore. Notre menu propose également de nombreuses options végétariennes et véganes."
+        },
+        "openingHours": {
+          "question": "Quels sont les horaires d'ouverture d'East At West Bruxelles ?",
+          "answer": "Nous sommes ouverts du lundi au samedi avec les horaires suivants :\n\nLundi - Vendredi :\n🍽️ Déjeuner : 12:00 - 14:30 (dernière réservation à 14:30)\n🍽️ Dîner : 18:00 - 22:00 (dernière réservation à 20:30)\n\nSamedi :\n🎉 Dîner uniquement : 18:00 - 22:00 (dernière réservation à 20:30)\n\nNous sommes fermés le dimanche. Pour les réservations, appelez-nous au +32 465 20 60 24 ou réservez en ligne."
+        },
+        "vegetarian": {
+          "question": "Proposez-vous des plats libanais végétariens et véganes ?",
+          "answer": "Absolument ! La cuisine libanaise est naturellement riche en options végétariennes et véganes. Nous proposons des falafels, du houmous, du baba ganoush, du taboulé, du fattoush, des feuilles de vigne farcies, de la soupe aux lentilles et bien d'autres plats à base de plantes. Notre kibbeh végane est un favori des clients. N'hésitez pas à demander des recommandations à notre personnel !"
+        },
+        "reservation": {
+          "question": "Puis-je réserver une table chez East At West ?",
+          "answer": "Oui, nous recommandons fortement de réserver, en particulier pour le dîner et les week-ends. Vous pouvez réserver une table en ligne via notre site web, nous appeler au +32 465 20 60 24, ou envoyer un e-mail à infos.east.west@gmail.com. Les clients sans réservation sont les bienvenus selon les disponibilités."
+        },
+        "catering": {
+          "question": "Proposez-vous des services de traiteur pour les événements à Bruxelles ?",
+          "answer": "Oui ! Nous proposons un service de traiteur libanais authentique pour les événements d'entreprise, les mariages, les fêtes privées et les occasions spéciales dans toute la région de Bruxelles. Notre menu traiteur comprend des plateaux de mezze, des plats chauds, des desserts et des options personnalisables pour tous les groupes. Visitez notre page Événements & Traiteur ou contactez-nous pour un devis personnalisé."
+        },
+        "popularDishes": {
+          "question": "Quels sont vos plats libanais les plus populaires ?",
+          "answer": "Les favoris de nos clients incluent :\n• Plateau de Mezze Mixte (houmous, baba ganoush, taboulé, falafel)\n• Shawarma au Poulet\n• Kebabs de Kafta d'Agneau\n• Kibbeh (traditionnel et végane)\n• Salade Fattoush\n• Manakish (pain plat libanais)\n• Baklava en dessert\n\nNous proposons également des spécialités du jour avec des ingrédients de saison."
+        },
+        "familyFriendly": {
+          "question": "East At West est-il adapté aux familles ?",
+          "answer": "Oui, nous sommes un restaurant familial ! Nous accueillons les clients de tous âges et offrons une atmosphère détendue et chaleureuse parfaite pour les dîners en famille. Notre menu propose des options qui plaisent aussi bien aux adultes qu'aux enfants, et notre personnel se fera un plaisir de répondre à vos demandes spéciales."
+        },
+        "takeaway": {
+          "question": "Proposez-vous des plats à emporter et la livraison à Bruxelles ?",
+          "answer": "Oui, nous proposons des services de plats à emporter et de livraison. Vous pouvez commander directement via notre site web pour un retrait, ou nous trouver sur les plateformes de livraison populaires. Savourez une cuisine libanaise authentique dans le confort de votre foyer !"
+        }
+      }
     },
     "cta": {
       "title": "Prêt à Découvrir la Cuisine Libanaise Authentique ?",

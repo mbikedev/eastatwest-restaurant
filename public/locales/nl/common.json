@@ -1459,7 +1459,49 @@
     },
     "faq": {
       "title": "Libanees Restaurant Brussel - Uw Vragen Beantwoord",
-      "subtitle": "Alles wat u moet weten over East At West"
+      "subtitle": "Alles wat u moet weten over East At West",
+      "questions": {
+        "bestRestaurant": {
+          "question": "Wat maakt East At West het beste Libanese restaurant in Brussel?",
+          "answer": "East At West combineert authentieke Libanese recepten die van generatie op generatie zijn doorgegeven met verse, lokaal geproduceerde ingrediënten. Onze chefs brengen tientallen jaren ervaring in de Libanese keuken mee en creëren traditionele gerechten zoals mezze, falafel, hummus en shawarma met een moderne presentatie. We zijn erkend door Restaurant Guru en geliefd bij zowel locals als toeristen vanwege onze warme gastvrijheid en authentieke smaken van Libanon."
+        },
+        "location": {
+          "question": "Waar bevindt het Libanese restaurant East At West zich in Brussel?",
+          "answer": "We zijn gunstig gelegen aan Bld de l'Empereur 26, 1000 Brussel, in het hart van het stadscentrum. We zijn gemakkelijk bereikbaar met de metro (stations Beurs/De Brouckère), tram en bus. Straatparkeren en openbare parkeergarages zijn in de buurt beschikbaar."
+        },
+        "halal": {
+          "question": "Serveert u halal eten in uw Libanese restaurant?",
+          "answer": "Ja, al onze vleesgerechten worden bereid volgens halal-normen. We zijn er trots op authentieke Libanese halal-gerechten te serveren, waaronder kip shawarma, lamskebabs, kafta en meer. Ons menu biedt ook uitgebreide vegetarische en veganistische opties."
+        },
+        "openingHours": {
+          "question": "Wat zijn de openingstijden van East At West Brussel?",
+          "answer": "We zijn van maandag tot en met zaterdag geopend met de volgende tijden:\n\nMaandag - Vrijdag:\n🍽️ Lunch: 12:00 - 14:30 (laatste reservering om 14:30)\n🍽️ Diner: 18:00 - 22:00 (laatste reservering om 20:30)\n\nZaterdag:\n🎉 Alleen diner: 18:00 - 22:00 (laatste reservering om 20:30)\n\nWe zijn gesloten op zondag. Voor reserveringen kunt u ons bellen op +32 465 20 60 24 of online boeken."
+        },
+        "vegetarian": {
+          "question": "Biedt u vegetarische en veganistische Libanese gerechten aan?",
+          "answer": "Absoluut! De Libanese keuken is van nature rijk aan vegetarische en veganistische opties. We bieden falafel, hummus, baba ganoush, tabouleh, fattoush, gevulde wijnbladeren, linzensoep en nog veel meer plantaardige gerechten. Onze veganistische kibbeh is een favoriet van de klanten. Vraag gerust aan ons personeel om aanbevelingen!"
+        },
+        "reservation": {
+          "question": "Kan ik een reservering maken bij East At West?",
+          "answer": "Ja, we raden ten zeerste aan om te reserveren, vooral voor het diner en in het weekend. U kunt online een tafel boeken via onze website, ons bellen op +32 465 20 60 24, of een e-mail sturen naar infos.east.west@gmail.com. Walk-ins zijn welkom op basis van beschikbaarheid."
+        },
+        "catering": {
+          "question": "Biedt u cateringdiensten aan voor evenementen in Brussel?",
+          "answer": "Ja! We bieden authentieke Libanese catering voor bedrijfsevenementen, bruiloften, privéfeesten en speciale gelegenheden in heel Brussel. Ons cateringmenu omvat mezze-schotels, warme gerechten, desserts en aanpasbare opties voor elke groepsgrootte. Bezoek onze pagina Evenementen & Catering of neem contact met ons op voor een persoonlijke offerte."
+        },
+        "popularDishes": {
+          "question": "Wat zijn uw populairste Libanese gerechten?",
+          "answer": "De favorieten van onze klanten zijn onder andere:\n• Gemengde Mezze Schotel (hummus, baba ganoush, tabouleh, falafel)\n• Kip Shawarma\n• Lams Kafta Kebabs\n• Kibbeh (traditioneel en veganistisch)\n• Fattoush Salade\n• Manakish (Libanees platbrood)\n• Baklava als dessert\n\nWe bieden ook dagspecials met seizoensgebonden ingrediënten."
+        },
+        "familyFriendly": {
+          "question": "Is East At West gezinsvriendelijk?",
+          "answer": "Ja, we zijn een gezinsvriendelijk restaurant! We verwelkomen gasten van alle leeftijden en bieden een ontspannen, warme sfeer die perfect is voor gezinsdiners. Ons menu heeft opties die zowel volwassenen als kinderen aanspreken, en ons personeel helpt graag met speciale verzoeken."
+        },
+        "takeaway": {
+          "question": "Biedt u afhaal en bezorging aan in Brussel?",
+          "answer": "Ja, we bieden zowel afhaal- als bezorgdiensten aan. U kunt rechtstreeks via onze website bestellen voor afhaling, of u kunt ons vinden op populaire bezorgplatforms. Geniet van authentieke Libanese gerechten in het comfort van uw eigen huis!"
+        }
+      }
     },
     "cta": {
       "title": "Klaar om Authentieke Libanese Keuken te Ervaren?",

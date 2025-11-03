@@ -1450,7 +1450,49 @@
     },
     "faq": {
       "title": "Lebanese Restaurant Brussels - Your Questions Answered",
-      "subtitle": "Everything you need to know about East At West"
+      "subtitle": "Everything you need to know about East At West",
+      "questions": {
+        "bestRestaurant": {
+          "question": "What makes East At West the best Lebanese restaurant in Brussels?",
+          "answer": "East At West combines authentic Lebanese recipes passed down through generations with fresh, locally-sourced ingredients. Our chefs bring decades of experience in Lebanese cuisine, creating traditional dishes like mezze, falafel, hummus, and shawarma with modern presentation. We're recognized by Restaurant Guru and loved by locals and tourists alike for our warm hospitality and genuine flavors of Lebanon."
+        },
+        "location": {
+          "question": "Where is East At West Lebanese restaurant located in Brussels?",
+          "answer": "We're conveniently located at Bld de l'Empereur 26, 1000 Brussels (Bruxelles), right in the heart of the city center. We're easily accessible by metro (Bourse/De Brouckère stations), tram, and bus. Street parking and public parking garages are available nearby."
+        },
+        "halal": {
+          "question": "Do you serve halal food at your Lebanese restaurant?",
+          "answer": "Yes, all our meat dishes are prepared according to halal standards. We take pride in serving authentic Lebanese halal cuisine including chicken shawarma, lamb kebabs, kafta, and more. Our menu also features extensive vegetarian and vegan options."
+        },
+        "openingHours": {
+          "question": "What are the opening hours of East At West Brussels?",
+          "answer": "We're open Monday through Saturday with the following hours:\n\nMonday - Friday:\n🍽️ Lunch: 12:00 - 14:30 (last reservation at 14:30)\n🍽️ Dinner: 18:00 - 22:00 (last reservation at 20:30)\n\nSaturday:\n🎉 Dinner only: 18:00 - 22:00 (last reservation at 20:30)\n\nWe're closed on Sundays. For reservations, call us at +32 465 20 60 24 or book online."
+        },
+        "vegetarian": {
+          "question": "Do you offer vegetarian and vegan Lebanese dishes?",
+          "answer": "Absolutely! Lebanese cuisine is naturally rich in vegetarian and vegan options. We offer falafel, hummus, baba ganoush, tabbouleh, fattoush, stuffed grape leaves, lentil soup, and many more plant-based dishes. Our vegan kibbeh is a customer favorite. Just ask our staff for recommendations!"
+        },
+        "reservation": {
+          "question": "Can I make a reservation at East At West?",
+          "answer": "Yes, we highly recommend making reservations, especially for dinner and weekends. You can book a table online through our website, call us at +32 465 20 60 24, or email infos.east.west@gmail.com. Walk-ins are welcome based on availability."
+        },
+        "catering": {
+          "question": "Do you offer catering services for events in Brussels?",
+          "answer": "Yes! We provide authentic Lebanese catering for corporate events, weddings, private parties, and special occasions throughout Brussels. Our catering menu includes mezze platters, hot dishes, desserts, and customizable options for any group size. Visit our Events & Catering page or contact us for a personalized quote."
+        },
+        "popularDishes": {
+          "question": "What are your most popular Lebanese dishes?",
+          "answer": "Our customer favorites include:\n• Mixed Mezze Platter (hummus, baba ganoush, tabbouleh, falafel)\n• Chicken Shawarma\n• Lamb Kafta Kebabs\n• Kibbeh (traditional and vegan)\n• Fattoush Salad\n• Manakish (Lebanese flatbread)\n• Baklava for dessert\n\nWe also offer daily specials featuring seasonal ingredients."
+        },
+        "familyFriendly": {
+          "question": "Is East At West family-friendly?",
+          "answer": "Yes, we're a family-friendly restaurant! We welcome guests of all ages and offer a relaxed, warm atmosphere perfect for family dinners. Our menu has options that appeal to both adults and children, and our staff is happy to accommodate special requests."
+        },
+        "takeaway": {
+          "question": "Do you offer takeaway and delivery in Brussels?",
+          "answer": "Yes, we offer both takeaway and delivery services. You can order directly through our website for pickup, or find us on popular delivery platforms. Enjoy authentic Lebanese cuisine in the comfort of your home!"
+        }
+      }
     },
     "cta": {
       "title": "Ready to Experience Authentic Lebanese Cuisine?",
