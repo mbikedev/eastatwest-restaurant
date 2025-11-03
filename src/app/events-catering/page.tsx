@@ -30,7 +30,7 @@ export default function EventsCateringPage() {
     },
     // Gallery images
     {
-      src: "/images/gallery2/eastatwest-bruxelles.webp",
+      src: "/images/gallery/set-libanais.webp",
       alt: t('events.gallery.image1_alt')
     },
     {
@@ -575,7 +575,7 @@ export default function EventsCateringPage() {
               onClick={() => handleImageClick(3)}
             >
               <Image
-                src="/images/gallery2/eastatwest-bruxelles.webp"
+                src="/images/gallery/set-libanais.webp"
                 alt={t('events.gallery.image1_alt')}
                 width={400}
                 height={300}
