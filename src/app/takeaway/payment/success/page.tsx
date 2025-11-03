@@ -328,7 +328,11 @@ export default function PaymentSuccessPage() {
         >
           <button
             onClick={() => router.push('/takeaway')}
-            className="bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] text-white px-8 py-4 rounded-lg font-semibold hover:from-[#A8D5BA] hover:to-[#1A1A1A] transition-all duration-300"
+            className={`bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] px-8 py-4 rounded-lg font-semibold transition-all duration-300 ${
+              theme === 'dark'
+                ? 'text-white hover:from-[#A8D5BA] hover:to-[#1A1A1A]'
+                : 'text-[#1A1A1A] hover:from-[#8BB59E] hover:to-[#A8D5BA]'
+            }`}
           >
             {t('payment.success.orderAgain')}
           </button>
