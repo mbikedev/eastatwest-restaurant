@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import { useTheme } from '@/context/ThemeContext';
+import Head from 'next/head';
 
 export default function ResetPasswordPage() {
   const { theme } = useTheme();
@@ -99,7 +100,11 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div className={`min-h-screen flex items-center justify-center ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+      <div className={`min-h-screen flex items-center justify-center ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
       <div className={`max-w-md w-full p-8 rounded-lg shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="text-center mb-6">
           <h1 className={`text-3xl font-bold mb-2 ${theme === 'dark' ? 'text-[#A8D5BA]' : 'text-[#A8D5BA]'}`}>
@@ -218,5 +223,6 @@ export default function ResetPasswordPage() {
         )}
       </div>
     </div>
+    </>
   );
 }

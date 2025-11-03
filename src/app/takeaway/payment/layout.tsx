@@ -1,4 +1,3 @@
-import AdminNav from '../../components/AdminNav'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,15 +7,10 @@ export const metadata: Metadata = {
   },
 }
 
-export default function AdminLayout({
+export default function PaymentLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <>
-      <AdminNav />
-      {children}
-    </>
-  )
+  return <>{children}</>
 }

@@ -62,6 +62,9 @@ export const metadata: Metadata = {
   keywords:
     "Lebanese restaurant Brussels, Mediterranean cuisine, fusion restaurant, Brussels dining, Lebanese food, mezze, authentic cuisine, Restaurant Guru recommended",
   authors: [{ name: "East @ West" }],
+  alternates: {
+    canonical: "https://eastatwest.com",
+  },
   icons: {
     icon: [
       {
