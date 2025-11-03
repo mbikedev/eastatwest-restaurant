@@ -136,7 +136,7 @@ const Header = () => {
                       href={item.href}
                       target={item.href.endsWith('.pdf') ? '_blank' : undefined}
                       rel={item.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
-                      className={`relative px-2 sm:px-2.5 md:px-3 lg:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm md:text-sm lg:text-base font-medium transition-all duration-300 group backdrop-blur-sm border ${
+                      className={`relative px-2 sm:px-2.5 md:px-3 lg:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl text-xs sm:text-sm md:text-sm lg:text-base font-medium transition-all duration-300 group backdrop-blur-sm border whitespace-nowrap ${
                         isActive
                           ? theme === 'dark'
                             ? 'text-white bg-green-600/30 border-green-500/50'
