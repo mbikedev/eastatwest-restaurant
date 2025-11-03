@@ -652,7 +652,11 @@ export default function CheckoutPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] text-white py-4 rounded-lg text-lg font-semibold hover:from-[#A8D5BA] hover:to-[#1A1A1A] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`w-full bg-gradient-to-r from-[#A8D5BA] to-[#A8D5BA] py-4 rounded-lg text-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  theme === 'dark'
+                    ? 'text-white hover:from-[#A8D5BA] hover:to-[#1A1A1A]'
+                    : 'text-[#1A1A1A] hover:from-[#8BB59E] hover:to-[#A8D5BA]'
+                }`}
               >
                 {loading
                   ? t('checkout.processing')
