@@ -399,21 +399,33 @@ export default function CommentsAdminPage() {
                     {!comment.is_approved ? (
                       <button
                         onClick={() => handleApprove(comment.id)}
-                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105"
+                        style={{
+                          backgroundColor: '#10B981',
+                          color: '#FFFFFF'
+                        }}
+                        className="hover:opacity-90 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105"
                       >
                         ✅ Approve
                       </button>
                     ) : (
                       <button
                         onClick={() => handleDisapprove(comment.id)}
-                        className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105"
+                        style={{
+                          backgroundColor: '#F97316',
+                          color: '#FFFFFF'
+                        }}
+                        className="hover:opacity-90 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105"
                       >
                         ⏸️ Disapprove
                       </button>
                     )}
                     <button
                       onClick={() => handleDelete(comment.id)}
-                      className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105"
+                      style={{
+                        backgroundColor: '#EF4444',
+                        color: '#FFFFFF'
+                      }}
+                      className="hover:opacity-90 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105"
                     >
                       🗑️ Delete
                     </button>
