@@ -2,15 +2,28 @@
 
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../../context/ThemeContext'
+import { useLanguage } from '../../context/LanguageContext'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import FAQSection from '@/components/FAQSection'
 import Head from 'next/head'
+import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function LebaneseRestaurantBrusselsPage() {
   const { t } = useTranslation('common')
   const { theme } = useTheme()
+  const { changeLanguage } = useLanguage()
+  const searchParams = useSearchParams()
+
+  // Handle URL-based language switching
+  useEffect(() => {
+    const lng = searchParams.get('lng')
+    if (lng && (lng === 'en' || lng === 'fr' || lng === 'nl')) {
+      changeLanguage(lng)
+    }
+  }, [searchParams, changeLanguage])
 
   // SEO-optimized FAQs for Lebanese Restaurant Brussels
   const faqs = [
