@@ -31,7 +31,7 @@ export default function CheckoutPage() {
     additional_notes: ''
   })
 
-  const [paymentMethod, setPaymentMethod] = useState<'online' | 'cash'>('online')
+  const [paymentMethod, setPaymentMethod] = useState<'online' | 'cash'>('cash')
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
@@ -518,60 +518,23 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              {/* Payment Method - only show cash option for pickup */}
+              {/* Payment Method - only cash on pickup available */}
               {formData.delivery_type === 'pickup' && (
                 <div>
                   <h3 className="text-lg font-semibold mb-4">{t('checkout.paymentMethod')}</h3>
 
-                  <div className="space-y-4">
-                    <div className="flex space-x-4">
-                      <label className={`flex-1 p-4 rounded-lg border cursor-pointer transition-all ${
-                        paymentMethod === 'online'
-                          ? theme === 'dark'
-                            ? 'border-[#A8D5BA] bg-[#A8D5BA]/10'
-                            : 'border-[#A8D5BA] bg-[#A8D5BA]/10'
-                          : theme === 'dark'
-                            ? 'border-[#A8D5BA]/30 hover:border-[#A8D5BA]/50'
-                            : 'border-[#A8D5BA]/30 hover:border-[#A8D5BA]/50'
-                      }`}>
-                        <input
-                          type="radio"
-                          name="payment_method"
-                          value="online"
-                          checked={paymentMethod === 'online'}
-                          onChange={(e) => setPaymentMethod(e.target.value as 'online' | 'cash')}
-                          className="sr-only"
-                        />
-                        <div className="text-center">
-                          <div className="text-2xl mb-2">💳</div>
-                          <div className="font-semibold">{t('checkout.payment.online')}</div>
-                          <div className="text-sm opacity-70">{t('checkout.payment.onlineDescription')}</div>
-                        </div>
-                      </label>
-
-                      <label className={`flex-1 p-4 rounded-lg border cursor-pointer transition-all ${
-                        paymentMethod === 'cash'
-                          ? theme === 'dark'
-                            ? 'border-[#A8D5BA] bg-[#A8D5BA]/10'
-                            : 'border-[#A8D5BA] bg-[#A8D5BA]/10'
-                          : theme === 'dark'
-                            ? 'border-[#A8D5BA]/30 hover:border-[#A8D5BA]/50'
-                            : 'border-[#A8D5BA]/30 hover:border-[#A8D5BA]/50'
-                      }`}>
-                        <input
-                          type="radio"
-                          name="payment_method"
-                          value="cash"
-                          checked={paymentMethod === 'cash'}
-                          onChange={(e) => setPaymentMethod(e.target.value as 'online' | 'cash')}
-                          className="sr-only"
-                        />
-                        <div className="text-center">
-                          <div className="text-2xl mb-2">💵</div>
-                          <div className="font-semibold">{t('checkout.payment.cash')}</div>
-                          <div className="text-sm opacity-70">{t('checkout.payment.cashDescription')}</div>
-                        </div>
-                      </label>
+                  <div className={`p-6 rounded-lg border ${
+                    theme === 'dark'
+                      ? 'border-[#A8D5BA] bg-[#A8D5BA]/10'
+                      : 'border-[#A8D5BA] bg-[#A8D5BA]/10'
+                  }`}>
+                    <div className="text-center">
+                      <div className="text-4xl mb-3">💵</div>
+                      <div className="font-semibold text-lg mb-2">{t('checkout.payment.cash')}</div>
+                      <div className="text-sm opacity-70">{t('checkout.payment.cashDescription')}</div>
+                      <div className={`mt-4 text-xs ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}>
+                        {t('checkout.payment.cashOnly') || 'Currently only accepting cash payments on pickup'}
+                      </div>
                     </div>
                   </div>
                 </div>
