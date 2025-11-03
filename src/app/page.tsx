@@ -18,6 +18,7 @@ import Guru2 from '../../public/images/guru2024.webp'
 import Banner from '../../public/images/banner.webp'
 import HeroButtons from '@/components/HeroButtons'
 import ProductModal from '@/components/ProductModal'
+import TestimonialsSection from '@/components/TestimonialsSection'
 
 export default function HomePage() {
   // Translation hook for multi-language support
@@ -69,6 +70,52 @@ export default function HomePage() {
     setIsModalOpen(false)
     setTimeout(() => setSelectedProduct(null), 300)
   }
+
+  // Testimonials data
+  const testimonials = [
+    {
+      name: "Sarah M.",
+      rating: 5,
+      review: "Absolutely amazing! The mezze platter was fresh and flavorful. Best Lebanese restaurant in Brussels by far. The staff was warm and welcoming. Highly recommend!",
+      date: "2024-10-15",
+      location: "Brussels, Belgium"
+    },
+    {
+      name: "Ahmed K.",
+      rating: 5,
+      review: "Authentic Lebanese cuisine that reminds me of home. The hummus and falafel are perfection. Great halal options. Will definitely return!",
+      date: "2024-10-20",
+      location: "Antwerp, Belgium"
+    },
+    {
+      name: "Emma L.",
+      rating: 5,
+      review: "Best vegan Lebanese food I've ever had! The vegan kibbeh was incredible. So happy to find a place with extensive plant-based options. The atmosphere is lovely too.",
+      date: "2024-11-01",
+      location: "Brussels, Belgium"
+    },
+    {
+      name: "Marc D.",
+      rating: 5,
+      review: "Perfect spot for business lunches. Quick service, delicious food, and great location in the city center. The chicken shawarma is my go-to.",
+      date: "2024-09-28",
+      location: "Brussels, Belgium"
+    },
+    {
+      name: "Fatima R.",
+      rating: 5,
+      review: "Took my family here for dinner and everyone loved it! The portions are generous and the prices are fair. Kids loved the falafel. Definitely our new favorite restaurant!",
+      date: "2024-10-05",
+      location: "Ghent, Belgium"
+    },
+    {
+      name: "Jean-Pierre B.",
+      rating: 5,
+      review: "Excellent service and outstanding food. The lamb kafta kebabs melted in my mouth. The wine selection pairs perfectly with the dishes. A true gem!",
+      date: "2024-10-12",
+      location: "Brussels, Belgium"
+    }
+  ]
 
   // Video reference for hero section autoplay, defer until after first paint
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -1175,6 +1222,10 @@ export default function HomePage() {
                 }}
               />
             </motion.section>
+
+            {/* ===== TESTIMONIALS SECTION ===== */}
+            {/* Customer Testimonials with Reviews and Ratings */}
+            <TestimonialsSection testimonials={testimonials} />
 
             {/* ===== CONTACT SECTION ===== */}
             {/* Contact Section with Contact Information and Restaurant Image */}
