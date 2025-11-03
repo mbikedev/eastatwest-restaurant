@@ -945,7 +945,8 @@
       "online": "Paiement en Ligne",
       "onlineDescription": "Payez en toute sécurité par carte",
       "cash": "Paiement en Espèces",
-      "cashDescription": "Payez lors de la récupération"
+      "cashDescription": "Payez lors de la récupération",
+      "cashOnly": "Actuellement, nous n'acceptons que les paiements en espèces lors du retrait"
     },
     "validation": {
       "nameRequired": "Le nom est requis",

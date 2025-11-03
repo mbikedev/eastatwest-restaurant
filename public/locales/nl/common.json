@@ -952,7 +952,8 @@
       "online": "Online Betaling",
       "onlineDescription": "Betaal veilig met creditcard",
       "cash": "Contant bij Afhalen",
-      "cashDescription": "Betaal bij het ophalen van uw bestelling"
+      "cashDescription": "Betaal bij het ophalen van uw bestelling",
+      "cashOnly": "Momenteel accepteren we alleen contante betalingen bij afhaling"
     },
     "validation": {
       "nameRequired": "Naam is verplicht",
