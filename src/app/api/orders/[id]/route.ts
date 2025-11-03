@@ -94,4 +94,62 @@ export async function PATCH(
       { status: 500 }
     )
   }
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params
+  try {
+    const supabase = await createClient()
+    const orderId = id
+
+    if (!orderId) {
+      return NextResponse.json(
+        { success: false, error: 'Order ID is required' },
+        { status: 400 }
+      )
+    }
+
+    // First delete all order items (due to foreign key constraint)
+    const { error: itemsError } = await supabase
+      .from('order_items')
+      .delete()
+      .eq('order_id', orderId)
+
+    if (itemsError) {
+      console.error('Error deleting order items:', itemsError)
+      return NextResponse.json(
+        { success: false, error: 'Failed to delete order items' },
+        { status: 500 }
+      )
+    }
+
+    // Then delete the order
+    const { error: orderError } = await supabase
+      .from('orders')
+      .delete()
+      .eq('id', orderId)
+
+    if (orderError) {
+      console.error('Error deleting order:', orderError)
+      return NextResponse.json(
+        { success: false, error: 'Failed to delete order' },
+        { status: 500 }
+      )
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Order deleted successfully'
+    })
+
+  } catch (error) {
+    console.error('Order deletion error:', error)
+    return NextResponse.json(
+      { success: false, error: 'Failed to delete order' },
+      { status: 500 }
+    )
+  }
 } 

@@ -233,22 +233,23 @@ export default function AdminOrdersPage() {
     if (!confirm('Are you sure you want to delete this order?')) return;
 
     try {
-      const { error } = await supabase
-        .from('orders')
-        .delete()
-        .eq('id', orderId);
+      const response = await fetch(`/api/orders/${orderId}`, {
+        method: 'DELETE',
+      });
 
-      if (error) {
-        console.error('Error deleting order:', error);
-        toast.error('Failed to delete order');
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        console.error('Error deleting order:', data.error);
+        toast.error(data.error || 'Failed to delete order');
         return;
       }
 
-      toast.success('Order deleted');
+      toast.success('Order deleted successfully');
       await fetchOrders();
     } catch (error) {
       console.error('Error:', error);
-      toast.error('An error occurred');
+      toast.error('An error occurred while deleting the order');
     }
   };
 
