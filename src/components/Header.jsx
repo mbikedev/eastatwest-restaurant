@@ -117,6 +117,7 @@ const Header = () => {
             <div className="hidden lg:flex items-center space-x-0.5 sm:space-x-1 md:space-x-1.5 lg:space-x-2">
               {[
                 { href: '/menu', label: t('nav.menu') },
+                { href: '/lebanese-restaurant-brussels', label: t('nav.lebanese') },
                 { href: '/reservations', label: t('nav.reservations') },
                 { href: '/takeaway', label: t('nav.takeaway') },
                 { href: '/blog', label: t('nav.blog') },
@@ -233,6 +234,7 @@ const Header = () => {
               <div className="px-4 sm:px-6 py-3 sm:py-4 pb-6 space-y-1 sm:space-y-2">
                 {[
                   { href: '/menu', label: t('nav.menu'), icon: '🍽️' },
+                  { href: '/lebanese-restaurant-brussels', label: t('nav.lebanese'), icon: '🇱🇧' },
                   { href: '/reservations', label: t('nav.reservations'), icon: '📅' },
                   { href: '/takeaway', label: t('nav.takeaway'), icon: '🥡' },
                   { href: '/blog', label: t('nav.blog'), icon: '📝' },

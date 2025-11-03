@@ -95,6 +95,16 @@ const Footer = () => {
               </h2>
               <nav className="flex flex-col space-y-2" aria-label="Quick links">
                 <a
+                  href="/lebanese-restaurant-brussels"
+                  className="group flex items-center space-x-2 text-sm text-white/80 hover:text-white transition-colors duration-300"
+                  style={{ fontFamily: 'Rozha One, serif' }}
+                >
+                  <svg className="w-4 h-4 text-white/70 group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                  </svg>
+                  <span>{t('nav.lebanese')}</span>
+                </a>
+                <a
                   href="/contact"
                   className="group flex items-center space-x-2 text-sm text-white/80 hover:text-white transition-colors duration-300"
                   style={{ fontFamily: 'Rozha One, serif' }}
