@@ -178,60 +178,173 @@ export default function RootLayout({
 
         {/* DO NOT preconnect to Google Fonts - Next.js font optimization handles this */}
 
-        {/* Restaurant Structured Data for SEO */}
+        {/* Enhanced Restaurant + Organization Structured Data for SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Restaurant",
-              name: "East @ West",
-              image: "https://eastatwest.com/images/banner.webp",
-              logo: {
-                "@type": "ImageObject",
-                url: `https://eastatwest.com/android-chrome-512x512.png?${FAVICON_VERSION}`,
-                width: "512",
-                height: "512",
-              },
-              url: "https://eastatwest.com",
-              telephone: "+32-2-503-5303",
-              email: "infos.east.west@gmail.com",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Rue de la Bourse 15",
-                addressLocality: "Brussels",
-                postalCode: "1000",
-                addressCountry: "BE",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: 50.8476,
-                longitude: 4.3572,
-              },
-              servesCuisine: ["Lebanese", "Mediterranean", "Middle Eastern"],
-              priceRange: "$$",
-              openingHoursSpecification: [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: [
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday",
-                  ],
-                  opens: "12:00",
-                  closes: "22:00",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Restaurant",
+                "@id": "https://eastatwest.com/#restaurant",
+                name: "East @ West",
+                alternateName: "East at West Lebanese Restaurant",
+                description: "Authentic Lebanese restaurant in Brussels serving fresh mezze, grilled specialties, and traditional desserts. Halal-certified with vegetarian and vegan options.",
+                image: [
+                  "https://eastatwest.com/images/banner.webp",
+                  "https://eastatwest.com/images/gallery/set-libanais.webp",
+                  "https://eastatwest.com/images/gallery/falafel.webp"
+                ],
+                logo: {
+                  "@type": "ImageObject",
+                  url: `https://eastatwest.com/android-chrome-512x512.png?${FAVICON_VERSION}`,
+                  width: 512,
+                  height: 512,
                 },
-              ],
-              acceptsReservations: "True",
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.5",
-                reviewCount: "150",
+                url: "https://eastatwest.com",
+                telephone: "+32-2-503-5303",
+                email: "infos.east.west@gmail.com",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "Rue de la Bourse 15",
+                  addressLocality: "Brussels",
+                  addressRegion: "Brussels-Capital",
+                  postalCode: "1000",
+                  addressCountry: "BE",
+                },
+                geo: {
+                  "@type": "GeoCoordinates",
+                  latitude: 50.8476,
+                  longitude: 4.3572,
+                },
+                servesCuisine: ["Lebanese", "Mediterranean", "Middle Eastern", "Halal"],
+                priceRange: "$$",
+                menu: "https://eastatwest.com/menu",
+                openingHoursSpecification: [
+                  {
+                    "@type": "OpeningHoursSpecification",
+                    dayOfWeek: ["Tuesday", "Wednesday", "Thursday"],
+                    opens: "12:00",
+                    closes: "22:00",
+                  },
+                  {
+                    "@type": "OpeningHoursSpecification",
+                    dayOfWeek: ["Friday", "Saturday"],
+                    opens: "12:00",
+                    closes: "23:00",
+                  },
+                  {
+                    "@type": "OpeningHoursSpecification",
+                    dayOfWeek: "Sunday",
+                    opens: "12:00",
+                    closes: "21:00",
+                  },
+                ],
+                acceptsReservations: true,
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: "4.5",
+                  reviewCount: "150",
+                  bestRating: "5",
+                  worstRating: "1",
+                },
+                hasMenu: {
+                  "@type": "Menu",
+                  url: "https://eastatwest.com/menu",
+                  hasMenuSection: [
+                    {
+                      "@type": "MenuSection",
+                      name: "Mezze",
+                      description: "Traditional Lebanese appetizers"
+                    },
+                    {
+                      "@type": "MenuSection",
+                      name: "Main Courses",
+                      description: "Grilled specialties and traditional dishes"
+                    },
+                    {
+                      "@type": "MenuSection",
+                      name: "Desserts",
+                      description: "Traditional Lebanese sweets"
+                    }
+                  ]
+                },
+                starRating: {
+                  "@type": "Rating",
+                  ratingValue: "4.5"
+                },
+                paymentAccepted: ["Cash", "Credit Card", "Debit Card"],
+                currenciesAccepted: "EUR",
+                amenityFeature: [
+                  {
+                    "@type": "LocationFeatureSpecification",
+                    name: "Takeaway Service",
+                    value: true
+                  },
+                  {
+                    "@type": "LocationFeatureSpecification",
+                    name: "Delivery Service",
+                    value: true
+                  },
+                  {
+                    "@type": "LocationFeatureSpecification",
+                    name: "Outdoor Seating",
+                    value: false
+                  },
+                  {
+                    "@type": "LocationFeatureSpecification",
+                    name: "Family Friendly",
+                    value: true
+                  }
+                ],
+                potentialAction: {
+                  "@type": "ReserveAction",
+                  target: {
+                    "@type": "EntryPoint",
+                    urlTemplate: "https://eastatwest.com/reservations",
+                    actionPlatform: [
+                      "http://schema.org/DesktopWebPlatform",
+                      "http://schema.org/MobileWebPlatform"
+                    ]
+                  },
+                  result: {
+                    "@type": "Reservation",
+                    name: "Table Reservation"
+                  }
+                }
               },
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "@id": "https://eastatwest.com/#organization",
+                name: "East @ West",
+                url: "https://eastatwest.com",
+                logo: `https://eastatwest.com/android-chrome-512x512.png?${FAVICON_VERSION}`,
+                description: "Authentic Lebanese restaurant in Brussels offering dine-in, takeaway, and catering services",
+                telephone: "+32-2-503-5303",
+                email: "infos.east.west@gmail.com",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "Rue de la Bourse 15",
+                  addressLocality: "Brussels",
+                  postalCode: "1000",
+                  addressCountry: "BE",
+                },
+                sameAs: [
+                  "https://www.facebook.com/eastatwest",
+                  "https://www.instagram.com/eastatwest",
+                  "https://www.restaurantguru.com/East-at-West-Brussels"
+                ],
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  telephone: "+32-2-503-5303",
+                  contactType: "customer service",
+                  email: "infos.east.west@gmail.com",
+                  availableLanguage: ["English", "French", "Dutch", "Arabic"],
+                  areaServed: "BE"
+                }
+              }
+            ]),
           }}
         />
 
