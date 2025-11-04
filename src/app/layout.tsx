@@ -166,8 +166,8 @@ export default function RootLayout({
 
         {/* Note: Preload for banner.webp moved to homepage to avoid unused preload warnings on other pages */}
 
-        {/* DNS prefetch for external resources - do NOT preconnect (causes extra RTT) */}
-        <link rel="dns-prefetch" href="https://awards.infcdn.net" />
+        {/* Preconnect to external resources for faster loading */}
+        <link rel="preconnect" href="https://awards.infcdn.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://restaurantguru.com" />
 
         {/* DO NOT preconnect to Google Fonts - Next.js font optimization handles this */}
@@ -272,11 +272,6 @@ export default function RootLayout({
           <link rel="stylesheet" href="https://awards.infcdn.net/circ5_n.css" />
           <link rel="stylesheet" href="/deferred-styles.css" />
         </noscript>
-
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;700&display=swap"
-        />
 
         <style
           id="ultra-critical-css"
