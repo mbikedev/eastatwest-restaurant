@@ -16,10 +16,30 @@ const Header = () => {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
+
+  // Detect reduced motion preference for better performance
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const isMobile = window.innerWidth < 768
+    setPrefersReducedMotion(mediaQuery.matches || isMobile)
+
+    const handleChange = () => {
+      setPrefersReducedMotion(mediaQuery.matches || window.innerWidth < 768)
+    }
+
+    mediaQuery.addEventListener('change', handleChange)
+    window.addEventListener('resize', handleChange)
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange)
+      window.removeEventListener('resize', handleChange)
+    }
+  }, [])
 
   // Handle scroll effect
   useEffect(() => {
@@ -53,23 +73,23 @@ const Header = () => {
             ? 'bg-gray-900 backdrop-blur-sm'
             : 'bg-gray-900/75 backdrop-blur-sm'
         }`}
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      initial={prefersReducedMotion ? {} : { opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 relative">
         <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-12 sm:h-13 md:h-14' : 'h-14 sm:h-15 md:h-16'}`}>
           {/* Logo */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
+            whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
           >
             <Link href="/" className="flex items-center space-x-2 group">
               <motion.div
                 className="relative"
-                initial={{ rotate: -5 }}
-                animate={{ rotate: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                initial={prefersReducedMotion ? {} : {}}
+                animate={{}}
+                transition={{ duration: 0 }}
               >
                 <Image
                   src="/images/east-logo.webp"
