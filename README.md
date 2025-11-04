@@ -267,9 +267,9 @@ This is a production project. For major changes, please open an issue first to d
 ## License
 
 Proprietary - All rights reserved
-
+East At West Restaurant
 ## Contact
-
+mbagnickg@gmail.com
 - **Website**: https://eastatwest.com
 - **Email**: infos.east.west@gmail.com
 - **Repository**: https://github.com/mbikedev/eastatwest-restaurant
