@@ -64,6 +64,12 @@ export const metadata: Metadata = {
   authors: [{ name: "East @ West" }],
   alternates: {
     canonical: "https://eastatwest.com",
+    languages: {
+      'en': 'https://eastatwest.com/en',
+      'fr': 'https://eastatwest.com/fr',
+      'nl': 'https://eastatwest.com/nl',
+      'x-default': 'https://eastatwest.com',
+    },
   },
   icons: {
     icon: [

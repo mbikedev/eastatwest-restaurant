@@ -252,25 +252,47 @@ export default function BlogPostPage() {
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": "Article",
     "headline": blog.title,
     "description": blog.excerpt || blog.meta_description,
+    "image": {
+      "@type": "ImageObject",
+      "url": blog.cover_image_url || "https://eastatwest.com/images/banner.webp",
+      "width": 1200,
+      "height": 630
+    },
     "author": {
       "@type": "Person",
-      "name": blog.author_name || "East at West Team"
+      "name": blog.author_name || "East at West Team",
+      "url": "https://eastatwest.com/about"
     },
     "publisher": {
       "@type": "Organization",
       "name": "East at West",
+      "url": "https://eastatwest.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://eastatwest.com/images/logo.webp"
+        "url": "https://eastatwest.com/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
       }
     },
     "datePublished": blog.published_at,
     "dateModified": blog.updated_at,
-    "image": blog.cover_image_url,
-    "url": `https://eastatwest.com/blog/${blog.slug}`
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://eastatwest.com/blog/${blog.slug}`
+    },
+    "url": `https://eastatwest.com/blog/${blog.slug}`,
+    "articleSection": blog.tags && blog.tags.length > 0 ? blog.tags[0] : "Lebanese Cuisine",
+    "keywords": blog.tags ? blog.tags.join(", ") : "Lebanese cuisine, Brussels restaurant",
+    "wordCount": blog.content ? blog.content.split(/\s+/).length : 0,
+    "inLanguage": blog.language || "en",
+    "isAccessibleForFree": true,
+    "about": {
+      "@type": "Thing",
+      "name": "Lebanese Cuisine"
+    }
   }
 
   return (

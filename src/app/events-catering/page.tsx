@@ -98,34 +98,81 @@ export default function EventsCateringPage() {
     }
   }
 
-  // JSON-LD Structured Data for Events & Catering
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "East At West",
-    "description": "Authentic Lebanese restaurant in Brussels offering events and catering services for private dining, business meetings, weddings and special occasions.",
-    "url": "https://eastatwest.com/events-catering",
-    "image": "https://eastatwest.com/images/events-catering/plat-libanais-restaurant-libanais-event.webp",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Brussels",
-      "addressLocality": "Brussels",
-      "addressCountry": "BE"
+  // JSON-LD Structured Data for Events & Catering with Service schema
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Catering Service",
+      "provider": {
+        "@type": "Restaurant",
+        "name": "East At West",
+        "url": "https://eastatwest.com",
+        "telephone": "+32-2-503-5303",
+        "email": "infos.east.west@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rue de la Bourse 15",
+          "addressLocality": "Brussels",
+          "postalCode": "1000",
+          "addressCountry": "BE"
+        },
+        "servesCuisine": ["Lebanese", "Mediterranean", "Middle Eastern"],
+        "priceRange": "$$"
+      },
+      "name": "Lebanese Catering Services Brussels",
+      "description": "Authentic Lebanese catering for events, weddings, corporate functions, and private parties in Brussels. Fresh mezze, grilled specialties, and traditional desserts.",
+      "url": "https://eastatwest.com/events-catering",
+      "areaServed": {
+        "@type": "City",
+        "name": "Brussels"
+      },
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://eastatwest.com/contact"
+      },
+      "category": [
+        "Wedding Catering",
+        "Corporate Catering",
+        "Private Event Catering",
+        "Party Catering"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "EUR"
+        }
+      }
     },
-    "telephone": "+32 465 20 60 24",
-    "email": "contact@eastatwest.com",
-    "servesCuisine": ["Lebanese", "Middle Eastern", "Mediterranean"],
-    "priceRange": "$$",
-    "openingHours": [
-      "Tu-Su 12:00-14:00",
-      "Tu-Su 18:00-22:00"
-    ],
-    "hasMenu": "https://eastatwest.com/menu",
-    "acceptsReservations": true,
-    "paymentAccepted": ["Cash", "Credit Card"],
-    "currenciesAccepted": "EUR",
-    "keywords": "Lebanese restaurant Brussels, events catering Brussels, private dining, business catering, wedding catering, authentic Lebanese cuisine"
-  }
+    {
+      "@type": "LocalBusiness",
+      "name": "East At West",
+      "description": "Authentic Lebanese restaurant in Brussels offering events and catering services for private dining, business meetings, weddings and special occasions.",
+      "url": "https://eastatwest.com/events-catering",
+      "image": "https://eastatwest.com/images/events-catering/plat-libanais-restaurant-libanais-event.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue de la Bourse 15",
+        "addressLocality": "Brussels",
+        "postalCode": "1000",
+        "addressCountry": "BE"
+      },
+      "telephone": "+32-2-503-5303",
+      "email": "infos.east.west@gmail.com",
+      "servesCuisine": ["Lebanese", "Middle Eastern", "Mediterranean"],
+      "priceRange": "$$",
+      "openingHours": [
+        "Tu-Su 12:00-22:00"
+      ],
+      "hasMenu": "https://eastatwest.com/menu",
+      "acceptsReservations": true,
+      "paymentAccepted": ["Cash", "Credit Card"],
+      "currenciesAccepted": "EUR"
+    }
+  ]
 
   return (
     <>

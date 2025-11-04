@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../context/ThemeContext'
 import { motion } from 'framer-motion'
+import Script from 'next/script'
 
 const Breadcrumb = () => {
   const pathname = usePathname()
@@ -51,17 +52,45 @@ const Breadcrumb = () => {
 
   const pageTitle = getPageTitle(pathname)
 
+  // Generate BreadcrumbList schema for SEO
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://eastatwest.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": pageTitle,
+        "item": `https://eastatwest.com${pathname}`
+      }
+    ]
+  }
+
   return (
-    <motion.nav
-      className={`w-full py-3 px-4 sm:px-6 lg:px-8 border-b transition-colors duration-300 mt-16 shadow-md ${
-        theme === 'dark'
-          ? 'bg-gray-900/95 border-gray-800 backdrop-blur-sm shadow-black/20'
-          : 'bg-white/95 border-gray-200 backdrop-blur-sm shadow-gray-400/30'
-      }`}
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-    >
+    <>
+      {/* Breadcrumb Structured Data */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
+      <motion.nav
+        className={`w-full py-3 px-4 sm:px-6 lg:px-8 border-b transition-colors duration-300 mt-16 shadow-md ${
+          theme === 'dark'
+            ? 'bg-gray-900/95 border-gray-800 backdrop-blur-sm shadow-black/20'
+            : 'bg-white/95 border-gray-200 backdrop-blur-sm shadow-gray-400/30'
+        }`}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
       <div className="max-w-7xl mx-auto">
         <ol className="flex items-center space-x-2 text-sm">
           {/* Home Link */}
@@ -117,6 +146,7 @@ const Breadcrumb = () => {
         </ol>
       </div>
     </motion.nav>
+    </>
   )
 }
 
