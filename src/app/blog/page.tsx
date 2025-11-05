@@ -310,12 +310,12 @@ export default function BlogPage() {
                             </span>
                           )}
                         </div>
-                        <h2 className="text-2xl md:text-3xl font-bold mb-3 leading-tight">
+                        <h2 className="text-2xl md:text-3xl font-bold mb-3 leading-tight line-clamp-2">
                           {featuredPost.title}
                         </h2>
-                                                  <p className="text-lg opacity-90 leading-relaxed">
-                            {featuredPost.excerpt || t('blog.readMore')}
-                          </p>
+                        <p className="text-lg opacity-90 leading-relaxed line-clamp-2">
+                          {featuredPost.excerpt || t('blog.readMore')}
+                        </p>
                       </div>
                     </div>
                   </Link>
@@ -395,13 +395,13 @@ export default function BlogPage() {
                             </div>
                           )}
 
-                          <h3 className={`text-xl font-bold mb-3 leading-tight ${
+                          <h3 className={`text-xl font-bold mb-3 leading-tight line-clamp-2 ${
                             theme === 'dark' ? 'text-white' : 'text-gray-900'
                           }`}>
                             {blog.title}
                           </h3>
 
-                          <p className={`text-sm leading-relaxed mb-4 ${
+                          <p className={`text-sm leading-relaxed mb-4 line-clamp-2 ${
                             theme === 'dark' ? 'text-white/80' : 'text-gray-600'
                           }`}>
                             {blog.excerpt || t('blog.readMore')}
