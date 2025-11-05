@@ -10,11 +10,18 @@ Out of 54 published blog posts, most are fully translated across EN/FR/NL. Howev
 
 ## ✅ Completed Translations
 
-### French Mezze Guide
+### Week 1 - French Mezze Guide
 - ✅ **Guide des Mezzés Libanais Traditionnels : 20 Entrées Incontournables** (FR)
   - Slug: `guide-mezzes-libanais-traditionnels-entrees-incontournables-fr`
   - Status: Published
   - Created: November 5, 2025
+
+### Week 1 - French Best Restaurants Brussels
+- ✅ **Meilleurs Restaurants Libanais à Bruxelles : Guide Complet 2025** (FR)
+  - Slug: `meilleurs-restaurants-libanais-bruxelles-guide-2025`
+  - Status: Published, Featured
+  - Created: November 5, 2025
+  - Reading time: 12 minutes
 
 ## ❌ Missing Translations
 
@@ -50,15 +57,15 @@ Out of 54 published blog posts, most are fully translated across EN/FR/NL. Howev
 **English Post:**
 - Title: "Best Lebanese Restaurants in Brussels: Complete 2025 Guide"
 - Slug: `best-lebanese-restaurants-brussels-guide-2025`
-- Status: Published (EN only)
+- Status: Published (EN, FR)
 - Word Count: ~10,000 characters
 
-**Needs:**
-- ❌ French translation
-- ❌ Dutch translation
+**Status:**
+- ✅ French translation COMPLETED (Week 1)
+- ❌ Dutch translation - Scheduled for Week 2
 
-**Suggested French Title:** "Meilleurs Restaurants Libanais à Bruxelles : Guide Complet 2025"
-**Suggested Dutch Title:** "Beste Libanese Restaurants in Brussel: Volledige Gids 2025"
+**French Title:** "Meilleurs Restaurants Libanais à Bruxelles : Guide Complet 2025"
+**Dutch Title:** "Beste Libanese Restaurants in Brussel: Volledige Gids 2025"
 
 ## Translation Guidelines
 
