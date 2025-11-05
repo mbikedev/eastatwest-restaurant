@@ -157,7 +157,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <head>
         {/* Force favicon refresh - additional link tags with cache busting */}
         <link rel="icon" href={`/favicon.ico?${FAVICON_VERSION}`} />
@@ -404,12 +404,17 @@ export default function RootLayout({
               (function() {
                 try {
                   if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+                    // Set theme
                     var theme = window.localStorage.getItem('theme') || 'light';
                     if (theme === 'dark') {
                       document.documentElement.classList.add('dark');
                     } else {
                       document.documentElement.classList.remove('dark');
                     }
+
+                    // Set language attribute
+                    var language = window.localStorage.getItem('language') || 'en';
+                    document.documentElement.setAttribute('lang', language);
                   }
                 } catch(e) {
                   // Silently fail if localStorage is not available

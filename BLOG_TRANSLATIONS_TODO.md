@@ -23,6 +23,13 @@ Out of 54 published blog posts, most are fully translated across EN/FR/NL. Howev
   - Created: November 5, 2025
   - Reading time: 12 minutes
 
+### Week 2 - Dutch Best Restaurants Brussels
+- ✅ **Beste Libanese Restaurants in Brussel: Volledige Gids 2025** (NL)
+  - Slug: `beste-libanese-restaurants-brussel-gids-2025`
+  - Status: Published, Featured
+  - Created: November 5, 2025
+  - Reading time: 12 minutes
+
 ## ❌ Missing Translations
 
 ### 1. Complete Guide to Lebanese Cuisine
@@ -57,12 +64,12 @@ Out of 54 published blog posts, most are fully translated across EN/FR/NL. Howev
 **English Post:**
 - Title: "Best Lebanese Restaurants in Brussels: Complete 2025 Guide"
 - Slug: `best-lebanese-restaurants-brussels-guide-2025`
-- Status: Published (EN, FR)
+- Status: Published (EN, FR, NL) - ✅ FULLY TRANSLATED
 - Word Count: ~10,000 characters
 
 **Status:**
 - ✅ French translation COMPLETED (Week 1)
-- ❌ Dutch translation - Scheduled for Week 2
+- ✅ Dutch translation COMPLETED (Week 2)
 
 **French Title:** "Meilleurs Restaurants Libanais à Bruxelles : Guide Complet 2025"
 **Dutch Title:** "Beste Libanese Restaurants in Brussel: Volledige Gids 2025"
@@ -167,6 +174,19 @@ If using professional services, ensure translator has:
 
 **Last Checked:** November 5, 2025
 **Script:** `check-translation-coverage.ts`
-**Total Blog Posts:** 55 (54 previous + 1 new FR Mezze)
-**Fully Translated Groups:** Most older content
-**Missing Translations:** 3 major posts × 2 languages = 6 translations needed
+**Total Blog Posts:** 56 (54 previous + 1 FR Mezze + 1 NL Restaurants)
+**Fully Translated Groups:** Most older content + Best Restaurants Brussels (EN/FR/NL)
+**Missing Translations:** 2 major posts × 2 languages = 4 translations needed
+
+## Progress Summary
+
+**Completed (3/6):**
+- ✅ Week 1: French Mezze Guide
+- ✅ Week 1: French Best Restaurants Brussels
+- ✅ Week 2: Dutch Best Restaurants Brussels
+
+**Remaining (3/6):**
+- ⏳ Week 3: French Lebanese Cuisine Guide
+- ⏳ Week 4: Dutch Lebanese Cuisine Guide
+- ⏳ Week 5: French Mediterranean Diet
+- ⏳ Week 6: Dutch Mediterranean Diet
