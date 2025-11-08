@@ -452,6 +452,41 @@ export default function GalleryPage() {
         </div>
       </div>
 
+      {/* Quick Links Section */}
+      <div className={`py-8 px-4 sm:px-6 lg:px-8`}>
+        <div className={`max-w-7xl mx-auto p-8 rounded-2xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}>
+          <h3 className={`text-2xl font-bold text-center mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+            Explore More
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
+            <Link href="/menu" className={`text-center p-4 rounded-lg transition-colors ${
+              theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-white'
+            }`}>
+              <div className="text-3xl mb-2">📖</div>
+              <div className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Our Menu</div>
+            </Link>
+            <Link href="/blog" className={`text-center p-4 rounded-lg transition-colors ${
+              theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-white'
+            }`}>
+              <div className="text-3xl mb-2">📰</div>
+              <div className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Blog</div>
+            </Link>
+            <Link href="/events-catering" className={`text-center p-4 rounded-lg transition-colors ${
+              theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-white'
+            }`}>
+              <div className="text-3xl mb-2">🎉</div>
+              <div className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Events</div>
+            </Link>
+            <Link href="/contact" className={`text-center p-4 rounded-lg transition-colors ${
+              theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-white'
+            }`}>
+              <div className="text-3xl mb-2">📞</div>
+              <div className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-black'}`}>Contact</div>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Back to Home Link */}
       <div className="py-8 px-4 sm:px-6 lg:px-8 text-center">
         <Link

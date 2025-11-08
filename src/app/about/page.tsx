@@ -3,6 +3,7 @@
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../../context/ThemeContext'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 export default function AboutPage() {
@@ -481,6 +482,109 @@ export default function AboutPage() {
           </div>
         </div>
       </motion.section>
+
+      {/* ===== EXPLORE MORE SECTION ===== */}
+      {/* Call-to-Action Links Section */}
+      <section className={`py-20 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className={`text-4xl sm:text-5xl font-black mb-4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+              Explore More
+            </h2>
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+              Discover what makes East @ West special
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Menu Link */}
+            <Link href="/menu" className="group">
+              <motion.div
+                className={`p-8 rounded-xl text-center transition-all duration-300 border-2 ${
+                  theme === 'dark'
+                    ? 'bg-gray-800 border-gray-700 hover:border-[#f99747]'
+                    : 'bg-white border-gray-200 hover:border-[#f99747]'
+                } hover:shadow-xl transform hover:scale-105`}
+                whileHover={{ y: -5 }}
+              >
+                <div className="text-5xl mb-4">📖</div>
+                <h3 className={`text-xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                  Our Menu
+                </h3>
+                <p className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                  Explore our authentic Lebanese dishes and Mediterranean flavors
+                </p>
+              </motion.div>
+            </Link>
+
+            {/* Events & Catering Link */}
+            <Link href="/events-catering" className="group">
+              <motion.div
+                className={`p-8 rounded-xl text-center transition-all duration-300 border-2 ${
+                  theme === 'dark'
+                    ? 'bg-gray-800 border-gray-700 hover:border-[#f99747]'
+                    : 'bg-white border-gray-200 hover:border-[#f99747]'
+                } hover:shadow-xl transform hover:scale-105`}
+                whileHover={{ y: -5 }}
+              >
+                <div className="text-5xl mb-4">🎉</div>
+                <h3 className={`text-xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                  Events & Catering
+                </h3>
+                <p className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                  Host your special occasions with our catering services
+                </p>
+              </motion.div>
+            </Link>
+
+            {/* Blog Link */}
+            <Link href="/blog" className="group">
+              <motion.div
+                className={`p-8 rounded-xl text-center transition-all duration-300 border-2 ${
+                  theme === 'dark'
+                    ? 'bg-gray-800 border-gray-700 hover:border-[#f99747]'
+                    : 'bg-white border-gray-200 hover:border-[#f99747]'
+                } hover:shadow-xl transform hover:scale-105`}
+                whileHover={{ y: -5 }}
+              >
+                <div className="text-5xl mb-4">📰</div>
+                <h3 className={`text-xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                  Our Blog
+                </h3>
+                <p className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                  Read about Lebanese cuisine and culinary traditions
+                </p>
+              </motion.div>
+            </Link>
+
+            {/* Contact Link */}
+            <Link href="/contact" className="group">
+              <motion.div
+                className={`p-8 rounded-xl text-center transition-all duration-300 border-2 ${
+                  theme === 'dark'
+                    ? 'bg-gray-800 border-gray-700 hover:border-[#f99747]'
+                    : 'bg-white border-gray-200 hover:border-[#f99747]'
+                } hover:shadow-xl transform hover:scale-105`}
+                whileHover={{ y: -5 }}
+              >
+                <div className="text-5xl mb-4">📞</div>
+                <h3 className={`text-xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+                  Contact Us
+                </h3>
+                <p className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                  Get in touch for reservations and inquiries
+                </p>
+              </motion.div>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   )
 } 
