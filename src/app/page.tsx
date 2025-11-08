@@ -349,9 +349,7 @@ export default function HomePage() {
             {/* Hero Content Container */}
             <div className="text-center px-4 sm:px-6 lg:px-8 max-w-6xl">
               {/* Hero Emoji Icon */}
-              <div className="mb-8">
-                <div className="text-3xl xs:text-4xl sm:text-6xl sm-mt-8 md:text-8xl mb-2  sm:mb-4">🍽️</div>
-              </div>
+              <div className="text-3xl xs:text-4xl sm:text-6xl sm-mt-8 md:text-8xl mb-6 sm:mb-10">🍽️</div>
 
               {/* ===== HERO TITLE SECTION ===== */}
               {/* Main Hero Title with Animation */}
@@ -440,7 +438,7 @@ export default function HomePage() {
               {/* Specials Section Title and Description */}
               <motion.div className="text-center mb-8 sm:mb-12 md:mb-16" variants={itemVariants}>
                 {/* Specials Section Emoji Icon */}
-                <div className="text-3xl xs:text-4xl sm:text-6xl mb-2 sm:mb-4">🌟</div>
+                <span className="text-3xl xs:text-4xl sm:text-6xl mb-2 sm:mb-4 block">🌟</span>
                 {/* Specials Section Main Title */}
                 <h2
                   id="todays-specials-heading"
@@ -795,22 +793,17 @@ export default function HomePage() {
               {/* Events Section Title and Description */}
               <motion.div className="text-center mb-8 sm:mb-12 md:mb-16" variants={itemVariants}>
                 {/* Events Section Emoji Icon */}
-                <div className="text-3xl xs:text-4xl sm:text-6xl mb-2 sm:mb-4">🎉</div>
+                <span className="text-3xl xs:text-4xl sm:text-6xl mb-2 sm:mb-4 block">🎉</span>
                 {/* Events Section Main Title with Link */}
-                <Link href="/events-catering" aria-label="Learn more about our events and catering services">
-                  <div className="relative inline-block">
+                <Link href="/events-catering" aria-label="Learn more about our events and catering services" className="relative inline-block">
                     {/* Events Section Title */}
                     <h2
                       id="events-heading"
-                      className={`text-5xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 cursor-pointer hover:scale-105 focus:scale-105 transition-transform duration-300 ${theme === 'dark' ? 'text-white hover:text-[rgb(168,213,186)] focus:text-[rgb(168,213,186)]' : 'text-[rgb(26,26,26)] hover:text-[rgb(168,213,186)] focus:text-[rgb(168,213,186)]'
+                      className={`text-5xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 cursor-pointer hover:scale-105 focus:scale-105 transition-transform duration-300 ${theme === 'dark' ? 'text-white hover:text-[rgb(168,213,186)] focus:text-[rgb(168,213,186)]' : 'bg-clip-text text-transparent bg-black hover:text-[rgb(168,213,186)] focus:text-[rgb(168,213,186)]'
                         }`}
                       style={{ fontFamily: 'var(--font-rozha), serif' }}
                     >
-                      {/* Events Title Text with Theme Styling */}
-                      <span className={`font-black ${theme === 'dark' ? 'text-white' : 'bg-clip-text text-transparent bg-black'
-                        }`}>
                         {t('realtime.reserveEvents')}
-                      </span>
                     </h2>
                     {/* ===== ANIMATED HAND POINTER ===== */}
                     {/* Responsive Animated Hand Pointer */}
@@ -842,7 +835,6 @@ export default function HomePage() {
                         />
                       </svg>
                     </motion.div>
-                  </div>
                 </Link>
                 {/* ===== EVENTS SECTION DIVIDER ===== */}
                 {/* Events Section Divider Line */}
@@ -875,17 +867,17 @@ export default function HomePage() {
                     <div className="flex items-center mb-6">
                       {/* ===== EVENT CARD ICON ===== */}
                       {/* Event Card Icon Container */}
-                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mr-6 text-3xl shadow-xl ${theme === 'dark'
+                      <span className={`w-16 h-16 rounded-2xl flex items-center justify-center mr-6 text-3xl shadow-xl ${theme === 'dark'
                         ? 'bg-gradient-to-r from-[rgb(26,26,26)] to-[rgb(26,26,26)]'
                         : 'bg-gradient-to-r from-[rgb(168,213,186)] to-[rgb(168,213,186)]'
                         }`}>
                         {event.icon}
-                      </div>
+                      </span>
                       {/* ===== EVENT CARD TITLE ===== */}
                       {/* Event Card Title Text */}
-                      <div className={`${theme === 'dark' ? 'text-[rgb(245,240,230)]' : 'text-[rgb(26,26,26)]'}`} style={{ fontFamily: 'Times New Roman, serif', fontSize: '20px', lineHeight: '28px' }}>
+                      <h3 className={`${theme === 'dark' ? 'text-[rgb(245,240,230)]' : 'text-[rgb(26,26,26)]'}`} style={{ fontFamily: 'Times New Roman, serif', fontSize: '20px', lineHeight: '28px' }}>
                         {t(event.titleKey)}
-                      </div>
+                      </h3>
                     </div>
                     {/* ===== EVENT CARD DESCRIPTION ===== */}
                     {/* Event Card Description Text */}
@@ -1055,8 +1047,7 @@ export default function HomePage() {
               >
                 {/* ===== RESTAURANT GURU 2021 BADGE ===== */}
                 {/* First Award - Restaurant Guru 2021 Badge */}
-                <div className="flex-shrink-0 flex justify-center" role="listitem">
-                  <figure className="text-center hover:scale-105 transition-transform duration-300">
+                  <figure className="flex-shrink-0 text-center hover:scale-105 transition-transform duration-300" role="listitem">
                     {/* ===== 2021 AWARD BADGE ===== */}
                     {/* Interactive Restaurant Guru 2021 Badge */}
                     <div
@@ -1119,8 +1110,7 @@ export default function HomePage() {
 
                 {/* ===== RESTAURANT GURU 2023 ===== */}
                 {/* Second Award - Restaurant Guru 2023 */}
-                <div className="flex-shrink-0 flex justify-center" role="listitem">
-                  <figure className="text-center hover:scale-105 transition-transform duration-300">
+                  <figure className="flex-shrink-0 text-center hover:scale-105 transition-transform duration-300" role="listitem">
                     {/* ===== 2023 AWARD LINK ===== */}
                     {/* Restaurant Guru 2023 Award Link */}
                     <a
@@ -1130,27 +1120,21 @@ export default function HomePage() {
                       style={{ cursor: 'pointer' }}
                       aria-label="Restaurant Guru Award 2023 – East @ West Brussels"
                     >
-                      {/* ===== 2023 AWARD IMAGE CONTAINER ===== */}
-                      {/* 2023 Award Image Container */}
-                      <div className="h-48 w-auto">
-                        {/* ===== 2023 AWARD IMAGE ===== */}
-                        {/* Restaurant Guru 2023 Award Image */}
-                        <Image
-                          src={Guru1}
-                          alt="Restaurant Guru Award 2023 – East @ West Brussels"
-                          className="h-full w-auto object-contain rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                          loading="lazy"
-                        />
-                      </div>
+                      {/* ===== 2023 AWARD IMAGE ===== */}
+                      {/* Restaurant Guru 2023 Award Image */}
+                      <Image
+                        src={Guru1}
+                        alt="Restaurant Guru Award 2023 – East @ West Brussels"
+                        className="h-48 w-auto object-contain rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                        loading="lazy"
+                      />
                     </a>
 
                   </figure>
-                </div>
 
                 {/* ===== RESTAURANT GURU 2024 ===== */}
                 {/* Third Award - Restaurant Guru 2024 */}
-                <div className="flex-shrink-0 flex justify-center" role="listitem">
-                  <figure className="text-center hover:scale-105 transition-transform duration-300">
+                  <figure className="flex-shrink-0 text-center hover:scale-105 transition-transform duration-300" role="listitem">
                     {/* ===== 2024 AWARD LINK ===== */}
                     {/* Restaurant Guru 2024 Award Link */}
                     <a
@@ -1160,22 +1144,17 @@ export default function HomePage() {
                       style={{ cursor: 'pointer' }}
                       aria-label="Restaurant Guru Award 2024 – East @ West Brussels"
                     >
-                      {/* ===== 2024 AWARD IMAGE CONTAINER ===== */}
-                      {/* 2024 Award Image Container */}
-                      <div className="h-48 w-auto">
-                        {/* ===== 2024 AWARD IMAGE ===== */}
-                        {/* Restaurant Guru 2024 Award Image */}
-                        <Image
-                          src={Guru2}
-                          alt="Restaurant Guru Award 2024 – East @ West Brussels"
-                          className="h-full w-auto object-contain rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                          loading="lazy"
-                        />
-                      </div>
+                      {/* ===== 2024 AWARD IMAGE ===== */}
+                      {/* Restaurant Guru 2024 Award Image */}
+                      <Image
+                        src={Guru2}
+                        alt="Restaurant Guru Award 2024 – East @ West Brussels"
+                        className="h-48 w-auto object-contain rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                        loading="lazy"
+                      />
                     </a>
 
                   </figure>
-                </div>
               </motion.div>
 
               {/* ===== AWARDS JSON-LD SCHEMA ===== */}
