@@ -229,33 +229,19 @@ export default function EventsCateringPage() {
       >
         {/* Background Overlay */}
         <div className={`absolute inset-0 ${
-          theme === 'dark' 
-            ? 'bg-black/60' 
+          theme === 'dark'
+            ? 'bg-black/60'
             : 'bg-black/40'
         }`}></div>
-        {/* Floating Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-[#A8D5BA]/20 to-[#A8D5BA]/20 rounded-full "
-            variants={floatingVariants}
-            animate="float"
-          />
-          <motion.div
-            className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-[#A8D5BA]/20 to-[#1A1A1A]/20 rounded-full "
-            variants={floatingVariants}
-            animate="float"
-            transition={{ delay: 1.5 }}
-          />
-        </div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.div
-            className="mb-8"
+            className="text-8xl mb-14"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="text-8xl mb-6">🎉</div>
+            🎉
           </motion.div>
 
           <motion.h1
@@ -482,21 +468,6 @@ export default function EventsCateringPage() {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {/* Floating Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-[#A8D5BA]/10 to-[#A8D5BA]/10 rounded-full "
-            variants={floatingVariants}
-            animate="float"
-          />
-          <motion.div
-            className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-[#A8D5BA]/10 to-[#1A1A1A]/10 rounded-full "
-            variants={floatingVariants}
-            animate="float"
-            transition={{ delay: 1 }}
-          />
-        </div>
-
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.div variants={itemVariants}>
             <div className="text-6xl mb-6">📅</div>
@@ -548,12 +519,10 @@ export default function EventsCateringPage() {
         viewport={{ once: true, margin: "-100px" }}
       >
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }}></div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.div variants={itemVariants}>

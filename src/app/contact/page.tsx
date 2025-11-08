@@ -43,31 +43,8 @@ export default function ContactPage() {
   }
 
   return (
-    <div className={`min-h-screen pt-16 transition-colors duration-300 relative overflow-hidden ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'
+    <div className={`min-h-screen pt-16 transition-colors duration-300 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-gray-900'
       }`}>
-      
-      {/* Floating Background Elements */}
-      <motion.div 
-        className={`absolute top-20 left-10 w-32 h-32 rounded-full opacity-20  ${
-          theme === 'dark' 
-            ? 'bg-gradient-to-br from-orange-400 to-pink-500' 
-            : 'bg-gradient-to-br from-gray-200 to-gray-300'
-        }`}
-        variants={floatingVariants}
-        animate="float"
-      />
-      <motion.div 
-        className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-20 "
-        variants={floatingVariants}
-        animate="float"
-        transition={{ delay: 0.5 }}
-      />
-      <motion.div 
-        className="absolute bottom-20 left-1/4 w-20 h-20 bg-gradient-to-br from-green-400 to-teal-500 rounded-full opacity-20 "
-        variants={floatingVariants}
-        animate="float"
-        transition={{ delay: 1 }}
-      />
 
       {/* Header */}
       <motion.section 
@@ -244,17 +221,10 @@ export default function ContactPage() {
         viewport={{ once: true }}
         variants={containerVariants}
       >
-        {/* Background Elements */}
-        <motion.div 
-          className="absolute bottom-10 left-10 w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-10 "
-          variants={floatingVariants}
-          animate="float"
-        />
-        
         <div className="max-w-4xl mx-auto text-center relative">
-          <motion.div variants={itemVariants}>
-            <span className="inline-block text-6xl mb-4 animate-spin" style={{ animationDuration: '3s' }}>🌟</span>
-          </motion.div>
+          <motion.span className="inline-block text-6xl mb-4 animate-spin" style={{ animationDuration: '3s' }} variants={itemVariants}>
+            🌟
+          </motion.span>
           <motion.h2 
             className={`text-3xl sm:text-4xl font-bold mb-8 bg-clip-text text-transparent ${
               theme === 'dark' 

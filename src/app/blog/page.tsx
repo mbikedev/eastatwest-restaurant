@@ -106,18 +106,16 @@ export default function BlogPage() {
 
   if (loading) {
     return (
-      <div className={`min-h-screen transition-colors duration-500 ${
+      <div className={`min-h-screen flex items-center justify-center transition-colors duration-500 ${
         theme === 'dark' ? 'bg-gradient-to-br from-[#1A1A1A] via-[#1A1A1A] to-[#1A1A1A]' : 'bg-gradient-to-br from-[#F5F0E6] via-[#FFFFFF] to-[#F5F0E6]'
       }`}>
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center">
-            <div className={`w-16 h-16 mx-auto mb-4 border-4 border-t-transparent rounded-full animate-spin ${
-              theme === 'dark' ? 'border-[#1A1A1A]' : 'border-[#A8D5BA]'
-            }`}></div>
-            <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              Loading blog posts...
-            </p>
-          </div>
+        <div className="text-center">
+          <div className={`w-16 h-16 mx-auto mb-4 border-4 border-t-transparent rounded-full animate-spin ${
+            theme === 'dark' ? 'border-[#1A1A1A]' : 'border-[#A8D5BA]'
+          }`}></div>
+          <p className={`text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            Loading blog posts...
+          </p>
         </div>
       </div>
     )
@@ -125,13 +123,12 @@ export default function BlogPage() {
 
   if (error) {
     return (
-      <div className={`min-h-screen transition-colors duration-500 ${
+      <div className={`min-h-screen flex items-center justify-center transition-colors duration-500 ${
         theme === 'dark' ? 'bg-gradient-to-br from-[#1A1A1A] via-[#1A1A1A] to-[#1A1A1A]' : 'bg-gradient-to-br from-[#F5F0E6] via-[#FFFFFF] to-[#F5F0E6]'
       }`}>
-        <div className="flex items-center justify-center min-h-screen">
-          <div className={`text-center p-8 rounded-2xl ${
-            theme === 'dark' ? 'bg-red-900/20 text-white' : 'bg-red-50 text-red-900'
-          }`}>
+        <div className={`text-center p-8 rounded-2xl ${
+          theme === 'dark' ? 'bg-red-900/20 text-white' : 'bg-red-50 text-red-900'
+        }`}>
             <h2 className="text-2xl font-bold mb-4">Oops! Something went wrong</h2>
             <p className="mb-6">{error}</p>
             <button
@@ -169,17 +166,14 @@ export default function BlogPage() {
       }`}>
         {/* Hero Section */}
         <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
-          <div className="absolute inset-0">
-            <Image
-              src="/images/events-catering/plat-libanais-restaurant-libanais-bruxelles.webp"
-              alt="East at West Blog"
-              fill
-              className="object-cover transform scale-105 transition-transform duration-[3s] hover:scale-110"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#A8D5BA]/20 to-[#A8D5BA]/20"></div>
-          </div>
+          <Image
+            src="/images/events-catering/plat-libanais-restaurant-libanais-bruxelles.webp"
+            alt="East at West Blog"
+            fill
+            className="object-cover transform scale-105 transition-transform duration-[3s] hover:scale-110"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
           
           <div className="absolute inset-0 flex items-center justify-center px-4">
             <motion.div
