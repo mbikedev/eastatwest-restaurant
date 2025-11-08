@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   keywords: 'contact Lebanese restaurant Brussels, East @ West contact, restaurant phone Brussels, Lebanese restaurant address, book table Brussels, catering inquiry Brussels, restaurant email Brussels',
   alternates: {
     canonical: 'https://eastatwest.com/contact',
+    languages: {
+      'en': 'https://eastatwest.com/contact',
+      'fr': 'https://eastatwest.com/contact',
+      'nl': 'https://eastatwest.com/contact',
+      'x-default': 'https://eastatwest.com/contact',
+    },
   },
   openGraph: {
     title: 'Contact East @ West | Lebanese Restaurant Brussels',

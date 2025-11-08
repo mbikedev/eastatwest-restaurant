@@ -5,6 +5,12 @@ export const metadata: Metadata = {
   description: 'Explore Lebanese cuisine, recipes, and culinary traditions on the East @ West blog. Discover authentic Mediterranean cooking tips, restaurant news, and cultural stories from Brussels.',
   alternates: {
     canonical: 'https://eastatwest.com/blog',
+    languages: {
+      'en': 'https://eastatwest.com/blog',
+      'fr': 'https://eastatwest.com/blog',
+      'nl': 'https://eastatwest.com/blog',
+      'x-default': 'https://eastatwest.com/blog',
+    },
   },
 }
 

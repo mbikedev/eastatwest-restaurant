@@ -64,6 +64,12 @@ export const metadata: Metadata = {
   authors: [{ name: "East @ West" }],
   alternates: {
     canonical: "https://eastatwest.com",
+    languages: {
+      'en': 'https://eastatwest.com',
+      'fr': 'https://eastatwest.com',
+      'nl': 'https://eastatwest.com',
+      'x-default': 'https://eastatwest.com',
+    },
   },
   icons: {
     icon: [
@@ -151,7 +157,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Force favicon refresh - additional link tags with cache busting */}
         <link rel="icon" href={`/favicon.ico?${FAVICON_VERSION}`} />

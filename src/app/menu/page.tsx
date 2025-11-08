@@ -6,6 +6,12 @@ export const metadata = {
   keywords: 'Lebanese menu Brussels, mezze Brussels, halal restaurant menu, Lebanese food menu, Mediterranean menu, Lebanese grill, vegetarian Lebanese food, Brussels restaurant menu, authentic Lebanese dishes',
   alternates: {
     canonical: 'https://eastatwest.com/menu',
+    languages: {
+      'en': 'https://eastatwest.com/menu',
+      'fr': 'https://eastatwest.com/menu',
+      'nl': 'https://eastatwest.com/menu',
+      'x-default': 'https://eastatwest.com/menu',
+    },
   },
   openGraph: {
     title: 'Lebanese Restaurant Menu Brussels | East @ West',

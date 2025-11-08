@@ -5,6 +5,12 @@ export const metadata: Metadata = {
   description: 'Order authentic Lebanese food for takeaway in Brussels. Fresh mezze, grilled specialties, and halal-certified dishes ready for pickup. Browse our menu and order online now.',
   alternates: {
     canonical: 'https://eastatwest.com/takeaway',
+    languages: {
+      'en': 'https://eastatwest.com/takeaway',
+      'fr': 'https://eastatwest.com/takeaway',
+      'nl': 'https://eastatwest.com/takeaway',
+      'x-default': 'https://eastatwest.com/takeaway',
+    },
   },
 }
 
