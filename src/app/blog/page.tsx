@@ -194,6 +194,15 @@ export default function BlogPage() {
           </div>
         </section>
 
+        {/* Introduction Section */}
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className={`p-8 rounded-2xl ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/80'}`}>
+            <p className={`text-lg leading-relaxed text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+              Discover the world of Lebanese cuisine through our blog. Explore authentic recipes, learn about Mediterranean cooking traditions, and stay updated with the latest news from East @ West restaurant in Brussels. From mezze preparation techniques to the history of Lebanese hospitality, our blog celebrates the rich culinary heritage that makes our restaurant special.
+            </p>
+          </div>
+        </section>
+
         {/* Search and Filter Section */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className={`p-6 rounded-2xl  border ${

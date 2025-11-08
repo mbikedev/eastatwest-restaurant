@@ -154,6 +154,23 @@ export default function MenuHeroClient() {
         </div>
       </section>
 
+      {/* Introduction Section */}
+      <section className={`py-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+        <div className="max-w-6xl mx-auto">
+          <div className={`p-8 rounded-2xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+            <h2 className={`text-3xl font-bold text-center mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+              Authentic Lebanese Flavors
+            </h2>
+            <p className={`text-lg leading-relaxed text-center mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+              Our menu celebrates the rich culinary traditions of Lebanon, featuring fresh mezze, expertly grilled meats, and vegetarian delights. Each dish is prepared with authentic recipes passed down through generations, using only the finest ingredients to deliver an unforgettable dining experience.
+            </p>
+            <p className={`text-lg leading-relaxed text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+              From classic hummus and falafel to our signature grilled specialties and traditional desserts, every item on our menu reflects our commitment to quality and authenticity. Our halal-certified restaurant offers options for every palate, whether you're dining in or ordering takeaway.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section id="menu-list" className="py-8 sm:py-12" />
     </main>
   )

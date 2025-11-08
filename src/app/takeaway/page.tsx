@@ -283,6 +283,20 @@ export default function TakeawayPage() {
         </div>
       </section>
 
+      {/* Introduction Section */}
+      <section className="px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="max-w-6xl mx-auto">
+          <div className={`p-8 rounded-2xl ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/80'}`}>
+            <p className={`text-lg leading-relaxed text-center mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+              Order authentic Lebanese food for takeaway in Brussels and enjoy restaurant-quality meals in the comfort of your home. Our takeaway menu features all your favorite dishes, from fresh mezze platters and hearty main courses to delicious desserts, all prepared fresh to order.
+            </p>
+            <p className={`text-lg leading-relaxed text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+              Browse our online menu, select your items, and pick up your order at our Rue de la Bourse location. Every dish is carefully packaged to maintain freshness and flavor. Experience the taste of Lebanon wherever you are in Brussels.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Category Navigation */}
       <section className="px-4 sm:px-6 lg:px-8 mb-12">
         <div className="max-w-7xl mx-auto">

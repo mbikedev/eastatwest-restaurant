@@ -78,6 +78,18 @@ export default function ContactPage() {
         </div>
       </motion.section>
 
+      {/* Introduction Section */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className={`p-8 rounded-2xl ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/80'}`}>
+          <p className={`text-lg leading-relaxed text-center mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+            East @ West is conveniently located in the heart of Brussels at Rue de la Bourse 15. Whether you're looking to make a reservation, inquire about our catering services, or simply have a question about our menu, our team is here to help you experience authentic Lebanese hospitality.
+          </p>
+          <p className={`text-lg leading-relaxed text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+            We welcome walk-ins and reservations for lunch and dinner. Our restaurant is open Tuesday through Sunday, serving traditional Lebanese cuisine in a warm and inviting atmosphere. Contact us today to plan your visit or discuss your event catering needs.
+          </p>
+        </div>
+      </section>
+
       {/* Contact Information */}
       <motion.section 
         className={`py-20 px-4 sm:px-6 lg:px-8 relative ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'
