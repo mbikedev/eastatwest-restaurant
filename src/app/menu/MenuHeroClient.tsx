@@ -55,8 +55,8 @@ export default function MenuHeroClient() {
 
         <div className="relative z-10 max-w-4xl w-full px-4 sm:px-6 lg:px-8 text-center">
           <h1 className={`text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight ${theme === 'dark'
-            ? 'bg-gradient-to-b from-gray-100 via-gray-300 to-gray-900 bg-clip-text text-transparent'
-            : 'text-gray-400'}
+            ? 'text-white'
+            : 'text-white'}
 `}>{t('menu.title')}</h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl opacity-90 text-white">{t('menu.subtitle')}</p>
 

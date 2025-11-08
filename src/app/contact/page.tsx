@@ -57,11 +57,11 @@ export default function ContactPage() {
           <motion.div variants={itemVariants}>
             <span className="inline-block text-6xl mb-4 animate-bounce">📞</span>
           </motion.div>
-          <motion.h1 
-            className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent ${
-              theme === 'dark' 
-                ? 'bg-white' 
-                : 'bg-black'
+          <motion.h1
+            className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 ${
+              theme === 'dark'
+                ? 'text-white'
+                : 'text-black'
             }`}
             style={{ fontFamily: 'Times New Roman, serif' }}
             variants={itemVariants}
