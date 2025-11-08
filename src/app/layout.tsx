@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://eastatwest.com"),
   title: "East @ West — Lebanese Fusion Restaurant in Brussels",
   description:
-    "Authentic Lebanese cuisine meets modern flavors at East @ West in Brussels. Experience handcrafted Mediterranean dishes, fresh ingredients & warm hospitality. Book now!",
+    "Authentic Lebanese cuisine in Brussels. Fresh Mediterranean dishes, warm hospitality & halal options. Book your table at East @ West today!",
   keywords:
     "Lebanese restaurant Brussels, Mediterranean cuisine, fusion restaurant, Brussels dining, Lebanese food, mezze, authentic cuisine, Restaurant Guru recommended",
   authors: [{ name: "East @ West" }],
@@ -202,11 +202,11 @@ export default function RootLayout({
                   height: 512,
                 },
                 url: "https://eastatwest.com",
-                telephone: "+32-2-503-5303",
-                email: "infos.east.west@gmail.com",
+                telephone: "+32 465 20 60 24",
+                email: "contact@eastatwest.com",
                 address: {
                   "@type": "PostalAddress",
-                  streetAddress: "Rue de la Bourse 15",
+                  streetAddress: "Bld de l'Empereur 26",
                   addressLocality: "Brussels",
                   addressRegion: "Brussels-Capital",
                   postalCode: "1000",
@@ -223,21 +223,15 @@ export default function RootLayout({
                 openingHoursSpecification: [
                   {
                     "@type": "OpeningHoursSpecification",
-                    dayOfWeek: ["Tuesday", "Wednesday", "Thursday"],
-                    opens: "12:00",
+                    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                    opens: "11:30",
+                    closes: "14:00",
+                  },
+                  {
+                    "@type": "OpeningHoursSpecification",
+                    dayOfWeek: "Saturday",
+                    opens: "18:00",
                     closes: "22:00",
-                  },
-                  {
-                    "@type": "OpeningHoursSpecification",
-                    dayOfWeek: ["Friday", "Saturday"],
-                    opens: "12:00",
-                    closes: "23:00",
-                  },
-                  {
-                    "@type": "OpeningHoursSpecification",
-                    dayOfWeek: "Sunday",
-                    opens: "12:00",
-                    closes: "21:00",
                   },
                 ],
                 acceptsReservations: true,

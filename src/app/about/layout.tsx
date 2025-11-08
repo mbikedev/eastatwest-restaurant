@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'About Us | Authentic Lebanese Restaurant in Brussels | East @ West',
-  description: 'Discover the story behind East @ West, Brussels\' premier Lebanese restaurant. Fresh ingredients, traditional recipes, and warm hospitality since our opening. Learn about our halal-certified kitchen and commitment to authentic Mediterranean cuisine.',
+  description: 'Discover East @ West Brussels, authentic Lebanese restaurant. Fresh ingredients, traditional recipes, halal-certified kitchen & Mediterranean cuisine.',
   keywords: 'about East @ West, Lebanese restaurant Brussels story, authentic Lebanese cuisine, halal restaurant Brussels, Mediterranean restaurant about, Brussels Lebanese food, family restaurant Brussels',
   alternates: {
     canonical: 'https://eastatwest.com/about',

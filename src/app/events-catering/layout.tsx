@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Events & Catering - East @ West Lebanese Restaurant Brussels',
-  description: 'Host your events with authentic Lebanese cuisine at East @ West in Brussels. Professional catering services for weddings, corporate events, and private dining. Contact us today!',
+  description: 'Lebanese catering in Brussels. Professional event services for weddings, corporate events & private dining. Authentic cuisine by East @ West.',
   alternates: {
     canonical: 'https://eastatwest.com/events-catering',
     languages: {

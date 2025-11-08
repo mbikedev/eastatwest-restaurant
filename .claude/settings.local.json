@@ -21,7 +21,9 @@
       "Bash(git --version:*)",
       "Bash(npm run build:*)",
       "Bash(node -e:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(fi)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

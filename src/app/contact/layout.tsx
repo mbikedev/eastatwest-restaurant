@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Contact Us | Lebanese Restaurant Brussels | East @ West - Reservations & Inquiries',
-  description: 'Get in touch with East @ West Lebanese restaurant in Brussels. Address: Rue de la Bourse 15, 1000 Brussels. Phone: +32-2-503-5303. Email: infos.east.west@gmail.com. Book your table or ask about catering services.',
+  description: 'Contact East @ West Brussels: Bld de l\'Empereur 26, 1000 Brussels. Phone: +32 465 20 60 24. Reservations & catering inquiries welcome.',
   keywords: 'contact Lebanese restaurant Brussels, East @ West contact, restaurant phone Brussels, Lebanese restaurant address, book table Brussels, catering inquiry Brussels, restaurant email Brussels',
   alternates: {
     canonical: 'https://eastatwest.com/contact',
