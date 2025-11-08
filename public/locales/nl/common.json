@@ -1,0 +1,1513 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "digital-menu": "Digitale Menu",
+    "lebanese": "Libanees",
+    "reservations": "Reserveringen",
+    "takeaway": "Take-Away",
+    "blog": "Blog",
+    "events": "Evenementen & Catering",
+    "about": "Over Ons",
+    "contact": "Contact",
+    "gallery": "Galerij"
+  },
+  "home": {
+    "title": "East at West",
+    "subtitle": "Waar Oost en West Samenkomen in Elke Happen",
+    "description": "Ervaar de perfecte fusie van oosterse en westerse keukens in ons elegante restaurant. Van traditionele favorieten tot innovatieve fusiegerechten, wij brengen u het beste van beide werelden.",
+    "cta": "Tafel Reserveren",
+    "hero": {
+      "title": "Welkom bij East at West",
+      "subtitle": "Een Culinair Reis Tussen Twee Werelden"
+    },
+    "features": {
+      "title": "Waarom Ons Kiezen",
+      "fusion": "Fusie Keuken",
+      "fusion_desc": "Unieke mix van oosterse en westerse smaken",
+      "fresh": "Verse Ingrediënten",
+      "fresh_desc": "Lokaal geproduceerde, seizoensgebonden ingrediënten",
+      "ambiance": "Elegante Sfeer",
+      "ambiance_desc": "Verfijnde dinerervaring"
+    }
+  },
+  "menu": {
+    "title": "Ons Menu",
+    "subtitle": "Ons volledige menu is op aanvraag af te halen.",
+    "description": "Ontdek onze authentieke gerechten met verse ingrediënten. Ter plaatse of op aanvraag als afhaal.",
+    "buttons": {
+      "menu": "Menu",
+      "menuTakeawayOnly": "Menu enkel Afhaal"
+    },
+    "seo": {
+      "title": "Menu | EastAtWest",
+      "description": "Ontdek ons volledige menu met authentieke gerechten. Ter plaatse of op aanvraag als afhaal."
+    },
+    "heroAlt": "Hero-afbeelding met restaurantgerechten",
+    "cta": {
+      "title": "Klaar om Onze Keuken te Ervaren?",
+      "subtitle": "Reserveer een tafel en geniet van onze fusion gerechten in ons elegante restaurant."
+    },
+    "categories": {
+      "setMenus": "Menu's",
+      "coldMezzes": "Koude Mezzes",
+      "hotMezzes": "Warme Mezzes",
+      "salads": "Salades",
+      "lunchDishes": "Lunch Gerechten",
+      "sandwiches": "Sandwiches",
+      "skewers": "Spiesen",
+      "mains": "Hoofdgerechten",
+      "desserts": "Desserts",
+      "drinks": "Drankjes"
+    },
+    "sectionTitles": {
+      "freshAndDelicious": "Vers & Heerlijk",
+      "hotAndSpicy": "Heet & Pittig",
+      "gardenFresh": "Tuin Vers",
+      "heartyAndSatisfying": "Hartig & Bevredigend",
+      "authenticGrilledSkewers": "Authentieke Gegrilde Spiesen",
+      "sweetDelights": "Zoete Verrukkingen"
+    },
+    "items": {
+      "spring_rolls": "Aziatische Loempia's",
+      "spring_rolls_desc": "Verse groenten gewikkeld in rijstpapier met zoete chilisaus",
+      "bruschetta": "Mediterrane Bruschetta",
+      "bruschetta_desc": "Geroosterd brood met tomaten, basilicum en olijfolie",
+      "pad_thai": "Fusie Pad Thai",
+      "pad_thai_desc": "Rijstnoedels met garnalen, tofu en onze speciale saus",
+      "steak": "Gegrilde Ribeye Steak",
+      "steak_desc": "Premium rundvlees met geroosterde groenten en rode wijnreductie",
+      "curry": "Kokos Curry",
+      "curry_desc": "Rijke curry met keuze uit eiwit en jasmijnrijst",
+      "tiramisu": "Matcha Tiramisu",
+      "tiramisu_desc": "Klassiek Italiaans dessert met Japanse groene thee twist",
+      "ice_cream": "Lychee IJs",
+      "ice_cream_desc": "Verfrissend lychee ijs met verse bessen"
+    },
+    "menuDisplay": {
+      "title": "Menu East@West",
+      "pricePerPerson": "67.50€/2pers.",
+      "setMenuTitle": "Vast Menu East @ West 67.50€/2pers",
+      "items": {
+        "fattoush": "Fattoush salade",
+        "hummus": "Hummus",
+        "moutabal": "Moutabal",
+        "zahra": "Zahra",
+        "falafel": "Falafel",
+        "kibbeh": "2X Kibbeh",
+        "kebabSkewers": "2X Kabab spiesjes",
+        "chichTaouk": "2X Chich taouk spiesjes",
+        "dessert": "2X Dessert: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & pistache)"
+      }
+    },
+    "veganMenuDisplay": {
+      "title": "Menu Vegan",
+      "pricePerPerson": "64.50€/2pers.",
+      "setMenuTitle": "Menu Vegan 64.50€/2pers",
+      "description": "Fattoush Salade, Hummus, Moutabal, Moussaka, Itch, Zahra, Falafel ×2, Batata Harra, Dessert ×2: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & pistache)",
+      "items": {
+        "fattoush": "Fattoush Salade",
+        "hummus": "Hummus",
+        "moutabal": "Moutabal",
+        "moussaka": "Moussaka",
+        "itch": "Itch",
+        "zahra": "Zahra",
+        "falafel": "Falafel ×2",
+        "batataHarra": "Batata Harra",
+        "dessert": "Dessert ×2: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & pistache)"
+      }
+    },
+    "lazeezMenuDisplay": {
+      "title": "Menu Lazeez (Vegan)",
+      "pricePerPerson": "65.50€/2pers.",
+      "setMenuTitle": "Menu Lazeez (Vegan) 65.50€/2pers",
+      "description": "Tabouleh, Hummus, Moutabal, Mouhamara, Warak Enēb, Moussaka, Foul Moudamas, Falafel ×2, Dessert ×2: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & pistache)"
+    },
+    "sahtenMenuDisplay": {
+      "title": "Menu Sahten",
+      "pricePerPerson": "84€/2pers.",
+      "setMenuTitle": "Menu Sahten 84€/2pers",
+      "description": "Tabouleh, Hummus, Toshka, Sujuk, Kippenlever, 2X Kibbeh, 2X Kabab spiesjes, 2X Chich taouk spiesjes, 2X Dessert: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & Pistache)",
+      "items": {
+        "tabouleh": "Tabouleh",
+        "hummus": "Hummus",
+        "toshka": "Toshka",
+        "sujuk": "Sujuk",
+        "chickenLiver": "Kippenlever",
+        "kibbeh": "2X Kibbeh",
+        "kebabSkewers": "2X Kabab spiesjes",
+        "chichTaouk": "2X Chich taouk spiesjes",
+        "dessert": "2X Dessert: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & Pistache)"
+      }
+    },
+    "setMenus": {
+      "menuEastWest": {
+        "description": "• Fattoush salade\n• Hummus\n• Moutabal\n• Zahra\n• Falafel\n• 2X Kibbeh\n• 2X Kabab spiesjes\n• 2X Chich taouk spiesjes\n• 2X Dessert: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & pistache)"
+      },
+      "veganEastWest": {
+        "description": "• Fattoush Salade\n• Hummus\n• Moutabal\n• Moussaka\n• Itch\n• Zahra\n• Falafel ×2\n• Batata Harra\n• Dessert ×2: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & pistache)"
+      },
+      "lazeezVegan": {
+        "description": "• Tabouleh\n• Hummus\n• Moutabal\n• Mouhamara\n• Warak Enēb\n• Moussaka\n• Foul Moudamas\n• Falafel ×2\n• Dessert ×2: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & pistache)"
+      },
+      "sahten": {
+        "description": "• Tabouleh\n• Hummus\n• Toshka\n• Sujuk\n• Kippenlever\n• 2X Kibbeh\n• 2X Kabab spiesjes\n• 2X Chich taouk spiesjes\n• 2X Dessert: Aish el Saraya (zoete biscuit, vegan pudding, oranjebloesem water & Pistache)"
+      },
+      "readMore": "Meer Lezen",
+      "readLess": "Minder Lezen"
+    },
+    "coldMezzes": {
+      "taratorChicken": {
+        "title": "Tarator Kip",
+        "description": "Gepureerde gekookte kip en tahini (sesampasta)",
+        "price": "8,5€"
+      },
+      "muhammara": {
+        "title": "Muhammara (Vegan)",
+        "description": "Dip van gegrilde rode paprika's, granaatappel melasse en walnoten",
+        "price": "8€"
+      },
+      "makdous": {
+        "title": "Makdous (Vegan)",
+        "description": "Baby aubergines gevuld met walnoten en paprika's gemarineerd in olijfolie",
+        "price": "7€"
+      },
+      "itch": {
+        "title": "Itch (Vegan)",
+        "description": "Bulgur gekookt in tomatensaus met paprika's, ui, peterselie en granaatappel melasse",
+        "price": "7,5€"
+      },
+      "hummus": {
+        "title": "Hummus (Vegan)",
+        "description": "Kikkererwten puree met tahini (sesampasta)",
+        "price": "7,5€"
+      },
+      "moutabal": {
+        "title": "Moutabal (Vegan)",
+        "description": "Gegrilde aubergine kaviaar met tahini (sesampasta)",
+        "price": "8€"
+      },
+      "warakEnab": {
+        "title": "Warak enab (Vgn)",
+        "description": "Druivenbladeren gevuld met rijst kruiden, gemarineerd in olijfolie, munt, granaatappel melasse",
+        "price": "7€"
+      },
+      "moussaka": {
+        "title": "Moussakan (Vegan)",
+        "description": "Aubergine, ui, kikkererwten en tomaat",
+        "price": "7,5€"
+      },
+      "zahra": {
+        "title": "Zahra (Vegan)",
+        "description": "Gekookte bloemkool, gemarineerd in zelfgemaakte saus (tomaat, knoflook en citroen). Topped met citrus tahini saus.",
+        "price": "7,5€"
+      }
+    },
+    "hotMezzes": {
+      "foulMoudamas": {
+        "title": "Foul moudamas (Vegan)",
+        "description": "Tuinbonen gemarineerd in citroensap, tomaten, komijn, knoflook, olijfolie en tahini saus",
+        "price": "8��"
+      },
+      "arayesCheese": {
+        "title": "Arayes kaas",
+        "description": "Gegrild pitabrood gevuld met kaas en kruiden",
+        "price": "10€"
+      },
+      "sujuk": {
+        "title": "Sujuk",
+        "description": "Pittige Libanese worst gegrild met groenten",
+        "price": "12.50€"
+      },
+      "kibbeh2pcs": {
+        "title": "Kibbeh (2st)",
+        "description": "Gefrituurde bulgur schillen gevuld met gehakt en pijnboompitten",
+        "price": "7€"
+      },
+      "batataHarraVegan": {
+        "title": "Batata harra (Vegan)",
+        "description": "Gefrituurde aardappelblokjes met rode paprika's, koriander en knoflook",
+        "price": "7,5€"
+      },
+      "batataHarra": {
+        "title": "Batata harra",
+        "description": "Gefrituurde aardappelblokjes met rode paprika's, koriander, knoflook en vlees",
+        "price": "7.5€"
+      },
+      "rkakat": {
+        "title": "Rkakat",
+        "description": "Gefrituurde gerolde bladerdeeg gevuld met kaas",
+        "price": "4€"
+      },
+      "falafelVegan": {
+        "title": "Falafel (Vegan)",
+        "description": "Gefrituurde kikkererwten balletjes geserveerd met tahini saus",
+        "price": "7���"
+      },
+      "kibbehVeganist": {
+        "title": "Kibbeh veganist",
+        "description": "Veganistische versie van traditionele kibbeh met bulgur en groenten",
+        "price": "5€"
+      },
+      "grilledSyrianCheese": {
+        "title": "Gegrilde Syrische kaas",
+        "description": "Traditionele Syrische kaas gegrild tot perfectie",
+        "price": "10€"
+      },
+      "nakanek": {
+        "title": "Nakanek",
+        "description": "Miniworstjes met granaatappelmolasse.",
+        "price": "9€"
+      },
+      "toshka": {
+        "title": "Toshka",
+        "description": "Gebakken Libanees brood gevuld met gehakt en Syrische kaas",
+        "price": "12,50€"
+      },
+      "orientalEggplant": {
+        "title": "Orientaalse aubergine",
+        "description": "Gegrilde aubergine, gegarneerd met gekookt gehakt met ui, tomaat en paprika. Geserveerd met zelfgemaakte tomaten- en granaatappelsaus.",
+        "price": "13,5€"
+      },
+      "chickenLiver": {
+        "title": "Kippenlever",
+        "description": "Gekookte kippenlever met ui en speciale kruiden (niet pittig). Geserveerd met granaatappelsaus",
+        "price": "11,5€"
+      },
+      "fatteh": {
+        "title": "Fatteh",
+        "description": "Gekookte kikkererwten, gebakken Libanees brood, knoflook en zelfgemaakte citrus tahini saus.",
+        "price": "7,5€"
+      }
+    },
+    "salads": {
+      "originalTabouleh": {
+        "title": "Originele Tabouleh (Vgn)",
+        "description": "Peterselie, tomaat, ui, citroensap, bulgur, munt en olijfolie",
+        "price": "8€"
+      },
+      "fattoush": {
+        "title": "Fattoush (Vegan)",
+        "description": "Tomaat, sla, rode kool, radijs, komkommer, ui, gebakken brood, enz",
+        "price": "8€"
+      },
+      "falafel": {
+        "title": "Falafel(Vgn)",
+        "description": "Falafel, sla, komkommer, tomaat, augurken en tahini saus (sesampasta)",
+        "price": "13€"
+      }
+    },
+    "lunchDishes": {
+      "vegan": {
+        "title": "Vegan (Vegan)",
+        "description": "Gegrilde aubergine, paprika, tomaat en ui met een speciale saus, geserveerd met hummus, moutabal, Fattoush",
+        "price": "18,50€"
+      },
+      "aleppoMix": {
+        "title": "Aleppo mix",
+        "description": "1 Kebab spies, 1 chich taouk spies, Rkakat, kibbeh, kip tarator, muhammara en fattoush",
+        "price": "23,50€"
+      },
+      "sujuk": {
+        "title": "Sujuk",
+        "description": "Gebakken Libanees brood gevuld met gekruid gehakt, tomaat en augurken geserveerd met hummus, moutabal Fattoush",
+        "price": "20,80€"
+      },
+      "falafel": {
+        "title": "Falafel (Vegan)",
+        "description": "4 stuks falafel geserveerd met hummus, moutabal, Fattoush, tahini saus (sesampasta), augurken",
+        "price": "18€"
+      },
+      "toshka": {
+        "title": "Toshka",
+        "description": "Gebakken Libanees brood gevuld met gehakt en Syrische kaas geserveerd met hummus, moutabal, Fattoush",
+        "price": "20,80€"
+      },
+      "kebab": {
+        "title": "Kebab",
+        "description": "2 gegrilde en gekruide gehakte rundvlees spiesjes geserveerd met hummus, fattoush",
+        "price": "19€"
+      },
+      "chichTaouk": {
+        "title": "Chich Taouk",
+        "description": "2 gegrilde kip spiesjes geserveerd met hummus, itch (bulgur), fattoush, augurken, knoflooksaus",
+        "price": "19€"
+      },
+      "grillMix": {
+        "title": "Grill Mix",
+        "description": "1 kebab spies en 1 chich taouk spies geserveerd met hummus, itch (bulgur), fattoush",
+        "price": "19€"
+      },
+      "toshkaLeban": {
+        "title": "Toshka Leban",
+        "description": "Traditioneel gerecht met yoghurtsaus en gekruide vlees",
+        "price": "17,00€"
+      },
+      "breakMixVegan": {
+        "title": "Break mix vegan",
+        "description": "Hummus, warak eneb, itch (bulgur), gekookte bloemkool en fattouche.",
+        "price": "14,50€"
+      },
+      "breakMix": {
+        "title": "Break mix",
+        "description": "Hummus, itch (bulgur), kabab/chich taouk, gekookte bloemkool en fattouche.",
+        "price": "16,50€"
+      },
+      "chefsDish": {
+        "title": "Chef's Dish",
+        "description": "1 kebeb spies, 1 chich taouk spies, warak eneb, kibbeh, gekookte bloemkool, muhammara en fattouch.",
+        "price": "23,50€"
+      },
+      "falafelSandwichFattouch": {
+        "title": "Falafel sandwich + fattouch salade",
+        "description": "Falafel, tomaat, tahini saus, augurken en sla.",
+        "price": "12,50€"
+      },
+      "chichTaoukFattouch": {
+        "title": "Chich taouk + Fattouch salade",
+        "description": "Gegrilde kip spies, sla, tomaat en knoflooksaus.",
+        "price": "12,50€"
+      },
+      "kebabFattouch": {
+        "title": "Kebab + Fattouch salade",
+        "description": "Gegrilde gekruide gehakte rundvlees spies, hummus, tomaat, sla, ui en sumac.",
+        "price": "12,50€"
+      }
+    },
+    "sandwiches": {
+      "takeAwayOnly": "Enkel Afhalen",
+      "dishes": {
+        "title": "Gerechten"
+      },
+      "takeAwayDeals": {
+        "title": "Afhaal Aanbiedingen",
+        "subtitle": "Gerechten"
+      },
+      "takeawayVegan": {
+        "title": "Afhaal vegan",
+        "description": "Hummus, itch, augurken en fattouche. (brood inbegrepen)",
+        "price": "12€"
+      },
+      "takeawayWithMeat": {
+        "title": "Afhaal met vlees",
+        "description": "Hummus, itch, 1 spies (kabab of chich taouk), augurken, knoflook, saus en fattouche (brood inbegrepen).",
+        "price": "13.50€"
+      },
+      "meatFoodie": {
+        "title": "Vlees Foodie",
+        "description": "Hummus, Zahra, Kibbeh, 1X Chich taouk, 1X Kabab, Foul moudamas, Fattouche",
+        "price": "24€"
+      },
+      "veganFoodie": {
+        "title": "Vegan Foodie",
+        "description": "Hummus, Zahra, 2X Warak eneb, 2X Falafel, Batata harra, Foul moudamas, Fattouche.",
+        "price": "24€"
+      },
+      "hummus": {
+        "title": "Hummus(Vegan)",
+        "description": "Hummus, tomaat, augurken en sla",
+        "price": "6,50€"
+      },
+      "chichTaouk": {
+        "title": "Chich Taouk",
+        "description": "Gegrilde kip spies, sla, tomaat en knoflooksaus",
+        "price": "7,00€"
+      },
+      "moutabal": {
+        "title": "Moutabal(Vegan)",
+        "description": "Gegrilde aubergine kaviaar met tahini (sesampasta), tomaat, augurken en peterselie",
+        "price": "6,50€"
+      },
+      "toshka": {
+        "title": "Toshka",
+        "description": "Gebakken gehakt en Syrische kaas",
+        "price": "7,00€"
+      },
+      "falafel": {
+        "title": "Falafel(Vegan)",
+        "description": "Falafel, tomaat, augurken en sla",
+        "price": "7,00€"
+      },
+      "kebab": {
+        "title": "Kebab",
+        "description": "Gegrilde gekruide gehakte rundvlees spies, hummus, tomaat, sla, ui en sumac",
+        "price": "7,00€"
+      },
+      "veganGrill": {
+        "title": "Vegan Grill(Vegan)",
+        "description": "Gegrilde aubergine, paprika en ui met speciale saus en tomaat",
+        "price": "7,00€"
+      },
+      "makdous": {
+        "title": "Makdous(Vegan)(C)",
+        "description": "Baby aubergines gevuld met walnoten en paprika's, tomaat en peterselie",
+        "price": "7,00€"
+      },
+      "toratorChicken": {
+        "title": "Torator Kip",
+        "description": "Torator kip, peterselie, tomaat en walnoten",
+        "price": "7,00€"
+      },
+      "cheese": {
+        "title": "Kaas(Veget)",
+        "description": "Syrische witte kaas, munt, rode paprika en olijfolie",
+        "price": "6,50€"
+      }
+    },
+    "skewers": {
+      "kebab": {
+        "title": "2x Kebab",
+        "description": "Augurken en knoflooksaus",
+        "price": "10€"
+      },
+      "chichTaouk": {
+        "title": "2x Chich Taouk",
+        "description": "Augurken en knoflooksaus",
+        "price": "10€"
+      }
+    },
+    "desserts": {
+      "aishElSaraya": {
+        "title": "Aish el Saraya (Vgn)",
+        "description": "Een laag zoete biscuit, een laag vegan pudding, oranjebloesem water en pistache",
+        "price": "3,5€"
+      },
+      "halw": {
+        "title": "Halw(Vegan)",
+        "description": "Sesampasta en pistache",
+        "price": "3,50€"
+      },
+      "traditionalIceCream": {
+        "title": "Traditioneel ijs",
+        "description": "Bevroren zuiveldessert gemaakt met mastiek, salep en pistache",
+        "price": "6€"
+      },
+      "assortmentArabicSweets": {
+        "title": "Baklawa",
+        "description": "Assortiment van Arabische zoetigheden",
+        "price": "6€"
+      },
+      "baklawa": {
+        "title": "Baklawa",
+        "description": "Traditioneel Midden-Oosters gebak gemaakt met filodeeg, noten en honing",
+        "price": "5,50€"
+      }
+    },
+    "drinks": {
+      "lebaneseBeer": {
+        "title": "Libanees Bier",
+        "description": "Traditioneel Libanees bier",
+        "price": "4,50€"
+      },
+      "hoegaardenBeer": {
+        "title": "Hoegaarden Wit Bier",
+        "description": "Belgisch tarwebier",
+        "price": "4,50€"
+      },
+      "jupilerBeer": {
+        "title": "Jupiler Bier",
+        "description": "Belgisch lager bier",
+        "price": "3,50€"
+      },
+      "leffeLindemans": {
+        "title": "Leffe Bruin Bier / Lindemans Kriek",
+        "description": "Belgisch bruin bier / Kersenbier",
+        "price": "4,50€"
+      },
+      "chateauKsaraRed": {
+        "title": "Château Ksara Rode Wijn",
+        "description": "Le grand vin libanais",
+        "price": "25€ / 7,50€"
+      },
+      "chateauKsaraReserve": {
+        "title": "Château Ksara Réserve",
+        "description": "Réserve du couvent rouge",
+        "price": "20€"
+      },
+      "chateauKefrayaRed": {
+        "title": "Château Kefraya Rode Wijn",
+        "description": "Breteche rouge",
+        "price": "20€"
+      },
+      "chateauKsaraWhite": {
+        "title": "Château Ksara Witte Wijn",
+        "description": "Blanc de Blancs",
+        "price": "25€ / 7,50€"
+      },
+      "chateauKsaraBlanc": {
+        "title": "Château Ksara Blanc",
+        "description": "Blanc de l'observatoire",
+        "price": "20€"
+      },
+      "chateauKefrayaWhite": {
+        "title": "Château Kefraya Witte Wijn",
+        "description": "Blanc de l'observatoire",
+        "price": "20€"
+      },
+      "chateauKsaraRose": {
+        "title": "Château Ksara Rosé Wijn",
+        "description": "Rosé wijn",
+        "price": "20€"
+      },
+      "roseDamascusJuice": {
+        "title": "Thuisgemaakte 'Roos van Damascus' Sappen",
+        "description": "Roos van Damascus",
+        "price": "5€"
+      },
+      "cocaCola": {
+        "title": "Coca Cola / Cola Zero / Sprite",
+        "description": "Frisdranken",
+        "price": "3,50€"
+      },
+      "schweppesAgrumes": {
+        "title": "Schweppes (Citrus / Virgin Mojito)",
+        "description": "Citrus frisdranken",
+        "price": "4€"
+      },
+      "ayran": {
+        "title": "Ayran",
+        "description": "Traditionele yoghurtdrank",
+        "price": "3,50€"
+      },
+      "waterSpa": {
+        "title": "Water (Spa) 0,5L",
+        "description": "Mineraalwater",
+        "price": "3€"
+      },
+      "fantaIceTea": {
+        "title": "Fanta Orange / IJsthee",
+        "description": "Oranje frisdrank / IJsthee",
+        "price": "3€"
+      },
+      "schweppesTonic": {
+        "title": "Schweppes (Indische Tonic)",
+        "description": "Tonic water",
+        "price": "4€"
+      },
+      "arabianCoffee": {
+        "title": "Arabische Koffie",
+        "description": "Traditionele Arabische koffie",
+        "price": "3,50€"
+      },
+      "cafeEspresso": {
+        "title": "Koffie / Espresso",
+        "description": "Koffie / Espresso",
+        "price": "3,25€"
+      },
+      "tea": {
+        "title": "Thee (Munt Thee / Zwarte Thee / Kamille)",
+        "description": "Warme theesoorten",
+        "price": "3,25€"
+      },
+      "wineRose": {
+        "title": "ROSE WIJN"
+      },
+      "beers": {
+        "title": "BIEREN"
+      },
+      "wines": {
+        "title": "WIJNEN"
+      },
+      "redWine": {
+        "title": "RODE WIJN"
+      },
+      "whiteWine": {
+        "title": "WITTE WIJN"
+      },
+      "roseWine": {
+        "title": "ROSE WIJN"
+      },
+      "refreshingBeverages": {
+        "title": "🍹 Verfrissende Dranken 🍹",
+        "subtitle": "Traditionele en moderne dranken om uw maaltijd te begeleiden"
+      },
+      "softDrinks": {
+        "title": "FRISDRANKEN"
+      },
+      "hotDrinks": {
+        "title": "WARME DRANKEN"
+      }
+    }
+  },
+  "reservations": {
+    "title": "Maak een Reservering",
+    "subtitle": "Reserveer Uw Tafel Online",
+    "howToMakeReservation": "Hoe een tafel reserveren?",
+    "makeReservation": "Maak een Reservering",
+    "fullName": "Uw naam",
+    "email": "Uw e-mailadres",
+    "phone": "Telefoonnummer",
+    "contactQuestion": "Hoe kunnen we u bereiken?",
+    "phoneNumber": "Telefoonnummer hier",
+    "chooseTime": "Kies een datum",
+    "startTime": "Starttijd hier",
+    "endTime": "Eindtijd hier",
+    "time": "Tijd",
+    "numberOfGuests": "Aantal gasten",
+    "selectGuests": "Selecteer aantal gasten",
+    "guest": "gast",
+    "guests": "gasten",
+    "selectTime": "Selecteer tijd",
+    "specialRequests": "Speciale verzoeken",
+    "specialRequestsPlaceholder": "Speciale verzoeken of dieetwensen...",
+    "additionalInfo": "Aanvullende informatie",
+    "messagePlaceholder": "Voer uw bericht hier in",
+    "confirmReservation": "Reservering bevestigen",
+    "bookTable": "TAFEL RESERVEREN",
+    "requestCancellation": "ANNULATIEAANVRAAG",
+    "cancel": "Annuleren",
+    "reservationSubmitted": "Reservering succesvol ingediend!",
+    "confirmationMessage": "Uw reservering is succesvol verzonden. U ontvangt binnenkort een bevestigingsmail.",
+    "namePlaceholder": "Naam hier",
+    "emailPlaceholder": "E-mail hier",
+    "phonePlaceholder": "Telefoonnummer hier",
+    "businessHours": "Openingsuren",
+    "bookingTimes": "Reservatietijden",
+    "lunch": "LUNCH",
+    "lastReservationLunch": "Laatste reservatie om 13:30",
+    "dinner": "DINER",
+    "lastReservationDinner": "Laatste reservatie om 20:30",
+    "saturday": "Zaterdag",
+    "invoiceNumber": "Factuurnummer",
+    "invoiceKeepForCancellation": "Bewaar dit nummer voor annuleringen",
+    "reservationDetails": "Reservatiedetails",
+    "importantInformation": "Belangrijke informatie",
+    "thankYouForChoosing": "Bedankt voor het kiezen van East at West",
+    "contactUsForQuestions": "Als u vragen heeft, neem dan contact met ons op",
+    "unsubscribeFromEmails": "Afmelden voor e-mails",
+    "businessHours": "Openingsuren",
+    "bookingTimes": "Reservatietijden",
+    "lunch": "LUNCH",
+    "dinner": "DINER",
+    "saturday": "Zaterdag",
+    "lastReservationLunch": "Laatste reservatie om 13:30",
+    "lastReservationDinner": "Laatste reservatie om 20:30",
+    "lastReservationAt": "Laatste reservatie om",
+    "until": "Tot",
+    "approvalRequiredMessage": "Reserveringen voor 10 personen of meer vereisen goedkeuring. Uw reservatie wordt als in behandeling gemarkeerd totdat ons personeel deze bevestigt.",
+    "contactPhone": "+32 465 20 60 24",
+    "contactEmail": "contact@eastatwest.com",
+    "duplicateError": "Dit tijdslot is al geboekt. Kies een andere tijd.",
+    "alreadyReserved": "U heeft al een reservering op deze datum. Neem contact met ons op om uw bestaande reservering te wijzigen.",
+    "capacityFull": "Dit tijdslot is volledig geboekt (22 personen maximum). Kies een andere tijd.",
+    "capacityPartiallyAvailable": "Sorry, slechts {{remaining}} plaatsen zijn beschikbaar voor dit tijdslot. De restaurantcapaciteit is 22 personen maximum.",
+    "contactAddress": "Keizerslaan 26\n1000 Brussel\nBelgië",
+    "form": {
+      "name": "Volledige Naam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "date": "Datum",
+      "time": "Tijd",
+      "guests": "Aantal Gasten",
+      "special_requests": "Speciale Verzoeken",
+      "submit": "Tafel Reserveren",
+      "success": "Reservering succesvol ingediend!",
+      "error": "Vul alle verplichte velden in."
+    },
+    "info": {
+      "hours": "Openingstijden",
+      "hours_detail": "Dinsdag - Zondag: 11:00 - 22:00",
+      "closed": "Gesloten op Maandag",
+      "contact": "Contact",
+      "phone": "Telefoon: +1 (555) 123-4567",
+      "email": "E-mail: info@eastatwest.com"
+    },
+    "error": "Er is iets misgegaan. Probeer het opnieuw.",
+    "confirmed": "Uw reservering is bevestigd!",
+    "pending": "Uw reservering is in behandeling. We sturen een bevestiging zodra deze is goedgekeurd.",
+    "validation": {
+      "required": "Dit veld is verplicht",
+      "invalidEmail": "Voer een geldig e-mailadres in",
+      "invalidPhone": "Voer een geldig telefoonnummer in (minimaal 10 cijfers)",
+      "pastDate": "Kan geen reserveringen maken voor data in het verleden",
+      "sundayNotAllowed": "Reserveringen zijn niet beschikbaar op zondag. We zijn gesloten op zondag.",
+      "invalidTimeSlot": "Selecteer een geldig tijdslot. Beschikbaar: Lunch (12:00-13:30), Diner (18:00-21:30)",
+      "endTimeAfterStart": "Eindtijd moet na starttijd zijn",
+      "outsideBusinessHours": "Reserveringen zijn alleen beschikbaar tijdens lunch (12:00-14:00) of diner (18:00-22:00) uren",
+      "lunchEndTime": "Lunchreserveringen moeten eindigen voor 14:00",
+      "dinnerEndTime": "Dinerreserveringen moeten eindigen voor 22:00",
+      "minGuests": "Minimaal 1 gast vereist",
+      "maxGuests": "Maximaal 22 gasten toegestaan. Neem direct contact met ons op voor grotere groepen.",
+      "approvalRequired": "Reserveringen voor 10 personen of meer vereisen goedkeuring. Uw reservatie wordt als in behandeling gemarkeerd totdat ons personeel deze bevestigt.",
+    "approvalWarning": "Reserveringen voor 10 personen of meer vereisen goedkeuring. Uw reservatie wordt als in behandeling gemarkeerd totdat ons personeel deze bevestigt."
+    }
+  },
+  "takeaway": {
+    "title": "Take-Away",
+    "subtitle": "Bestel uw favoriete gerechten voor afhalen of bezorging",
+    "description": "Kunt u niet dineren? Geen probleem! Bestel uw favoriete gerechten voor afhalen of bezorging.",
+    "order_online": "Online Bestellen",
+    "delivery_info": "Bezorging beschikbaar binnen 8 km",
+    "pickup_info": "Afhalen beschikbaar in 20-30 minuten",
+    "categories": {
+      "title": "Categorieën",
+      "all": "Alle Producten",
+      "setMenus": "Complete Menu's",
+      "coldMezzes": "Koude Mezzes",
+      "hotMezzes": "Warme Mezzes",
+      "salads": "Salades",
+      "lunchDishes": "Lunchgerechten",
+      "sandwiches": "Sandwiches",
+      "skewers": "Spiezen",
+      "desserts": "Desserts",
+      "drinks": "Dranken"
+    },
+    "allProducts": "Alle Producten",
+    "cart": "Winkelwagen",
+    "addToCart": "Toevoegen aan Winkelwagen",
+    "removeFromCart": "Verwijderen",
+    "updateQuantity": "Hoeveelheid Bijwerken",
+    "emptyCart": "Uw winkelwagen is leeg",
+    "total": "Totaal",
+    "checkout": "Doorgaan naar Bestelling",
+    "noProducts": "Geen producten gevonden in deze categorie",
+    "loading": "Producten laden...",
+    "error": "Laden van producten mislukt",
+    "products": {
+      "hummus": {
+        "name": "Hummus",
+        "description": "Kikkererwten puree met tahini (sesampasta)"
+      },
+      "moutabal": {
+        "name": "Moutabal",
+        "description": "Gegrilde aubergine kaviaar met tahini (sesampasta)"
+      },
+      "mousaka": {
+        "name": "Moussaka",
+        "description": "Traditioneel gelaagd gerecht met aubergine, gehakt en bechamelsaus"
+      },
+      "iche": {
+        "name": "Iche",
+        "description": "Traditionele Armeense bulgursalade met kruiden en groenten"
+      },
+      "muhamara": {
+        "name": "Muhamara",
+        "description": "Pittige rode paprika en walnoten dip met granaatappel melasse"
+      },
+      "warakEnab": {
+        "name": "Gevulde Druivenbladeren",
+        "description": "Gevulde druivenbladeren met rijst, kruiden en groenten"
+      },
+      "makdous": {
+        "name": "Makdous",
+        "description": "Baby aubergines gevuld met walnoten, knoflook en paprika's in olijfolie"
+      },
+      "chickenTarator": {
+        "name": "Kip Tarator",
+        "description": "Koude kip met romige tahini en walnoten saus"
+      },
+      "falafel": {
+        "name": "Falafel",
+        "description": "Gefrituurde kikkererwten balletjes geserveerd met tahini saus"
+      },
+      "kibbeh": {
+        "name": "Kibbeh (2st)",
+        "description": "Gefrituurde bulgur kroketten gevuld met gehakt, ui en walnoten"
+      },
+      "sujuk": {
+        "name": "Sujuk",
+        "description": "Gekruide Armeense worst perfect gegrild"
+      },
+      "nakanek": {
+        "name": "Nakanek",
+        "description": "Traditionele Armeense worst met unieke kruiden"
+      },
+      "foulMoudamas": {
+        "name": "Foul Moudamas",
+        "description": "Traditionele tuinbonen stoofpot met knoflook, citroen en olijfolie"
+      },
+      "arayesCheese": {
+        "name": "Arayes Kaas",
+        "description": "Gegrild pitabrood gevuld met gesmolten kaas en kruiden"
+      },
+      "batataHarra": {
+        "name": "Pittige Aardappelen",
+        "description": "Pittige gebakken aardappelen met knoflook, koriander en chili"
+      },
+      "rkakat": {
+        "name": "Rkakat",
+        "description": "Knapperige kaasrolletjes gewikkeld in filodeeg"
+      },
+      "kibbeVegan": {
+        "name": "Kebbe Veganistisch (2st)",
+        "description": "Veganistische versie van traditionele kebbe gemaakt met bulgur en groenten"
+      },
+      "grilledCheese": {
+        "name": "Gegrilde Kaas",
+        "description": "Traditionele gegrilde kaas met mediterrane kruiden"
+      },
+      "fattoushSalad": {
+        "name": "Fattoush Salade",
+        "description": "Tomaten, sla, rode kool, radijs, komkommer, ui, gebakken brood met granaatappel melasse"
+      },
+      "falafelSalad": {
+        "name": "Falafel Salade",
+        "description": "Verse gemengde groenten met knapperige falafel en tahini dressing"
+      },
+      "taboule": {
+        "name": "Tabouli",
+        "description": "Traditionele peterselie salade met tomaten, munt, bulgur en citroendressing"
+      },
+      "shishTaouk": {
+        "name": "Shish Taouk",
+        "description": "Gegrilde kip blokjes met rijst en gegrilde groenten"
+      },
+      "falafelPlate": {
+        "name": "Falafel Bord",
+        "description": "Knapperige falafel geserveerd met rijst, salade en tahini saus"
+      },
+      "toshkaLeban": {
+        "name": "Toshka Leban",
+        "description": "Traditioneel gerecht met yoghurtsaus en gekruide vlees"
+      },
+      "aleppoMix": {
+        "name": "Aleppo Mix",
+        "description": "Gemengde grill schotel met verschillende vlees en traditionele bijgerechten"
+      },
+      "veganPlate": {
+        "name": "Veganistisch Bord",
+        "description": "Complete veganistische maaltijd met gemengde groenten, granen en tahini"
+      },
+      "kebabDish": {
+        "name": "Kebab Schotel",
+        "description": "Gegrilde kebab geserveerd met rijst, gegrilde groenten en knoflooksaus"
+      },
+      "aishElSaraya": {
+        "name": "Aish el Saraya",
+        "description": "Zoete biscuit, vegan pudding, oranjebloesem water en pistache"
+      },
+      "traditionalIceCream": {
+        "name": "Traditioneel Ijs",
+        "description": "Zelfgemaakt Midden-Oosters ijs met rozenwater en pistaches"
+      },
+      "hummusSandwich": {
+        "name": "Hummus Sandwich",
+        "description": "Vers pitabrood gevuld met romige hummus, groenten en kruiden"
+      },
+      "shishTaoukSandwich": {
+        "name": "Shish Taouk Sandwich",
+        "description": "Gegrilde gemarineerde kipfilet in pita met knoflooksaus en groenten"
+      },
+      "moutabalSandwich": {
+        "name": "Moutabal Sandwich",
+        "description": "Rokerige gegrilde aubergine dip met tahini in vers pitabrood"
+      },
+      "toshkaSandwich": {
+        "name": "Toshka Sandwich",
+        "description": "Traditionele gekruide vlees sandwich met yoghurtsaus en groenten"
+      },
+      "falafelSandwich": {
+        "name": "Falafel Sandwich",
+        "description": "Knapperige falafel balletjes in pita met tahini saus, salade en augurken"
+      },
+      "taratorChickenSandwich": {
+        "name": "Tarator Kip Sandwich",
+        "description": "Koude kip met romige tahini-walnoten saus in vers pitabrood"
+      },
+      "cheeseSandwich": {
+        "name": "Kaas Sandwich",
+        "description": "Gegrilde kaas met mediterrane kruiden in knapperig pitabrood"
+      }
+    }
+  },
+  "checkout": {
+    "title": "Bestelling",
+    "orderSummary": "Bestellingsoverzicht",
+    "orderDetails": "Bestellingsdetails",
+    "customerInfo": "Klantgegevens",
+    "deliveryOptions": "Bezorgopties",
+    "paymentMethod": "Betaalmethode",
+    "dateTime": "Datum en Tijd",
+    "total": "Totaal",
+    "processing": "Verwerken...",
+    "proceedToPayment": "Doorgaan naar Betaling",
+    "placeOrder": "Bestelling Plaatsen",
+    "error": "Er is iets misgegaan. Probeer het opnieuw.",
+    "form": {
+      "name": "Volledige Naam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "date": "Datum",
+      "time": "Tijd",
+      "street": "Straat en Huisnummer",
+      "city": "Stad",
+      "postalCode": "Postcode",
+      "notes": "Aanvullende Opmerkingen",
+      "namePlaceholder": "Voer uw volledige naam in",
+      "emailPlaceholder": "Voer uw e-mailadres in",
+      "phonePlaceholder": "Voer uw telefoonnummer in",
+      "streetPlaceholder": "Voer uw straat en huisnummer in",
+      "cityPlaceholder": "Voer uw stad in",
+      "postalCodePlaceholder": "Voer postcode in",
+      "notesPlaceholder": "Speciale instructies of opmerkingen..."
+    },
+    "pickup": {
+      "title": "Afhalen",
+      "description": "Afhalen bij restaurant"
+    },
+    "delivery": {
+      "title": "Bezorging",
+      "description": "Bezorgd op uw adres"
+    },
+    "payment": {
+      "online": "Online Betaling",
+      "onlineDescription": "Betaal veilig met creditcard",
+      "cash": "Contant bij Afhalen",
+      "cashDescription": "Betaal bij het ophalen van uw bestelling",
+      "cashOnly": "Momenteel accepteren we alleen contante betalingen bij afhaling"
+    },
+    "validation": {
+      "nameRequired": "Naam is verplicht",
+      "emailRequired": "E-mail is verplicht",
+      "emailInvalid": "Voer een geldig e-mailadres in",
+      "phoneRequired": "Telefoonnummer is verplicht",
+      "phoneInvalid": "Voer een geldig telefoonnummer in",
+      "dateRequired": "Datum is verplicht",
+      "timeRequired": "Tijd is verplicht",
+      "streetRequired": "Straat is verplicht",
+      "cityRequired": "Stad is verplicht",
+      "postalCodeRequired": "Postcode is verplicht"
+    }
+  },
+  "payment": {
+    "loading": "Uw bestelling wordt verwerkt...",
+    "preparing": "Even geduld terwijl we uw bestelling bevestigen",
+    "error": "Betaling Mislukt",
+    "orderNotFound": "Bestelling niet gevonden",
+    "backToMenu": "Terug naar Menu",
+    "success": {
+      "title": "Bestelling Bevestigd!",
+      "subtitle": "Bedankt voor uw bestelling",
+      "orderConfirmed": "Bestelling Bevestigd",
+      "orderId": "Bestelling ID",
+      "customerName": "Klant Naam",
+      "totalAmount": "Totaalbedrag",
+      "deliveryType": "Bezorgtype",
+      "pickup": "Afhalen",
+      "delivery": "Bezorging",
+      "deliveryDate": "Datum",
+      "deliveryTime": "Tijd",
+      "deliveryAddress": "Bezorgadres",
+      "orderItems": "Bestelde Artikelen",
+      "quantity": "Aantal",
+      "each": "per stuk",
+      "total": "Totaal",
+      "noItems": "Geen artikelen",
+      "nextSteps": "Wat Nu?",
+      "emailSent": "Bevestigingsmail",
+      "emailDescription": "We hebben een bevestiging naar uw e-mail gestuurd",
+      "preparation": "Voorbereiding",
+      "preparationDescription": "We beginnen binnenkort met het voorbereiden van uw bestelling",
+      "pickupReady": "Ophalen",
+      "pickupDescription": "Kom uw bestelling ophalen op het geplande tijdstip",
+      "deliveryOnWay": "Bezorging",
+      "deliveryDescription": "Uw bestelling wordt bezorgd op het geplande tijdstip",
+      "orderAgain": "Opnieuw Bestellen",
+      "backToHome": "Terug naar Home"
+    }
+  },
+  "testimonials": {
+    "title": "Wat Onze Klanten Zeggen",
+    "subtitle": "Geloof ons niet zomaar - luister naar onze gewaardeerde klanten",
+    "cta": {
+      "text": "Geweldige ervaring gehad? Deel uw review!",
+      "button": "Laat een Google Review Achter"
+    },
+    "reviews": {
+      "sarah": {
+        "name": "Sarah M.",
+        "review": "Absoluut geweldig! Het mezze-plateau was vers en smaakvol. Verreweg het beste Libanese restaurant in Brussel. Het personeel was warm en gastvrij. Zeer aan te bevelen!",
+        "location": "Brussel, België"
+      },
+      "ahmed": {
+        "name": "Ahmed K.",
+        "review": "Authentieke Libanese keuken die me aan thuis doet denken. De hummus en falafel zijn perfectie. Geweldige halal opties. Ik kom zeker terug!",
+        "location": "Antwerpen, België"
+      },
+      "emma": {
+        "name": "Emma L.",
+        "review": "Het beste veganistische Libanese eten dat ik ooit heb gehad! De veganistische kibbeh was ongelofelijk. Zo blij om een plek te vinden met uitgebreide plantaardige opties. De sfeer is ook heerlijk.",
+        "location": "Brussel, België"
+      },
+      "marc": {
+        "name": "Marc D.",
+        "review": "Perfecte plek voor zakenlunches. Snelle service, heerlijk eten en geweldige locatie in het stadscentrum. De kip shawarma is mijn favoriet.",
+        "location": "Brussel, België"
+      },
+      "fatima": {
+        "name": "Fatima R.",
+        "review": "Nam mijn familie hier mee naartoe voor het diner en iedereen vond het geweldig! De porties zijn royaal en de prijzen zijn eerlijk. Kinderen waren dol op de falafel. Absoluut ons nieuwe favoriete restaurant!",
+        "location": "Gent, België"
+      },
+      "jeanpierre": {
+        "name": "Jean-Pierre B.",
+        "review": "Uitstekende service en voortreffelijk eten. De lamskafta kebabs smolten in mijn mond. De wijnselectie past perfect bij de gerechten. Een echte parel!",
+        "location": "Brussel, België"
+      }
+    }
+  },
+  "footer": {
+    "design": "Ontwerp door Mbagnick Gaye",
+    "copyright": "Copyright © 2025 Alle rechten voorbehouden east@west",
+    "phone": "+32 465 20 60 24",
+    "email": "contact@eastatwest.com",
+    "address": "Keizerslaan 26 1000 Brussel-België",
+    "hours": "Ma-Vr: 11:30 - 14:00\nZa: 18:00 - 22:00",
+    "social": "Volg Ons",
+    "followUs": "Volg Ons",
+    "contact": "Contact",
+    "tagline": "Authentieke Libanese keuken in het hart van Brussel",
+    "newsletter": "Nieuwsbrief",
+    "newsletter_placeholder": "Voer uw e-mail in",
+    "subscribe": "Abonneren",
+    "quickLinks": "Snelle links",
+    "madeWith": "Gemaakt met",
+    "inBrussels": "in Brussel"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Er is iets misgegaan",
+    "back": "Terug",
+    "next": "Volgende",
+    "close": "Sluiten",
+    "menu": "Menu",
+    "search": "Zoeken",
+    "contact": "Contact",
+    "about": "Over Ons",
+    "privacy": "Privacybeleid",
+    "terms": "Gebruiksvoorwaarden",
+    "tryAgain": "Probeer Opnieuw",
+    "success": "Succes"
+  },
+  "cookieConsent": {
+    "title": "🍪 Wij Waarderen Uw Privacy",
+    "description": "We gebruiken cookies om uw browse-ervaring te verbeteren, gepersonaliseerde inhoud te serveren en ons verkeer te analyseren. Door op \"Alles Accepteren\" te klikken, stemt u in met ons gebruik van cookies. U kunt uw voorkeuren aanpassen of niet-essentiële cookies weigeren.",
+    "customize": "Aanpassen",
+    "necessaryOnly": "Alleen Noodzakelijk",
+    "acceptAll": "Alles Accepteren",
+    "preferencesTitle": "Cookie Voorkeuren",
+    "preferencesDescription": "Pas aan welke cookies u wilt accepteren. U kunt deze instellingen op elk moment wijzigen.",
+    "rejectAll": "Alles Weigeren",
+    "savePreferences": "Voorkeuren Opslaan"
+  },
+  "about": {
+    "title": "Ontdek Libanese keuken in Brussel",
+    "heroSubtitle": "Leer meer over onze passie voor mediterrane keuken en onze reis",
+    "part1": "Welkom op onze website, die de boeiende wereld van de Libanese keuken viert! Bij \"East @ West\" zijn we toegewijd aan het presenteren van de rijke smaken, levendige kleuren en cultureel erfgoed van Libanese culinaire tradities, in het hart van Brussel!",
+    "part2": "De Libanese keuken is een waar culinair meesterwerk, dat het beste van mediterrane, Arabische en Levantijnse smaken combineert. We nodigen u uit om op reis te gaan die u kennis laat maken met een reeks aromatische kruiden, verse ingrediënten, gezonde maaltijden en een diverse reeks gerechten die zowel verfijnd als bevredigend zijn.",
+    "chefSectionTitle": "Ontmoet Onze Meesterkok",
+    "heading": "Chef Hanna!",
+    "subheading": "Een Culinaire Meester",
+    "paragraph1": "Maak kennis met Chef Hanna, het culinaire meesterbrein achter de uitzonderlijke smaken en culinaire kunst van \"East @ West\" in Brussel. Met een diepe passie voor de Libanese keuken en een schat aan ervaring is Chef Hanna de man achter de kunst van onze gerechten. Met een achtergrond die diep geworteld is in de Libanese culinaire tradities, heeft hij zijn vaardigheden verfijnd in gerenommeerde keukens en omarmt hij de filosofie om enkel de beste en meest verse ingrediënten te gebruiken om memorabele culinaire ervaringen te creëren.",
+    "paragraph2": "Met een achtergrond die diep geworteld is in de Libanese culinaire tradities, heeft hij zijn vaardigheden verfijnd in gerenommeerde keukens en omarmt hij de filosofie om enkel de beste en meest verse ingrediënten te gebruiken om memorabele culinaire ervaringen te creëren. Zijn culinaire reis heeft hem door heel Libanon geleid, waar hij van lokale chefs heeft geleerd en zich heeft verdiept in de rijke verscheidenheid aan smaken, technieken en culturele nuances die de Libanese keuken kenmerken. Gedreven door zijn passie voor de diversiteit van de Libanese keuken, blijft Chef Hanna experimenteren met nieuwe ingrediënten, smaken en kookmethodes om traditionele recepten naar een modern culinair niveau te tillen. Zijn vermogen om smaken te balanceren en unieke eetervaringen te creëren heeft hem lof opgeleverd van zowel de lokale bevolking als bezoekers. Naast zijn culinaire expertise belichaamt Chef Hanna de geest van Libanese gastvrijheid. Met een warme en gastvrije houding zorgt hij ervoor dat elke gast zich thuis voelt in zijn restaurant. Zijn toewijding aan uitmuntende service en onvergetelijke culinaire ervaringen is het bewijs van zijn streven naar perfectie.",
+    "featuresDescription": "Ontdek wat onze culinaire ervaring buitengewoon maakt"
+  },
+  "gallery": {
+    "title": "Ons Restaurant in Beeld",
+    "description": "Een glimp van onze gerechten, sfeer en service.",
+    "image_alt_1": "Libanese mezze plaat",
+    "image_alt_2": "East@West eetruimte",
+    "image_alt_3": "Verse gegrilde spiesjes",
+    "aish": {
+      "title": "Aïsh El Saraya",
+      "description": "Een klassiek Libanees dessert met rijke room en siroopgedrenkt brood."
+    },
+    "icecream": {
+      "title": "Traditioneel IJs",
+      "description": "Romig Libanees ijs met rozenwater en pistachenoten."
+    },
+    "image3": {
+      "title": "Libanese Mezzes",
+      "description": "Een rijke selectie van traditionele koude en warme voorgerechten."
+    },
+    "image4": {
+      "title": "Gemengde Grill",
+      "description": "Sappig gegrild vlees op Libanese wijze."
+    },
+    "image5": {
+      "title": "Verse Hummus",
+      "description": "Romige kikkererwtenpuree met tahin en citroen."
+    },
+    "image6": {
+      "title": "Tabbouleh Salade",
+      "description": "Verfrissende salade met peterselie, munt en bulgur."
+    },
+    "image7": {
+      "title": "Falafel",
+      "description": "Krokante kikkererwtenschijfjes met tahinsaus."
+    },
+    "image8": {
+      "title": "Libanese Zoetigheden",
+      "description": "Een selectie van authentieke Libanese gebakjes en zoetigheden."
+    },
+    "image9": {
+      "title": "Gevulde Wijnbladeren",
+      "description": "Traditionele wijnbladeren gevuld met rijst, kruiden en specerijen."
+    },
+    "image10": {
+      "title": "Manakish met Zaatar",
+      "description": "Libanees platbrood belegd met tijm en sesamzaad."
+    }
+  },
+  "hero": {
+    "headline": "Libanees Restaurant<br class='md:hidden'/> Brussel<br class='md:hidden'/> East At West",
+    "description": "Ervaar de authentieke smaken van de Middellandse Zee in ons moderne culinaire heiligdom",
+    "cta": "Reserveer Uw Tafel",
+    "viewMenu": "Bekijk Ons Menu",
+    "viewGallery": "Bekijk Onze Galerij",
+    "takeAwayOnly": "Enkel Afhalen",
+    "imageAlt": "East @ West hero"
+  },
+  "realtime": {
+    "todaysSpecials": "Aanraders van Vandaag",
+    "todaysSpecialsDescription": "Handgemaakte delicatessen bereid met passie en authentieke mediterrane smaken",
+    "upcomingEvents": "Aankomende Evenementen",
+    "upcomingEventsDescription": "Sluit je bij ons aan voor onvergetelijke culinaire ervaringen en speciale vieringen",
+    "reserveEvents": "Reserveer uw evenementen bij ons",
+    "seasonalPromotions": "Seizoensaanbiedingen"
+  },
+  "specials": {
+    "title": "Dagelijkse Specialiteiten",
+    "subtitle": "Chef's Dagelijkse Aanbevelingen",
+    "description": "Ontdek de zorgvuldig samengestelde selectie van onze chef van de meest uitzonderlijke gerechten van vandaag, bereid met de beste ingrediënten en authentieke mediterrane technieken.",
+    "seeFullMenu": "Bekijk Volledige Menu",
+    "items": {
+      "hummus": {
+        "title": "Traditionele Hummus",
+        "description": "Romige kikkererwtenpuree met tahini, olijfolie en authentieke Libanese kruiden",
+        "price": "€7.50"
+      },
+      "falafel": {
+        "title": "Knapperige Falafel",
+        "description": "Gouden gefrituurde kikkererwtenbeignets geserveerd met tahinisaus en verse kruiden",
+        "price": "€8.50"
+      },
+      "kebbe": {
+        "title": "Kebbe Special",
+        "description": "Traditionele bulgur kroketten gevuld met gekruid gehakt en walnoten",
+        "price": "€9.00"
+      },
+      "aishElSaraya": {
+        "title": "Aish El Saraya",
+        "description": "Gelaagd dessert met gezoete koekjes, vegan pudding en oranjebloesem water",
+        "price": "€6.50"
+      }
+    }
+  },
+  "events": {
+    "title": "Evenementen & Catering",
+    "subtitle": "Onvergetelijke Culinaire Ervaringen Creëren",
+    "hero": {
+      "welcome": "Welkom bij East@West",
+      "breadcrumb": "Home / Evenementen & Catering"
+    },
+    "forAllEvents": {
+      "title": "Voor Al Uw Evenementen",
+      "description": "Van intieme diners tot grote feesten, wij creëren onvergetelijke culinaire ervaringen op maat voor uw speciale gelegenheden."
+    },
+    "kibbehVegan": {
+      "title": "Authentieke Smaken",
+      "subtitle": "Traditionele Libanese Keuken",
+      "description": "Ervaar de authentieke smaak van Libanon met onze handgemaakte traditionele gerechten, bereid met recepten die van generatie op generatie zijn doorgegeven."
+    },
+    "specialities": {
+      "title": "Onze Specialiteiten",
+      "description": "Ontdek onze kenmerkende gerechten die traditionele Libanese smaken mengen met moderne presentatie, waardoor een unieke eetervaring ontstaat."
+    },
+    "bookEvent": {
+      "title": "Boek Uw Evenement",
+      "description": "Laat ons uw speciale gelegenheid buitengewoon maken met onze cateringdiensten",
+      "email": "contact@eastatwest.com",
+      "phone": "+32 465 20 60 24",
+      "emailLabel": "Email ons",
+      "phoneLabel": "Bel ons"
+    },
+    "latestNews": {
+      "title": "Laatste Nieuws",
+      "description": "Blijf op de hoogte van onze culinaire innovaties en aankomende evenementen",
+      "blogCta": "Bezoek Onze Blog"
+    },
+    "catering": {
+      "title": "Onze Catering Galerij",
+      "description": "Blader door onze collectie van memorabele evenementen en vieringen die wij het genoegen hebben gehad te cateren"
+    },
+    "gallery": {
+      "image1_alt": "East at West restaurant in Brussel eetervaring",
+      "image2_alt": "Professionele cateringservice door East at West",
+      "image3_alt": "Traditionele Libanese mezze restaurant spread",
+      "image4_alt": "East at West Brussels restaurant interieur",
+      "image5_alt": "Authentieke Libanese restaurant sfeer",
+      "image6_alt": "East at West cateringservice in Brussel"
+    },
+    "images": {
+      "mezze": "Traditionele Libanese mezze spread",
+      "fattoush": "Verse fattoush salade met krokant brood",
+      "bruxelles": "Libanese keuken in Brusselse setting",
+      "event": "Professionele evenement cateringservice",
+      "platter": "Authentieke Libanese voedselplaat"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "contactUs": "Neem contact met ons op",
+    "subtitle": "Neem contact met ons op voor reserveringen, vragen of speciale evenementen",
+    "contactInformation": "Contactinformatie",
+    "phone": "Telefoon",
+    "email": "Email",
+    "address": "Adres",
+    "openingHours": "Openingstijden",
+    "mondayFriday": "Maandag-Vrijdag : 12:00 - 14:30 en 18:00 - 22:00",
+    "saturday": "Zaterdag : 18:00 - 22:00",
+    "sundayClosed": "Zondag : Gesloten",
+    "findUs": "Vind Ons",
+    "locationDescription": "Gelegen in het hart van Brussel, gemakkelijk bereikbaar met het openbaar vervoer",
+    "interactiveMap": "Interactieve Kaart",
+    "mapIntegration": "Kaartintegratie kan hier worden toegevoegd",
+    "followUs": "Volg Ons",
+    "socialDescription": "Blijf op de hoogte van onze nieuwste gerechten, evenementen en speciale aanbiedingen",
+    "restaurantImageAlt": "East at West Restaurant",
+    "restaurantDescription": "Ervaar de beste mediterrane keuken in het hart van Brussel",
+    "contactTooltips": {
+      "phone": "Bel ons",
+      "email": "Stuur ons een email",
+      "address": "Routebeschrijving"
+    },
+    "reservations": {
+      "cancelled": "Reservering Geannuleerd",
+      "cancelledDetails": "Geannuleerde Reservering Details",
+      "cancellationNotice": "Annuleringsbericht",
+      "cancellationMessage": "Uw reservering is succesvol geannuleerd. Als u een nieuwe reservering wilt maken, bezoek dan onze website of neem rechtstreeks contact met ons op.",
+      "cancelReservation": "Reservering Annuleren",
+      "cancelInstructions": "Klik op de knop hierboven om uw reservering te annuleren. U ontvangt een bevestigingsmail zodra deze is geannuleerd."
+    }
+  },
+  "parallax": {
+    "title": "Verhef je culinaire beleving",
+    "subtitle": "Ontdek onze mix van traditie en innovatie voor elke gelegenheid.",
+    "cta": "RESERVEER UW TAFEL",
+    "viewMenu": "BEKIJK HET MENU"
+  },
+  "blog": {
+    "title": "Onze Verhalen en Inzichten",
+    "subtitle": "Ontdek de rijke cultuur, authentieke recepten en warme gastvrijheid die East at West bijzonder maken.",
+    "featured": "Uitgelicht",
+    "readMore": "Lees Meer",
+    "backToBlog": "Terug naar Blog",
+    "tableOfContents": "Inhoudsopgave",
+    "shareArticle": "Deel dit artikel",
+    "relatedArticles": "Gerelateerde Artikelen",
+    "authorAt": "Auteur bij",
+    "minRead": "min lezen",
+    "searchPlaceholder": "Zoek blogberichten...",
+    "filterAll": "Alles",
+    "noPostsFound": "Geen blogberichten gevonden",
+    "noPostsFoundDesc": "Probeer uw filters of zoektermen aan te passen.",
+    "checkBackSoon": "Kom binnenkort terug voor nieuwe verhalen en inzichten!",
+    "leaveReply": "Reactie Achterlaten",
+    "thankYouMessage": "Bedankt voor uw reactie! Deze wordt gepubliceerd na beoordeling.",
+    "emailNotPublished": "Uw e-mailadres wordt niet gepubliceerd. Verplichte velden zijn gemarkeerd",
+    "enterName": "Voer Naam in *",
+    "enterEmail": "Voer E-mail in *",
+    "enterWebsite": "Voer Website in",
+    "enterComments": "Voer Reacties in *",
+    "posting": "Plaatsen...",
+    "postComment": "Reactie Plaatsen",
+    "commentsUnavailable": "Reacties zijn tijdelijk niet beschikbaar",
+    "checkBackLater": "Kom later terug of neem contact op met ondersteuning als dit aanhoudt.",
+    "loadingComments": "Reacties laden...",
+    "beFirstComment": "Wees de eerste om een reactie achter te laten!",
+    "commentsCount": "Reacties",
+    "team": "Team",
+    "replyAsAdmin": "Reageren als admin...",
+    "reply": "Reageren",
+    "vegetarianPost": {
+      "title": "Vegetarisch Restaurant Brussel – East @ West",
+      "excerpt": "Vlees, vis en gevogelte worden niet geserveerd in vegetarisch restaurant Brussels East @ West. Ontdek onze diverse vegetarische opties en het rijke culinaire erfgoed van Belgische plantaardige keuken.",
+      "whyChoose": "Waarom Kiezen voor een Vegetarisch Restaurant in Brussel?",
+      "whatIs": "Wat is een Vegetarisch Restaurant?",
+      "history": "Hoe Lang Bestaan er al Vegetarische Eetgelegenheden?",
+      "menu": "Wat Staat er op het Menu van een Vegetarisch Restaurant?",
+      "belgianDishes": "België's Must-Try Vegetarische Gerechten",
+      "cost": "Wat Zijn de Kosten van het Openen van een Vegetarisch Restaurant?",
+      "howToStart": "Hoe Start je een Vegetarisch Restaurant?",
+      "types": "Veel Voorkomende Types Vegetarische Restaurants in Brussel",
+      "conclusion": "Conclusie",
+      "bestRestaurants": "Beste Vegetarische Restaurants Brussel, België"
+    },
+
+    "restaurantGuru": {
+      "title": "Trots erkend door Restaurant Guru",
+      "subtitle": "Viering van jaren van uitmuntendheid van 2021 tot 2024"
+    },
+    "visitRestaurant": "Klaar om Authentieke Libanese Keuken te Ervaren?",
+    "experienceText": "Bezoek ons restaurant in Brussel en ontdek de rijke smaken van traditionele Libanese gerechten bereid met liefde en authenticiteit.",
+    "bookTable": "Reserveer een Tafel"
+  },
+  "awards": {
+    "title": "Trots erkend door Restaurant Guru",
+    "subtitle": "Viering van jaren van uitmuntendheid van 2021 tot 2024"
+  },
+  "digitalMenu": {
+    "brand": "EAST AT WEST",
+    "title": "Digitale Menu",
+    "subtitle": "Ontdek onze authentieke Libanese smaken en huisspecialiteiten.",
+    "alt": "Libanese moussaka kom"
+  },
+  "upcomingEvents": {
+    "wineTasting": {
+      "title": "Wijnproeverij Avond",
+      "date": "15 februari 2025",
+      "time": "19:00",
+      "description": "Sluit je bij ons aan voor een exclusieve wijnproeverij met mediterrane wijnen gecombineerd met onze kenmerkende gerechten."
+    },
+    "chefTable": {
+      "title": "Chef's Tafel Ervaring",
+      "date": "22 februari 2025",
+      "time": "18:30",
+      "description": "Een intieme culinaire ervaring met Chef Hanna met een 7-gangen degustatiemenu."
+    },
+    "cookingClass": {
+      "title": "Mediterrane Kookles",
+      "date": "1 maart 2025",
+      "time": "14:00",
+      "description": "Leer authentieke mediterrane gerechten bereiden met onze hoofdkok."
+    }
+  },
+  "lebaneseRestaurantBrussels": {
+    "hero": {
+      "title": "Libanees Restaurant Brussel",
+      "subtitle": "Ervaar Authentieke Libanese Keuken in het Hart van Brussel",
+      "bookTable": "Reserveer een Tafel",
+      "viewMenu": "Bekijk Menu"
+    },
+    "whyChoose": {
+      "title": "Waarom East At West?",
+      "authentic": {
+        "title": "100% Authentiek Libanees",
+        "description": "Traditionele recepten uit Libanon, bereid door ervaren Libanese chefs met de beste ingrediënten en kruiden rechtstreeks geïmporteerd uit het Midden-Oosten."
+      },
+      "halal": {
+        "title": "Halal Gecertificeerd",
+        "description": "Al onze vleesgerechten zijn halal gecertificeerd, zodat u kunt genieten van authentieke Libanese keuken met volledige gemoedsrust."
+      },
+      "vegan": {
+        "title": "Veganistische & Vegetarische Opties",
+        "description": "Uitgebreid plantaardig menu met falafel, hummus, baba ganoush, veganistische kibbeh en vele andere Libanese specialiteiten."
+      },
+      "location": {
+        "title": "Centrale Locatie in Brussel",
+        "description": "Gelegen aan de Keizerslaan 26 in het hart van Brussel, gemakkelijk bereikbaar met het openbaar vervoer en op loopafstand van de belangrijkste attracties."
+      },
+      "catering": {
+        "title": "Cateringdiensten",
+        "description": "Professionele Libanese catering voor zakelijke evenementen, bruiloften en privéfeesten. Aangepaste menu's beschikbaar voor groepen van elke grootte."
+      },
+      "award": {
+        "title": "Bekroond",
+        "description": "Erkend door Restaurant Guru en zeer gewaardeerd door klanten voor onze uitzonderlijke voedsekwaliteit, service en authentieke sfeer."
+      }
+    },
+    "dishes": {
+      "title": "Onze Signature Libanese Gerechten",
+      "subtitle": "Ontdek de rijke smaken van Libanon met ons zorgvuldig samengesteld menu van traditionele en moderne gerechten",
+      "mezze": {
+        "title": "Mezze Schotel",
+        "description": "Een prachtig assortiment Libanese voorgerechten met hummus, baba ganoush, tabbouleh, falafel, gevulde druivenbladeren en vers pitabrood. Perfect om te delen!",
+        "keywords": "vegetarisch, veganistische opties, glutenvrij beschikbaar"
+      },
+      "shawarma": {
+        "title": "Kip Shawarma",
+        "description": "Malse gemarineerde kip, langzaam geroosterd en geserveerd met tahinisaus, augurken en Libanese knoflooksaus. Een Libanese streetfood klassieker!",
+        "keywords": "halal, signature gerecht, klantfavoriet"
+      },
+      "kibbeh": {
+        "title": "Kibbeh (Traditioneel & Veganistisch)",
+        "description": "Onze beroemde kibbeh - bulgur tarweschillen gevuld met gekruid vlees of onze innovatieve veganistische vulling. Knapperig van buiten, smaakvol van binnen.",
+        "keywords": "traditioneel Libanees, veganistische optie beschikbaar"
+      },
+      "kafta": {
+        "title": "Lamsvlees Kafta Kebabs",
+        "description": "Met de hand gerolde lamsvlees gemengd met peterselie, uien en kruiden uit het Midden-Oosten, perfect gegrild. Geserveerd met rijst en gegrilde groenten.",
+        "keywords": "halal, gegrild, glutenvrij"
+      },
+      "viewFullMenu": "Bekijk Volledig Menu"
+    },
+    "location": {
+      "title": "Bezoek Ons in Brussel",
+      "address": "Adres",
+      "addressLine1": "Keizerslaan 26",
+      "addressLine2": "1000 Brussel",
+      "addressLine3": "België",
+      "contactTitle": "Contact",
+      "phone": "Telefoon",
+      "email": "E-mail",
+      "transport": "Openbaar Vervoer",
+      "transportDetails": "Metro: Beurs of De Brouckère stations\nTram/Bus: Meerdere lijnen stoppen in de buurt"
+    },
+    "hours": {
+      "title": "Openingstijden",
+      "mondayToFriday": "Maandag - Vrijdag",
+      "lunchHours": "12:00 - 14:30",
+      "dinnerHours": "18:00 - 22:00",
+      "saturday": "Zaterdag",
+      "saturdayHours": "18:00 - 22:00 (Alleen diner)",
+      "sunday": "Zondag",
+      "closed": "Gesloten",
+      "lastReservationLunch": "Laatste reservering om 14:30",
+      "lastReservationDinner": "Laatste reservering om 20:30",
+      "makeReservation": "Maak een Reservering"
+    },
+    "faq": {
+      "title": "Libanees Restaurant Brussel - Uw Vragen Beantwoord",
+      "subtitle": "Alles wat u moet weten over East At West",
+      "questions": {
+        "bestRestaurant": {
+          "question": "Wat maakt East At West het beste Libanese restaurant in Brussel?",
+          "answer": "East At West combineert authentieke Libanese recepten die van generatie op generatie zijn doorgegeven met verse, lokaal geproduceerde ingrediënten. Onze chefs brengen tientallen jaren ervaring in de Libanese keuken mee en creëren traditionele gerechten zoals mezze, falafel, hummus en shawarma met een moderne presentatie. We zijn erkend door Restaurant Guru en geliefd bij zowel locals als toeristen vanwege onze warme gastvrijheid en authentieke smaken van Libanon."
+        },
+        "location": {
+          "question": "Waar bevindt het Libanese restaurant East At West zich in Brussel?",
+          "answer": "We zijn gunstig gelegen aan Bld de l'Empereur 26, 1000 Brussel, in het hart van het stadscentrum. We zijn gemakkelijk bereikbaar met de metro (stations Beurs/De Brouckère), tram en bus. Straatparkeren en openbare parkeergarages zijn in de buurt beschikbaar."
+        },
+        "halal": {
+          "question": "Serveert u halal eten in uw Libanese restaurant?",
+          "answer": "Ja, al onze vleesgerechten worden bereid volgens halal-normen. We zijn er trots op authentieke Libanese halal-gerechten te serveren, waaronder kip shawarma, lamskebabs, kafta en meer. Ons menu biedt ook uitgebreide vegetarische en veganistische opties."
+        },
+        "openingHours": {
+          "question": "Wat zijn de openingstijden van East At West Brussel?",
+          "answer": "We zijn van maandag tot en met zaterdag geopend met de volgende tijden:\n\nMaandag - Vrijdag:\n🍽️ Lunch: 12:00 - 14:30 (laatste reservering om 14:30)\n🍽️ Diner: 18:00 - 22:00 (laatste reservering om 20:30)\n\nZaterdag:\n🎉 Alleen diner: 18:00 - 22:00 (laatste reservering om 20:30)\n\nWe zijn gesloten op zondag. Voor reserveringen kunt u ons bellen op +32 465 20 60 24 of online boeken."
+        },
+        "vegetarian": {
+          "question": "Biedt u vegetarische en veganistische Libanese gerechten aan?",
+          "answer": "Absoluut! De Libanese keuken is van nature rijk aan vegetarische en veganistische opties. We bieden falafel, hummus, baba ganoush, tabouleh, fattoush, gevulde wijnbladeren, linzensoep en nog veel meer plantaardige gerechten. Onze veganistische kibbeh is een favoriet van de klanten. Vraag gerust aan ons personeel om aanbevelingen!"
+        },
+        "reservation": {
+          "question": "Kan ik een reservering maken bij East At West?",
+          "answer": "Ja, we raden ten zeerste aan om te reserveren, vooral voor het diner en in het weekend. U kunt online een tafel boeken via onze website, ons bellen op +32 465 20 60 24, of een e-mail sturen naar infos.east.west@gmail.com. Walk-ins zijn welkom op basis van beschikbaarheid."
+        },
+        "catering": {
+          "question": "Biedt u cateringdiensten aan voor evenementen in Brussel?",
+          "answer": "Ja! We bieden authentieke Libanese catering voor bedrijfsevenementen, bruiloften, privéfeesten en speciale gelegenheden in heel Brussel. Ons cateringmenu omvat mezze-schotels, warme gerechten, desserts en aanpasbare opties voor elke groepsgrootte. Bezoek onze pagina Evenementen & Catering of neem contact met ons op voor een persoonlijke offerte."
+        },
+        "popularDishes": {
+          "question": "Wat zijn uw populairste Libanese gerechten?",
+          "answer": "De favorieten van onze klanten zijn onder andere:\n• Gemengde Mezze Schotel (hummus, baba ganoush, tabouleh, falafel)\n• Kip Shawarma\n• Lams Kafta Kebabs\n• Kibbeh (traditioneel en veganistisch)\n• Fattoush Salade\n• Manakish (Libanees platbrood)\n• Baklava als dessert\n\nWe bieden ook dagspecials met seizoensgebonden ingrediënten."
+        },
+        "familyFriendly": {
+          "question": "Is East At West gezinsvriendelijk?",
+          "answer": "Ja, we zijn een gezinsvriendelijk restaurant! We verwelkomen gasten van alle leeftijden en bieden een ontspannen, warme sfeer die perfect is voor gezinsdiners. Ons menu heeft opties die zowel volwassenen als kinderen aanspreken, en ons personeel helpt graag met speciale verzoeken."
+        },
+        "takeaway": {
+          "question": "Biedt u afhaal en bezorging aan in Brussel?",
+          "answer": "Ja, we bieden zowel afhaal- als bezorgdiensten aan. U kunt rechtstreeks via onze website bestellen voor afhaling, of u kunt ons vinden op populaire bezorgplatforms. Geniet van authentieke Libanese gerechten in het comfort van uw eigen huis!"
+        }
+      }
+    },
+    "cta": {
+      "title": "Klaar om Authentieke Libanese Keuken te Ervaren?",
+      "subtitle": "Boek nu uw tafel en ontdek waarom East At West het favoriete Libanese restaurant van Brussel is",
+      "reserveTable": "Reserveer een Tafel",
+      "orderTakeaway": "Bestel Afhaal"
+    }
+  }
+} 

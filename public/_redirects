@@ -1,0 +1,35 @@
+# WordPress to Next.js URL redirects
+# 301 redirects preserve SEO rankings
+# Note: Keep redirects minimal to avoid redirect chains that impact Google indexing
+
+# Block WordPress admin and login pages (force with !)
+/wp-admin/*                     /                       301!
+/wp-login.php                   /                       301!
+/xmlrpc.php                     /                       301!
+
+# Block WordPress backend files (force with !)
+/wp-content/*                   /                       301!
+/wp-includes/*                  /                       301!
+/wp-json/*                      /                       301!
+
+# Old WordPress page URLs to new Next.js routes
+/about-snack-halal              /about                  301
+/gallery-vegan-dessert          /gallery                301
+/take-away                      /takeaway               301
+/take-away2                     /takeaway               301
+/restaurant-east-at-west-in-brussels  /about            301
+/welcome-to-east-at-west        /                       301
+
+# Common WordPress URLs
+/index.php                      /                       301
+/category/*                     /blog                   301
+/tag/*                          /blog                   301
+/author/*                       /blog                   301
+/product/*                      /takeaway               301
+
+# Domain canonicalization - ensure www redirects to non-www (force with !)
+https://www.eastatwest.com/*    https://eastatwest.com/:splat  301!
+
+# Force HTTPS (force with !)
+http://eastatwest.com/*         https://eastatwest.com/:splat  301!
+http://www.eastatwest.com/*     https://eastatwest.com/:splat  301!
