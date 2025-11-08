@@ -21,6 +21,12 @@
       "title": "Welkom bij East at West",
       "subtitle": "Een Culinair Reis Tussen Twee Werelden"
     },
+    "introduction": {
+      "title": "Authentieke Libanese Keuken in het Hart van Brussel",
+      "paragraph1": "Welkom bij East @ West, waar authentieke Libanese smaken moderne culinaire excellentie ontmoeten in Brussel. Ons restaurant brengt u de rijke tradities van de Mediterrane keuken, bereid met passie en geserveerd met warmte. Elk gerecht vertelt een verhaal van erfgoed, kwaliteit en de levendige cultuur van Libanon.",
+      "paragraph2": "Van onze vers bereide mezze tot onze perfect gegrilde specialiteiten gebruiken we alleen de beste ingrediënten om onvergetelijke eetervaring te creëren. Ons halal-gecertificeerde menu bevat traditionele Libanese recepten die van generatie op generatie zijn doorgegeven, gecombineerd met eigentijdse presentatie en smaken die iedereen aanspreken.",
+      "paragraph3": "Of u nu bij ons komt voor een intiem diner, een speciale gelegenheid viert of voor het eerst de Libanese keuken ontdekt, ons team zet zich in voor uitzonderlijke service en een authentieke smaak van Libanon in het hart van Brussel."
+    },
     "features": {
       "title": "Waarom Ons Kiezen",
       "fusion": "Fusie Keuken",
@@ -35,6 +41,11 @@
     "title": "Ons Menu",
     "subtitle": "Ons volledige menu is op aanvraag af te halen.",
     "description": "Ontdek onze authentieke gerechten met verse ingrediënten. Ter plaatse of op aanvraag als afhaal.",
+    "introduction": {
+      "title": "Authentieke Libanese Smaken",
+      "paragraph1": "Ons menu viert de rijke culinaire tradities van Libanon, met verse mezze, vakkundig gegrild vlees en vegetarische delicatessen. Elk gerecht wordt bereid met authentieke recepten die van generatie op generatie zijn doorgegeven, waarbij alleen de beste ingrediënten worden gebruikt voor een onvergetelijke eetervaring.",
+      "paragraph2": "Van klassieke hummus en falafel tot onze kenmerkende grillspecialiteiten en traditionele desserts, elk item op ons menu weerspiegelt onze toewijding aan kwaliteit en authenticiteit. Ons halal-gecertificeerde restaurant biedt opties voor elke smaak, of u nu ter plaatse dineert of afhaalmaaltijden bestelt."
+    },
     "buttons": {
       "menu": "Menu",
       "menuTakeawayOnly": "Menu enkel Afhaal"
@@ -739,6 +750,10 @@
     "order_online": "Online Bestellen",
     "delivery_info": "Bezorging beschikbaar binnen 8 km",
     "pickup_info": "Afhalen beschikbaar in 20-30 minuten",
+    "introduction": {
+      "paragraph1": "Zin in authentieke Libanese keuken thuis? Onze afhaalservice brengt de smaken van East @ West rechtstreeks bij u. Elk gerecht wordt vers bereid met dezelfde zorg en kwaliteit als onze dineerservice, zodat u Libanese keuken van restaurantkwaliteit kunt genieten in het comfort van uw eigen ruimte.",
+      "paragraph2": "Van onze kenmerkende mezze-schotels tot onze vakkundig gegrilde specialiteiten, ons complete menu is beschikbaar voor afhaal. Blader gewoon door onze selectie, plaats uw bestelling en haal deze op wanneer het u uitkomt. We bieden ook cateringopties voor grotere bijeenkomsten en speciale evenementen."
+    },
     "categories": {
       "title": "Categorieën",
       "all": "Alle Producten",
@@ -1201,6 +1216,10 @@
       "welcome": "Welkom bij East@West",
       "breadcrumb": "Home / Evenementen & Catering"
     },
+    "introduction": {
+      "paragraph1": "Transformeer uw speciale gelegenheden met authentieke Libanese catering van East @ West. Of u nu een bedrijfsevenement, bruiloftsviering of privébijeenkomst plant, wij brengen de rijke smaken en warme gastvrijheid van Libanon naar uw locatie.",
+      "paragraph2": "Ons ervaren cateringteam werkt nauw met u samen om op maat gemaakte menu's te creëren die uw voorkeuren en dieetwensen weerspiegelen. Van traditionele mezze-schotels tot uitgebreide meergangenfeesten, wij zorgen ervoor dat elk detail perfect is voor uw gedenkwaardige evenement in Brussel."
+    },
     "forAllEvents": {
       "title": "Voor Al Uw Evenementen",
       "description": "Van intieme diners tot grote feesten, wij creëren onvergetelijke culinaire ervaringen op maat voor uw speciale gelegenheden."
@@ -1251,6 +1270,10 @@
     "title": "Contact",
     "contactUs": "Neem contact met ons op",
     "subtitle": "Neem contact met ons op voor reserveringen, vragen of speciale evenementen",
+    "introduction": {
+      "paragraph1": "East @ West is gunstig gelegen in het hart van Brussel aan Bld de l'Empereur 26. Of u nu een reservering wilt maken, informatie wilt over onze cateringdiensten of gewoon een vraag heeft over ons menu, ons team staat klaar om u te helpen de authentieke Libanese gastvrijheid te ervaren.",
+      "paragraph2": "We verwelkomen walk-ins en reserveringen voor lunch en diner. Ons restaurant is geopend van maandag tot vrijdag voor de lunch en op zaterdagavond voor het diner, waar we traditionele Libanese keuken serveren in een warme en uitnodigende sfeer. Neem vandaag nog contact met ons op om uw bezoek te plannen of uw evenementcateringbehoeften te bespreken."
+    },
     "contactInformation": "Contactinformatie",
     "phone": "Telefoon",
     "email": "Email",
@@ -1290,6 +1313,9 @@
   "blog": {
     "title": "Onze Verhalen en Inzichten",
     "subtitle": "Ontdek de rijke cultuur, authentieke recepten en warme gastvrijheid die East at West bijzonder maken.",
+    "introduction": {
+      "paragraph1": "Ontdek de wereld van de Libanese keuken via onze blog. Van traditionele recepten en kooktechnieken tot de verhalen achter onze kenmerkende gerechten, we delen de passie en het erfgoed die East @ West speciaal maken. Verken de authentieke mediterrane eetcultuur, culinaire tips en de levendige tradities van Libanon."
+    },
     "featured": "Uitgelicht",
     "readMore": "Lees Meer",
     "backToBlog": "Terug naar Blog",

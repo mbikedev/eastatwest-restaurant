@@ -743,6 +743,10 @@
     "order_online": "Commander en Ligne",
     "delivery_info": "Livraison disponible dans un rayon de 8 km",
     "pickup_info": "Retrait disponible en 20-30 minutes",
+    "introduction": {
+      "paragraph1": "Envie de cuisine libanaise authentique à la maison ? Notre service à emporter vous apporte les saveurs d'East @ West directement chez vous. Chaque plat est fraîchement préparé avec le même soin et la même qualité que notre service sur place, vous garantissant une cuisine libanaise de qualité restaurant dans le confort de votre propre espace.",
+      "paragraph2": "De nos plateaux de mezze signature à nos spécialités grillées expertes, notre menu complet est disponible à emporter. Il vous suffit de parcourir notre sélection, de passer votre commande et de la récupérer à votre convenance. Nous proposons également des options de traiteur pour les rassemblements plus importants et les événements spéciaux."
+    },
     "categories": {
       "title": "Catégories",
       "all": "Tous les Produits",
@@ -1205,6 +1209,10 @@
       "welcome": "Bienvenue chez East At West",
       "breadcrumb": "Accueil / Événements & Traiteur"
     },
+    "introduction": {
+      "paragraph1": "Transformez vos occasions spéciales avec le traiteur libanais authentique d'East @ West. Que vous planifiiez un événement d'entreprise, une célébration de mariage ou un rassemblement privé, nous apportons les riches saveurs et la chaleureuse hospitalité du Liban à votre lieu.",
+      "paragraph2": "Notre équipe de traiteur expérimentée travaille en étroite collaboration avec vous pour créer des menus personnalisés qui reflètent vos préférences et besoins alimentaires. Des plateaux de mezze traditionnels aux festins élaborés de plusieurs plats, nous veillons à ce que chaque détail soit parfait pour votre événement mémorable à Bruxelles."
+    },
     "forAllEvents": {
       "title": "Pour Tous Vos Événements",
       "description": "Des dîners intimes aux grandes célébrations, nous créons des expériences culinaires inoubliables adaptées à vos occasions spéciales."
@@ -1255,6 +1263,10 @@
     "title": "Contact",
     "contactUs": "Contactez-nous",
     "subtitle": "Contactez-nous pour des réservations, des questions ou des événements spéciaux",
+    "introduction": {
+      "paragraph1": "East @ West est idéalement situé au cœur de Bruxelles au Bld de l'Empereur 26. Que vous souhaitiez faire une réservation, vous renseigner sur nos services de traiteur ou simplement poser une question sur notre menu, notre équipe est là pour vous aider à découvrir l'hospitalité libanaise authentique.",
+      "paragraph2": "Nous accueillons les visites sans rendez-vous et les réservations pour le déjeuner et le dîner. Notre restaurant est ouvert du lundi au vendredi pour le déjeuner et le samedi soir pour le dîner, servant une cuisine libanaise traditionnelle dans une atmosphère chaleureuse et accueillante. Contactez-nous dès aujourd'hui pour planifier votre visite ou discuter de vos besoins en matière de traiteur d'événements."
+    },
     "contactInformation": "Informations de Contact",
     "phone": "Téléphone",
     "email": "Email",
@@ -1294,6 +1306,9 @@
   "blog": {
     "title": "Nos Histoires et Perspectives",
     "subtitle": "Découvrez la riche culture, les recettes authentiques et l'hospitalité chaleureuse qui rendent East at West spécial.",
+    "introduction": {
+      "paragraph1": "Découvrez le monde de la cuisine libanaise à travers notre blog. Des recettes traditionnelles et techniques de cuisson aux histoires derrière nos plats signature, nous partageons la passion et l'héritage qui rendent East @ West spécial. Explorez la culture culinaire méditerranéenne authentique, les conseils culinaires et les traditions vibrantes du Liban."
+    },
     "featured": "À la une",
     "readMore": "Lire la suite",
     "backToBlog": "Retour au Blog",
