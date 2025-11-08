@@ -427,16 +427,16 @@ export default function HomePage() {
             <section className={`py-16 px-4 sm:px-6 lg:px-8 mb-12 ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/50'} rounded-3xl`}>
               <div className="max-w-4xl mx-auto text-center">
                 <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
-                  Authentic Lebanese Cuisine in the Heart of Brussels
+                  {t('home.introduction.title')}
                 </h2>
                 <p className={`text-lg leading-relaxed mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                  Welcome to East @ West, where authentic Lebanese flavors meet modern culinary excellence in Brussels. Our restaurant brings you the rich traditions of Mediterranean cuisine, crafted with passion and served with warmth. Every dish tells a story of heritage, quality, and the vibrant culture of Lebanon.
+                  {t('home.introduction.paragraph1')}
                 </p>
                 <p className={`text-lg leading-relaxed mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                  From our freshly prepared mezze to our perfectly grilled specialties, we use only the finest ingredients to create memorable dining experiences. Our halal-certified menu features traditional Lebanese recipes passed down through generations, combined with contemporary presentation and flavors that appeal to all palates.
+                  {t('home.introduction.paragraph2')}
                 </p>
                 <p className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                  Whether you're joining us for a casual lunch, an intimate dinner, or planning a special event with our catering services, East @ West offers an authentic taste of Lebanon in the heart of Brussels. Experience the perfect blend of traditional hospitality and modern dining comfort.
+                  {t('home.introduction.paragraph3')}
                 </p>
               </div>
             </section>

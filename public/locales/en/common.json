@@ -21,6 +21,12 @@
       "title": "Welcome to East at West",
       "subtitle": "A Culinary Journey Between Two Worlds"
     },
+    "introduction": {
+      "title": "Authentic Lebanese Cuisine in the Heart of Brussels",
+      "paragraph1": "Welcome to East @ West, where authentic Lebanese flavors meet modern culinary excellence in Brussels. Our restaurant brings you the rich traditions of Mediterranean cuisine, crafted with passion and served with warmth. Every dish tells a story of heritage, quality, and the vibrant culture of Lebanon.",
+      "paragraph2": "From our freshly prepared mezze to our perfectly grilled specialties, we use only the finest ingredients to create memorable dining experiences. Our halal-certified menu features traditional Lebanese recipes passed down through generations, combined with contemporary presentation and flavors that appeal to all palates.",
+      "paragraph3": "Whether you're joining us for an intimate dinner, celebrating a special occasion, or exploring Lebanese cuisine for the first time, our team is dedicated to providing exceptional service and an authentic taste of Lebanon in the heart of Brussels."
+    },
     "features": {
       "title": "Why Choose Us",
       "fusion": "Fusion Cuisine",
@@ -44,6 +50,11 @@
       "description": "Explore our full menu of authentic dishes. Dine in or order take-away on demand."
     },
     "heroAlt": "Restaurant dishes hero image",
+    "introduction": {
+      "title": "Authentic Lebanese Flavors",
+      "paragraph1": "Our menu celebrates the rich culinary traditions of Lebanon, featuring fresh mezze, expertly grilled meats, and vegetarian delights. Each dish is prepared with authentic recipes passed down through generations, using only the finest ingredients to deliver an unforgettable dining experience.",
+      "paragraph2": "From classic hummus and falafel to our signature grilled specialties and traditional desserts, every item on our menu reflects our commitment to quality and authenticity. Our halal-certified restaurant offers options for every palate, whether you're dining in or ordering takeaway."
+    },
     "cta": {
       "title": "Ready to Experience Our Cuisine?",
       "subtitle": "Book a table and enjoy our fusion dishes in our elegant restaurant."
@@ -733,6 +744,10 @@
     "order_online": "Order Online",
     "delivery_info": "Delivery available within 5 miles",
     "pickup_info": "Pickup available in 20-30 minutes",
+    "introduction": {
+      "paragraph1": "Craving authentic Lebanese cuisine at home? Our takeaway service brings the flavors of East @ West directly to you. Every dish is freshly prepared with the same care and quality as our dine-in service, ensuring you enjoy restaurant-quality Lebanese food in the comfort of your own space.",
+      "paragraph2": "From our signature mezze platters to our expertly grilled specialties, our complete menu is available for takeaway. Simply browse our selection, place your order, and pick it up at your convenience. We also offer catering options for larger gatherings and special events."
+    },
     "categories": {
       "title": "Categories",
       "all": "All Products",
@@ -1196,6 +1211,10 @@
       "welcome": "Welcome to East At West",
       "breadcrumb": "Home / Events & Catering"
     },
+    "introduction": {
+      "paragraph1": "Transform your special occasions with authentic Lebanese catering from East @ West. Whether you're planning a corporate event, wedding celebration, or private gathering, we bring the rich flavors and warm hospitality of Lebanon to your venue.",
+      "paragraph2": "Our experienced catering team works closely with you to create customized menus that reflect your preferences and dietary needs. From traditional mezze platters to elaborate multi-course feasts, we ensure every detail is perfect for your memorable event in Brussels."
+    },
     "forAllEvents": {
       "title": "For All Your Events",
       "description": "From intimate dinners to grand celebrations, we create unforgettable culinary experiences tailored to your special occasions."
@@ -1252,9 +1271,13 @@
     "title": "Contact",
     "contactUs": "Contact Us",
     "subtitle": "Get in touch with us for reservations, inquiries, or special events",
+    "introduction": {
+      "paragraph1": "East @ West is conveniently located in the heart of Brussels at Bld de l'Empereur 26. Whether you're looking to make a reservation, inquire about our catering services, or simply have a question about our menu, our team is here to help you experience authentic Lebanese hospitality.",
+      "paragraph2": "We welcome walk-ins and reservations for lunch and dinner. Our restaurant is open Monday through Friday for lunch, and Saturday evenings for dinner, serving traditional Lebanese cuisine in a warm and inviting atmosphere. Contact us today to plan your visit or discuss your event catering needs."
+    },
     "contactInformation": "Contact Information",
     "phone": "Phone",
-    "email": "Email", 
+    "email": "Email",
     "address": "Address",
     "openingHours": "Opening Hours",
     "mondayFriday": "Monday- Friday : 12:00 - 14:30 and 18:00 - 22:00",
@@ -1291,6 +1314,9 @@
   "blog": {
     "title": "Our Stories & Insights",
     "subtitle": "Discover the rich culture, authentic recipes, and warm hospitality that make East at West special.",
+    "introduction": {
+      "paragraph1": "Discover the world of Lebanese cuisine through our blog. From traditional recipes and cooking techniques to the stories behind our signature dishes, we share the passion and heritage that makes East @ West special. Explore authentic Mediterranean food culture, culinary tips, and the vibrant traditions of Lebanon."
+    },
     "featured": "Featured",
     "readMore": "Read More",
     "backToBlog": "Back to Blog",

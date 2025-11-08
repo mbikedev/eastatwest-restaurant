@@ -21,6 +21,12 @@
       "title": "Bienvenue chez East at West",
       "subtitle": "Un Voyage Culinaire Entre Deux Mondes"
     },
+    "introduction": {
+      "title": "Cuisine Libanaise Authentique au Cœur de Bruxelles",
+      "paragraph1": "Bienvenue chez East @ West, où les saveurs libanaises authentiques rencontrent l'excellence culinaire moderne à Bruxelles. Notre restaurant vous apporte les riches traditions de la cuisine méditerranéenne, préparées avec passion et servies avec chaleur. Chaque plat raconte une histoire de patrimoine, de qualité et de la culture vibrante du Liban.",
+      "paragraph2": "De nos mezze fraîchement préparés à nos grillades parfaitement exécutées, nous utilisons uniquement les meilleurs ingrédients pour créer des expériences culinaires mémorables. Notre menu certifié halal propose des recettes libanaises traditionnelles transmises de génération en génération, combinées à une présentation contemporaine et des saveurs qui plaisent à tous les palais.",
+      "paragraph3": "Que vous nous rejoigniez pour un dîner intime, la célébration d'une occasion spéciale ou votre première découverte de la cuisine libanaise, notre équipe se consacre à fournir un service exceptionnel et un goût authentique du Liban au cœur de Bruxelles."
+    },
     "features": {
       "title": "Pourquoi Nous Choisir",
       "fusion": "Cuisine Fusion",
@@ -35,6 +41,11 @@
     "title": "Notre Menu",
     "subtitle": "Tout notre menu est disponible à emporter sur demande.",
     "description": "Découvrez nos plats authentiques préparés avec des ingrédients frais. Sur place ou à emporter sur demande.",
+    "introduction": {
+      "title": "Saveurs Libanaises Authentiques",
+      "paragraph1": "Notre menu célèbre les riches traditions culinaires du Liban, avec des mezze frais, des viandes grillées expertes et des délices végétariens. Chaque plat est préparé avec des recettes authentiques transmises de génération en génération, utilisant uniquement les meilleurs ingrédients pour offrir une expérience culinaire inoubliable.",
+      "paragraph2": "Du houmous classique et des falafels à nos spécialités grillées signature et nos desserts traditionnels, chaque élément de notre menu reflète notre engagement envers la qualité et l'authenticité. Notre restaurant certifié halal offre des options pour tous les palais, que vous dîniez sur place ou commandiez à emporter."
+    },
     "buttons": {
       "menu": "Menu",
       "menuTakeawayOnly": "Menu uniquement à emporter"
