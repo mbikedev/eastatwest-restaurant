@@ -27,15 +27,10 @@ export default {
         destination: '/reservations',
         permanent: true,
       },
-      // Explicit trailing slash redirects for main pages
+      // Explicit trailing slash redirects - redirect URLs with trailing slash to without
       {
-        source: '/takeaway/',
-        destination: '/takeaway',
-        permanent: true,
-      },
-      {
-        source: '/blog/',
-        destination: '/blog',
+        source: '/:path+/',
+        destination: '/:path+',
         permanent: true,
       },
     ];
