@@ -18,7 +18,10 @@
       "Bash(curl:*)",
       "Bash(git fetch:*)",
       "Bash(git checkout:*)",
-      "Bash(git --version:*)"
+      "Bash(git --version:*)",
+      "Bash(npm run build:*)",
+      "Bash(node -e:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []

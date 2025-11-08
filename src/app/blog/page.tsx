@@ -139,7 +139,6 @@ export default function BlogPage() {
             >
               Try Again
             </button>
-          </div>
         </div>
       </div>
     )

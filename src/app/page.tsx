@@ -1106,7 +1106,6 @@ export default function HomePage() {
                     </div>
 
                   </figure>
-                </div>
 
                 {/* ===== RESTAURANT GURU 2023 ===== */}
                 {/* Second Award - Restaurant Guru 2023 */}
