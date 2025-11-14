@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Restaurant Libanais à Bruxelles | East @ West - Cuisine Authentique',
   description: 'Découvrez East @ West, le meilleur restaurant libanais à Bruxelles. Cuisine libanaise authentique, mezze traditionnels, houmous, falafel, kebbe, grillades et desserts orientaux. Boulevard de l\'Empereur 26, 1000 Bruxelles.',
-  keywords: 'restaurant libanais bruxelles, cuisine libanaise, mezze, restaurant oriental bruxelles, east at west, houmous, falafel, kebab, kebbe, bruxelles restaurant, restaurant halal bruxelles',
+  keywords: ['restaurant libanais bruxelles', 'cuisine libanaise', 'mezze', 'restaurant oriental bruxelles', 'east at west', 'houmous', 'falafel', 'kebab', 'kebbe', 'bruxelles restaurant', 'restaurant halal bruxelles'],
   openGraph: {
     title: 'Restaurant Libanais à Bruxelles | East @ West',
     description: 'Cuisine libanaise authentique au cœur de Bruxelles. Découvrez nos mezze, grillades et desserts traditionnels.',
