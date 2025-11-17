@@ -1,0 +1,75 @@
+# East @ West - Lebanese Fusion Restaurant in Brussels
+
+> Lebanese cuisine with a modern twist, located in the heart of Brussels
+
+## About Us
+
+East @ West is a Lebanese fusion restaurant in Brussels offering authentic Mediterranean cuisine with modern interpretations. We specialize in traditional Lebanese dishes, mezze platters, and halal options.
+
+## Key Information
+
+- **Location**: Brussels, Belgium
+- **Cuisine**: Lebanese, Mediterranean, Fusion
+- **Features**: Halal options, Fresh ingredients, Warm hospitality
+- **Services**: Dine-in, Takeaway, Catering, Events, Reservations
+
+## Main Pages
+
+- Homepage: https://eastatwest.com/
+- Menu: https://eastatwest.com/menu
+- Reservations: https://eastatwest.com/reservations
+- Takeaway: https://eastatwest.com/takeaway
+- Events & Catering: https://eastatwest.com/events-catering
+- About Us: https://eastatwest.com/about
+- Contact: https://eastatwest.com/contact
+- Blog: https://eastatwest.com/blog
+- Gallery: https://eastatwest.com/gallery
+- FAQ: https://eastatwest.com/faq
+
+## Menu Highlights
+
+- Mezze platters (hot and cold)
+- Grilled meats and kebabs
+- Vegetarian and vegan options
+- Traditional Lebanese desserts
+- Fresh salads and dips (hummus, moutabal, muhammara)
+- Signature fusion dishes
+
+## Services
+
+### Reservations
+Book your table online or by phone. We accommodate parties of all sizes.
+
+### Takeaway
+Order online for pickup. Fresh preparation, convenient collection.
+
+### Catering
+Professional catering services for events, parties, and corporate functions.
+
+### Events
+Host your special occasions in our restaurant. Customizable menus and private dining options.
+
+## Contact
+
+- Website: https://eastatwest.com
+- Reservations: https://eastatwest.com/reservations
+- Takeaway Orders: https://eastatwest.com/takeaway
+
+## Technical Information
+
+- Platform: Next.js 15 (React)
+- Hosting: Netlify
+- Languages: English, French, Dutch (client-side switching)
+- Payment: Stripe integration for online orders
+- Booking: Custom reservation system with Supabase backend
+
+## Recent Updates (2025-11)
+
+- Fixed 108 legacy WordPress URL redirects for improved SEO
+- All old URLs now properly redirect with 301 status
+- Improved Google indexing and search visibility
+- Enhanced canonical URL structure
+
+## SEO Keywords
+
+Lebanese restaurant Brussels, Mediterranean cuisine, fusion restaurant, Brussels dining, Lebanese food, mezze, authentic cuisine, halal options, Restaurant Guru recommended, Lebanese catering Brussels, takeaway Brussels

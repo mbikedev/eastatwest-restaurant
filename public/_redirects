@@ -1,0 +1,60 @@
+# WordPress to Next.js URL redirects
+# 301 redirects preserve SEO rankings
+# Note: Keep redirects minimal to avoid redirect chains that impact Google indexing
+
+# Block WordPress admin and login pages (force with !)
+/wp-admin/*                     /                       301!
+/wp-login.php                   /                       301!
+/xmlrpc.php                     /                       301!
+
+# Block WordPress backend files (force with !)
+/wp-content/*                   /                       301!
+/wp-includes/*                  /                       301!
+/wp-json/*                      /                       301!
+
+# Old WordPress page URLs to new Next.js routes
+/about-snack-halal              /about                  301
+/gallery-vegan-dessert          /gallery                301
+/take-away                      /takeaway               301
+/take-away2                     /takeaway               301
+/restaurant-east-at-west-in-brussels  /about            301
+/welcome-to-east-at-west        /blog                   301
+
+# French language URLs (legacy WordPress with Polylang plugin)
+# The Next.js app uses client-side i18n, not URL-based routing
+# IMPORTANT: Keep /fr/restaurant-libanais-a-bruxelles for SEO (top Google ranking)
+/fr                             /                       301
+/fr/                            /                       301
+/fr/about-snack-halal           /about                  301
+/fr/events-catering             /events-catering        301
+/fr/events-catering-2/*         /menu                   301
+/fr/blog                        /blog                   301
+/fr/blog/*                      /blog                   301
+/fr/makdous-3                   /menu                   301
+/fr/falafel-2-2                 /menu                   301
+/fr/home/*                      /menu                   301
+/fr/product/*                   /menu                   301
+
+# Legacy English product pages -> /menu (not /takeaway)
+# These are individual product showcase pages, not the WooCommerce shop
+/product/kebbe-frit             /menu                   301
+/product/set-menu-lareez-vegan  /menu                   301
+/product/batata-harra           /menu                   301
+/product/vegan-grill            /menu                   301
+/product/menu-east-west         /menu                   301
+/product/arayes-cheese          /menu                   301
+/product/iche                   /menu                   301
+/product/*                      /menu                   301
+
+# Common WordPress URLs
+/index.php                      /                       301
+/category/*                     /blog                   301
+/tag/*                          /blog                   301
+/author/*                       /blog                   301
+
+# Domain canonicalization - ensure www redirects to non-www (force with !)
+https://www.eastatwest.com/*    https://eastatwest.com/:splat  301!
+
+# Force HTTPS (force with !)
+http://eastatwest.com/*         https://eastatwest.com/:splat  301!
+http://www.eastatwest.com/*     https://eastatwest.com/:splat  301!
