@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     url: 'https://eastatwest.com/fr/restaurant-libanais-a-bruxelles',
     siteName: 'East @ West',
     locale: 'fr_BE',
-    type: 'restaurant',
+    type: 'website',
     images: [
       {
         url: 'https://eastatwest.com/images/banner.webp',
