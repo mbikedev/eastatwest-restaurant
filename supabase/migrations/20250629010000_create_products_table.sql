@@ -12,10 +12,8 @@ CREATE TABLE IF NOT EXISTS products (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Create index for category filtering
-CREATE INDEX idx_products_category ON products(category);
-CREATE INDEX idx_products_available ON products(available);
-CREATE INDEX idx_products_sort_order ON products(sort_order);
+-- Note: All indexes (available, category, sort_order) removed as they were unused on this small table
+-- If the table grows, consider adding composite indexes based on actual query patterns
 
 -- Enable RLS
 ALTER TABLE products ENABLE ROW LEVEL SECURITY;
@@ -26,9 +24,19 @@ ON products FOR SELECT
 USING (true);
 
 -- Only authenticated users can modify products (for admin)
-CREATE POLICY "Products are editable by authenticated users only" 
-ON products FOR ALL 
-USING (auth.role() = 'authenticated');
+-- Using (select auth.role()) for better query performance (avoids per-row re-evaluation)
+-- Split into separate INSERT, UPDATE, DELETE policies to avoid multiple permissive SELECT policies
+CREATE POLICY "Products are insertable by authenticated users only"
+ON products FOR INSERT
+WITH CHECK ((select auth.role()) = 'authenticated');
+
+CREATE POLICY "Products are updatable by authenticated users only"
+ON products FOR UPDATE
+USING ((select auth.role()) = 'authenticated');
+
+CREATE POLICY "Products are deletable by authenticated users only"
+ON products FOR DELETE
+USING ((select auth.role()) = 'authenticated');
 
 -- Insert sample products
 INSERT INTO products (name, description, price, category, image_url, sort_order) VALUES

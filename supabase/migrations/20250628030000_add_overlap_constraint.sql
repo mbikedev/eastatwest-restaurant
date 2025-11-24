@@ -1,8 +1,11 @@
 -- Migration to add EXCLUDE constraint for preventing overlapping reservations
 -- This is optional and can be applied if strict non-overlap is required
 
--- First, let's add the btree_gist extension which is needed for EXCLUDE constraints with time ranges
-CREATE EXTENSION IF NOT EXISTS btree_gist;
+-- Create dedicated schema for extensions (security best practice)
+CREATE SCHEMA IF NOT EXISTS extensions;
+
+-- Add the btree_gist extension in the extensions schema (not public)
+CREATE EXTENSION IF NOT EXISTS btree_gist WITH SCHEMA extensions;
 
 -- Add a comment explaining the constraint options
 COMMENT ON TABLE public.reservations IS 'Store restaurant reservations for East at West. 
@@ -44,12 +47,13 @@ CREATE OR REPLACE FUNCTION check_reservation_overlap(
   end_time TIME,
   number_of_guests INTEGER,
   status VARCHAR(50)
-) 
+)
 LANGUAGE plpgsql
+SET search_path = pg_catalog, public
 AS $$
 BEGIN
   RETURN QUERY
-  SELECT 
+  SELECT
     r.id,
     r.name,
     r.email,
@@ -59,7 +63,7 @@ BEGIN
     r.number_of_guests,
     r.status
   FROM public.reservations r
-  WHERE 
+  WHERE
     r.reservation_date = p_reservation_date
     AND r.status != 'cancelled'
     AND (p_exclude_id IS NULL OR r.id != p_exclude_id)

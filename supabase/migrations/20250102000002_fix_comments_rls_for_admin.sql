@@ -1,5 +1,6 @@
 -- Fix RLS policies for comments to allow admins to see and manage ALL comments (including pending)
 -- This allows admin emails to view, approve, and delete all comments including unapproved ones
+-- Using (select auth.email()) for better query performance (avoids per-row re-evaluation)
 
 -- Drop existing restrictive SELECT policy
 DROP POLICY IF EXISTS "Anyone can read approved comments" ON public.comments;
@@ -9,7 +10,7 @@ CREATE POLICY "Public can read approved, admins can read all comments" ON public
   FOR SELECT
   USING (
     is_approved = true OR  -- Public can see approved comments
-    auth.email() IN (      -- OR admins can see ALL comments
+    (select auth.email()) IN (      -- OR admins can see ALL comments
       'mbagnickg@gmail.com',
       'infos.east.west@gmail.com',
       'east.westbrussels@gmail.com'
@@ -22,7 +23,7 @@ DROP POLICY IF EXISTS "Authenticated users can update comments" ON public.commen
 CREATE POLICY "Admins can update comments" ON public.comments
   FOR UPDATE
   USING (
-    auth.email() IN (
+    (select auth.email()) IN (
       'mbagnickg@gmail.com',
       'infos.east.west@gmail.com',
       'east.westbrussels@gmail.com'
@@ -33,7 +34,7 @@ CREATE POLICY "Admins can update comments" ON public.comments
 CREATE POLICY "Admins can delete comments" ON public.comments
   FOR DELETE
   USING (
-    auth.email() IN (
+    (select auth.email()) IN (
       'mbagnickg@gmail.com',
       'infos.east.west@gmail.com',
       'east.westbrussels@gmail.com'

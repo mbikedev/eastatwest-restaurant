@@ -13,10 +13,8 @@ create table public.comments (
   updated_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
--- Create index for better query performance
-create index comments_blog_post_id_idx on public.comments(blog_post_id);
-create index comments_parent_comment_id_idx on public.comments(parent_comment_id);
-create index comments_created_at_idx on public.comments(created_at);
+-- Note: indexes on blog_post_id, created_at, and parent_comment_id removed as they were unused
+-- If threaded comments are heavily used, consider adding: CREATE INDEX ON public.comments(parent_comment_id);
 
 -- Set up Row Level Security (RLS)
 alter table public.comments enable row level security;
@@ -30,17 +28,21 @@ create policy "Anyone can insert comments" on public.comments
   for insert with check (true);
 
 -- Policy: Only authenticated users can update comments (for admin replies)
+-- Using (select auth.role()) for better query performance (avoids per-row re-evaluation)
 create policy "Authenticated users can update comments" on public.comments
-  for update using (auth.role() = 'authenticated');
+  for update using ((select auth.role()) = 'authenticated');
 
--- Function to automatically update updated_at timestamp
+-- Function to automatically update updated_at timestamp (with secure search_path)
 create or replace function public.handle_updated_at()
-returns trigger as $$
+returns trigger
+language plpgsql
+set search_path = pg_catalog, public
+as $$
 begin
   new.updated_at = now();
   return new;
 end;
-$$ language plpgsql;
+$$;
 
 -- Trigger to automatically update updated_at
 create trigger comments_updated_at

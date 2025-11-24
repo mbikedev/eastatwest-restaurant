@@ -14,35 +14,36 @@ CREATE TABLE IF NOT EXISTS public.reservations (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Add indexes for better query performance
-CREATE INDEX IF NOT EXISTS idx_reservations_date ON public.reservations (reservation_date);
-CREATE INDEX IF NOT EXISTS idx_reservations_email ON public.reservations (email);
-CREATE INDEX IF NOT EXISTS idx_reservations_status ON public.reservations (status);
-CREATE INDEX IF NOT EXISTS idx_reservations_created_at ON public.reservations (created_at);
+-- Note: All indexes (created_at, date, email, status) removed as they were unused on this small table
+-- If the table grows significantly, consider adding composite indexes based on actual query patterns
 
 -- Add RLS (Row Level Security) policies
+-- Using (select auth.email()) for better query performance (avoids per-row re-evaluation)
 ALTER TABLE public.reservations ENABLE ROW LEVEL SECURITY;
 
 -- Policy: Users can view their own reservations
 CREATE POLICY "Users can view own reservations" ON public.reservations
-  FOR SELECT USING (auth.email() = email);
+  FOR SELECT USING ((select auth.email()) = email);
 
 -- Policy: Users can insert their own reservations
 CREATE POLICY "Users can create reservations" ON public.reservations
-  FOR INSERT WITH CHECK (auth.email() = email);
+  FOR INSERT WITH CHECK ((select auth.email()) = email);
 
 -- Policy: Users can update their own reservations
 CREATE POLICY "Users can update own reservations" ON public.reservations
-  FOR UPDATE USING (auth.email() = email);
+  FOR UPDATE USING ((select auth.email()) = email);
 
 -- Function to automatically update the updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_catalog, public
+AS $$
 BEGIN
   NEW.updated_at = NOW();
   RETURN NEW;
 END;
-$$ language 'plpgsql';
+$$;
 
 -- Trigger to automatically update updated_at on row update
 CREATE TRIGGER update_reservations_updated_at

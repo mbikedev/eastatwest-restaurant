@@ -1,51 +1,83 @@
 -- Add RLS policy for admin users to manage all reservations
 -- This allows whitelisted admin emails to view, update, and delete any reservation
+-- Using (select auth.email()) for better query performance (avoids per-row re-evaluation)
 
--- Drop existing restrictive update policy
+-- Consolidated UPDATE policy (single policy to avoid multiple permissive policies)
+-- Combines: customer update (own), staff update (all), admin email update (all)
 DROP POLICY IF EXISTS "Users can update own reservations" ON public.reservations;
 
--- Create new policy that allows users to update their own reservations OR admins to update any
-CREATE POLICY "Users and admins can update reservations" ON public.reservations
+CREATE POLICY "Reservations update policy" ON public.reservations
   FOR UPDATE
   USING (
-    auth.email() = email OR  -- Users can update their own
-    auth.email() IN (        -- OR admins can update any
+    -- Customers can update their own reservations
+    (select auth.email()) = email OR
+    -- Service role or admin JWT can update any
+    (select auth.role()) = 'service_role' OR
+    ((select auth.jwt()) ->> 'role') = 'admin' OR
+    -- Whitelisted admin emails can update any
+    (select auth.email()) IN (
+      'mbagnickg@gmail.com',
+      'infos.east.west@gmail.com',
+      'east.westbrussels@gmail.com'
+    )
+  )
+  WITH CHECK (
+    -- Customers can update their own reservations
+    (select auth.email()) = email OR
+    -- Service role or admin JWT can update any
+    (select auth.role()) = 'service_role' OR
+    ((select auth.jwt()) ->> 'role') = 'admin' OR
+    -- Whitelisted admin emails can update any
+    (select auth.email()) IN (
       'mbagnickg@gmail.com',
       'infos.east.west@gmail.com',
       'east.westbrussels@gmail.com'
     )
   );
 
--- Also update the SELECT policy to allow admins to view all reservations
+-- Consolidated SELECT policy (single policy to avoid multiple permissive policies)
+-- Combines: customer select (own), staff select (all), admin email select (all)
 DROP POLICY IF EXISTS "Users can view own reservations" ON public.reservations;
 
-CREATE POLICY "Users and admins can view reservations" ON public.reservations
+CREATE POLICY "Reservations select policy" ON public.reservations
   FOR SELECT
   USING (
-    auth.email() = email OR  -- Users can view their own
-    auth.email() IN (        -- OR admins can view all
+    -- Customers can view their own reservations
+    (select auth.email()) = email OR
+    -- Service role or admin JWT can view any
+    (select auth.role()) = 'service_role' OR
+    ((select auth.jwt()) ->> 'role') = 'admin' OR
+    -- Whitelisted admin emails can view any
+    (select auth.email()) IN (
       'mbagnickg@gmail.com',
       'infos.east.west@gmail.com',
       'east.westbrussels@gmail.com'
     )
   );
 
--- Add DELETE policy for admins
-CREATE POLICY "Admins can delete reservations" ON public.reservations
+-- Consolidated DELETE policy (single policy to avoid multiple permissive policies)
+-- Combines: customer delete (own), staff delete (all), admin email delete (all)
+CREATE POLICY "Reservations delete policy" ON public.reservations
   FOR DELETE
   USING (
-    auth.email() IN (
+    -- Customers can delete their own reservations
+    (select auth.email()) = email OR
+    -- Service role or admin JWT can delete any
+    (select auth.role()) = 'service_role' OR
+    ((select auth.jwt()) ->> 'role') = 'admin' OR
+    -- Whitelisted admin emails can delete any
+    (select auth.email()) IN (
       'mbagnickg@gmail.com',
       'infos.east.west@gmail.com',
       'east.westbrussels@gmail.com'
     )
   );
 
-COMMENT ON POLICY "Users and admins can update reservations" ON public.reservations
-  IS 'Allows users to update their own reservations and admin emails to update any reservation';
+COMMENT ON POLICY "Reservations update policy" ON public.reservations
+  IS 'Consolidated update policy: customers can update own, staff/service_role can update all, admin emails can update all';
 
-COMMENT ON POLICY "Users and admins can view reservations" ON public.reservations
-  IS 'Allows users to view their own reservations and admin emails to view all reservations';
+COMMENT ON POLICY "Reservations select policy" ON public.reservations
+  IS 'Consolidated select policy: customers can view own, staff/service_role can view all, admin emails can view all';
 
-COMMENT ON POLICY "Admins can delete reservations" ON public.reservations
-  IS 'Allows admin emails to delete any reservation';
+COMMENT ON POLICY "Reservations delete policy" ON public.reservations
+  IS 'Consolidated delete policy: customers can delete own, staff/service_role can delete all, admin emails can delete all';
