@@ -307,59 +307,8 @@ export default function ReservationsPage() {
       // Check if Supabase is configured
       if (!checkSupabaseConfig()) {
         console.error('Supabase environment variables not configured');
-
-        // Temporary fallback for testing without Supabase
-        setTimeout(async () => {
-          toast.success(t('reservations.confirmationMessage'));
-
-          // Send emails even in fallback mode
-          const guest_count = Number(form.guests);
-          const language = i18n.language || 'en';
-          await sendReservationEmail({ 
-            email: form.email, 
-            guests: guest_count, 
-            language,
-            reservationData: {
-              name: form.name,
-              email: form.email,
-              phone: form.phone,
-              date: form.date,
-              startTime: form.startTime,
-              endTime: form.endTime,
-              guests: guest_count,
-              specialRequests: form.specialRequests
-            }
-          });
-
-          await sendNotificationEmails({
-            reservationData: {
-              name: form.name,
-              email: form.email,
-              phone: form.phone,
-              date: form.date,
-              startTime: form.startTime,
-              endTime: form.endTime,
-              guests: guest_count,
-              specialRequests: form.specialRequests
-            }
-          });
-          
-          // Reset form and validation state after successful submission
-          setForm({
-            name: "",
-            email: "",
-            phone: "",
-            startTime: "",
-            endTime: "",
-            guests: "",
-            specialRequests: "",
-            date: "",
-          });
-          setValidationErrors([]);
-          setValidationWarnings([]);
-          setIsSubmitting(false);
-        }, 1000);
-        
+        toast.error(t('reservations.error') || 'Unable to process reservation. Please contact the restaurant directly.');
+        setIsSubmitting(false);
         return;
       }
 
@@ -389,61 +338,6 @@ export default function ReservationsPage() {
         });
 
       if (error) {
-        // For empty error objects or unknown errors, use fallback
-        if (!error.message || Object.keys(error).length === 0) {
-          setTimeout(async () => {
-            toast.success(t('reservations.confirmationMessage'));
-            
-            // Send emails even in fallback mode
-            const guest_count = Number(form.guests);
-            const language = i18n.language || 'en';
-            await sendReservationEmail({ 
-              email: form.email, 
-              guests: guest_count, 
-              language,
-              reservationData: {
-                name: form.name,
-                email: form.email,
-                phone: form.phone,
-                date: form.date,
-                startTime: form.startTime,
-                endTime: form.endTime,
-                guests: guest_count,
-                specialRequests: form.specialRequests
-              }
-            });
-
-            await sendNotificationEmails({
-              reservationData: {
-                name: form.name,
-                email: form.email,
-                phone: form.phone,
-                date: form.date,
-                startTime: form.startTime,
-                endTime: form.endTime,
-                guests: guest_count,
-                specialRequests: form.specialRequests
-              }
-            });
-            
-            // Reset form and validation state after successful submission
-            setForm({
-              name: "",
-              email: "",
-              phone: "",
-              startTime: "",
-              endTime: "",
-              guests: "",
-              specialRequests: "",
-              date: "",
-            });
-            setValidationErrors([]);
-            setValidationWarnings([]);
-            setIsSubmitting(false);
-          }, 1000);
-          return;
-        }
-        
         console.error('Supabase error:', error);
         console.error('Error details:', {
           message: error.message,
@@ -452,61 +346,6 @@ export default function ReservationsPage() {
           hint: error.hint
         });
 
-        // If it's a configuration or connection error, use fallback
-        if (error.message?.includes('fetch') || error.message?.includes('network') || error.code === 'PGRST116' || error.message?.includes('Failed to fetch')) {
-          setTimeout(async () => {
-            toast.success(t('reservations.confirmationMessage'));
-            
-            // Send emails even in fallback mode
-            const guest_count = Number(form.guests);
-            const language = i18n.language || 'en';
-            await sendReservationEmail({ 
-              email: form.email, 
-              guests: guest_count, 
-              language,
-              reservationData: {
-                name: form.name,
-                email: form.email,
-                phone: form.phone,
-                date: form.date,
-                startTime: form.startTime,
-                endTime: form.endTime,
-                guests: guest_count,
-                specialRequests: form.specialRequests
-              }
-            });
-
-            await sendNotificationEmails({
-              reservationData: {
-                name: form.name,
-                email: form.email,
-                phone: form.phone,
-                date: form.date,
-                startTime: form.startTime,
-                endTime: form.endTime,
-                guests: guest_count,
-                specialRequests: form.specialRequests
-              }
-            });
-            
-            // Reset form and validation state after successful submission
-            setForm({
-              name: "",
-              email: "",
-              phone: "",
-              startTime: "",
-              endTime: "",
-              guests: "",
-              specialRequests: "",
-              date: "",
-            });
-            setValidationErrors([]);
-            setValidationWarnings([]);
-            setIsSubmitting(false);
-          }, 1000);
-          return;
-        }
-        
         // Check for column name errors
         if (error.message?.includes('column') || error.code === '42703') {
           console.error('Column name error detected. Please check your database schema.');
@@ -514,107 +353,61 @@ export default function ReservationsPage() {
           setIsSubmitting(false);
           return;
         }
-        
-        toast.error(`Error: ${error.message || t('reservations.error')}`);
-      } else {
-        // Show confirmation message
-        toast.success(t('reservations.confirmationMessage'));
 
-        // Save form data before resetting (IMPORTANT: must happen before reset!)
-        const reservationData = {
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          date: form.date,
-          startTime: form.startTime,
-          endTime: form.endTime,
-          guests: guest_count,
-          specialRequests: form.specialRequests
-        };
-
-        // Send email after reservation
-        const language = i18n.language || 'en';
-        await sendReservationEmail({
-          email: reservationData.email,
-          guests: guest_count,
-          language,
-          invoiceNumber,
-          reservationData
-        });
-
-        // Send notification emails to restaurant staff
-        await sendNotificationEmails({
-          reservationData
-        });
-
-        // Reset form and validation state AFTER sending emails
-        setForm({
-          name: "",
-          email: "",
-          phone: "",
-          startTime: "",
-          endTime: "",
-          guests: "",
-          specialRequests: "",
-          date: "",
-        });
-        setValidationErrors([]);
-        setValidationWarnings([]);
+        // Show error to user - do NOT send emails if database insert failed
+        toast.error(t('reservations.error') || 'Failed to save reservation. Please try again or contact the restaurant directly.');
+        setIsSubmitting(false);
+        return;
       }
+
+      // SUCCESS - Only send emails after successful database insert
+      // Show confirmation message
+      toast.success(t('reservations.confirmationMessage'));
+
+      // Save form data before resetting (IMPORTANT: must happen before reset!)
+      const reservationData = {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        date: form.date,
+        startTime: form.startTime,
+        endTime: form.endTime,
+        guests: guest_count,
+        specialRequests: form.specialRequests
+      };
+
+      // Send email after reservation
+      const language = i18n.language || 'en';
+      await sendReservationEmail({
+        email: reservationData.email,
+        guests: guest_count,
+        language,
+        invoiceNumber,
+        reservationData
+      });
+
+      // Send notification emails to restaurant staff
+      await sendNotificationEmails({
+        reservationData
+      });
+
+      // Reset form and validation state AFTER sending emails
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        startTime: "",
+        endTime: "",
+        guests: "",
+        specialRequests: "",
+        date: "",
+      });
+      setValidationErrors([]);
+      setValidationWarnings([]);
     } catch (error) {
       console.error('Unexpected error:', error);
-      
-      // Use fallback for any unexpected errors
-      setTimeout(async () => {
-        toast.success(t('reservations.confirmationMessage'));
-        
-        // Send emails even in fallback mode
-        const guest_count = Number(form.guests);
-        const language = i18n.language || 'en';
-        await sendReservationEmail({ 
-          email: form.email, 
-          guests: guest_count, 
-          language,
-          reservationData: {
-            name: form.name,
-            email: form.email,
-            phone: form.phone,
-            date: form.date,
-            startTime: form.startTime,
-            endTime: form.endTime,
-            guests: guest_count,
-            specialRequests: form.specialRequests
-          }
-        });
-
-        await sendNotificationEmails({
-          reservationData: {
-            name: form.name,
-            email: form.email,
-            phone: form.phone,
-            date: form.date,
-            startTime: form.startTime,
-            endTime: form.endTime,
-            guests: guest_count,
-            specialRequests: form.specialRequests
-          }
-        });
-        
-        // Reset form and validation state after successful submission
-        setForm({
-          name: "",
-          email: "",
-          phone: "",
-          startTime: "",
-          endTime: "",
-          guests: "",
-          specialRequests: "",
-          date: "",
-        });
-        setValidationErrors([]);
-        setValidationWarnings([]);
-        setIsSubmitting(false);
-      }, 1000);
+      // Show error to user - do NOT send emails if an error occurred
+      toast.error(t('reservations.error') || 'An unexpected error occurred. Please try again or contact the restaurant directly.');
     } finally {
       setIsSubmitting(false);
     }
