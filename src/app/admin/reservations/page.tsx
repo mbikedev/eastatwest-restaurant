@@ -442,6 +442,11 @@ export default function AdminReservationsPage() {
 
       console.log('✅ Update response from database:', data);
 
+      // Check if status changed to confirmed or cancelled
+      const originalReservation = reservations.find(r => r.id === editingReservation.id);
+      const statusChanged = originalReservation && originalReservation.status !== editingReservation.status;
+      const shouldSendEmail = statusChanged && (editingReservation.status === 'confirmed' || editingReservation.status === 'cancelled');
+
       // Update local state
       setReservations(prev =>
         prev.map(r => r.id === editingReservation.id ? { ...editingReservation, updated_at: new Date().toISOString() } : r)
@@ -458,6 +463,32 @@ export default function AdminReservationsPage() {
       setEditingReservation(null);
 
       toast.success('Reservation updated successfully');
+
+      // Send email notifications if status changed to confirmed or cancelled
+      if (shouldSendEmail) {
+        const action = editingReservation.status === 'confirmed' ? 'approved' : 'rejected';
+
+        // Import email functions dynamically
+        const { sendApprovalNotification, sendCustomerNotification } = await import('@/lib/emailNotifications');
+
+        // Send notifications in parallel (don't block UI)
+        Promise.all([
+          sendApprovalNotification(editingReservation, action),
+          sendCustomerNotification(editingReservation, action)
+        ]).then(([staffResult, customerResult]) => {
+          if (staffResult.success && customerResult.success) {
+            toast.success('Email notifications sent to staff and customer');
+          } else {
+            const errors = [];
+            if (!staffResult.success) errors.push('staff');
+            if (!customerResult.success) errors.push('customer');
+            toast.error(`Failed to send notifications to: ${errors.join(', ')}`);
+          }
+        }).catch(err => {
+          console.error('Error sending email notifications:', err);
+          toast.error('Failed to send email notifications');
+        });
+      }
     } catch (error) {
       console.error('Unexpected error:', error);
       toast.error('An unexpected error occurred');
@@ -485,13 +516,19 @@ export default function AdminReservationsPage() {
         return;
       }
 
+      // Generate invoice number for the reservation
+      const invoiceNumber = `INV-${String(Date.now()).slice(-4)}${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}`;
+
       const response = await fetch('/api/admin/add-reservation', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${session.access_token}`
         },
-        body: JSON.stringify(newReservation)
+        body: JSON.stringify({
+          ...newReservation,
+          invoice_number: invoiceNumber
+        })
       });
 
       if (!response.ok) {
@@ -500,6 +537,58 @@ export default function AdminReservationsPage() {
       }
 
       const result = await response.json();
+      console.log('📝 Add reservation result:', result);
+
+      // Send email notification to customer
+      if (result.success && result.data) {
+        console.log('📧 Attempting to send confirmation email to:', newReservation.email);
+
+        try {
+          const emailPayload = {
+            email: newReservation.email,
+            guests: newReservation.guests,
+            language: newReservation.language || 'en',
+            invoiceNumber: invoiceNumber,
+            reservationData: {
+              name: newReservation.name,
+              email: newReservation.email,
+              phone: newReservation.phone,
+              date: newReservation.date,
+              startTime: newReservation.start_time,
+              endTime: newReservation.end_time,
+              guests: newReservation.guests,
+              specialRequests: newReservation.special_requests || '',
+            }
+          };
+
+          console.log('📧 Email payload:', emailPayload);
+
+          const emailResponse = await fetch('/api/send-reservation-email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(emailPayload)
+          });
+
+          console.log('📧 Email response status:', emailResponse.status);
+
+          if (emailResponse.ok) {
+            console.log('✅ Confirmation email sent to customer');
+            toast.success('Reservation added and confirmation email sent');
+          } else {
+            const errorData = await emailResponse.json();
+            console.error('❌ Failed to send confirmation email:', errorData);
+            toast.error('Reservation added but email failed to send');
+          }
+        } catch (emailError) {
+          console.error('❌ Error sending confirmation email:', emailError);
+          toast.error('Reservation added but email failed to send');
+        }
+      } else {
+        console.error('❌ No reservation data in result:', result);
+        toast.error('Reservation added but email could not be sent');
+      }
 
       // Refresh reservations list
       await fetchReservations();
@@ -518,8 +607,6 @@ export default function AdminReservationsPage() {
         language: 'en'
       });
       setShowAddModal(false);
-
-      toast.success('Reservation added successfully');
     } catch (error) {
       console.error('Error adding reservation:', error);
       toast.error(error instanceof Error ? error.message : 'Failed to add reservation');
