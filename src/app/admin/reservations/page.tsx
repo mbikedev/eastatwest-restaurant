@@ -399,7 +399,7 @@ export default function AdminReservationsPage() {
 
     // Validate required fields
     if (!editingReservation.name || !editingReservation.email || !editingReservation.phone ||
-        !editingReservation.date || !editingReservation.start_time || !editingReservation.end_time) {
+      !editingReservation.date || !editingReservation.start_time || !editingReservation.end_time) {
       toast.error('Please fill in all required fields');
       return;
     }
@@ -501,7 +501,7 @@ export default function AdminReservationsPage() {
   const handleAddReservation = async () => {
     // Validate required fields
     if (!newReservation.name || !newReservation.email || !newReservation.phone ||
-        !newReservation.date || !newReservation.start_time || !newReservation.end_time) {
+      !newReservation.date || !newReservation.start_time || !newReservation.end_time) {
       toast.error('Please fill in all required fields');
       return;
     }
@@ -710,14 +710,14 @@ export default function AdminReservationsPage() {
                 onClick={() => setShowAddModal(true)}
                 className="px-3 py-2 bg-green-500 hover:bg-green-600 rounded-lg font-medium transition-colors flex items-center gap-1.5 text-xs sm:text-sm"
                 style={{
-                  color: '#FFFFFF',
+                  color: theme === 'dark' ? '#EF4444' : '#10B981',
                   backgroundColor: '#10B981'
                 }}
               >
-                <svg className="w-4 h-4" fill="none" stroke="#FFFFFF" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke={theme === 'dark' ? '#EF4444' : '#1a1d1cff'} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                 </svg>
-                <span className="hidden sm:inline" style={{ color: '#FFFFFF' }}>Add New</span>
+                <span className="hidden sm:inline" style={{ color: theme === 'dark' ? '#060606ff' : '#161817ff' }}>Add New</span>
               </button>
               <button
                 onClick={handleSignOut}
@@ -738,7 +738,7 @@ export default function AdminReservationsPage() {
 
         {/* Status Tabs */}
         <div className={`flex gap-0 mb-4 border-b overflow-x-auto ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}
-             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
           {[
             { key: 'all', label: 'All', shortLabel: 'All', count: statusCounts.all },
             { key: 'pending', label: 'Pending', shortLabel: 'Pend', count: statusCounts.pending },
@@ -749,13 +749,12 @@ export default function AdminReservationsPage() {
             <button
               key={tab.key}
               onClick={() => setStatusFilter(tab.key as StatusFilter)}
-              className={`px-1 sm:px-4 py-2 font-medium transition-colors border-b-2 whitespace-nowrap text-[10px] sm:text-sm flex-1 sm:flex-none ${
-                statusFilter === tab.key
+              className={`px-1 sm:px-4 py-2 font-medium transition-colors border-b-2 whitespace-nowrap text-[10px] sm:text-sm flex-1 sm:flex-none ${statusFilter === tab.key
                   ? 'border-pink-600 text-pink-600'
                   : `border-transparent ${theme === "dark" ? "text-gray-400 hover:text-gray-200" : "text-gray-600 hover:text-gray-900"}`
-              }`}
+                }`}
             >
-              <span className="sm:hidden">{tab.shortLabel}<br/>({tab.count})</span>
+              <span className="sm:hidden">{tab.shortLabel}<br />({tab.count})</span>
               <span className="hidden sm:inline">{tab.label} ({tab.count})</span>
             </button>
           ))}
@@ -768,11 +767,10 @@ export default function AdminReservationsPage() {
             <select
               value={bulkAction}
               onChange={(e) => setBulkAction(e.target.value)}
-              className={`px-2 py-2 border rounded text-xs ${
-                theme === "dark"
+              className={`px-2 py-2 border rounded text-xs ${theme === "dark"
                   ? "border-gray-600 text-gray-300 bg-gray-800"
                   : "border-gray-300 bg-white"
-              }`}
+                }`}
             >
               <option value="">Bulk</option>
               <option value="trash">Delete</option>
@@ -780,16 +778,14 @@ export default function AdminReservationsPage() {
             <button
               onClick={handleApplyBulkAction}
               disabled={isDeletingBulk || selectedIds.size === 0}
-              className={`px-3 py-2 bg-gray-200 hover:bg-gray-300 rounded disabled:opacity-50 disabled:cursor-not-allowed text-xs ${
-                theme === "dark" ? "bg-gray-700 text-white hover:bg-gray-600" : ""
-              }`}
+              className={`px-3 py-2 bg-gray-200 hover:bg-gray-300 rounded disabled:opacity-50 disabled:cursor-not-allowed text-xs ${theme === "dark" ? "bg-gray-700 text-white hover:bg-gray-600" : ""
+                }`}
             >
               {isDeletingBulk ? '...' : 'Apply'}
             </button>
             {selectedIds.size > 0 && (
-              <span className={`px-2 py-2 text-xs ${
-                theme === "dark" ? "text-gray-300" : "text-gray-700"
-              }`}>
+              <span className={`px-2 py-2 text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-700"
+                }`}>
                 ({selectedIds.size})
               </span>
             )}
@@ -808,11 +804,10 @@ export default function AdminReservationsPage() {
               placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className={`px-3 py-2 border rounded w-full text-sm ${
-                theme === "dark"
+              className={`px-3 py-2 border rounded w-full text-sm ${theme === "dark"
                   ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400"
                   : "bg-white border-gray-300 placeholder-gray-500"
-              }`}
+                }`}
             />
           </div>
         </div>
@@ -915,9 +910,9 @@ export default function AdminReservationsPage() {
                     <td className="px-1 py-2 text-center">
                       <div className={`inline-block px-1.5 py-1 rounded text-[9px] font-semibold ${getStatusColor(reservation.status)}`}>
                         {reservation.status === 'pending' ? 'Pend' :
-                         reservation.status === 'confirmed' ? 'Conf' :
-                         reservation.status === 'cancelled' ? 'Canc' :
-                         reservation.status === 'completed' ? 'Comp' : reservation.status}
+                          reservation.status === 'confirmed' ? 'Conf' :
+                            reservation.status === 'cancelled' ? 'Canc' :
+                              reservation.status === 'completed' ? 'Comp' : reservation.status}
                       </div>
                     </td>
                     <td className="px-1 py-2 text-center">
@@ -1029,11 +1024,11 @@ export default function AdminReservationsPage() {
         {/* Edit Reservation Modal */}
         {showEditModal && editingReservation && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className={`max-w-2xl w-full rounded-lg shadow-xl max-h-[90vh] overflow-y-auto ${
-              theme === "dark" ? "bg-gray-800" : "bg-white"
-            }`}>
+            <div className={`max-w-2xl w-full rounded-lg shadow-xl max-h-[90vh] overflow-y-auto ${theme === "dark" ? "bg-gray-800" : "bg-white"
+              }`}>
               {/* Modal Header */}
-              <div className="sticky top-0 z-10 flex justify-between items-center p-4 border-b bg-inherit rounded-t-lg">
+              <div className={`sticky top-0 z-10 flex justify-between items-center p-4 border-b rounded-t-lg ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+                }`}>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                   Edit Reservation
                 </h2>
@@ -1042,9 +1037,8 @@ export default function AdminReservationsPage() {
                     setShowEditModal(false);
                     setEditingReservation(null);
                   }}
-                  className={`p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-600"
-                  }`}
+                  className={`p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 ${theme === "dark" ? "text-gray-300" : "text-gray-600"
+                    }`}
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1063,11 +1057,10 @@ export default function AdminReservationsPage() {
                     type="text"
                     value={editingReservation.name}
                     onChange={(e) => setEditingReservation({ ...editingReservation, name: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                     placeholder="Customer name"
                   />
                 </div>
@@ -1081,11 +1074,10 @@ export default function AdminReservationsPage() {
                     type="email"
                     value={editingReservation.email}
                     onChange={(e) => setEditingReservation({ ...editingReservation, email: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                     placeholder="customer@example.com"
                   />
                 </div>
@@ -1099,11 +1091,10 @@ export default function AdminReservationsPage() {
                     type="tel"
                     value={editingReservation.phone}
                     onChange={(e) => setEditingReservation({ ...editingReservation, phone: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                     placeholder="+32 123 456 789"
                   />
                 </div>
@@ -1117,11 +1108,10 @@ export default function AdminReservationsPage() {
                     type="date"
                     value={editingReservation.date}
                     onChange={(e) => setEditingReservation({ ...editingReservation, date: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                   />
                 </div>
 
@@ -1135,11 +1125,10 @@ export default function AdminReservationsPage() {
                       type="time"
                       value={editingReservation.start_time}
                       onChange={(e) => setEditingReservation({ ...editingReservation, start_time: e.target.value })}
-                      className={`w-full px-3 py-2 border rounded-lg ${
-                        theme === "dark"
+                      className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                           ? "bg-gray-700 border-gray-600 text-white"
                           : "bg-white border-gray-300"
-                      }`}
+                        }`}
                     />
                   </div>
                   <div>
@@ -1150,11 +1139,10 @@ export default function AdminReservationsPage() {
                       type="time"
                       value={editingReservation.end_time}
                       onChange={(e) => setEditingReservation({ ...editingReservation, end_time: e.target.value })}
-                      className={`w-full px-3 py-2 border rounded-lg ${
-                        theme === "dark"
+                      className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                           ? "bg-gray-700 border-gray-600 text-white"
                           : "bg-white border-gray-300"
-                      }`}
+                        }`}
                     />
                   </div>
                 </div>
@@ -1170,11 +1158,10 @@ export default function AdminReservationsPage() {
                     max="20"
                     value={editingReservation.guests}
                     onChange={(e) => setEditingReservation({ ...editingReservation, guests: parseInt(e.target.value) || 1 })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                   />
                 </div>
 
@@ -1186,11 +1173,10 @@ export default function AdminReservationsPage() {
                   <select
                     value={editingReservation.status}
                     onChange={(e) => setEditingReservation({ ...editingReservation, status: e.target.value as any })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                   >
                     <option value="pending">Pending</option>
                     <option value="confirmed">Confirmed</option>
@@ -1208,11 +1194,10 @@ export default function AdminReservationsPage() {
                     value={editingReservation.special_requests || ''}
                     onChange={(e) => setEditingReservation({ ...editingReservation, special_requests: e.target.value })}
                     rows={3}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                     placeholder="Any special requests or notes..."
                   />
                 </div>
@@ -1225,11 +1210,10 @@ export default function AdminReservationsPage() {
                   <select
                     value={editingReservation.language}
                     onChange={(e) => setEditingReservation({ ...editingReservation, language: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                   >
                     <option value="en">English</option>
                     <option value="fr">French</option>
@@ -1238,32 +1222,31 @@ export default function AdminReservationsPage() {
               </div>
 
               {/* Modal Footer */}
-              <div className="sticky bottom-0 flex justify-end gap-3 p-4 border-t bg-inherit rounded-b-lg">
-                <button
-                  onClick={() => {
-                    setShowEditModal(false);
-                    setEditingReservation(null);
-                  }}
-                  disabled={isUpdating}
-                  className={`px-4 py-2 rounded-lg font-medium ${
-                    theme === "dark"
-                      ? "bg-gray-700 hover:bg-gray-600 text-white"
-                      : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                  } disabled:opacity-50`}
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleUpdateReservation}
-                  disabled={isUpdating}
-                  className={`px-4 py-2 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed ${
-                    theme === "dark"
-                      ? "bg-purple-500 hover:bg-purple-600 text-white"
-                      : "bg-purple-500 hover:bg-purple-600 text-black"
-                  }`}
-                >
-                  {isUpdating ? 'Updating...' : 'Update Reservation'}
-                </button>
+              <div className={`sticky bottom-0 flex justify-between items-center gap-3 p-4 border-t rounded-b-lg ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+                }`}>
+                <div className="flex-1"></div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => {
+                      setShowEditModal(false);
+                      setEditingReservation(null);
+                    }}
+                    disabled={isUpdating}
+                    className={`px-4 py-2 rounded-lg font-medium ${theme === "dark"
+                        ? "bg-gray-700 hover:bg-gray-600 text-white"
+                        : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                      } disabled:opacity-50`}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleUpdateReservation}
+                    disabled={isUpdating}
+                    className="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isUpdating ? 'Updating...' : 'Update Reservation'}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1272,19 +1255,18 @@ export default function AdminReservationsPage() {
         {/* Add Reservation Modal */}
         {showAddModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className={`max-w-2xl w-full rounded-lg shadow-xl max-h-[90vh] overflow-y-auto ${
-              theme === "dark" ? "bg-gray-800" : "bg-white"
-            }`}>
+            <div className={`max-w-2xl w-full rounded-lg shadow-xl max-h-[90vh] overflow-y-auto ${theme === "dark" ? "bg-gray-800" : "bg-white"
+              }`}>
               {/* Modal Header */}
-              <div className="sticky top-0 z-10 flex justify-between items-center p-4 border-b bg-inherit rounded-t-lg">
+              <div className={`sticky top-0 z-10 flex justify-between items-center p-4 border-b rounded-t-lg ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+                }`}>
                 <h2 className={`text-xl font-bold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                   Add New Reservation
                 </h2>
                 <button
                   onClick={() => setShowAddModal(false)}
-                  className={`p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-600"
-                  }`}
+                  className={`p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 ${theme === "dark" ? "text-gray-300" : "text-gray-600"
+                    }`}
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1303,11 +1285,10 @@ export default function AdminReservationsPage() {
                     type="text"
                     value={newReservation.name}
                     onChange={(e) => setNewReservation({ ...newReservation, name: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                     placeholder="Customer name"
                   />
                 </div>
@@ -1321,11 +1302,10 @@ export default function AdminReservationsPage() {
                     type="email"
                     value={newReservation.email}
                     onChange={(e) => setNewReservation({ ...newReservation, email: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                     placeholder="customer@example.com"
                   />
                 </div>
@@ -1339,11 +1319,10 @@ export default function AdminReservationsPage() {
                     type="tel"
                     value={newReservation.phone}
                     onChange={(e) => setNewReservation({ ...newReservation, phone: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                     placeholder="+32 123 456 789"
                   />
                 </div>
@@ -1357,11 +1336,10 @@ export default function AdminReservationsPage() {
                     type="date"
                     value={newReservation.date}
                     onChange={(e) => setNewReservation({ ...newReservation, date: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                   />
                 </div>
 
@@ -1375,11 +1353,10 @@ export default function AdminReservationsPage() {
                       type="time"
                       value={newReservation.start_time}
                       onChange={(e) => setNewReservation({ ...newReservation, start_time: e.target.value })}
-                      className={`w-full px-3 py-2 border rounded-lg ${
-                        theme === "dark"
+                      className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                           ? "bg-gray-700 border-gray-600 text-white"
                           : "bg-white border-gray-300"
-                      }`}
+                        }`}
                     />
                   </div>
                   <div>
@@ -1390,11 +1367,10 @@ export default function AdminReservationsPage() {
                       type="time"
                       value={newReservation.end_time}
                       onChange={(e) => setNewReservation({ ...newReservation, end_time: e.target.value })}
-                      className={`w-full px-3 py-2 border rounded-lg ${
-                        theme === "dark"
+                      className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                           ? "bg-gray-700 border-gray-600 text-white"
                           : "bg-white border-gray-300"
-                      }`}
+                        }`}
                     />
                   </div>
                 </div>
@@ -1410,11 +1386,10 @@ export default function AdminReservationsPage() {
                     max="20"
                     value={newReservation.guests}
                     onChange={(e) => setNewReservation({ ...newReservation, guests: parseInt(e.target.value) || 1 })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                   />
                 </div>
 
@@ -1426,11 +1401,10 @@ export default function AdminReservationsPage() {
                   <select
                     value={newReservation.status}
                     onChange={(e) => setNewReservation({ ...newReservation, status: e.target.value as any })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                   >
                     <option value="pending">Pending</option>
                     <option value="confirmed">Confirmed</option>
@@ -1448,11 +1422,10 @@ export default function AdminReservationsPage() {
                     value={newReservation.special_requests}
                     onChange={(e) => setNewReservation({ ...newReservation, special_requests: e.target.value })}
                     rows={3}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                     placeholder="Any special requests or notes..."
                   />
                 </div>
@@ -1465,11 +1438,10 @@ export default function AdminReservationsPage() {
                   <select
                     value={newReservation.language}
                     onChange={(e) => setNewReservation({ ...newReservation, language: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg ${
-                      theme === "dark"
+                    className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
-                    }`}
+                      }`}
                   >
                     <option value="en">English</option>
                     <option value="fr">French</option>
@@ -1478,25 +1450,28 @@ export default function AdminReservationsPage() {
               </div>
 
               {/* Modal Footer */}
-              <div className="sticky bottom-0 flex justify-end gap-3 p-4 border-t bg-inherit rounded-b-lg">
-                <button
-                  onClick={() => setShowAddModal(false)}
-                  disabled={isAdding}
-                  className={`px-4 py-2 rounded-lg font-medium ${
-                    theme === "dark"
-                      ? "bg-gray-700 hover:bg-gray-600 text-white"
-                      : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                  } disabled:opacity-50`}
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleAddReservation}
-                  disabled={isAdding}
-                  className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isAdding ? 'Adding...' : 'Add Reservation'}
-                </button>
+              <div className={`sticky bottom-0 flex justify-between items-center gap-3 p-4 border-t rounded-b-lg ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+                }`}>
+                <div className="flex-1"></div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setShowAddModal(false)}
+                    disabled={isAdding}
+                    className={`px-4 py-2 rounded-lg font-medium ${theme === "dark"
+                        ? "bg-gray-700 hover:bg-gray-600 text-white"
+                        : "bg-gray-200 hover:bg-gray-300 text-gray-900"
+                      } disabled:opacity-50`}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleAddReservation}
+                    disabled={isAdding}
+                    className="px-4 py-2 bg-green-500 hover:bg-green-600 text-black rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isAdding ? 'Adding...' : 'Add Reservation'}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
