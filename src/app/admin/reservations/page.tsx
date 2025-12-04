@@ -12,12 +12,15 @@ import { Reservation } from '@/types/supabase';
 type StatusFilter = 'all' | 'pending' | 'confirmed' | 'cancelled' | 'completed';
 
 export default function AdminReservationsPage() {
-  const { theme } = useTheme();
+  const { theme: globalTheme, toggleTheme } = useTheme();
   const { loading: authLoading, isAuthenticated } = useAdminAuth();
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [filteredReservations, setFilteredReservations] = useState<Reservation[]>([]);
   const [loading, setLoading] = useState(true);
   const [isStaff, setIsStaff] = useState(false);
+
+  // Force dark mode as default for admin reservations
+  const theme = 'dark';
 
   // Filters and search
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
@@ -66,6 +69,19 @@ export default function AdminReservationsPage() {
     cancelled: 0,
     completed: 0
   });
+
+  // Apply dark mode to document when component mounts
+  useEffect(() => {
+    const wasDark = document.documentElement.classList.contains('dark');
+    document.documentElement.classList.add('dark');
+
+    // Restore previous theme on unmount
+    return () => {
+      if (!wasDark) {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+  }, []);
 
   // Check if user is staff
   useEffect(() => {
@@ -629,11 +645,11 @@ export default function AdminReservationsPage() {
   // Get status badge color
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'confirmed': return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300';
-      case 'pending': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300';
-      case 'cancelled': return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300';
-      case 'completed': return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300';
+      case 'confirmed': return 'bg-green-100 text-green-900 dark:bg-green-900/30 dark:text-green-300';
+      case 'pending': return 'bg-yellow-100 text-yellow-900 dark:bg-yellow-900/30 dark:text-yellow-300';
+      case 'cancelled': return 'bg-red-100 text-red-900 dark:bg-red-900/30 dark:text-red-300';
+      case 'completed': return 'bg-blue-100 text-blue-900 dark:bg-blue-900/30 dark:text-blue-300';
+      default: return 'bg-gray-100 text-gray-900 dark:bg-gray-900/30 dark:text-gray-300';
     }
   };
 
@@ -750,8 +766,8 @@ export default function AdminReservationsPage() {
               key={tab.key}
               onClick={() => setStatusFilter(tab.key as StatusFilter)}
               className={`px-1 sm:px-4 py-2 font-medium transition-colors border-b-2 whitespace-nowrap text-[10px] sm:text-sm flex-1 sm:flex-none ${statusFilter === tab.key
-                  ? 'border-pink-600 text-pink-600'
-                  : `border-transparent ${theme === "dark" ? "text-gray-400 hover:text-gray-200" : "text-gray-600 hover:text-gray-900"}`
+                ? 'border-pink-600 text-pink-600'
+                : `border-transparent ${theme === "dark" ? "text-gray-400 hover:text-gray-200" : "text-gray-600 hover:text-gray-900"}`
                 }`}
             >
               <span className="sm:hidden">{tab.shortLabel}<br />({tab.count})</span>
@@ -768,8 +784,8 @@ export default function AdminReservationsPage() {
               value={bulkAction}
               onChange={(e) => setBulkAction(e.target.value)}
               className={`px-2 py-2 border rounded text-xs ${theme === "dark"
-                  ? "border-gray-600 text-gray-300 bg-gray-800"
-                  : "border-gray-300 bg-white"
+                ? "border-gray-600 text-gray-300 bg-gray-800"
+                : "border-gray-300 bg-white"
                 }`}
             >
               <option value="">Bulk</option>
@@ -805,8 +821,8 @@ export default function AdminReservationsPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className={`px-3 py-2 border rounded w-full text-sm ${theme === "dark"
-                  ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400"
-                  : "bg-white border-gray-300 placeholder-gray-500"
+                ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400"
+                : "bg-white border-gray-300 placeholder-gray-500"
                 }`}
             />
           </div>
@@ -1058,8 +1074,8 @@ export default function AdminReservationsPage() {
                     value={editingReservation.name}
                     onChange={(e) => setEditingReservation({ ...editingReservation, name: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                     placeholder="Customer name"
                   />
@@ -1075,8 +1091,8 @@ export default function AdminReservationsPage() {
                     value={editingReservation.email}
                     onChange={(e) => setEditingReservation({ ...editingReservation, email: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                     placeholder="customer@example.com"
                   />
@@ -1092,8 +1108,8 @@ export default function AdminReservationsPage() {
                     value={editingReservation.phone}
                     onChange={(e) => setEditingReservation({ ...editingReservation, phone: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                     placeholder="+32 123 456 789"
                   />
@@ -1109,8 +1125,8 @@ export default function AdminReservationsPage() {
                     value={editingReservation.date}
                     onChange={(e) => setEditingReservation({ ...editingReservation, date: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                   />
                 </div>
@@ -1126,8 +1142,8 @@ export default function AdminReservationsPage() {
                       value={editingReservation.start_time}
                       onChange={(e) => setEditingReservation({ ...editingReservation, start_time: e.target.value })}
                       className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                          ? "bg-gray-700 border-gray-600 text-white"
-                          : "bg-white border-gray-300"
+                        ? "bg-gray-700 border-gray-600 text-white"
+                        : "bg-white border-gray-300"
                         }`}
                     />
                   </div>
@@ -1140,8 +1156,8 @@ export default function AdminReservationsPage() {
                       value={editingReservation.end_time}
                       onChange={(e) => setEditingReservation({ ...editingReservation, end_time: e.target.value })}
                       className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                          ? "bg-gray-700 border-gray-600 text-white"
-                          : "bg-white border-gray-300"
+                        ? "bg-gray-700 border-gray-600 text-white"
+                        : "bg-white border-gray-300"
                         }`}
                     />
                   </div>
@@ -1159,8 +1175,8 @@ export default function AdminReservationsPage() {
                     value={editingReservation.guests}
                     onChange={(e) => setEditingReservation({ ...editingReservation, guests: parseInt(e.target.value) || 1 })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                   />
                 </div>
@@ -1174,8 +1190,8 @@ export default function AdminReservationsPage() {
                     value={editingReservation.status}
                     onChange={(e) => setEditingReservation({ ...editingReservation, status: e.target.value as any })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                   >
                     <option value="pending">Pending</option>
@@ -1195,8 +1211,8 @@ export default function AdminReservationsPage() {
                     onChange={(e) => setEditingReservation({ ...editingReservation, special_requests: e.target.value })}
                     rows={3}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                     placeholder="Any special requests or notes..."
                   />
@@ -1211,8 +1227,8 @@ export default function AdminReservationsPage() {
                     value={editingReservation.language}
                     onChange={(e) => setEditingReservation({ ...editingReservation, language: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                   >
                     <option value="en">English</option>
@@ -1233,8 +1249,8 @@ export default function AdminReservationsPage() {
                     }}
                     disabled={isUpdating}
                     className={`px-4 py-2 rounded-lg font-medium ${theme === "dark"
-                        ? "bg-gray-700 hover:bg-gray-600 text-white"
-                        : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                      ? "bg-gray-700 hover:bg-gray-600 text-white"
+                      : "bg-gray-200 hover:bg-gray-300 text-gray-700"
                       } disabled:opacity-50`}
                   >
                     Cancel
@@ -1286,8 +1302,8 @@ export default function AdminReservationsPage() {
                     value={newReservation.name}
                     onChange={(e) => setNewReservation({ ...newReservation, name: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                     placeholder="Customer name"
                   />
@@ -1303,8 +1319,8 @@ export default function AdminReservationsPage() {
                     value={newReservation.email}
                     onChange={(e) => setNewReservation({ ...newReservation, email: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                     placeholder="customer@example.com"
                   />
@@ -1320,8 +1336,8 @@ export default function AdminReservationsPage() {
                     value={newReservation.phone}
                     onChange={(e) => setNewReservation({ ...newReservation, phone: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                     placeholder="+32 123 456 789"
                   />
@@ -1337,8 +1353,8 @@ export default function AdminReservationsPage() {
                     value={newReservation.date}
                     onChange={(e) => setNewReservation({ ...newReservation, date: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                   />
                 </div>
@@ -1354,8 +1370,8 @@ export default function AdminReservationsPage() {
                       value={newReservation.start_time}
                       onChange={(e) => setNewReservation({ ...newReservation, start_time: e.target.value })}
                       className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                          ? "bg-gray-700 border-gray-600 text-white"
-                          : "bg-white border-gray-300"
+                        ? "bg-gray-700 border-gray-600 text-white"
+                        : "bg-white border-gray-300"
                         }`}
                     />
                   </div>
@@ -1368,8 +1384,8 @@ export default function AdminReservationsPage() {
                       value={newReservation.end_time}
                       onChange={(e) => setNewReservation({ ...newReservation, end_time: e.target.value })}
                       className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                          ? "bg-gray-700 border-gray-600 text-white"
-                          : "bg-white border-gray-300"
+                        ? "bg-gray-700 border-gray-600 text-white"
+                        : "bg-white border-gray-300"
                         }`}
                     />
                   </div>
@@ -1387,8 +1403,8 @@ export default function AdminReservationsPage() {
                     value={newReservation.guests}
                     onChange={(e) => setNewReservation({ ...newReservation, guests: parseInt(e.target.value) || 1 })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                   />
                 </div>
@@ -1402,8 +1418,8 @@ export default function AdminReservationsPage() {
                     value={newReservation.status}
                     onChange={(e) => setNewReservation({ ...newReservation, status: e.target.value as any })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                   >
                     <option value="pending">Pending</option>
@@ -1423,8 +1439,8 @@ export default function AdminReservationsPage() {
                     onChange={(e) => setNewReservation({ ...newReservation, special_requests: e.target.value })}
                     rows={3}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                     placeholder="Any special requests or notes..."
                   />
@@ -1439,8 +1455,8 @@ export default function AdminReservationsPage() {
                     value={newReservation.language}
                     onChange={(e) => setNewReservation({ ...newReservation, language: e.target.value })}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
-                        ? "bg-gray-700 border-gray-600 text-white"
-                        : "bg-white border-gray-300"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
                       }`}
                   >
                     <option value="en">English</option>
@@ -1458,8 +1474,8 @@ export default function AdminReservationsPage() {
                     onClick={() => setShowAddModal(false)}
                     disabled={isAdding}
                     className={`px-4 py-2 rounded-lg font-medium ${theme === "dark"
-                        ? "bg-gray-700 hover:bg-gray-600 text-white"
-                        : "bg-gray-200 hover:bg-gray-300 text-gray-900"
+                      ? "bg-gray-700 hover:bg-gray-600 text-white"
+                      : "bg-gray-200 hover:bg-gray-300 text-gray-900"
                       } disabled:opacity-50`}
                   >
                     Cancel
