@@ -12,8 +12,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (!process.env.SENDGRID_API_KEY) {
-      console.error('SENDGRID_API_KEY is not configured');
+    // Check SMTP configuration
+    const smtpConfigured = process.env.SMTP_HOST &&
+                          process.env.SMTP_PORT &&
+                          process.env.SMTP_USER &&
+                          process.env.SMTP_PASS;
+
+    if (!smtpConfigured) {
+      console.error('SMTP configuration is incomplete');
       return NextResponse.json(
         { success: false, error: 'Email service not configured' },
         { status: 500 }
@@ -192,7 +198,7 @@ Tel: +32 2 508 38 38 | Email: contact@eastatwest.com
 
     // Send email to the customer
     const result = await sendEmail({
-      from: process.env.SENDGRID_FROM_EMAIL || 'contact@eastatwest.com',
+      from: process.env.SMTP_FROM_EMAIL || 'contact@eastatwest.com',
       to: reservationData.email,
       subject,
       text: emailText,
