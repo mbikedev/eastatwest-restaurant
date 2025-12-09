@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
             <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
               <div style="margin-bottom: 15px;">
                 <p style="color: #6b7280; margin: 0 0 5px 0; font-size: 14px; font-weight: 500; text-transform: uppercase;">Date</p>
-                <p style="color: #374151; margin: 0; font-size: 18px; font-weight: 600;">${new Date(reservationData.date).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                <p style="color: #374151; margin: 0; font-size: 18px; font-weight: 600;">${new Date(reservationData.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' })}</p>
               </div>
 
               <div style="margin-bottom: 15px;">
@@ -169,7 +169,7 @@ ${isApproved ?
 }
 
 Reservation Details:
-Date: ${new Date(reservationData.date).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+Date: ${new Date(reservationData.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' })}
 Time: ${reservationData.start_time} - ${reservationData.end_time}
 Number of Guests: ${reservationData.guests} ${reservationData.guests === 1 ? 'person' : 'people'}
 ${reservationData.special_requests ? `Special Requests: ${reservationData.special_requests}` : ''}

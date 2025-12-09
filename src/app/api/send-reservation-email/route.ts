@@ -126,7 +126,7 @@ export async function POST(req: NextRequest) {
                   
                   <div>
                     <p style="color: #6b7280; margin: 0 0 5px 0; font-size: 14px; font-weight: 500; text-transform: uppercase;">${getTranslation(lang, 'reservations.form.date')}</p>
-                    <p style="color: #374151; margin: 0; font-size: 16px;">${new Date(reservationData.date).toLocaleDateString()}</p>
+                    <p style="color: #374151; margin: 0; font-size: 16px;">${new Date(reservationData.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' })}</p>
                   </div>
                   
                   <div>

@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
                 
                 <div>
                   <p style="color: #6b7280; margin: 0 0 5px 0; font-size: 14px; font-weight: 500; text-transform: uppercase;">Date</p>
-                  <p style="color: #374151; margin: 0; font-size: 16px;">${new Date(reservationData.date).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                  <p style="color: #374151; margin: 0; font-size: 16px;">${new Date(reservationData.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' })}</p>
                 </div>
                 
                 <div>
@@ -142,11 +142,11 @@ export async function POST(req: NextRequest) {
             <!-- Timestamp -->
             <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
               <p style="color: #9ca3af; margin: 0; font-size: 12px; text-align: center;">
-                Action performed on ${new Date().toLocaleString('en-GB', { 
-                  weekday: 'long', 
-                  year: 'numeric', 
-                  month: 'long', 
+                Action performed on ${new Date().toLocaleDateString('en-GB', {
                   day: 'numeric',
+                  month: 'numeric',
+                  year: 'numeric'
+                })} at ${new Date().toLocaleTimeString('en-GB', {
                   hour: '2-digit',
                   minute: '2-digit'
                 })}
@@ -179,7 +179,7 @@ Reservation Details:
 Name: ${reservationData.name}
 Phone: ${reservationData.phone}
 Email: ${reservationData.email}
-Date: ${new Date(reservationData.date).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+Date: ${new Date(reservationData.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' })}
 Time: ${reservationData.start_time} - ${reservationData.end_time}
 Number of People: ${reservationData.guests} ${reservationData.guests === 1 ? 'person' : 'people'}
 ${reservationData.special_requests ? `Special Requests: ${reservationData.special_requests}` : ''}
@@ -191,7 +191,7 @@ ${isApproved ?
   'The customer will receive automatic cancellation notification. No further action required.'
 }
 
-Action performed on ${new Date().toLocaleString('en-GB')}
+Action performed on ${new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' })} at ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
 
 East At West Restaurant
 Bld de l'Empereur 26, 1000 Brussels, Belgium
