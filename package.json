@@ -59,5 +59,8 @@
     "edge >= 92",
     "firefox >= 90",
     "safari >= 15.4"
-  ]
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  }
 }
