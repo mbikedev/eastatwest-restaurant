@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { memo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -22,7 +22,7 @@ interface ProductModalProps {
   }
 }
 
-export default function ProductModal({ isOpen, onClose, product }: ProductModalProps) {
+function ProductModal({ isOpen, onClose, product }: ProductModalProps) {
   const { theme } = useTheme()
   const { t, i18n } = useTranslation('common')
   const router = useRouter()
@@ -210,3 +210,5 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
     </AnimatePresence>
   )
 }
+
+export default memo(ProductModal)

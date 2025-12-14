@@ -10,6 +10,7 @@ import { LightboxProvider } from "../context/LightboxContext";
 import { CartProvider } from "../context/CartContext";
 import { LanguageProvider } from "../context/LanguageContext";
 import I18nProvider from "../components/I18nProvider";
+import LazyMotionProvider from "../components/LazyMotion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
@@ -426,15 +427,17 @@ export default function RootLayout({
             <ThemeProvider>
               <CartProvider>
                 <LightboxProvider>
-                  <ZeroCSSBlocking />
-                  <div className="min-h-screen flex flex-col">
-                    <Header />
-                    <Breadcrumb />
-                    <main className="flex-1">{children}</main>
-                    <Footer />
-                  </div>
-                  <ClientProviders />
-                  <CookieConsent />
+                  <LazyMotionProvider>
+                    <ZeroCSSBlocking />
+                    <div className="min-h-screen flex flex-col">
+                      <Header />
+                      <Breadcrumb />
+                      <main className="flex-1">{children}</main>
+                      <Footer />
+                    </div>
+                    <ClientProviders />
+                    <CookieConsent />
+                  </LazyMotionProvider>
                 </LightboxProvider>
               </CartProvider>
             </ThemeProvider>
