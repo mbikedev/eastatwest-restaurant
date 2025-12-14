@@ -125,7 +125,7 @@ export default function AdminOrdersPage() {
   useEffect(() => {
     const checkStaffAccess = async () => {
       try {
-        const { data: refreshData, error: refreshError } = await supabase.auth.refreshSession();
+        const { error: refreshError } = await supabase.auth.refreshSession();
 
         if (refreshError) {
           console.log('Token refresh failed, using current session:', refreshError.message);

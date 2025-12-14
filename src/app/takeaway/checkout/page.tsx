@@ -31,7 +31,7 @@ export default function CheckoutPage() {
     additional_notes: ''
   })
 
-  const [paymentMethod, setPaymentMethod] = useState<'online' | 'cash'>('cash')
+  const [paymentMethod] = useState<'online' | 'cash'>('cash')
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
@@ -132,8 +132,7 @@ export default function CheckoutPage() {
         body: JSON.stringify(orderData)
       })
 
-      let result: any
-      result = await response.json()
+      const result = await response.json()
       if (!response.ok) {
         throw new Error(`Order API ${response.status}: ${result?.error || JSON.stringify(result)}`)
       }
@@ -158,8 +157,7 @@ export default function CheckoutPage() {
             })
           })
 
-          let paymentResult: any
-          paymentResult = await paymentResponse.json()
+          const paymentResult = await paymentResponse.json()
           if (!paymentResponse.ok) {
             throw new Error(`Payment API ${paymentResponse.status}: ${paymentResult?.error || JSON.stringify(paymentResult)}`)
           }
@@ -174,8 +172,8 @@ export default function CheckoutPage() {
       } else {
         throw new Error(result.error || 'Order creation failed')
       }
-      } catch (error: any) {
-      alert(error?.message || t('checkout.error'))
+      } catch (error: unknown) {
+      alert((error instanceof Error ? error.message : String(error)) || t('checkout.error'))
     } finally {
       setLoading(false)
     }

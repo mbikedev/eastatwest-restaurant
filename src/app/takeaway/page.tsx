@@ -8,7 +8,7 @@ import { useTheme } from '../../context/ThemeContext'
 import { MultilingualText } from '../../types/takeaway'
 import { useCart } from '../../context/CartContext'
 import { useLightbox } from '../../context/LightboxContext'
-import { Product, PRODUCT_CATEGORIES } from '../../types/takeaway'
+import { Product } from '../../types/takeaway'
 // Use regular div elements instead of motion for initial load performance
 // import { motion, AnimatePresence } from 'framer-motion'
 
@@ -21,7 +21,6 @@ export default function TakeawayPage() {
   const { cart, addItem, removeItem, updateQuantity, isCartOpen, setIsCartOpen } = useCart()
   const { openLightbox } = useLightbox()
 
-  const [products, setProducts] = useState<Product[]>([])
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [loading, setLoading] = useState(true)
@@ -72,7 +71,6 @@ export default function TakeawayPage() {
           if (selectedCategory === 'all') {
             data = data.filter((p: Product) => p.category !== 'sandwiches')
           }
-          setProducts(data)
           setFilteredProducts(data)
         } else {
           setError(result.error || 'Failed to load products')
@@ -102,105 +100,8 @@ export default function TakeawayPage() {
     { id: "drinks", name: t("menu.categories.drinks") },
   ];
 
-  // Category names for display (for backward compatibility)
-  const getCategoryName = (category: string) => {
-    const categoryMap: { [key: string]: string } = {
-      'all': t('takeaway.categories.all'),
-      'cold-mezzes': t('takeaway.categories.coldMezzes'),
-      'hot-mezzes': t('takeaway.categories.hotMezzes'),
-      'salads': t('takeaway.categories.salads'),
-      'sandwiches': t('takeaway.categories.sandwiches'),
-      'lunch-dishes': t('takeaway.categories.lunchDishes'),
-      'desserts': t('takeaway.categories.desserts')
-    }
-    return categoryMap[category] || category
-  }
-
-  // Map product names from database to translation keys
-  const getProductTranslationKey = (productName: string) => {
-    const nameMapping: { [key: string]: string } = {
-      'Hummus': 'hummus',
-      'Houmous': 'hummus',
-      'Moutabal': 'moutabal',
-      'Mousaka': 'mousaka',
-      'Moussaka': 'mousaka',
-      'Iche': 'iche',
-      'Muhamara': 'muhamara',
-      'Mouhamara': 'muhamara',
-      'Warak Enab': 'warakEnab',
-      'Feuilles de Vigne': 'warakEnab',
-      'Gevulde Druivenbladeren': 'warakEnab',
-      'Makdous': 'makdous',
-      'Chicken Tarator': 'chickenTarator',
-      'Poulet Tarator': 'chickenTarator',
-      'Kip Tarator': 'chickenTarator',
-      'Falafel': 'falafel',
-      'Kibbeh (2pcs)': 'kibbeh',
-      'Kibbeh (2st)': 'kibbeh',
-      'Sujuk': 'sujuk',
-      'Nakanek': 'nakanek',
-      'Foul Moudamas': 'foulMoudamas',
-      'Arayes Cheese': 'arayesCheese',
-      'Arayes au Fromage': 'arayesCheese',
-      'Arayes Kaas': 'arayesCheese',
-      'Batata Harra': 'batataHarra',
-      'Pommes de Terre Épicées': 'batataHarra',
-      'Pittige Aardappelen': 'batataHarra',
-      'Rkakat': 'rkakat',
-      'Kebbe Vegan (2pcs)': 'kibbeVegan',
-      'Kebbe Végétalien (2pcs)': 'kibbeVegan',
-      'Kebbe Veganistisch (2st)': 'kibbeVegan',
-      'Grilled Cheese': 'grilledCheese',
-      'Fromage Grillé': 'grilledCheese',
-      'Gegrilde Kaas': 'grilledCheese',
-      'Fattoush Salad': 'fattoushSalad',
-      'Salade Fattoush': 'fattoushSalad',
-      'Fattoush Salade': 'fattoushSalad',
-      'Falafel Salad': 'falafelSalad',
-      'Salade de Falafel': 'falafelSalad',
-      'Falafel Salade': 'falafelSalad',
-      'Taboule': 'taboule',
-      'Taboulé': 'taboule',
-      'Tabouli': 'taboule',
-      'Shish Taouk': 'shishTaouk',
-      'Falafel Plate': 'falafelPlate',
-      'Assiette de Falafel': 'falafelPlate',
-      'Falafel Bord': 'falafelPlate',
-      'Toshka Leban': 'toshkaLeban',
-      'Aleppo Mix': 'aleppoMix',
-      'Mélange d\'Alep': 'aleppoMix',
-      'Vegan Plate': 'veganPlate',
-      'Assiette Végétalienne': 'veganPlate',
-      'Veganistisch Bord': 'veganPlate',
-      'Kebab Dish': 'kebabDish',
-      'Assiette Kebab': 'kebabDish',
-      'Kebab Schotel': 'kebabDish',
-      'Aish el Saraya': 'aishElSaraya',
-      'Traditional Ice Cream': 'traditionalIceCream',
-      'Glace Traditionnelle': 'traditionalIceCream',
-      'Traditioneel Ijs': 'traditionalIceCream',
-      'Hummus Sandwich': 'hummusSandwich',
-      'Sandwich Hummus': 'hummusSandwich',
-      'Shish Taouk Sandwich': 'shishTaoukSandwich',
-      'Sandwich Chich Taouk': 'shishTaoukSandwich',
-      'Moutabal Sandwich': 'moutabalSandwich',
-      'Sandwich Moutabal': 'moutabalSandwich',
-      'Toshka Sandwich': 'toshkaSandwich',
-      'Sandwich Toshka': 'toshkaSandwich',
-      'Falafel Sandwich': 'falafelSandwich',
-      'Sandwich Falafel': 'falafelSandwich',
-      'Tarator Chicken Sandwich': 'taratorChickenSandwich',
-      'Sandwich Poulet Tarator': 'taratorChickenSandwich',
-      'Tarator Kip Sandwich': 'taratorChickenSandwich',
-      'Cheese Sandwich': 'cheeseSandwich',
-      'Sandwich au Fromage': 'cheeseSandwich',
-      'Kaas Sandwich': 'cheeseSandwich'
-    }
-    return nameMapping[productName] || 'hummus' // fallback
-  }
-
   // Get product name/description directly from DB in current language
-  const getLocalizedText = (multilingualText: MultilingualText, isDescription: boolean = false) => {
+  const getLocalizedText = (multilingualText: MultilingualText) => {
     const lang = (i18n.language || 'en') as keyof MultilingualText
     return multilingualText[lang] || multilingualText.en || multilingualText.fr || multilingualText.nl || ''
   }
@@ -421,7 +322,7 @@ export default function TakeawayPage() {
                     <p className={`mb-4 ${
                       theme === 'dark' ? 'text-gray-300' : 'text-[#5C4300]/70'
                     }`}>
-                      {getLocalizedText(product.description, true)}
+                      {getLocalizedText(product.description)}
                     </p>
                     
                     <button

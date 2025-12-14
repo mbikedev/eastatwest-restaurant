@@ -104,7 +104,7 @@ export default function AdminDashboard() {
 
         {/* Admin Sections Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {adminSections.map((section, index) => (
+          {adminSections.map((section) => (
             <motion.div
               key={section.title}
               variants={itemVariants}

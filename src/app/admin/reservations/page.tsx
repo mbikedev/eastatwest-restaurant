@@ -12,7 +12,6 @@ import { Reservation } from '@/types/supabase';
 type StatusFilter = 'all' | 'pending' | 'confirmed' | 'cancelled' | 'completed';
 
 export default function AdminReservationsPage() {
-  const { theme: globalTheme, toggleTheme } = useTheme();
   const { loading: authLoading, isAuthenticated } = useAdminAuth();
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [filteredReservations, setFilteredReservations] = useState<Reservation[]>([]);
@@ -37,7 +36,6 @@ export default function AdminReservationsPage() {
   const [isUpdating, setIsUpdating] = useState(false);
 
   // Bulk actions
-  const [showBulkActions, setShowBulkActions] = useState(false);
   const [bulkAction, setBulkAction] = useState<string>('');
   const [isDeletingBulk, setIsDeletingBulk] = useState(false);
 
@@ -87,7 +85,7 @@ export default function AdminReservationsPage() {
   useEffect(() => {
     const checkStaffAccess = async () => {
       try {
-        const { data: refreshData, error: refreshError } = await supabase.auth.refreshSession();
+        const { error: refreshError } = await supabase.auth.refreshSession();
 
         if (refreshError) {
           console.log('Token refresh failed, using current session:', refreshError.message);

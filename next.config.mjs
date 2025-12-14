@@ -209,6 +209,7 @@ export default {
     optimizeCss: false, // Disable to prevent CSS syntax errors
     optimizeServerReact: true,
     // Removed optimizePackageImports - was causing TBT regression
+    turbopackUseSystemTlsCerts: true, // Fix Google Fonts TLS connection issues
   },
   // SWC compiler optimizations for modern browsers
   compiler: {
