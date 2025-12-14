@@ -216,6 +216,8 @@ export default function BlogPage() {
                 <div className="relative">
                   <input
                     type="text"
+                    id="blog-search"
+                    name="search"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder={t('blog.searchPlaceholder')}
