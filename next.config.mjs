@@ -175,6 +175,16 @@ export default {
   // Cache headers for static assets
   async headers() {
     return [
+      // Permissions Policy for all pages
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Permissions-Policy',
+            value: 'unload=()',
+          },
+        ],
+      },
       {
         source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
         headers: [
