@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 import { useTranslation } from 'react-i18next'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 
 interface Testimonial {
   name: string
@@ -19,7 +19,7 @@ interface TestimonialsSectionProps {
   showSchema?: boolean
 }
 
-export default function TestimonialsSection({
+function TestimonialsSection({
   testimonials,
   title,
   showSchema = true
@@ -272,3 +272,4 @@ export default function TestimonialsSection({
     </>
   )
 }
+export default memo(TestimonialsSection)
