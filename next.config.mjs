@@ -137,13 +137,7 @@ export default {
       },
     ];
   },
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
   images: {
-    domains: ['localhost', 'cdn.builder.io', 'eastatwest.com', 'flagcdn.com'],
     // Enable modern image formats (AVIF first for better compression - 50% smaller than WebP)
     formats: ['image/avif', 'image/webp'],
     // Mobile-first optimized sizes for better performance
@@ -153,6 +147,14 @@ export default {
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
     // Enable remote patterns for external images
     remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.builder.io',
+      },
       {
         protocol: 'https',
         hostname: '**.eastatwest.com',
