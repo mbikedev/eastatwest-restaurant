@@ -239,9 +239,9 @@ export default function HomePage() {
     "servesCuisine": ["Lebanese", "Middle Eastern", "Mediterranean"],
     "priceRange": "$$",
     "image": "/images/banner.webp",
-    "hasMenu": "/pdfs/menus.pdf",
+    "hasMenu": "/pdfs/full-menu.pdf",
     "acceptsReservations": true,
-    "menu": "/pdfs/menus.pdf",
+    "menu": "/pdfs/full-menu.pdf",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -1009,7 +1009,7 @@ export default function HomePage() {
                     {/* ===== PARALLAX MENU BUTTON ===== */}
                     {/* Second Parallax CTA Button - Menu */}
                     <Link
-                      href="/pdfs/menus.pdf"
+                      href="/pdfs/full-menu.pdf"
                       className="group relative inline-flex items-center justify-center border-3 border-[rgb(255,255,255)] text-[rgb(255,255,255)] hover:bg-[rgb(255,255,255)] hover:text-[rgb(43,242,12)] focus:bg-[rgb(255,255,255)] focus:text-[rgb(26,26,26)] px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm md:text-base lg:text-lg font-bold transition-all duration-300 transform hover:scale-105 focus:scale-105 shadow-2xl bg-transparent focus:outline-none focus:ring-4 focus:ring-white/50"
                       aria-label="View our restaurant menu"
                       style={{ backgroundColor: '#92ad9c' }}
