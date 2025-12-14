@@ -1,7 +1,7 @@
 "use client";
 
 // Admin reservations page with Add New functionality
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useTheme } from "../../../context/ThemeContext";
 import { useAdminAuth } from '../../../hooks/useAdminAuth';
 import { supabase } from '@/lib/supabaseClient';
@@ -119,7 +119,7 @@ export default function AdminReservationsPage() {
   }, []);
 
   // Fetch all reservations
-  const fetchReservations = async () => {
+  const fetchReservations = useCallback(async () => {
     if (!isStaff) return;
 
     try {
@@ -144,13 +144,13 @@ export default function AdminReservationsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [isStaff]);
 
   useEffect(() => {
     if (isStaff) {
       fetchReservations();
     }
-  }, [isStaff]);
+  }, [isStaff, fetchReservations]);
 
   // Calculate status counts
   const calculateStatusCounts = (data: Reservation[]) => {

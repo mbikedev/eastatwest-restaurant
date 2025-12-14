@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabaseClient'
 import type { User } from '@supabase/supabase-js'
@@ -15,11 +15,7 @@ export default function AdminAuthGuard({ children }: AdminAuthGuardProps) {
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
-  useEffect(() => {
-    checkAuth()
-  }, [])
-
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     try {
       // Get current session
       const { data: { session }, error: sessionError } = await supabase.auth.getSession()
@@ -49,7 +45,11 @@ export default function AdminAuthGuard({ children }: AdminAuthGuardProps) {
       setError('Failed to verify authentication')
       router.push('/login')
     }
-  }
+  }, [router])
+
+  useEffect(() => {
+    checkAuth()
+  }, [checkAuth])
 
   if (loading) {
     return (

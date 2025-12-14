@@ -144,7 +144,7 @@ export default function TestimonialsSection({
                 ? 'bg-[#2A2A2A] border border-[#A8D5BA]/20'
                 : 'bg-white border border-gray-200'
             } shadow-2xl`}>
-              <div className="text-6xl mb-6 text-center opacity-20">"</div>
+              <div className="text-6xl mb-6 text-center opacity-20">&ldquo;</div>
 
               <motion.div
                 key={currentIndex}
@@ -218,7 +218,7 @@ export default function TestimonialsSection({
                 <p className={`leading-relaxed mb-6 ${
                   theme === 'dark' ? 'text-white/80' : 'text-gray-700'
                 }`}>
-                  "{testimonial.review}"
+                  &ldquo;{testimonial.review}&rdquo;
                 </p>
 
                 <div className="border-t border-[#A8D5BA]/20 pt-4">

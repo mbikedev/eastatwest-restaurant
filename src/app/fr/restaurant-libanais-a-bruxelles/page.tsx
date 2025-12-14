@@ -45,19 +45,19 @@ export default function RestaurantLibanaisBruxellesPage() {
         </p>
         <p className="text-lg mb-6 text-[rgb(26,26,26)]/70">
           East @ West vous propose une cuisine libanaise traditionnelle et moderne dans une ambiance chaleureuse.
-          Situé Boulevard de l'Empereur 26, notre restaurant vous accueille pour une expérience culinaire unique.
+          Situé Boulevard de l&apos;Empereur 26, notre restaurant vous accueille pour une expérience culinaire unique.
         </p>
         <p className="text-lg mb-4 text-[rgb(26,26,26)]/70">
           <strong>Spécialités:</strong> Mezze libanais, houmous, falafel, kebbe, grillades, desserts orientaux
         </p>
         <p className="text-lg mb-4 text-[rgb(26,26,26)]/70">
-          <strong>Adresse:</strong> Boulevard de l'Empereur 26, 1000 Bruxelles, Belgique
+          <strong>Adresse:</strong> Boulevard de l&apos;Empereur 26, 1000 Bruxelles, Belgique
         </p>
         <p className="text-lg mb-6 text-[rgb(26,26,26)]/70">
           <strong>Téléphone:</strong> +32 465 20 60 24
         </p>
         <div className="text-base text-[rgb(26,26,26)]/60">
-          Redirection vers la page d'accueil en français...
+          Redirection vers la page d&apos;accueil en français...
         </div>
       </div>
     </div>

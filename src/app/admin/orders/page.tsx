@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useTheme } from "../../../context/ThemeContext";
 import { useAdminAuth } from '../../../hooks/useAdminAuth';
 import { supabase } from '@/lib/supabaseClient';
@@ -80,7 +80,7 @@ export default function AdminOrdersPage() {
   });
 
   // Fetch all orders
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     if (!isStaff) return;
 
     try {
@@ -119,7 +119,7 @@ export default function AdminOrdersPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [isStaff]);
 
   // Check if user is staff
   useEffect(() => {
@@ -159,7 +159,7 @@ export default function AdminOrdersPage() {
     if (isStaff) {
       fetchOrders();
     }
-  }, [isStaff]);
+  }, [isStaff, fetchOrders]);
 
   // Filter and search
   useEffect(() => {
