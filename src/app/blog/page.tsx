@@ -11,7 +11,6 @@ import { formatBlogDate } from '@/lib/blog'
 import type { Blog } from '@/types/blog'
 
 export default function BlogPage() {
-  const [mounted, setMounted] = useState(false)
   const { theme } = useTheme()
   const [blogs, setBlogs] = useState<Blog[]>([])
   const [loading, setLoading] = useState(true)
@@ -31,11 +30,6 @@ export default function BlogPage() {
     t = (key: string) => key.split('.').pop() || key
     i18n = { language: 'en' }
   }
-
-  // Set mounted state
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -146,18 +140,6 @@ export default function BlogPage() {
 
   const featuredPost = blogs.find(blog => blog.featured)
   const regularPosts = blogs.filter(blog => !blog.featured)
-
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-        <div className="text-center">
-          <div className="w-16 h-16 mx-auto mb-4 border-4 border-t-transparent border-[#A8D5BA] rounded-full animate-spin"></div>
-          <p className="text-lg text-gray-900 dark:text-white">Loading...</p>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${
