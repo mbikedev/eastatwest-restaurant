@@ -34,6 +34,7 @@ export default function CheckoutPage() {
   const [paymentMethod] = useState<'online' | 'cash'>('cash')
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [minDate, setMinDate] = useState('')
 
   // Redirect if cart is empty
   useEffect(() => {
@@ -42,9 +43,10 @@ export default function CheckoutPage() {
     }
   }, [cart.items.length, router])
 
-  // Set minimum date to today
+  // Set minimum date to today (client-side only to avoid hydration mismatch)
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0]
+    setMinDate(today)
     setFormData(prev => ({ ...prev, delivery_date: today }))
   }, [])
 
@@ -552,7 +554,7 @@ export default function CheckoutPage() {
                       id="delivery_date"
                       value={formData.delivery_date}
                       onChange={(e) => handleChange('delivery_date', e.target.value)}
-                      min={new Date().toISOString().split('T')[0]}
+                      min={minDate}
                       className={`w-full px-4 py-3 rounded-lg border transition-colors ${
                         errors.delivery_date
                           ? 'border-red-500'

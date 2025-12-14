@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 import { useTranslation } from 'react-i18next'
@@ -15,8 +15,15 @@ export default function SocialShare({ url, title, description = '' }: SocialShar
   const { theme } = useTheme()
   const { t } = useTranslation('common')
   const [copied, setCopied] = useState(false)
+  const [shareUrl, setShareUrl] = useState(url)
 
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : url
+  useEffect(() => {
+    // Use window.location.href only on client side to avoid hydration mismatch
+    if (typeof window !== 'undefined') {
+      setShareUrl(window.location.href)
+    }
+  }, [])
+
   const encodedUrl = encodeURIComponent(shareUrl)
   const encodedTitle = encodeURIComponent(title)
   const encodedDescription = encodeURIComponent(description)

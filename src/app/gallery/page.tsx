@@ -165,8 +165,8 @@ export default function GalleryPage() {
     
   ], [])
 
-  // Randomize and select 24 unique images each time the page loads
-  const randomizedImages = useMemo(() => {
+  // Prepare images without shuffling (to avoid hydration mismatch)
+  const preparedImages = useMemo(() => {
     // Create a map to track unique dishes by their filename (not full path)
     const uniqueImages = new Map<string, string>()
 
@@ -207,14 +207,19 @@ export default function GalleryPage() {
       }
     })
 
-    // Shuffle the non-priority images
-    const shuffledOthers = otherImages.sort(() => Math.random() - 0.5)
-
-    // Combine: priority images first, then fill with random others
-    const combined = [...priorityImages, ...shuffledOthers]
-
-    return combined.slice(0, 24)
+    // Return without shuffling to avoid hydration mismatch
+    return { priorityImages, otherImages }
   }, [allImages])
+
+  // Shuffle images on client side only to avoid hydration mismatch
+  const [randomizedImages, setRandomizedImages] = useState<string[]>([])
+
+  useEffect(() => {
+    // Shuffle the non-priority images only on client side
+    const shuffledOthers = [...preparedImages.otherImages].sort(() => Math.random() - 0.5)
+    const combined = [...preparedImages.priorityImages, ...shuffledOthers]
+    setRandomizedImages(combined.slice(0, 24))
+  }, [preparedImages])
 
   // Generate titles and descriptions for images based on their path
   const getImageDetails = (imagePath: string) => {
