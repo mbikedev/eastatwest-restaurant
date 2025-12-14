@@ -238,7 +238,7 @@ export default function LoginPage() {
               Reset Password
             </h3>
             <p className={`text-sm mb-3 ${theme === 'dark' ? 'text-blue-200' : 'text-blue-700'}`}>
-              Enter your email address and we'll send you a link to reset your password.
+              Enter your email address and we&apos;ll send you a link to reset your password.
             </p>
             {resetEmailSent ? (
               <div className={`p-3 rounded ${
@@ -284,7 +284,7 @@ export default function LoginPage() {
 
         <div className="mt-4 text-center">
           <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-            After signing in, you'll be redirected to the admin dashboard
+            After signing in, you&apos;ll be redirected to the admin dashboard
           </p>
         </div>
       </div>

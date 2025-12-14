@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 import { useTranslation } from 'react-i18next'
@@ -29,6 +29,27 @@ const CommentSection = ({
   const [replyForms, setReplyForms] = useState({})
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const [configError, setConfigError] = useState(false)
+
+  const fetchComments = useCallback(async () => {
+    try {
+      const { data, error } = await supabase
+        .from('comments')
+        .select('*')
+        .eq('blog_post_id', blogPostId)
+        .eq('is_approved', true)
+        .order('created_at', { ascending: true })
+
+      if (error) {
+        console.error('Supabase error fetching comments:', error)
+        throw error
+      }
+      setComments(data || [])
+    } catch (error) {
+      setComments([]) // Set empty array on error
+    } finally {
+      setLoading(false)
+    }
+  }, [blogPostId])
 
   // Check authentication and fetch comments on component mount
   useEffect(() => {
@@ -81,28 +102,7 @@ const CommentSection = ({
     checkAuth()
     testConnection()
     fetchComments()
-  }, [blogPostId])
-
-  const fetchComments = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('comments')
-        .select('*')
-        .eq('blog_post_id', blogPostId)
-        .eq('is_approved', true)
-        .order('created_at', { ascending: true })
-
-      if (error) {
-        console.error('Supabase error fetching comments:', error)
-        throw error
-      }
-      setComments(data || [])
-    } catch (error) {
-      setComments([]) // Set empty array on error
-    } finally {
-      setLoading(false)
-    }
-  }
+  }, [blogPostId, fetchComments])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target

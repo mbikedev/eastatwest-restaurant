@@ -278,10 +278,10 @@ export default function EventsCateringPage() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className={`p-8 rounded-2xl ${theme === 'dark' ? 'bg-gray-900/50' : 'bg-white/80'}`}>
           <p className={`text-lg leading-relaxed text-center mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-            Make your special occasions truly memorable with East @ West's professional catering services. From intimate private dinners to grand wedding celebrations and corporate events, we bring authentic Lebanese cuisine and exceptional service to your venue. Our experienced team handles every detail, ensuring your guests enjoy an unforgettable culinary experience.
+            Make your special occasions truly memorable with East @ West&apos;s professional catering services. From intimate private dinners to grand wedding celebrations and corporate events, we bring authentic Lebanese cuisine and exceptional service to your venue. Our experienced team handles every detail, ensuring your guests enjoy an unforgettable culinary experience.
           </p>
           <p className={`text-lg leading-relaxed text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-            Whether you're planning a business meeting, birthday party, wedding reception, or any special gathering, our customizable catering menus feature traditional Lebanese mezze, grilled specialties, and delicious desserts. All dishes are prepared fresh using authentic recipes and premium ingredients, delivering the same quality you expect from our restaurant.
+            Whether you&apos;re planning a business meeting, birthday party, wedding reception, or any special gathering, our customizable catering menus feature traditional Lebanese mezze, grilled specialties, and delicious desserts. All dishes are prepared fresh using authentic recipes and premium ingredients, delivering the same quality you expect from our restaurant.
           </p>
         </div>
       </section>
