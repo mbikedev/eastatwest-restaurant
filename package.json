@@ -1,0 +1,66 @@
+{
+  "name": "eastatwest",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test:email": "tsx scripts/test-email.ts",
+    "test:password-reset": "tsx scripts/test-password-reset.ts",
+    "test:smtp": "tsx scripts/test-smtp.ts",
+    "test:auth-emails": "tsx scripts/test-auth-emails.ts",
+    "test:reservation-email": "tsx scripts/test-reservation-email.ts",
+    "test:notification-email": "tsx scripts/test-notification-email.ts",
+    "diagnose:smtp": "tsx scripts/diagnose-smtp.ts",
+    "supabase:types": "supabase gen types typescript --linked > src/types/database.types.ts"
+  },
+  "dependencies": {
+    "@stripe/react-stripe-js": "^3.9.0",
+    "@stripe/stripe-js": "^7.8.0",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.50.2",
+    "autoprefixer": "^10.4.21",
+    "critters": "^0.0.23",
+    "dotenv": "^17.2.1",
+    "framer-motion": "^12.23.0",
+    "i18next": "^25.2.1",
+    "i18next-http-backend": "^3.0.2",
+    "lucide-react": "^0.536.0",
+    "next": "^16.0.8",
+    "nodemailer": "^7.0.11",
+    "postcss": "^8.5.6",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "react-hot-toast": "^2.5.2",
+    "react-i18next": "^15.5.3",
+    "stripe": "^18.4.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.54.2",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/google.maps": "^3.58.1",
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.16",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/tailwindcss": "^3.0.11",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
+    "tailwindcss": "^4.1.11",
+    "tsx": "^4.20.6",
+    "typescript": "^5"
+  },
+  "browserslist": [
+    "chrome >= 92",
+    "edge >= 92",
+    "firefox >= 90",
+    "safari >= 15.4"
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}

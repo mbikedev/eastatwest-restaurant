@@ -1,0 +1,28 @@
+# robots.txt for East @ West Restaurant
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login/
+Disallow: /reset-password/
+Disallow: /test-storage/
+
+# Allow important pages
+Allow: /menu
+Allow: /reservations
+Allow: /takeaway
+Allow: /blog
+Allow: /events-catering
+Allow: /about
+Allow: /contact
+Allow: /gallery
+
+# Sitemap location
+Sitemap: https://eastatwest.com/sitemap.xml
+
+# Crawl delay for polite crawling (optional)
+# Crawl-delay: 1
