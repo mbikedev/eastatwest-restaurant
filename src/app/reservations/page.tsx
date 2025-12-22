@@ -509,8 +509,8 @@ export default function ReservationsPage() {
 
       {/* Closure Notice Modal */}
       {showClosureModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fadeIn">
-          <div className="relative max-w-2xl w-full rounded-3xl shadow-2xl overflow-hidden border-4 border-[#A8D5BA] transform transition-all duration-500 hover:scale-[1.02]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/90 backdrop-blur-md animate-fadeIn">
+          <div className="relative w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-2xl max-h-[95vh] overflow-y-auto rounded-2xl sm:rounded-3xl shadow-2xl border-2 sm:border-4 border-[#A8D5BA] transform transition-all duration-500 hover:scale-[1.01] md:hover:scale-[1.02]">
             {/* Background Image with Overlay */}
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -520,59 +520,59 @@ export default function ReservationsPage() {
             </div>
 
             {/* Content Container */}
-            <div className="relative z-10 p-8 md:p-12">
+            <div className="relative z-10 p-4 sm:p-6 md:p-8 lg:p-12">
               {/* Close Button */}
               <button
                 onClick={() => setShowClosureModal(false)}
-                className="absolute top-4 right-4 text-3xl font-bold w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-110 hover:rotate-90 backdrop-blur-sm border-2 border-white/30"
+                className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 text-2xl sm:text-3xl font-bold w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-110 hover:rotate-90 backdrop-blur-sm border border-white/30 sm:border-2"
                 aria-label="Close modal"
               >
                 ×
               </button>
 
               {/* Logo with glow effect */}
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center mb-4 sm:mb-6 md:mb-8">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-[#A8D5BA]/30 blur-2xl rounded-full animate-pulse"></div>
+                  <div className="absolute inset-0 bg-[#A8D5BA]/30 blur-xl sm:blur-2xl rounded-full animate-pulse"></div>
                   <img
                     src="/images/east-logo.webp"
                     alt="East @ West Logo"
-                    className="relative w-40 h-40 object-contain drop-shadow-2xl"
+                    className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain drop-shadow-2xl"
                   />
                 </div>
               </div>
 
               {/* Closure Notice */}
-              <div className="text-center space-y-6 backdrop-blur-sm bg-black/30 rounded-2xl p-8 border border-white/20 shadow-2xl">
+              <div className="text-center space-y-3 sm:space-y-4 md:space-y-6 backdrop-blur-sm bg-black/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20 shadow-2xl">
                 <div className="inline-block">
-                  <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#A8D5BA] via-[#D4AF37] to-[#A8D5BA] animate-gradient drop-shadow-lg mb-2">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#A8D5BA] via-[#D4AF37] to-[#A8D5BA] animate-gradient drop-shadow-lg mb-1 sm:mb-2">
                     {t("reservations.closureModal.title")}
                   </h2>
-                  <div className="h-1 bg-gradient-to-r from-transparent via-[#A8D5BA] to-transparent rounded-full"></div>
+                  <div className="h-0.5 sm:h-1 bg-gradient-to-r from-transparent via-[#A8D5BA] to-transparent rounded-full"></div>
                 </div>
 
-                <div className="bg-gradient-to-r from-[#A8D5BA]/20 via-[#A8D5BA]/30 to-[#A8D5BA]/20 rounded-xl p-6 border border-[#A8D5BA]/50 shadow-lg">
-                  <p className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg leading-relaxed">
+                <div className="bg-gradient-to-r from-[#A8D5BA]/20 via-[#A8D5BA]/30 to-[#A8D5BA]/20 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 border border-[#A8D5BA]/50 shadow-lg">
+                  <p className="text-base sm:text-lg md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg leading-relaxed">
                     {t("reservations.closureModal.closedFrom")}
                   </p>
-                  <p className="text-3xl md:text-4xl font-black text-[#D4AF37] drop-shadow-lg mt-2">
+                  <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-black text-[#D4AF37] drop-shadow-lg mt-1 sm:mt-2">
                     {t("reservations.closureModal.closedFromDate")}
                   </p>
-                  <p className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg mt-1">
+                  <p className="text-base sm:text-lg md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg mt-0.5 sm:mt-1">
                     {t("reservations.closureModal.to")}
                   </p>
-                  <p className="text-3xl md:text-4xl font-black text-[#D4AF37] drop-shadow-lg mt-2">
+                  <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-black text-[#D4AF37] drop-shadow-lg mt-1 sm:mt-2">
                     {t("reservations.closureModal.closedToDate")}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-white/30">
-                  <p className="text-xl font-semibold text-white/90 drop-shadow-md mb-3">
+                <div className="pt-3 sm:pt-4 md:pt-6 border-t border-white/30">
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white/90 drop-shadow-md mb-2 sm:mb-3">
                     {t("reservations.closureModal.contactUs")}
                   </p>
                   <a
                     href="mailto:infos.east.west@gmail.com"
-                    className="inline-block text-2xl font-bold text-[#A8D5BA] hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 drop-shadow-lg bg-black/40 px-6 py-3 rounded-lg border border-[#A8D5BA]/50 hover:border-[#D4AF37]/70 backdrop-blur-sm"
+                    className="inline-block text-xs sm:text-sm md:text-base lg:text-xl xl:text-2xl font-bold text-[#A8D5BA] hover:text-[#D4AF37] transition-all duration-300 hover:scale-105 md:hover:scale-110 drop-shadow-lg bg-black/40 px-3 py-2 sm:px-4 sm:py-2.5 md:px-6 md:py-3 rounded-lg border border-[#A8D5BA]/50 hover:border-[#D4AF37]/70 backdrop-blur-sm break-all sm:break-normal"
                   >
                     📧 infos.east.west@gmail.com
                   </a>
@@ -581,7 +581,7 @@ export default function ReservationsPage() {
                 {/* Close Button */}
                 <button
                   onClick={() => setShowClosureModal(false)}
-                  className="mt-8 w-full py-4 px-8 rounded-xl font-black text-xl text-white bg-gradient-to-r from-[#A8D5BA] via-[#8BC5A6] to-[#A8D5BA] hover:from-[#8BC5A6] hover:via-[#A8D5BA] hover:to-[#8BC5A6] transition-all duration-500 transform hover:scale-105 shadow-2xl border-2 border-white/30 backdrop-blur-sm hover:shadow-[#A8D5BA]/50"
+                  className="mt-4 sm:mt-6 md:mt-8 w-full py-3 px-4 sm:py-3.5 sm:px-6 md:py-4 md:px-8 rounded-lg sm:rounded-xl font-black text-sm sm:text-base md:text-lg lg:text-xl text-white bg-gradient-to-r from-[#A8D5BA] via-[#8BC5A6] to-[#A8D5BA] hover:from-[#8BC5A6] hover:via-[#A8D5BA] hover:to-[#8BC5A6] transition-all duration-500 transform hover:scale-105 shadow-2xl border border-white/30 sm:border-2 backdrop-blur-sm hover:shadow-[#A8D5BA]/50"
                 >
                   ✓ {t("reservations.closureModal.closeButton")}
                 </button>
