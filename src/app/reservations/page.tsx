@@ -243,7 +243,7 @@ export default function ReservationsPage() {
   // Format date for display in modal
   const formatModalDate = (dateString: string): string => {
     const date = new Date(dateString);
-    return date.toLocaleDateString(locale, {
+    return date.toLocaleDateString(i18n.language, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
