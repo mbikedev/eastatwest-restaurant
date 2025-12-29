@@ -118,6 +118,18 @@ export default function AdminReservationsPage() {
     checkStaffAccess();
   }, []);
 
+  // Helper function to check if a reservation has passed
+  const isPastReservation = (reservation: Reservation): boolean => {
+    try {
+      const now = new Date();
+      const reservationDate = new Date(`${reservation.date}T${reservation.end_time}`);
+      return reservationDate < now;
+    } catch (error) {
+      console.error('Error checking if reservation is past:', error);
+      return false;
+    }
+  };
+
   // Fetch all reservations
   const fetchReservations = useCallback(async () => {
     if (!isStaff) return;
@@ -136,8 +148,36 @@ export default function AdminReservationsPage() {
         return;
       }
 
-      setReservations(data || []);
-      calculateStatusCounts(data || []);
+      // Auto-mark past reservations as completed
+      const reservationsToUpdate: string[] = [];
+      const updatedData = (data || []).map(reservation => {
+        // Only update if reservation has passed and is not already completed or cancelled
+        if (isPastReservation(reservation) &&
+            reservation.status !== 'completed' &&
+            reservation.status !== 'cancelled') {
+          reservationsToUpdate.push(reservation.id);
+          return { ...reservation, status: 'completed' as const };
+        }
+        return reservation;
+      });
+
+      // Update past reservations in database
+      if (reservationsToUpdate.length > 0) {
+        console.log(`Auto-marking ${reservationsToUpdate.length} past reservations as completed`);
+
+        // Update all past reservations in parallel
+        await Promise.all(
+          reservationsToUpdate.map(id =>
+            supabase
+              .from('reservations')
+              .update({ status: 'completed' })
+              .eq('id', id)
+          )
+        );
+      }
+
+      setReservations(updatedData);
+      calculateStatusCounts(updatedData);
     } catch (error) {
       console.error('Unexpected error:', error);
       toast.error('An unexpected error occurred');
