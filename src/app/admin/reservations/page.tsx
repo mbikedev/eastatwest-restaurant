@@ -119,7 +119,7 @@ export default function AdminReservationsPage() {
   }, []);
 
   // Helper function to check if a reservation has passed
-  const isPastReservation = (reservation: Reservation): boolean => {
+  const isPastReservation = useCallback((reservation: Reservation): boolean => {
     try {
       const now = new Date();
       const reservationDate = new Date(`${reservation.date}T${reservation.end_time}`);
@@ -128,7 +128,7 @@ export default function AdminReservationsPage() {
       console.error('Error checking if reservation is past:', error);
       return false;
     }
-  };
+  }, []);
 
   // Fetch all reservations
   const fetchReservations = useCallback(async () => {
@@ -197,7 +197,8 @@ export default function AdminReservationsPage() {
     const counts = {
       all: data.length,
       pending: data.filter(r => r.status === 'pending').length,
-      confirmed: data.filter(r => r.status === 'confirmed').length,
+      // Only count upcoming confirmed reservations
+      confirmed: data.filter(r => r.status === 'confirmed' && !isPastReservation(r)).length,
       cancelled: data.filter(r => r.status === 'cancelled').length,
       completed: data.filter(r => r.status === 'completed').length
     };
@@ -210,7 +211,13 @@ export default function AdminReservationsPage() {
 
     // Filter by status
     if (statusFilter !== 'all') {
-      filtered = filtered.filter(r => r.status === statusFilter);
+      filtered = filtered.filter(r => {
+        // For confirmed status, only show upcoming reservations
+        if (statusFilter === 'confirmed') {
+          return r.status === statusFilter && !isPastReservation(r);
+        }
+        return r.status === statusFilter;
+      });
     }
 
     // Filter by search term
@@ -226,7 +233,7 @@ export default function AdminReservationsPage() {
 
     setFilteredReservations(filtered);
     setCurrentPage(1);
-  }, [statusFilter, searchTerm, reservations]);
+  }, [statusFilter, searchTerm, reservations, isPastReservation]);
 
   // Get paginated data
   const getPaginatedData = () => {
