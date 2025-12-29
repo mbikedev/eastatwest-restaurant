@@ -117,7 +117,8 @@ export default function ReservationsPage() {
   const [validationWarnings, setValidationWarnings] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [holidays, setHolidays] = useState<Holiday[]>([]);
-  const [showClosureModal, setShowClosureModal] = useState(true);
+  const [showClosureModal, setShowClosureModal] = useState(false);
+  const [currentClosureHoliday, setCurrentClosureHoliday] = useState<Holiday | null>(null);
   const today = useMemo(() => new Date(), []);
   const [calendar, setCalendar] = useState({
     year: today.getFullYear(),
@@ -166,7 +167,7 @@ export default function ReservationsPage() {
     };
   }, []);
 
-  // Fetch active holidays on mount
+  // Fetch active holidays on mount and determine if closure modal should show
   useEffect(() => {
     const fetchHolidays = async () => {
       try {
@@ -176,6 +177,31 @@ export default function ReservationsPage() {
         if (result.success && result.data) {
           setHolidays(result.data);
           console.log(`📅 Loaded ${result.data.length} active holidays for calendar`);
+
+          // Find current or upcoming holiday closure (within next 30 days)
+          const now = new Date();
+          const thirtyDaysFromNow = new Date();
+          thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
+
+          const relevantHoliday = result.data.find((holiday: Holiday) => {
+            const startDate = new Date(holiday.start_date);
+            const endDate = new Date(holiday.end_date);
+
+            // Show if holiday hasn't ended yet and starts within next 30 days
+            return endDate >= now && startDate <= thirtyDaysFromNow;
+          });
+
+          if (relevantHoliday) {
+            // Check localStorage to see if user already dismissed this holiday
+            const dismissedHolidays = JSON.parse(localStorage.getItem('dismissedHolidayClosures') || '[]');
+            const alreadyDismissed = dismissedHolidays.includes(relevantHoliday.id);
+
+            if (!alreadyDismissed) {
+              setCurrentClosureHoliday(relevantHoliday);
+              setShowClosureModal(true);
+              console.log(`🔔 Showing closure modal for holiday: ${relevantHoliday.name}`);
+            }
+          }
         }
       } catch (error) {
         console.error('Failed to fetch holidays:', error);
@@ -192,13 +218,36 @@ export default function ReservationsPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    
+
     // If start time changes, clear end time to prevent invalid combinations
     if (name === 'startTime') {
       setForm(prev => ({ ...prev, [name]: value, endTime: '' }));
     } else {
       setForm({ ...form, [name]: value });
     }
+  };
+
+  // Handle closure modal dismissal
+  const handleCloseClosureModal = () => {
+    if (currentClosureHoliday) {
+      // Save dismissed holiday to localStorage
+      const dismissedHolidays = JSON.parse(localStorage.getItem('dismissedHolidayClosures') || '[]');
+      if (!dismissedHolidays.includes(currentClosureHoliday.id)) {
+        dismissedHolidays.push(currentClosureHoliday.id);
+        localStorage.setItem('dismissedHolidayClosures', JSON.stringify(dismissedHolidays));
+      }
+    }
+    setShowClosureModal(false);
+  };
+
+  // Format date for display in modal
+  const formatModalDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(locale, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   };
 
   // Handle name input - only allow alphabetic characters, spaces, hyphens, and apostrophes
@@ -508,7 +557,7 @@ export default function ReservationsPage() {
       <div className={`absolute inset-0 z-0 transition-colors duration-300 ${theme === "dark" ? "bg-black/85" : "bg-black/60"}`} />
 
       {/* Closure Notice Modal */}
-      {showClosureModal && (
+      {showClosureModal && currentClosureHoliday && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/90 backdrop-blur-md animate-fadeIn">
           <div className="relative w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-2xl max-h-[95vh] overflow-y-auto rounded-2xl sm:rounded-3xl shadow-2xl border-2 sm:border-4 border-[#A8D5BA] transform transition-all duration-500 hover:scale-[1.01] md:hover:scale-[1.02]">
             {/* Background Image with Overlay */}
@@ -523,7 +572,7 @@ export default function ReservationsPage() {
             <div className="relative z-10 p-4 sm:p-6 md:p-8 lg:p-12">
               {/* Close Button */}
               <button
-                onClick={() => setShowClosureModal(false)}
+                onClick={handleCloseClosureModal}
                 className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 text-2xl sm:text-3xl font-bold w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-110 hover:rotate-90 backdrop-blur-sm border border-white/30 sm:border-2"
                 aria-label="Close modal"
               >
@@ -556,13 +605,13 @@ export default function ReservationsPage() {
                     {t("reservations.closureModal.closedFrom")}
                   </p>
                   <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-black text-[#D4AF37] drop-shadow-lg mt-1 sm:mt-2">
-                    {t("reservations.closureModal.closedFromDate")}
+                    {formatModalDate(currentClosureHoliday.start_date)}
                   </p>
                   <p className="text-base sm:text-lg md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg mt-0.5 sm:mt-1">
                     {t("reservations.closureModal.to")}
                   </p>
                   <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-black text-[#D4AF37] drop-shadow-lg mt-1 sm:mt-2">
-                    {t("reservations.closureModal.closedToDate")}
+                    {formatModalDate(currentClosureHoliday.end_date)}
                   </p>
                 </div>
 
@@ -580,7 +629,7 @@ export default function ReservationsPage() {
 
                 {/* Close Button */}
                 <button
-                  onClick={() => setShowClosureModal(false)}
+                  onClick={handleCloseClosureModal}
                   className="mt-4 sm:mt-6 md:mt-8 w-full py-3 px-4 sm:py-3.5 sm:px-6 md:py-4 md:px-8 rounded-lg sm:rounded-xl font-black text-sm sm:text-base md:text-lg lg:text-xl text-white bg-gradient-to-r from-[#A8D5BA] via-[#8BC5A6] to-[#A8D5BA] hover:from-[#8BC5A6] hover:via-[#A8D5BA] hover:to-[#8BC5A6] transition-all duration-500 transform hover:scale-105 shadow-2xl border border-white/30 sm:border-2 backdrop-blur-sm hover:shadow-[#A8D5BA]/50"
                 >
                   ✓ {t("reservations.closureModal.closeButton")}
