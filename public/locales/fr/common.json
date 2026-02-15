@@ -704,6 +704,10 @@
     "alreadyReserved": "Vous avez déjà une réservation à cette date. Veuillez nous contacter pour modifier votre réservation existante.",
     "capacityFull": "Ce créneau horaire est complet (22 personnes maximum). Veuillez choisir une heure différente.",
     "capacityPartiallyAvailable": "Désolé, seulement {{remaining}} places sont disponibles pour ce créneau. La capacité du restaurant est de 22 personnes maximum.",
+    "seatsAvailable": "places disponibles",
+    "seatsReserved": "réservées",
+    "exceedsCapacity": "dépasse la capacité",
+    "alternativeSuggestion": "Alternatives disponibles",
     "contactAddress": "Bld de l'Empereur 26\n1000 Brussels\nBelgium",
     "form": {
       "name": "Nom Complet",

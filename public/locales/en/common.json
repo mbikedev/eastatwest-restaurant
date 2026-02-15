@@ -705,6 +705,10 @@
     "alreadyReserved": "You already have a reservation on this date. Please contact us to modify your existing reservation.",
     "capacityFull": "This time slot is fully booked (22 people maximum). Please choose a different time.",
     "capacityPartiallyAvailable": "Sorry, only {{remaining}} seats are available for this time slot. The restaurant capacity is 22 people maximum.",
+    "seatsAvailable": "seats available",
+    "seatsReserved": "reserved",
+    "exceedsCapacity": "exceeds capacity",
+    "alternativeSuggestion": "Available alternatives",
     "contactAddress": "Bld de l'Empereur 26\n1000 Brussels\nBelgium",
     "form": {
       "name": "Full Name",
