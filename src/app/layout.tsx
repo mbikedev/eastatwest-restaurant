@@ -387,11 +387,6 @@ export default function RootLayout({
           <link rel="stylesheet" href="/deferred-styles.css" />
         </noscript>
 
-        <style
-          id="ultra-critical-css"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: ultraCriticalCSS }}
-        />
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{

@@ -245,27 +245,8 @@ export default function ZeroCSSBlocking() {
     }
   }, [isLoaded])
 
-  // Preload critical resources
-  useEffect(() => {
-    const resourceHints = [
-      { href: 'https://fonts.googleapis.com', rel: 'dns-prefetch' },
-      { href: 'https://fonts.gstatic.com', rel: 'dns-prefetch' },
-      { href: 'https://fonts.googleapis.com', rel: 'preconnect' },
-      { href: 'https://fonts.gstatic.com', rel: 'preconnect', crossOrigin: 'anonymous' },
-      { href: '/videos/hero-video.mp4', rel: 'prefetch' },
-    ]
-
-    resourceHints.forEach(hint => {
-      const link = document.createElement('link')
-      Object.assign(link, hint)
-      document.head.appendChild(link)
-    })
-
-    // Resource hints only - CSS loading is handled above
-    return () => {
-      // Cleanup function
-    }
-  }, [])
+  // Note: Google Fonts preconnect is handled by next/font/google.
+  // Video prefetch removed — only needed on homepage and deferred via page component.
 
   return null
 }

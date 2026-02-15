@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/context/ThemeContext";
+import Image from "next/image";
 // Note: Using select elements for time picking instead of heavy react-time-picker library
 import { supabase } from '@/lib/supabaseClient';
 import { checkSupabaseConfig, debugSupabaseConfig } from '@/lib/envCheck';
@@ -603,7 +604,16 @@ export default function ReservationsPage() {
 
 
   return (
-    <div className="min-h-screen w-full relative flex flex-col items-center justify-center" style={{ backgroundImage: "url(/images/reser-back.webp)", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div className="min-h-screen w-full relative flex flex-col items-center justify-center">
+      <Image
+        src="/images/reser-back.webp"
+        alt=""
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+        quality={72}
+        loading="eager"
+      />
       <div className={`absolute inset-0 z-0 transition-colors duration-300 ${theme === "dark" ? "bg-black/85" : "bg-black/60"}`} />
 
       {/* Closure Notice Modal */}
