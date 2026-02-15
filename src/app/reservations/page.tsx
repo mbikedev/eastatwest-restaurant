@@ -13,7 +13,6 @@ import {
 } from '@/utils/reservationValidation';
 import { Holiday } from '@/types/holidays';
 import { isDateInHolidayRange } from '@/lib/holidayUtils';
-import { MAX_CAPACITY } from '@/lib/capacityManager';
 
 // Type for slot availability data from the API
 interface SlotAvailability {
@@ -379,23 +378,16 @@ export default function ReservationsPage() {
 
         if (feasibility.success && !feasibility.canBook) {
           // Reservation would exceed capacity
-          if (feasibility.maxAvailable > 0) {
-            toast.error(
-              t('reservations.capacityPartiallyAvailable', { remaining: feasibility.maxAvailable }) ||
-              `Sorry, only ${feasibility.maxAvailable} seats are available for this time slot. The restaurant capacity is ${MAX_CAPACITY} people maximum.`
-            );
-          } else {
-            toast.error(
-              t('reservations.capacityFull') ||
-              'This time slot is fully booked. Please choose a different time.'
-            );
-          }
+          toast.error(
+            t('reservations.noMoreReservation') ||
+            'No more reservation is possible for this time slot. Please choose a different time.'
+          );
 
-          // Show alternative suggestions
+          // Show alternative time suggestions (without seat counts)
           if (feasibility.alternatives && feasibility.alternatives.length > 0) {
             const topAlternatives = feasibility.alternatives.slice(0, 3);
             const altText = topAlternatives
-              .map((a: { time: string; availableSeats: number }) => `${a.time} (${a.availableSeats} seats)`)
+              .map((a: { time: string; availableSeats: number }) => a.time)
               .join(', ');
             toast(
               `${t('reservations.alternativeSuggestion') || 'Available alternatives'}: ${altText}`,
@@ -577,17 +569,6 @@ export default function ReservationsPage() {
     if (slotAvailability[time]?.isFull) return false;
 
     return true;
-  };
-
-  // Get remaining capacity label for a time slot
-  const getSlotCapacityLabel = (time: string): string | null => {
-    const slot = slotAvailability[time];
-    if (!slot) return null;
-    if (slot.isFull) return t('reservations.capacityFull') || 'Full';
-    if (slot.totalGuests > 0) {
-      return `${slot.remainingCapacity}/${MAX_CAPACITY} ${t('reservations.seatsAvailable') || 'seats available'}`;
-    }
-    return null;
   };
 
   // Function to get valid end time options based on selected start time
@@ -961,10 +942,8 @@ export default function ReservationsPage() {
                     const slot = slotAvailability[time];
                     const isFull = slot?.isFull;
                     let label = time;
-                    if (slot && slot.totalGuests > 0 && !isFull) {
-                      label = `${time}  (${slot.remainingCapacity} seats left)`;
-                    } else if (isFull) {
-                      label = `${time}  (FULL)`;
+                    if (isFull) {
+                      label = `${time}  (${t('reservations.noMoreReservation') || 'No more reservation possible'})`;
                     }
                     return (
                       <option
@@ -1019,47 +998,12 @@ export default function ReservationsPage() {
               </div>
             </div>
 
-            {/* Capacity Indicator - shown when a start time is selected */}
-            {form.startTime && slotAvailability[form.startTime] && (
-              <div className={`mb-4 p-3 rounded-xl border ${
-                slotAvailability[form.startTime].isFull
-                  ? 'bg-red-500/20 border-red-400/50'
-                  : slotAvailability[form.startTime].remainingCapacity <= 6
-                  ? 'bg-yellow-500/20 border-yellow-400/50'
-                  : 'bg-green-500/20 border-green-400/50'
-              }`}>
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className={`text-xs font-bold ${
-                    slotAvailability[form.startTime].isFull
-                      ? 'text-red-400'
-                      : slotAvailability[form.startTime].remainingCapacity <= 6
-                      ? 'text-yellow-400'
-                      : 'text-green-400'
-                  }`}>
-                    {slotAvailability[form.startTime].isFull
-                      ? `${t('reservations.capacityFull') || 'FULLY BOOKED'}`
-                      : `${slotAvailability[form.startTime].remainingCapacity} / ${MAX_CAPACITY} ${t('reservations.seatsAvailable') || 'seats available'}`
-                    }
-                  </span>
-                  <span className="text-xs text-gray-400">
-                    {slotAvailability[form.startTime].totalGuests} {t('reservations.seatsReserved') || 'reserved'}
-                  </span>
-                </div>
-                {/* Capacity bar */}
-                <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full transition-all duration-500 ${
-                      slotAvailability[form.startTime].isFull
-                        ? 'bg-red-500'
-                        : slotAvailability[form.startTime].remainingCapacity <= 6
-                        ? 'bg-yellow-500'
-                        : 'bg-green-500'
-                    }`}
-                    style={{
-                      width: `${Math.min(100, (slotAvailability[form.startTime].totalGuests / MAX_CAPACITY) * 100)}%`
-                    }}
-                  />
-                </div>
+            {/* No more reservation message - shown when selected time slot is full */}
+            {form.startTime && slotAvailability[form.startTime]?.isFull && (
+              <div className="mb-4 p-3 rounded-xl border bg-red-500/20 border-red-400/50">
+                <span className="text-xs font-bold text-red-400">
+                  {t('reservations.noMoreReservation') || 'No more reservation is possible for this time slot'}
+                </span>
               </div>
             )}
 
@@ -1098,7 +1042,7 @@ export default function ReservationsPage() {
                       className={theme === "dark" ? "text-white bg-gray-800" : "text-gray-900 bg-white"}
                       disabled={exceedsCapacity}
                     >
-                      {guestCount}{exceedsCapacity ? ` (${t('reservations.exceedsCapacity') || 'exceeds capacity'})` : ''}
+                      {guestCount}
                     </option>
                   );
                 })}
