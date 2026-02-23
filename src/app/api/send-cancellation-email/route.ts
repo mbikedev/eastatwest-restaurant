@@ -44,8 +44,8 @@ export async function POST(req: NextRequest) {
     type Language = typeof validLanguages[number];
     const lang: Language = validLanguages.includes(language as Language) ? (language as Language) : 'en';
 
-    if (!process.env.SENDGRID_API_KEY) {
-      console.error('SENDGRID_API_KEY is not configured');
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER) {
+      console.error('SMTP configuration is not configured');
       return NextResponse.json(
         { success: false, error: 'Email service not configured' },
         { status: 500 }
@@ -55,7 +55,6 @@ export async function POST(req: NextRequest) {
     const subject = getTranslation(lang, 'reservations.cancelled');
 
     const emailResult = await sendEmail({
-      from: process.env.SENDGRID_FROM_EMAIL || 'contact@eastatwest.com',
       to: email,
       subject,
       text: `Reservation Cancelled - Invoice: ${reservationData.invoice_number}`,
@@ -162,7 +161,7 @@ export async function POST(req: NextRequest) {
                 ${getTranslation(lang, 'reservations.contactUsForQuestions')}
               </p>
               <div style="border-top: 1px solid #374151; padding-top: 15px;">
-                <a href="mailto:unsubscribe@eastatwest.com" style="color: #9ca3af; text-decoration: none; font-size: 12px;">
+                <a href="${process.env.NEXT_PUBLIC_BASE_URL || 'https://eastatwest.com'}/unsubscribe?email=${encodeURIComponent(email)}" style="color: #9ca3af; text-decoration: none; font-size: 12px;">
                   ${getTranslation(lang, 'reservations.unsubscribeFromEmails')}
                 </a>
               </div>
@@ -171,12 +170,7 @@ export async function POST(req: NextRequest) {
         </body>
         </html>
       `,
-      headers: {
-        'X-Priority': '1',
-        'X-MSMail-Priority': 'High',
-        'Importance': 'high',
-        'X-Mailer': 'East At West Restaurant'
-      }
+      headers: {}
     });
 
     console.log('Cancellation email sent successfully:', emailResult);

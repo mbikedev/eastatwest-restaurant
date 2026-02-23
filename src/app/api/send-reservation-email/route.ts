@@ -208,7 +208,7 @@ export async function POST(req: NextRequest) {
                 ${getTranslation(lang, 'reservations.contactUsForQuestions')}
               </p>
               <div style="border-top: 1px solid #374151; padding-top: 15px;">
-                <a href="mailto:unsubscribe@eastatwest.com" style="color: #9ca3af; text-decoration: none; font-size: 12px;">
+                <a href="${process.env.NEXT_PUBLIC_BASE_URL || 'https://eastatwest.com'}/unsubscribe?email=${encodeURIComponent(email)}" style="color: #9ca3af; text-decoration: none; font-size: 12px;">
                   ${getTranslation(lang, 'reservations.unsubscribeFromEmails')}
                 </a>
               </div>
@@ -223,11 +223,7 @@ export async function POST(req: NextRequest) {
       subject,
       text: `Reservation ${statusText} - Invoice: ${finalInvoiceNumber}`,
       html: htmlContent,
-      headers: {
-        'X-Priority': '1',
-        'X-MSMail-Priority': 'High',
-        'Importance': 'high',
-      }
+      headers: {}
     });
 
     console.log('Email sent successfully:', emailResult);

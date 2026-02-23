@@ -4,43 +4,21 @@ import { sendEmail } from '@/lib/email';
 export async function POST(req: NextRequest) {
   try {
     console.log('📧 Comment notification email API called');
-    console.log('📍 Environment:', process.env.NODE_ENV);
-    console.log('🔑 SENDGRID_API_KEY exists:', !!process.env.SENDGRID_API_KEY);
-    console.log('📧 SENDGRID_FROM_EMAIL:', process.env.SENDGRID_FROM_EMAIL || 'NOT SET');
 
     const { commentData } = await req.json();
 
     if (!commentData) {
       console.error('❌ Missing comment data');
       return NextResponse.json(
-        {
-          success: false,
-          error: 'Missing comment data',
-          debug: {
-            receivedData: req.body,
-            timestamp: new Date().toISOString()
-          }
-        },
+        { success: false, error: 'Missing comment data' },
         { status: 400 }
       );
     }
 
-    console.log('✅ Comment data received:', commentData);
-
-    if (!process.env.SENDGRID_API_KEY) {
-      console.error('❌ SENDGRID_API_KEY is not configured');
-      console.error('💡 Please set SENDGRID_API_KEY environment variable');
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER) {
+      console.error('❌ SMTP configuration is not configured');
       return NextResponse.json(
-        {
-          success: false,
-          error: 'Email service not configured - SENDGRID_API_KEY missing',
-          debug: {
-            environment: process.env.NODE_ENV,
-            hasApiKey: false,
-            hasFromEmail: !!process.env.SENDGRID_FROM_EMAIL,
-            timestamp: new Date().toISOString()
-          }
-        },
+        { success: false, error: 'Email service not configured - SMTP missing' },
         { status: 500 }
       );
     }
@@ -173,7 +151,6 @@ export async function POST(req: NextRequest) {
       try {
         console.log(`📤 Sending comment notification to ${email}...`);
         const result = await sendEmail({
-          from: process.env.SENDGRID_FROM_EMAIL || 'contact@eastatwest.com',
           to: email,
           subject: subject,
           text: 'New Blog Comment',

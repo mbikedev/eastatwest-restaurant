@@ -45,7 +45,6 @@ export async function POST(req: NextRequest) {
 
     // Send email with magic link
     const emailResult = await sendEmail({
-      from: `East at West Restaurant <${process.env.SENDGRID_FROM_EMAIL || 'contact@eastatwest.com'}>`,
       to: email,
       subject: 'Your Magic Link - East at West Admin',
       text: `Your Magic Link - East at West Admin
