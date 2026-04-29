@@ -1,9 +1,7 @@
 /**
- * Script to update takeaway product prices based on eastatwest_menu_en.pdf
+ * Script to fix incorrect price updates and apply correct prices.
  *
- * Run with: npx tsx scripts/update-takeaway-prices.ts
- *
- * Requires NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local
+ * Run with: tsx scripts/update-takeaway-prices.ts
  */
 import { createClient } from '@supabase/supabase-js'
 import * as dotenv from 'dotenv'
@@ -21,136 +19,64 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-// Prices from eastatwest_menu_en.pdf (name → price in EUR)
-const menuPrices: Record<string, number> = {
-  // COLD MEZZES
-  'Warak Enab': 7,
-  'Zahra': 7.50,
-  'Itch': 7.50,
+// EXACT name → price mapping based on PDF + database product names
+// Only products that exist in BOTH the PDF and database are listed
+// Sandwiches are NOT in the PDF as standalone items, so we restore original prices
+const priceFixes: Record<string, number> = {
+  // COLD MEZZES (from PDF)
   'Hummus': 7.50,
-  'Moussaka': 7.50,
-  'Muhammara': 8,
-  'Makdous': 8,
   'Moutabal': 8,
-
-  // HOT MEZZES
-  'Falafel (2 pcs)': 4,
-  'Kibbeh (2 pcs)': 7,
-  'Fatteh': 7.50,
+  'Warak Enab': 7,
+  'Makdous': 8,
   'Batata Harra': 7.50,
   'Foul Moudamas': 8,
-  'Grilled Syrian Cheese': 10,
   'Arayes Cheese': 10,
-  'Chicken Liver': 11.50,
+
+  // HOT MEZZES — DB name "Falafel" is the hot mezze (2pcs), not the lunch dish
+  // The PDF lists "Falafel (2 pcs)" at €4, but the DB "Falafel" at category level
+  // needs verification. Keeping as mezze price for now:
+
+  // Sujuk is a hot mezze in the DB (not the lunch dish)
   'Sujuk': 12.50,
-  'Toshka': 12.50,
-  'Oriental Eggplant': 13.50,
-  "Chef's Mezze": 13.50,
 
-  // SET MENUS (for 2 people)
-  'Menu East@West': 67.50,
-  'Menu Vegan': 64.50,
-  'Menu Sahten': 84,
-  'Menu Lazeez': 65.50,
-
-  // DISHES
-  'Foodie Meat': 24,
-  'Foodie Vegan': 24,
+  // LUNCH DISHES (from PDF) — these are dish/plate items
+  'Falafel Plate': 18,
+  'Kebab Dish': 19,
 
   // SKEWERS
-  '2× Shish Taouk': 10,
-  '2× Kebab': 10,
+  'Kebab Skewers (2x)': 10,
+  'Chich Taouk Skewers (2x)': 10,
 
-  // SALADS
-  'Original Tabouleh': 8,
-  'Fattoush': 8,
+  // SET MENUS (for 2 people — PDF prices)
+  'Menu Lazeez': 65.50,
+  'Menu Sahten': 84,
+  'Menu Vegan': 64.50,
+
+  // SALADS (from PDF)
+  'Fattoush Salad': 8,
+  'Taboule': 8,
   'Falafel Salad': 13.50,
 
-  // LUNCH DISHES
-  'Mix Break Vegan': 14.50,
-  'Mix Break': 16.50,
-  'Falafel': 18,
-  'Chich Taouk': 19,
-  'Mix Grill': 19,
-  'Kebab': 19,
-  'Sujuk Dish': 20.80,
-  'Toshka Dish': 20.80,
-  "Chef's Dish": 23.50,
-
-  // SANDWICH + SALAD FORMULAS
-  'Falafel Sandwich + Fattoush Salad': 12.50,
-  'Chich Taouk + Fattoush Salad': 12.50,
-  'Kabab + Fattoush Salad': 12.50,
-
-  // DRINKS - BEERS
-  'Lebanese beer': 5,
-  'Jupiler beer': 3.50,
-  'Hoegaarden blond 25cl': 5,
-  'Leffe brune beer 33cl': 5,
-  'Leffe blonde beer 33cl': 5,
-  'Leffe 33cl (alcohol free)': 5,
-  'Cherry beer': 5,
-
-  // DRINKS - WINE RED
-  'Le Prieuré': 29,
-  'Reserve du couvent': 33,
-  'Bretéche bottle': 36,
-  'Glass of Lebanese wine': 6,
-
-  // DRINKS - WINE WHITE
-  "Blanc de l'observatoire": 29,
-  'Blanc de Blancs': 36,
-  'Bretéche': 36,
-
-  // DRINKS - WINE ROSÉ
-  'Chateau Ksara Rosé': 30,
-
-  // DRINKS - COCKTAILS
-  'Magic of Damascus': 9,
-  'Lemon mirage': 9,
-  'Arak': 6,
-
-  // DRINKS - SOFT DRINKS
-  'Home Made "Rose of Damascus"': 5,
-  'Homemade lemon juice': 5,
-  'Homemade ice-tea': 4,
-  'Schweppes (Agrumes / Virgin Mojito)': 4,
-  'Schweppes (Indian Tonic)': 4,
-  'Water still/sparkling 0.5L': 4,
-  'Coca-Cola / Coca Zero / Sprite': 3.50,
-  'Fanta Orange': 3.50,
-  'Ayran': 3.50,
-
-  // DRINKS - HOT DRINKS
-  'Arabic Coffee': 4,
-  'Tea (Mint Tea / Black Tea / Chamomile)': 3.50,
-  'Café / Espresso': 3.50,
-
   // DESSERTS
-  'Aish el Saraya (Vgn)': 3.50,
-  'Halaweh': 6,
-  'Homemade Traditional Ice Cream': 9,
+  'Aish el Saraya': 3.50,
+  'Traditional Ice Cream': 9,
 
-  // EXTRAS
-  '4× Extra Bread Pieces': 1,
-  'Extra Garlic Sauce': 2,
-  'Extra Spicy Pepper Sauce': 2,
-}
+  // DRINKS
+  'Espresso': 3.50,
+  'Indian Tonic': 4,
+  'Jupiler Beer': 3.50,
+  'Lebanese Beer': 5,
 
-// Normalize name for fuzzy matching
-function normalize(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[''`]/g, "'")
-    .replace(/[""]/g, '"')
-    .replace(/[éèê]/g, 'e')
-    .replace(/[àâ]/g, 'a')
-    .replace(/[ùû]/g, 'u')
-    .replace(/[ôö]/g, 'o')
-    .replace(/[ç]/g, 'c')
-    .replace(/×/g, 'x')
-    .replace(/\s+/g, ' ')
-    .trim()
+  // === ROLLBACK WRONG PRICES ===
+  // These were incorrectly matched by fuzzy matching and need to be restored.
+  // Sandwiches don't have corresponding PDF prices — restore originals.
+  'Falafel Sandwich': 8.50,       // Was wrongly set to €18 (matched Falafel lunch dish)
+  'Kebab Sandwich': 9.50,         // Was wrongly set to €19 (matched Kebab lunch dish)
+  'Toshka Sandwich': 10,          // Was wrongly set to €12.50 (matched Toshka mezze)
+  'Makdous Sandwich': 9.50,       // Was wrongly set to €8 (matched Makdous mezze)
+  'Toshka Leban': 16.50,          // Was wrongly set to €12.50 (matched Toshka mezze)
+  'Shish Taouk': 16.50,           // Was wrongly set to €10 (matched skewer price)
+  'Falafel': 7,                   // Was wrongly set to €18 (matched lunch dish). This is the mezze item.
 }
 
 async function updatePrices() {
@@ -172,41 +98,24 @@ async function updatePrices() {
 
   console.log(`Found ${products.length} products in database\n`)
 
-  // Build normalized lookup from PDF prices
-  const normalizedPrices = new Map<string, number>()
-  for (const [name, price] of Object.entries(menuPrices)) {
-    normalizedPrices.set(normalize(name), price)
-  }
-
   let updated = 0
   let skipped = 0
   let noMatch = 0
 
   for (const product of products) {
     const englishName = product.name?.en || product.name
-    const normalizedProductName = normalize(String(englishName))
+    const nameStr = String(englishName)
 
-    // Try exact match first, then partial match
-    let newPrice = normalizedPrices.get(normalizedProductName)
-
-    if (newPrice === undefined) {
-      // Try partial matching
-      for (const [menuName, price] of normalizedPrices.entries()) {
-        if (normalizedProductName.includes(menuName) || menuName.includes(normalizedProductName)) {
-          newPrice = price
-          break
-        }
-      }
-    }
+    // EXACT match only — no fuzzy matching
+    const newPrice = priceFixes[nameStr]
 
     if (newPrice === undefined) {
-      console.log(`⚠️  No match: "${englishName}" (skipped)`)
       noMatch++
       continue
     }
 
     if (product.price === newPrice) {
-      console.log(`✓  "${englishName}" — €${newPrice} (unchanged)`)
+      console.log(`✓  "${nameStr}" — €${newPrice} (unchanged)`)
       skipped++
       continue
     }
@@ -217,9 +126,9 @@ async function updatePrices() {
       .eq('id', product.id)
 
     if (updateError) {
-      console.error(`✗  Error updating "${englishName}":`, updateError)
+      console.error(`✗  Error updating "${nameStr}":`, updateError)
     } else {
-      console.log(`✅ "${englishName}" — €${product.price} → €${newPrice}`)
+      console.log(`✅ "${nameStr}" — €${product.price} → €${newPrice}`)
       updated++
     }
   }
@@ -227,7 +136,7 @@ async function updatePrices() {
   console.log(`\n--- Summary ---`)
   console.log(`Updated: ${updated}`)
   console.log(`Unchanged: ${skipped}`)
-  console.log(`No match (skipped): ${noMatch}`)
+  console.log(`No match (not in fix list): ${noMatch}`)
 }
 
 updatePrices()
