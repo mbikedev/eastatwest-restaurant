@@ -218,7 +218,8 @@ export default {
   experimental: {
     optimizeCss: false, // Disable to prevent CSS syntax errors
     optimizeServerReact: true,
-    // Removed optimizePackageImports - was causing TBT regression
+    // Tree-shake heavy client-side libraries to reduce JS bundle size
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'react-hot-toast'],
     turbopackUseSystemTlsCerts: true, // Fix Google Fonts TLS connection issues
   },
   // SWC compiler optimizations for modern browsers

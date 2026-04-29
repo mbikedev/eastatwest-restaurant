@@ -191,11 +191,16 @@ export default function LebaneseRestaurantBrusselsPage() {
       }`}>
 
         {/* Hero Section */}
-        <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/banner.webp')"
-          }}
-        >
+        <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+          <Image
+            src="/images/banner.webp"
+            alt=""
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            quality={75}
+            loading="eager"
+          />
           <div className="absolute inset-0 bg-black/60"></div>
 
           <div className="max-w-7xl mx-auto text-center relative z-10">

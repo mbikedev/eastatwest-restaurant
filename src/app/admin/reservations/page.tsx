@@ -1,6 +1,6 @@
 "use client";
 
-// Admin reservations page with Add New functionality
+// Admin reservations page with Add New functionality + Capacity Management
 import { useState, useEffect, useCallback } from "react";
 import { useTheme } from "../../../context/ThemeContext";
 import { useAdminAuth } from '../../../hooks/useAdminAuth';
@@ -8,8 +8,17 @@ import { supabase } from '@/lib/supabaseClient';
 import { safeClear } from "@/utils/storage";
 import toast from 'react-hot-toast';
 import { Reservation } from '@/types/supabase';
+import { MAX_CAPACITY, TIME_SLOTS, getServicePeriod } from '@/lib/capacityManager';
 
 type StatusFilter = 'all' | 'pending' | 'confirmed' | 'cancelled' | 'completed';
+
+// Slot availability type from API
+interface SlotAvailability {
+  totalGuests: number;
+  remainingCapacity: number;
+  isFull: boolean;
+  reservations: { id: string; name: string; guests: number; start_time: string; end_time: string }[];
+}
 
 export default function AdminReservationsPage() {
   const { loading: authLoading, isAuthenticated } = useAdminAuth();
@@ -68,6 +77,20 @@ export default function AdminReservationsPage() {
     completed: 0
   });
 
+  // Capacity dashboard state
+  const [capacityDate, setCapacityDate] = useState(() => new Date().toISOString().split('T')[0]);
+  const [slotAvailability, setSlotAvailability] = useState<Record<string, SlotAvailability>>({});
+  const [loadingCapacity, setLoadingCapacity] = useState(false);
+  const [showCapacityPanel, setShowCapacityPanel] = useState(true);
+
+  // Capacity validation for add/edit modals
+  const [modalCapacityCheck, setModalCapacityCheck] = useState<{
+    canBook: boolean;
+    maxAvailable: number;
+    checking: boolean;
+    message: string;
+  }>({ canBook: true, maxAvailable: MAX_CAPACITY, checking: false, message: '' });
+
   // Apply dark mode to document when component mounts
   useEffect(() => {
     const wasDark = document.documentElement.classList.contains('dark');
@@ -79,6 +102,64 @@ export default function AdminReservationsPage() {
         document.documentElement.classList.remove('dark');
       }
     };
+  }, []);
+
+  // Fetch capacity data for a given date
+  const fetchCapacity = useCallback(async (date: string) => {
+    setLoadingCapacity(true);
+    try {
+      const response = await fetch(`/api/reservations/availability?date=${date}`);
+      const result = await response.json();
+      if (result.success && result.slots) {
+        setSlotAvailability(result.slots);
+      }
+    } catch (error) {
+      console.error('Failed to fetch capacity data:', error);
+    } finally {
+      setLoadingCapacity(false);
+    }
+  }, []);
+
+  // Fetch capacity when date changes
+  useEffect(() => {
+    if (isStaff && capacityDate) {
+      fetchCapacity(capacityDate);
+    }
+  }, [isStaff, capacityDate, fetchCapacity]);
+
+  // Check capacity for modal forms (add/edit)
+  const checkModalCapacity = useCallback(async (
+    date: string,
+    startTime: string,
+    endTime: string,
+    guests: number,
+    excludeId?: string
+  ) => {
+    if (!date || !startTime || !endTime || !guests) {
+      setModalCapacityCheck({ canBook: true, maxAvailable: MAX_CAPACITY, checking: false, message: '' });
+      return;
+    }
+    setModalCapacityCheck(prev => ({ ...prev, checking: true }));
+    try {
+      const response = await fetch('/api/reservations/availability', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date, startTime, endTime, guests, excludeId }),
+      });
+      const result = await response.json();
+      if (result.success) {
+        setModalCapacityCheck({
+          canBook: result.canBook,
+          maxAvailable: result.maxAvailable,
+          checking: false,
+          message: result.canBook
+            ? `${result.maxAvailable} seats available (${result.peakOccupancy}/${MAX_CAPACITY} occupied)`
+            : `Cannot book: only ${result.maxAvailable} seats available at peak. ${result.conflictSlots.length} slot(s) would exceed capacity.`,
+        });
+      }
+    } catch {
+      setModalCapacityCheck({ canBook: true, maxAvailable: MAX_CAPACITY, checking: false, message: 'Could not verify capacity' });
+    }
   }, []);
 
   // Check if user is staff
@@ -465,6 +546,30 @@ export default function AdminReservationsPage() {
       return;
     }
 
+    // Capacity check before updating (exclude current reservation from count)
+    if (editingReservation.status !== 'cancelled' && editingReservation.status !== 'completed') {
+      try {
+        const capResponse = await fetch('/api/reservations/availability', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            date: editingReservation.date,
+            startTime: editingReservation.start_time,
+            endTime: editingReservation.end_time,
+            guests: editingReservation.guests,
+            excludeId: editingReservation.id,
+          }),
+        });
+        const capResult = await capResponse.json();
+        if (capResult.success && !capResult.canBook) {
+          toast.error(`Cannot update: only ${capResult.maxAvailable} seats available. Restaurant max capacity is ${MAX_CAPACITY}.`);
+          return;
+        }
+      } catch {
+        console.warn('Capacity check failed, proceeding with update');
+      }
+    }
+
     setIsUpdating(true);
 
     try {
@@ -567,6 +672,27 @@ export default function AdminReservationsPage() {
       return;
     }
 
+    // Capacity check before adding
+    try {
+      const capResponse = await fetch('/api/reservations/availability', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          date: newReservation.date,
+          startTime: newReservation.start_time,
+          endTime: newReservation.end_time,
+          guests: newReservation.guests,
+        }),
+      });
+      const capResult = await capResponse.json();
+      if (capResult.success && !capResult.canBook) {
+        toast.error(`Cannot add: only ${capResult.maxAvailable} seats available. Restaurant max capacity is ${MAX_CAPACITY}.`);
+        return;
+      }
+    } catch {
+      console.warn('Capacity check failed, proceeding with add');
+    }
+
     setIsAdding(true);
 
     try {
@@ -651,8 +777,11 @@ export default function AdminReservationsPage() {
         toast.error('Reservation added but email could not be sent');
       }
 
-      // Refresh reservations list
+      // Refresh reservations list and capacity data
       await fetchReservations();
+      if (capacityDate === newReservation.date) {
+        fetchCapacity(capacityDate);
+      }
 
       // Reset form and close modal
       setNewReservation({
@@ -795,6 +924,174 @@ export default function AdminReservationsPage() {
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Capacity Dashboard */}
+        <div className={`mb-4 rounded-lg border ${theme === "dark" ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white"}`}>
+          <button
+            onClick={() => setShowCapacityPanel(!showCapacityPanel)}
+            className={`w-full flex items-center justify-between px-4 py-3 text-sm font-semibold ${
+              theme === "dark" ? "text-white hover:bg-gray-700" : "text-gray-900 hover:bg-gray-50"
+            } rounded-lg transition-colors`}
+          >
+            <span>Capacity Dashboard ({MAX_CAPACITY} max seats)</span>
+            <span className="text-xs">{showCapacityPanel ? '▼' : '▶'}</span>
+          </button>
+
+          {showCapacityPanel && (
+            <div className="px-4 pb-4 space-y-3">
+              {/* Date selector */}
+              <div className="flex items-center gap-3">
+                <label className={`text-xs font-medium ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+                  Date:
+                </label>
+                <input
+                  type="date"
+                  value={capacityDate}
+                  onChange={(e) => setCapacityDate(e.target.value)}
+                  className={`px-2 py-1 border rounded text-xs ${
+                    theme === "dark"
+                      ? "bg-gray-700 border-gray-600 text-white"
+                      : "bg-white border-gray-300"
+                  }`}
+                />
+                <button
+                  onClick={() => setCapacityDate(new Date().toISOString().split('T')[0])}
+                  className="px-2 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                  Today
+                </button>
+                {loadingCapacity && (
+                  <span className="text-xs text-gray-400">Loading...</span>
+                )}
+              </div>
+
+              {/* Service period summaries */}
+              {(() => {
+                const lunchSlots = TIME_SLOTS.filter(s => getServicePeriod(s) === 'lunch');
+                const dinnerSlots = TIME_SLOTS.filter(s => getServicePeriod(s) === 'dinner');
+                const lunchPeak = Math.max(0, ...lunchSlots.map(s => slotAvailability[s]?.totalGuests || 0));
+                const dinnerPeak = Math.max(0, ...dinnerSlots.map(s => slotAvailability[s]?.totalGuests || 0));
+
+                return (
+                  <div className="grid grid-cols-2 gap-3">
+                    {/* Lunch summary */}
+                    <div className={`p-3 rounded-lg border ${
+                      lunchPeak >= MAX_CAPACITY
+                        ? 'border-red-500/50 bg-red-500/10'
+                        : lunchPeak >= MAX_CAPACITY * 0.7
+                        ? 'border-yellow-500/50 bg-yellow-500/10'
+                        : 'border-green-500/50 bg-green-500/10'
+                    }`}>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className={`text-xs font-bold ${theme === "dark" ? "text-gray-200" : "text-gray-700"}`}>
+                          LUNCH (11:30-14:30)
+                        </span>
+                        <span className={`text-xs font-bold ${
+                          lunchPeak >= MAX_CAPACITY ? 'text-red-400' : lunchPeak >= MAX_CAPACITY * 0.7 ? 'text-yellow-400' : 'text-green-400'
+                        }`}>
+                          {lunchPeak}/{MAX_CAPACITY}
+                        </span>
+                      </div>
+                      <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all ${
+                            lunchPeak >= MAX_CAPACITY ? 'bg-red-500' : lunchPeak >= MAX_CAPACITY * 0.7 ? 'bg-yellow-500' : 'bg-green-500'
+                          }`}
+                          style={{ width: `${Math.min(100, (lunchPeak / MAX_CAPACITY) * 100)}%` }}
+                        />
+                      </div>
+                      {lunchPeak >= MAX_CAPACITY && (
+                        <span className="text-[10px] text-red-400 font-semibold mt-1 block">FULLY BOOKED</span>
+                      )}
+                    </div>
+
+                    {/* Dinner summary */}
+                    <div className={`p-3 rounded-lg border ${
+                      dinnerPeak >= MAX_CAPACITY
+                        ? 'border-red-500/50 bg-red-500/10'
+                        : dinnerPeak >= MAX_CAPACITY * 0.7
+                        ? 'border-yellow-500/50 bg-yellow-500/10'
+                        : 'border-green-500/50 bg-green-500/10'
+                    }`}>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className={`text-xs font-bold ${theme === "dark" ? "text-gray-200" : "text-gray-700"}`}>
+                          DINNER (18:00-22:00)
+                        </span>
+                        <span className={`text-xs font-bold ${
+                          dinnerPeak >= MAX_CAPACITY ? 'text-red-400' : dinnerPeak >= MAX_CAPACITY * 0.7 ? 'text-yellow-400' : 'text-green-400'
+                        }`}>
+                          {dinnerPeak}/{MAX_CAPACITY}
+                        </span>
+                      </div>
+                      <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full transition-all ${
+                            dinnerPeak >= MAX_CAPACITY ? 'bg-red-500' : dinnerPeak >= MAX_CAPACITY * 0.7 ? 'bg-yellow-500' : 'bg-green-500'
+                          }`}
+                          style={{ width: `${Math.min(100, (dinnerPeak / MAX_CAPACITY) * 100)}%` }}
+                        />
+                      </div>
+                      {dinnerPeak >= MAX_CAPACITY && (
+                        <span className="text-[10px] text-red-400 font-semibold mt-1 block">FULLY BOOKED</span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Detailed time slot grid */}
+              <div>
+                <div className={`text-xs font-medium mb-2 ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>
+                  Slot-by-slot occupancy:
+                </div>
+                <div className="grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-15 gap-1">
+                  {TIME_SLOTS.map(slot => {
+                    const data = slotAvailability[slot];
+                    const total = data?.totalGuests || 0;
+                    const pct = (total / MAX_CAPACITY) * 100;
+                    const isFull = total >= MAX_CAPACITY;
+
+                    return (
+                      <div
+                        key={slot}
+                        className={`relative p-1.5 rounded text-center border cursor-default ${
+                          isFull
+                            ? 'border-red-500/70 bg-red-500/20'
+                            : pct >= 70
+                            ? 'border-yellow-500/50 bg-yellow-500/10'
+                            : pct > 0
+                            ? 'border-green-500/50 bg-green-500/10'
+                            : theme === 'dark'
+                            ? 'border-gray-700 bg-gray-800'
+                            : 'border-gray-200 bg-gray-50'
+                        }`}
+                        title={`${slot}: ${total}/${MAX_CAPACITY} guests${isFull ? ' (FULL)' : ''}\n${data?.reservations?.map(r => `${r.name}: ${r.guests} guests`).join('\n') || 'No reservations'}`}
+                      >
+                        <div className={`text-[10px] font-bold ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+                          {slot}
+                        </div>
+                        <div className={`text-[10px] font-bold ${
+                          isFull ? 'text-red-400' : pct >= 70 ? 'text-yellow-400' : total > 0 ? 'text-green-400' : 'text-gray-500'
+                        }`}>
+                          {total}/{MAX_CAPACITY}
+                        </div>
+                        {/* Mini bar */}
+                        <div className="w-full h-1 bg-gray-700 rounded-full mt-0.5 overflow-hidden">
+                          <div
+                            className={`h-full rounded-full ${
+                              isFull ? 'bg-red-500' : pct >= 70 ? 'bg-yellow-500' : 'bg-green-500'
+                            }`}
+                            style={{ width: `${Math.min(100, pct)}%` }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Status Tabs */}
@@ -1168,7 +1465,13 @@ export default function AdminReservationsPage() {
                   <input
                     type="date"
                     value={editingReservation.date}
-                    onChange={(e) => setEditingReservation({ ...editingReservation, date: e.target.value })}
+                    onChange={(e) => {
+                      const date = e.target.value;
+                      setEditingReservation({ ...editingReservation, date });
+                      if (date && editingReservation.start_time && editingReservation.end_time) {
+                        checkModalCapacity(date, editingReservation.start_time, editingReservation.end_time, editingReservation.guests, editingReservation.id);
+                      }
+                    }}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                       ? "bg-gray-700 border-gray-600 text-white"
                       : "bg-white border-gray-300"
@@ -1185,7 +1488,13 @@ export default function AdminReservationsPage() {
                     <input
                       type="time"
                       value={editingReservation.start_time}
-                      onChange={(e) => setEditingReservation({ ...editingReservation, start_time: e.target.value })}
+                      onChange={(e) => {
+                        const start_time = e.target.value;
+                        setEditingReservation({ ...editingReservation, start_time });
+                        if (editingReservation.date && start_time && editingReservation.end_time) {
+                          checkModalCapacity(editingReservation.date, start_time, editingReservation.end_time, editingReservation.guests, editingReservation.id);
+                        }
+                      }}
                       className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
@@ -1199,7 +1508,13 @@ export default function AdminReservationsPage() {
                     <input
                       type="time"
                       value={editingReservation.end_time}
-                      onChange={(e) => setEditingReservation({ ...editingReservation, end_time: e.target.value })}
+                      onChange={(e) => {
+                        const end_time = e.target.value;
+                        setEditingReservation({ ...editingReservation, end_time });
+                        if (editingReservation.date && editingReservation.start_time && end_time) {
+                          checkModalCapacity(editingReservation.date, editingReservation.start_time, end_time, editingReservation.guests, editingReservation.id);
+                        }
+                      }}
                       className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
@@ -1216,15 +1531,47 @@ export default function AdminReservationsPage() {
                   <input
                     type="number"
                     min="1"
-                    max="20"
+                    max={MAX_CAPACITY}
                     value={editingReservation.guests}
-                    onChange={(e) => setEditingReservation({ ...editingReservation, guests: parseInt(e.target.value) || 1 })}
+                    onChange={(e) => {
+                      const guests = parseInt(e.target.value) || 1;
+                      setEditingReservation({ ...editingReservation, guests });
+                      if (editingReservation.date && editingReservation.start_time && editingReservation.end_time) {
+                        checkModalCapacity(editingReservation.date, editingReservation.start_time, editingReservation.end_time, guests, editingReservation.id);
+                      }
+                    }}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                       ? "bg-gray-700 border-gray-600 text-white"
                       : "bg-white border-gray-300"
                       }`}
                   />
                 </div>
+
+                {/* Capacity Check Indicator for Edit Modal */}
+                {editingReservation.date && editingReservation.start_time && editingReservation.end_time && (
+                  <div className={`p-3 rounded-lg border ${
+                    modalCapacityCheck.checking
+                      ? 'border-gray-500 bg-gray-500/10'
+                      : modalCapacityCheck.canBook
+                      ? 'border-green-500/50 bg-green-500/10'
+                      : 'border-red-500/50 bg-red-500/10'
+                  }`}>
+                    <div className="flex items-center gap-2">
+                      {modalCapacityCheck.checking ? (
+                        <span className="text-xs text-gray-400">Checking capacity...</span>
+                      ) : (
+                        <>
+                          <span className={`text-sm ${modalCapacityCheck.canBook ? 'text-green-400' : 'text-red-400'}`}>
+                            {modalCapacityCheck.canBook ? '✓' : '✗'}
+                          </span>
+                          <span className={`text-xs ${modalCapacityCheck.canBook ? 'text-green-300' : 'text-red-300'}`}>
+                            {modalCapacityCheck.message}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {/* Status */}
                 <div>
@@ -1302,10 +1649,14 @@ export default function AdminReservationsPage() {
                   </button>
                   <button
                     onClick={handleUpdateReservation}
-                    disabled={isUpdating}
-                    className="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={isUpdating || (!modalCapacityCheck.canBook && !modalCapacityCheck.checking)}
+                    className={`px-4 py-2 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed ${
+                      !modalCapacityCheck.canBook && !modalCapacityCheck.checking
+                        ? 'bg-red-500 text-white cursor-not-allowed'
+                        : 'bg-purple-500 hover:bg-purple-600 text-white'
+                    }`}
                   >
-                    {isUpdating ? 'Updating...' : 'Update Reservation'}
+                    {isUpdating ? 'Updating...' : !modalCapacityCheck.canBook ? 'Capacity Exceeded' : 'Update Reservation'}
                   </button>
                 </div>
               </div>
@@ -1396,7 +1747,13 @@ export default function AdminReservationsPage() {
                   <input
                     type="date"
                     value={newReservation.date}
-                    onChange={(e) => setNewReservation({ ...newReservation, date: e.target.value })}
+                    onChange={(e) => {
+                      const date = e.target.value;
+                      setNewReservation({ ...newReservation, date });
+                      if (date && newReservation.start_time && newReservation.end_time) {
+                        checkModalCapacity(date, newReservation.start_time, newReservation.end_time, newReservation.guests);
+                      }
+                    }}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                       ? "bg-gray-700 border-gray-600 text-white"
                       : "bg-white border-gray-300"
@@ -1413,7 +1770,13 @@ export default function AdminReservationsPage() {
                     <input
                       type="time"
                       value={newReservation.start_time}
-                      onChange={(e) => setNewReservation({ ...newReservation, start_time: e.target.value })}
+                      onChange={(e) => {
+                        const start_time = e.target.value;
+                        setNewReservation({ ...newReservation, start_time });
+                        if (newReservation.date && start_time && newReservation.end_time) {
+                          checkModalCapacity(newReservation.date, start_time, newReservation.end_time, newReservation.guests);
+                        }
+                      }}
                       className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
@@ -1427,7 +1790,13 @@ export default function AdminReservationsPage() {
                     <input
                       type="time"
                       value={newReservation.end_time}
-                      onChange={(e) => setNewReservation({ ...newReservation, end_time: e.target.value })}
+                      onChange={(e) => {
+                        const end_time = e.target.value;
+                        setNewReservation({ ...newReservation, end_time });
+                        if (newReservation.date && newReservation.start_time && end_time) {
+                          checkModalCapacity(newReservation.date, newReservation.start_time, end_time, newReservation.guests);
+                        }
+                      }}
                       className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                         ? "bg-gray-700 border-gray-600 text-white"
                         : "bg-white border-gray-300"
@@ -1444,15 +1813,47 @@ export default function AdminReservationsPage() {
                   <input
                     type="number"
                     min="1"
-                    max="20"
+                    max={MAX_CAPACITY}
                     value={newReservation.guests}
-                    onChange={(e) => setNewReservation({ ...newReservation, guests: parseInt(e.target.value) || 1 })}
+                    onChange={(e) => {
+                      const guests = parseInt(e.target.value) || 1;
+                      setNewReservation({ ...newReservation, guests });
+                      if (newReservation.date && newReservation.start_time && newReservation.end_time) {
+                        checkModalCapacity(newReservation.date, newReservation.start_time, newReservation.end_time, guests);
+                      }
+                    }}
                     className={`w-full px-3 py-2 border rounded-lg ${theme === "dark"
                       ? "bg-gray-700 border-gray-600 text-white"
                       : "bg-white border-gray-300"
                       }`}
                   />
                 </div>
+
+                {/* Capacity Check Indicator for Add Modal */}
+                {newReservation.date && newReservation.start_time && newReservation.end_time && (
+                  <div className={`p-3 rounded-lg border ${
+                    modalCapacityCheck.checking
+                      ? 'border-gray-500 bg-gray-500/10'
+                      : modalCapacityCheck.canBook
+                      ? 'border-green-500/50 bg-green-500/10'
+                      : 'border-red-500/50 bg-red-500/10'
+                  }`}>
+                    <div className="flex items-center gap-2">
+                      {modalCapacityCheck.checking ? (
+                        <span className="text-xs text-gray-400">Checking capacity...</span>
+                      ) : (
+                        <>
+                          <span className={`text-sm ${modalCapacityCheck.canBook ? 'text-green-400' : 'text-red-400'}`}>
+                            {modalCapacityCheck.canBook ? '✓' : '✗'}
+                          </span>
+                          <span className={`text-xs ${modalCapacityCheck.canBook ? 'text-green-300' : 'text-red-300'}`}>
+                            {modalCapacityCheck.message}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {/* Status */}
                 <div>
@@ -1527,10 +1928,14 @@ export default function AdminReservationsPage() {
                   </button>
                   <button
                     onClick={handleAddReservation}
-                    disabled={isAdding}
-                    className="px-4 py-2 bg-green-500 hover:bg-green-600 text-black rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={isAdding || (!modalCapacityCheck.canBook && !modalCapacityCheck.checking)}
+                    className={`px-4 py-2 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed ${
+                      !modalCapacityCheck.canBook && !modalCapacityCheck.checking
+                        ? 'bg-red-500 text-white cursor-not-allowed'
+                        : 'bg-green-500 hover:bg-green-600 text-black'
+                    }`}
                   >
-                    {isAdding ? 'Adding...' : 'Add Reservation'}
+                    {isAdding ? 'Adding...' : !modalCapacityCheck.canBook ? 'Capacity Exceeded' : 'Add Reservation'}
                   </button>
                 </div>
               </div>

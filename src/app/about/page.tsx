@@ -51,7 +51,17 @@ export default function AboutPage() {
       
       {/* ===== HERO HEADER SECTION ===== */}
       {/* Enhanced Header Section with Background Image */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/images/about-us.webp')"}}>
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background Image — using Next.js Image for automatic optimization */}
+        <Image
+          src="/images/about-us.webp"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          quality={75}
+          loading="eager"
+        />
         {/* Background Overlay for Text Readability */}
         <div className="absolute inset-0 bg-black/40"></div>
         

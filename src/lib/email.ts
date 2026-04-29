@@ -1,5 +1,10 @@
 import nodemailer from 'nodemailer';
 
+// Consistent sender identity — always use the same From address
+const DEFAULT_FROM = `East @ West Restaurant <${process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'noreply@eastatwest.com'}>`;
+const REPLY_TO = process.env.SMTP_REPLY_TO || 'contact@eastatwest.com';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://eastatwest.com';
+
 // Create reusable transporter for SMTP
 function createTransporter() {
   const smtpHost = process.env.SMTP_HOST;
@@ -20,7 +25,6 @@ function createTransporter() {
       pass: smtpPass,
     },
     tls: {
-      // Do not fail on invalid certs (for development)
       rejectUnauthorized: process.env.NODE_ENV === 'production',
     },
   });
@@ -32,7 +36,7 @@ export async function sendEmail({
   subject,
   text,
   html,
-  from = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'noreply@eastatwest.com',
+  from = DEFAULT_FROM,
   headers = {},
 }: {
   to: string;
@@ -50,8 +54,12 @@ export async function sendEmail({
     subject,
     text,
     html,
+    replyTo: REPLY_TO,
     headers: {
       'X-Mailer': 'East At West Restaurant',
+      // Gmail/Yahoo require List-Unsubscribe for deliverability
+      'List-Unsubscribe': `<mailto:unsubscribe@eastatwest.com>, <${BASE_URL}/unsubscribe?email=${encodeURIComponent(to)}>`,
+      'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
       ...headers,
     },
   };

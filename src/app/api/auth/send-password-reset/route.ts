@@ -45,7 +45,6 @@ export async function POST(req: NextRequest) {
 
     // Send email with reset link
     const emailResult = await sendEmail({
-      from: `East at West Restaurant <${process.env.SENDGRID_FROM_EMAIL || 'contact@eastatwest.com'}>`,
       to: email,
       subject: 'Reset Your Password - East at West',
       text: `Reset Your Password - East at West

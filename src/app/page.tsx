@@ -26,23 +26,6 @@ export default function HomePage() {
   // Theme context for dark/light mode switching
   const { theme } = useTheme()
 
-  // Preload critical LCP image for homepage only
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = 'image';
-    link.href = '/images/banner.webp';
-    link.type = 'image/webp';
-    link.setAttribute('fetchpriority', 'high');
-    document.head.appendChild(link);
-
-    return () => {
-      if (link.parentNode) {
-        link.parentNode.removeChild(link);
-      }
-    };
-  }, []);
-
   // Product modal state
   const [selectedProduct, setSelectedProduct] = useState<{
     name: string
@@ -261,6 +244,14 @@ export default function HomePage() {
 
   return (
     <>
+      {/* Preload LCP hero image — rendered in SSR HTML so browser discovers it early */}
+      <link
+        rel="preload"
+        as="image"
+        href="/images/banner.webp"
+        type="image/webp"
+      />
+
       {/* ===== SEO SCHEMA SCRIPT ===== */}
       {/* JSON-LD Schema for Restaurant SEO */}
       <script

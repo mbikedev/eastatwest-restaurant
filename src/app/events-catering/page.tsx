@@ -221,12 +221,19 @@ export default function EventsCateringPage() {
         theme === 'dark' ? 'bg-[#1A1A1A] text-white' : 'bg-white text-black'
       }`}>
       {/* Hero Section */}
-      <section 
-        className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/events-catering/plat-libanais-restaurant-libanais-event.webp')"
-        }}
+      <section
+        className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
+        {/* Background Image — using Next.js Image for automatic optimization */}
+        <Image
+          src="/images/events-catering/plat-libanais-restaurant-libanais-event.webp"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          quality={75}
+          loading="eager"
+        />
         {/* Background Overlay */}
         <div className={`absolute inset-0 ${
           theme === 'dark'

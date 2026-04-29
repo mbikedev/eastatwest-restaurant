@@ -200,17 +200,11 @@ Bld de l'Empereur 26, 1000 Brussels, Belgium
     // Send emails to all notification addresses
     const emailPromises = notificationEmails.map(email =>
       sendEmail({
-        from: process.env.SMTP_FROM_EMAIL || 'contact@eastatwest.com',
         to: email,
         subject,
         text: emailText,
         html: emailHTML,
-        headers: {
-          'X-Priority': '1',
-          'X-MSMail-Priority': 'High',
-          'Importance': 'high',
-          'X-Mailer': 'East At West Restaurant'
-        }
+        headers: {}
       })
     );
 

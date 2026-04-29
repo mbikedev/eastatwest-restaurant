@@ -44,12 +44,10 @@ export async function POST(req: NextRequest) {
     type Language = typeof validLanguages[number];
     const lang: Language = validLanguages.includes(language as Language) ? (language as Language) : 'en';
 
-    const sendgridApiKey = process.env.SENDGRID_API_KEY;
-    const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'contact@eastatwest.com';
     const adminEmail = 'infos.east.west@gmail.com'; // Admin email to receive notifications
 
-    if (!sendgridApiKey) {
-      console.error('SENDGRID_API_KEY is not configured');
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER) {
+      console.error('SMTP configuration is not configured');
       return NextResponse.json(
         { success: false, error: 'Email service not configured' },
         { status: 500 }
@@ -342,7 +340,7 @@ export async function POST(req: NextRequest) {
 
     // Send email to customer
     const customerEmailResult = await sendEmail({
-      from: `East@West Restaurant <${fromEmail}>`,
+      // Uses default from address defined in email.ts
       to: orderData.customer_email,
       subject: `${getTranslation(lang, 'payment.success.orderConfirmed')} - Order #${orderData.id.slice(0, 8)}`,
       text: 'Order Confirmation',
@@ -351,7 +349,7 @@ export async function POST(req: NextRequest) {
 
     // Send email to admin
     const adminEmailResult = await sendEmail({
-      from: `East@West Restaurant <${fromEmail}>`,
+      // Uses default from address defined in email.ts
       to: adminEmail,
       subject: `New Order #${orderData.id.slice(0, 8)} - ${orderData.delivery_type.toUpperCase()} - ${orderData.payment_method.toUpperCase()}`,
       text: 'New Order',

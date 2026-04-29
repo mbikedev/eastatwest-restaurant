@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@/context/ThemeContext";
+import Image from "next/image";
 // Note: Using select elements for time picking instead of heavy react-time-picker library
 import { supabase } from '@/lib/supabaseClient';
 import { checkSupabaseConfig, debugSupabaseConfig } from '@/lib/envCheck';
@@ -13,6 +14,14 @@ import {
 } from '@/utils/reservationValidation';
 import { Holiday } from '@/types/holidays';
 import { isDateInHolidayRange } from '@/lib/holidayUtils';
+
+// Type for slot availability data from the API
+interface SlotAvailability {
+  totalGuests: number;
+  remainingCapacity: number;
+  isFull: boolean;
+  reservations: { id: string; name: string; guests: number; start_time: string; end_time: string }[];
+}
 function getDaysInMonth(year: number, month: number) {
   return new Date(year, month + 1, 0).getDate();
 }
@@ -119,6 +128,9 @@ export default function ReservationsPage() {
   const [holidays, setHolidays] = useState<Holiday[]>([]);
   const [showClosureModal, setShowClosureModal] = useState(false);
   const [currentClosureHoliday, setCurrentClosureHoliday] = useState<Holiday | null>(null);
+  const [slotAvailability, setSlotAvailability] = useState<Record<string, SlotAvailability>>({});
+  const [loadingAvailability, setLoadingAvailability] = useState(false);
+  const [availabilityError, setAvailabilityError] = useState(false);
   const today = useMemo(() => new Date(), []);
   const [calendar, setCalendar] = useState({
     year: today.getFullYear(),
@@ -211,6 +223,33 @@ export default function ReservationsPage() {
 
     fetchHolidays();
   }, []);
+
+  // Fetch slot availability when date changes
+  const fetchAvailability = useCallback(async (date: string) => {
+    if (!date) return;
+    setLoadingAvailability(true);
+    setAvailabilityError(false);
+    try {
+      const response = await fetch(`/api/reservations/availability?date=${date}`);
+      const result = await response.json();
+      if (result.success && result.slots) {
+        setSlotAvailability(result.slots);
+      } else {
+        setAvailabilityError(true);
+      }
+    } catch {
+      console.error('Failed to fetch availability');
+      setAvailabilityError(true);
+    } finally {
+      setLoadingAvailability(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (form.date) {
+      fetchAvailability(form.date);
+    }
+  }, [form.date, fetchAvailability]);
 
   useEffect(() => {
     setForm((f) => ({ ...f, date: `${calendar.year}-${String(calendar.month + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}` }));
@@ -319,45 +358,48 @@ export default function ReservationsPage() {
       return;
     }
 
-    // Check for capacity and duplicate reservations before submitting
+    // Check for capacity conflicts and duplicate reservations before submitting
     try {
-      // Check if Supabase is configured for capacity detection
       if (checkSupabaseConfig()) {
         const requestedGuests = Number(form.guests);
 
-        // Check for overlapping reservations to calculate total capacity
-        const { data: overlappingReservations, error: overlapError } = await supabase
-          .rpc('check_reservation_overlap', {
-            p_reservation_date: form.date,
-            p_start_time: form.startTime,
-            p_end_time: form.endTime,
-            p_exclude_id: null
-          });
+        // Use the availability API to check feasibility
+        const feasibilityResponse = await fetch('/api/reservations/availability', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            date: form.date,
+            startTime: form.startTime,
+            endTime: form.endTime,
+            guests: requestedGuests,
+          }),
+        });
 
-        if (overlapError) {
-          console.warn('Could not check for overlapping reservations:', overlapError);
-          // Continue with submission - don't block due to overlap check failure
-        } else if (overlappingReservations && overlappingReservations.length > 0) {
-          // Calculate total guests in overlapping time slots
-          const totalGuests = overlappingReservations.reduce((sum: number, res: any) => {
-            return sum + (res.number_of_guests || 0);
-          }, 0);
+        const feasibility = await feasibilityResponse.json();
 
-          const remainingCapacity = 22 - totalGuests;
+        if (feasibility.success && !feasibility.canBook) {
+          // Reservation would exceed capacity
+          toast.error(
+            t('reservations.noMoreReservation') ||
+            'No more reservation is possible for this time slot. Please choose a different time.'
+          );
 
-          // Check if adding this reservation would exceed capacity
-          if (requestedGuests > remainingCapacity) {
-            if (remainingCapacity > 0) {
-              toast.error(
-                t('reservations.capacityPartiallyAvailable', { remaining: remainingCapacity }) ||
-                `Sorry, only ${remainingCapacity} seats are available for this time slot. The restaurant capacity is 22 people maximum.`
-              );
-            } else {
-              toast.error(t('reservations.capacityFull') || 'This time slot is fully booked. Please choose a different time.');
-            }
-            setIsSubmitting(false);
-            return;
+          // Show alternative time suggestions (without seat counts)
+          if (feasibility.alternatives && feasibility.alternatives.length > 0) {
+            const topAlternatives = feasibility.alternatives.slice(0, 3);
+            const altText = topAlternatives
+              .map((a: { time: string; availableSeats: number }) => a.time)
+              .join(', ');
+            toast(
+              `${t('reservations.alternativeSuggestion') || 'Available alternatives'}: ${altText}`,
+              { duration: 6000 }
+            );
           }
+
+          // Refresh availability data
+          fetchAvailability(form.date);
+          setIsSubmitting(false);
+          return;
         }
 
         // Check for duplicate reservation by same email on same date
@@ -370,15 +412,14 @@ export default function ReservationsPage() {
 
         if (existingError) {
           console.warn('Could not check for existing reservations:', existingError);
-          // Continue with submission - don't block due to existing check failure
         } else if (existingReservations && existingReservations.length > 0) {
           toast.error(t('reservations.alreadyReserved') || 'You already have a reservation on this date. Please contact us to modify your existing reservation.');
           setIsSubmitting(false);
           return;
         }
       }
-    } catch (duplicateCheckError) {
-      console.warn('Error checking for capacity:', duplicateCheckError);
+    } catch (capacityCheckError) {
+      console.warn('Error checking for capacity:', capacityCheckError);
       // Continue with submission - don't block the user if capacity check fails
     }
     
@@ -470,6 +511,11 @@ export default function ReservationsPage() {
         reservationData
       });
 
+      // Refresh availability after booking
+      if (form.date) {
+        fetchAvailability(form.date);
+      }
+
       // Reset form and validation state AFTER sending emails
       setForm({
         name: "",
@@ -500,25 +546,30 @@ export default function ReservationsPage() {
     "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00"
   ];
 
-  // Function to check if a time slot is available based on selected date
+  // Function to check if a time slot is available based on selected date AND capacity
   const isTimeSlotAvailable = (time: string) => {
     if (!form.date) return true;
-    
+
     const selectedDate = new Date(form.date);
     const dayOfWeek = selectedDate.getDay();
-    
+
     // Sunday is not available
     if (dayOfWeek === 0) return false;
-    
+
     // Saturday: only dinner hours (18:00-22:00)
     if (dayOfWeek === 6) {
       const hour = parseInt(time.split(':')[0]);
-      return hour >= 18 && hour <= 22;
+      if (!(hour >= 18 && hour <= 22)) return false;
+    } else {
+      // Monday to Friday: lunch (11:30-14:00) and dinner (18:00-22:00)
+      const hour = parseInt(time.split(':')[0]);
+      if (!((hour >= 11 && hour <= 14) || (hour >= 18 && hour <= 22))) return false;
     }
-    
-    // Monday to Friday: lunch (11:30-14:00) and dinner (18:00-22:00)
-    const hour = parseInt(time.split(':')[0]);
-    return (hour >= 11 && hour <= 14) || (hour >= 18 && hour <= 22);
+
+    // Check capacity - if slot is full, mark unavailable
+    if (slotAvailability[time]?.isFull) return false;
+
+    return true;
   };
 
   // Function to get valid end time options based on selected start time
@@ -553,7 +604,16 @@ export default function ReservationsPage() {
 
 
   return (
-    <div className="min-h-screen w-full relative flex flex-col items-center justify-center" style={{ backgroundImage: "url(/images/reser-back.webp)", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div className="min-h-screen w-full relative flex flex-col items-center justify-center">
+      <Image
+        src="/images/reser-back.webp"
+        alt=""
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+        quality={72}
+        loading="eager"
+      />
       <div className={`absolute inset-0 z-0 transition-colors duration-300 ${theme === "dark" ? "bg-black/85" : "bg-black/60"}`} />
 
       {/* Closure Notice Modal */}
@@ -887,16 +947,25 @@ export default function ReservationsPage() {
                   <option value="" className={theme === "dark" ? "text-gray-300" : "text-gray-700"}>
                     {t("reservations.selectTime")}
                   </option>
-                  {allowedTimes.map((time) => (
-                    <option
-                      key={time}
-                      value={time}
-                      className={theme === "dark" ? "text-white bg-gray-800" : "text-gray-900 bg-white"}
-                      disabled={!isTimeSlotAvailable(time)}
-                    >
-                      {time}
-                    </option>
-                  ))}
+                  {allowedTimes.map((time) => {
+                    const available = isTimeSlotAvailable(time);
+                    const slot = slotAvailability[time];
+                    const isFull = slot?.isFull;
+                    let label = time;
+                    if (isFull) {
+                      label = `${time}  (${t('reservations.noMoreReservation') || 'No more reservation possible'})`;
+                    }
+                    return (
+                      <option
+                        key={time}
+                        value={time}
+                        className={theme === "dark" ? "text-white bg-gray-800" : "text-gray-900 bg-white"}
+                        disabled={!available}
+                      >
+                        {label}
+                      </option>
+                    );
+                  })}
                 </select>
 
               </div>
@@ -939,6 +1008,15 @@ export default function ReservationsPage() {
               </div>
             </div>
 
+            {/* No more reservation message - shown when selected time slot is full */}
+            {form.startTime && slotAvailability[form.startTime]?.isFull && (
+              <div className="mb-4 p-3 rounded-xl border bg-red-500/20 border-red-400/50">
+                <span className="text-xs font-bold text-red-400">
+                  {t('reservations.noMoreReservation') || 'No more reservation is possible for this time slot'}
+                </span>
+              </div>
+            )}
+
             {/* Guests Field */}
             <div className="flex flex-col mb-4">
               <label htmlFor="guests-field" className={`text-xs font-bold mb-2 px-2 py-1 rounded-lg text-white ${
@@ -963,15 +1041,21 @@ export default function ReservationsPage() {
                 <option value="" className={theme === "dark" ? "text-gray-300" : "text-gray-700"}>
                   {t("reservations.selectGuests")}
                 </option>
-                {[...Array(22)].map((_, i) => (
-                  <option
-                    key={i + 1}
-                    value={i + 1}
-                    className={theme === "dark" ? "text-white bg-gray-800" : "text-gray-900 bg-white"}
-                  >
-                    {i + 1}
-                  </option>
-                ))}
+                {[...Array(22)].map((_, i) => {
+                  const guestCount = i + 1;
+                  const slot = form.startTime ? slotAvailability[form.startTime] : null;
+                  const exceedsCapacity = slot ? guestCount > slot.remainingCapacity : false;
+                  return (
+                    <option
+                      key={guestCount}
+                      value={guestCount}
+                      className={theme === "dark" ? "text-white bg-gray-800" : "text-gray-900 bg-white"}
+                      disabled={exceedsCapacity}
+                    >
+                      {guestCount}
+                    </option>
+                  );
+                })}
               </select>
 
               {/* Enhanced warnings for guest count */}

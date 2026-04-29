@@ -205,17 +205,11 @@ Bld de l'Empereur 26, 1000 Brussels, Belgium
 
       try {
         const result = await sendEmail({
-          from: process.env.SENDGRID_FROM_EMAIL || 'contact@eastatwest.com',
           to: email,
           subject,
           text: emailText,
           html: emailHTML,
-          headers: {
-            'X-Priority': '1',
-            'X-MSMail-Priority': 'High',
-            'Importance': 'high',
-            'X-Mailer': 'East At West Restaurant'
-          }
+          headers: {}
         });
 
         console.log(`✅ Successfully sent to ${email}`);
@@ -289,8 +283,8 @@ Bld de l'Empereur 26, 1000 Brussels, Belgium
         debug: {
           errorType: error instanceof Error ? error.name : typeof error,
           environment: process.env.NODE_ENV,
-          hasApiKey: !!process.env.SENDGRID_API_KEY,
-          hasFromEmail: !!process.env.SENDGRID_FROM_EMAIL,
+          hasSmtpHost: !!process.env.SMTP_HOST,
+          hasSmtpUser: !!process.env.SMTP_USER,
           timestamp: new Date().toISOString()
         }
       },
