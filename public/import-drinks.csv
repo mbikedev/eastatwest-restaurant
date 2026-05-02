@@ -1,0 +1,16 @@
+name,description,price,category,image_url,available,sort_order
+"{""en"":""Le Prieuré"",""fr"":""Le Prieuré"",""nl"":""Le Prieuré""}","{""en"":""Lebanese red wine - bottle"",""fr"":""Vin rouge libanais - bouteille"",""nl"":""Libanese rode wijn - fles""}",29,drinks,,true,200
+"{""en"":""Réserve du Couvent"",""fr"":""Réserve du Couvent"",""nl"":""Réserve du Couvent""}","{""en"":""Lebanese red wine - bottle"",""fr"":""Vin rouge libanais - bouteille"",""nl"":""Libanese rode wijn - fles""}",33,drinks,,true,201
+"{""en"":""Bretèche Red"",""fr"":""Bretèche Rouge"",""nl"":""Bretèche Rood""}","{""en"":""Lebanese red wine - bottle"",""fr"":""Vin rouge libanais - bouteille"",""nl"":""Libanese rode wijn - fles""}",36,drinks,,true,202
+"{""en"":""Blanc de l'Observatoire"",""fr"":""Blanc de l'Observatoire"",""nl"":""Blanc de l'Observatoire""}","{""en"":""Lebanese white wine - bottle"",""fr"":""Vin blanc libanais - bouteille"",""nl"":""Libanese witte wijn - fles""}",29,drinks,,true,203
+"{""en"":""Blanc de Blancs"",""fr"":""Blanc de Blancs"",""nl"":""Blanc de Blancs""}","{""en"":""Lebanese white wine - bottle"",""fr"":""Vin blanc libanais - bouteille"",""nl"":""Libanese witte wijn - fles""}",36,drinks,,true,204
+"{""en"":""Bretèche White"",""fr"":""Bretèche Blanc"",""nl"":""Bretèche Wit""}","{""en"":""Lebanese white wine - bottle"",""fr"":""Vin blanc libanais - bouteille"",""nl"":""Libanese witte wijn - fles""}",36,drinks,,true,205
+"{""en"":""Château Ksara Rosé"",""fr"":""Château Ksara Rosé"",""nl"":""Château Ksara Rosé""}","{""en"":""Lebanese rosé wine - bottle"",""fr"":""Vin rosé libanais - bouteille"",""nl"":""Libanese rosé wijn - fles""}",30,drinks,,true,206
+"{""en"":""Coca-Cola"",""fr"":""Coca-Cola"",""nl"":""Coca-Cola""}","{""en"":""Soft drink"",""fr"":""Boisson gazeuse"",""nl"":""Frisdrank""}",3.5,drinks,,true,207
+"{""en"":""Coca-Cola Zero"",""fr"":""Coca-Cola Zero"",""nl"":""Coca-Cola Zero""}","{""en"":""Sugar-free soft drink"",""fr"":""Boisson gazeuse sans sucre"",""nl"":""Suikervrij frisdrank""}",3.5,drinks,,true,208
+"{""en"":""Sprite"",""fr"":""Sprite"",""nl"":""Sprite""}","{""en"":""Lemon-lime soft drink"",""fr"":""Boisson gazeuse citron-lime"",""nl"":""Citroen-limoen frisdrank""}",3.5,drinks,,true,209
+"{""en"":""Fanta Orange"",""fr"":""Fanta Orange"",""nl"":""Fanta Orange""}","{""en"":""Orange soft drink"",""fr"":""Boisson gazeuse à l'orange"",""nl"":""Sinaasappel frisdrank""}",3.5,drinks,,true,210
+"{""en"":""Schweppes Agrumes"",""fr"":""Schweppes Agrumes"",""nl"":""Schweppes Agrumes""}","{""en"":""Citrus sparkling drink"",""fr"":""Boisson pétillante aux agrumes"",""nl"":""Citrus bruisend drankje""}",4,drinks,,true,211
+"{""en"":""Schweppes Virgin Mojito"",""fr"":""Schweppes Virgin Mojito"",""nl"":""Schweppes Virgin Mojito""}","{""en"":""Non-alcoholic mojito sparkling drink"",""fr"":""Boisson pétillante mojito sans alcool"",""nl"":""Alcoholvrij mojito bruisend drankje""}",4,drinks,,true,212
+"{""en"":""Schweppes Indian Tonic"",""fr"":""Schweppes Indian Tonic"",""nl"":""Schweppes Indian Tonic""}","{""en"":""Tonic water"",""fr"":""Eau tonique"",""nl"":""Tonic water""}",4,drinks,,true,213
+"{""en"":""Ayran"",""fr"":""Ayran"",""nl"":""Ayran""}","{""en"":""Traditional yogurt drink"",""fr"":""Boisson traditionnelle au yaourt"",""nl"":""Traditioneel yoghurtdrankje""}",3.5,drinks,,true,214
