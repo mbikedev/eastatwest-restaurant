@@ -212,27 +212,36 @@ export default function AdminReservationsPage() {
   }, []);
 
   // Fetch all reservations
+  const getAuthHeaders = useCallback(async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.access_token) throw new Error('Not authenticated');
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${session.access_token}`
+    };
+  }, []);
+
   const fetchReservations = useCallback(async () => {
     if (!isStaff) return;
 
     try {
       setLoading(true);
 
-      const { data, error } = await supabase
-        .from('reservations')
-        .select('*')
-        .order('created_at', { ascending: false });
+      const headers = await getAuthHeaders();
+      const response = await fetch('/api/admin/reservations', { headers });
+      const result = await response.json();
 
-      if (error) {
-        console.error('Error fetching reservations:', error);
+      if (!response.ok) {
+        console.error('Error fetching reservations:', result.error);
         toast.error('Failed to fetch reservations');
         return;
       }
 
+      const data = result.data || [];
+
       // Auto-mark past reservations as completed
       const reservationsToUpdate: string[] = [];
-      const updatedData = (data || []).map(reservation => {
-        // Only update if reservation has passed and is not already completed or cancelled
+      const updatedData = data.map((reservation: Reservation) => {
         if (isPastReservation(reservation) &&
             reservation.status !== 'completed' &&
             reservation.status !== 'cancelled') {
@@ -242,19 +251,14 @@ export default function AdminReservationsPage() {
         return reservation;
       });
 
-      // Update past reservations in database
+      // Update past reservations in database via API
       if (reservationsToUpdate.length > 0) {
         console.log(`Auto-marking ${reservationsToUpdate.length} past reservations as completed`);
-
-        // Update all past reservations in parallel
-        await Promise.all(
-          reservationsToUpdate.map(id =>
-            supabase
-              .from('reservations')
-              .update({ status: 'completed' })
-              .eq('id', id)
-          )
-        );
+        await fetch('/api/admin/reservations', {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify({ ids: reservationsToUpdate, status: 'completed' })
+        });
       }
 
       setReservations(updatedData);
@@ -384,24 +388,21 @@ export default function AdminReservationsPage() {
     try {
       console.log('Attempting to update reservation:', { reservationId, newStatus });
 
-      const { data, error } = await supabase
-        .from('reservations')
-        .update({ status: newStatus })
-        .eq('id', reservationId)
-        .select();
+      const headers = await getAuthHeaders();
+      const response = await fetch('/api/admin/reservations', {
+        method: 'PATCH',
+        headers,
+        body: JSON.stringify({ id: reservationId, status: newStatus })
+      });
+      const result = await response.json();
 
-      if (error) {
-        console.error('Error updating status:', {
-          message: error.message,
-          details: error.details,
-          hint: error.hint,
-          code: error.code
-        });
-        toast.error(`Failed to update status: ${error.message}`);
+      if (!response.ok) {
+        console.error('Error updating status:', result.error);
+        toast.error(`Failed to update status: ${result.error}`);
         return;
       }
 
-      console.log('Update successful:', data);
+      console.log('Update successful:', result.data);
 
       // Get the reservation data for email notifications
       const reservation = reservations.find(r => r.id === reservationId);
@@ -594,19 +595,21 @@ export default function AdminReservationsPage() {
         updateData
       });
 
-      const { data, error } = await supabase
-        .from('reservations')
-        .update(updateData)
-        .eq('id', editingReservation.id)
-        .select();
+      const headers = await getAuthHeaders();
+      const response = await fetch('/api/admin/reservations', {
+        method: 'PATCH',
+        headers,
+        body: JSON.stringify({ id: editingReservation.id, ...updateData })
+      });
+      const result = await response.json();
 
-      if (error) {
-        console.error('❌ Error updating reservation:', error);
+      if (!response.ok) {
+        console.error('❌ Error updating reservation:', result.error);
         toast.error('Failed to update reservation');
         return;
       }
 
-      console.log('✅ Update response from database:', data);
+      console.log('✅ Update response from database:', result.data);
 
       // Check if status changed to confirmed or cancelled
       const originalReservation = reservations.find(r => r.id === editingReservation.id);
