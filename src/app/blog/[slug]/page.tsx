@@ -301,7 +301,10 @@ export default function BlogPostPage() {
         <title>{blog.meta_title || blog.title} - East at West</title>
         <meta name="description" content={blog.meta_description || blog.excerpt || 'Read more on the East at West blog'} />
         <meta name="keywords" content={blog.tags?.join(', ') || 'Lebanese cuisine, Brussels restaurant'} />
-        
+        <link
+            rel="canonical"
+            href={`https://eastatwest.com/blog/${blog.slug}`}
+        />
         {/* Open Graph */}
         <meta property="og:title" content={blog.title} />
         <meta property="og:description" content={blog.excerpt || blog.meta_description || ''} />
