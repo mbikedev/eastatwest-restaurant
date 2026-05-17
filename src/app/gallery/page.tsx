@@ -393,7 +393,7 @@ export default function GalleryPage() {
                   <div className="relative aspect-square overflow-hidden">
                     <Image
                       src={image}
-                      alt={details.title}
+                      alt={details.description}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
