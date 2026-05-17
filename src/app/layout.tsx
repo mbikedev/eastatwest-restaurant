@@ -57,12 +57,12 @@ const FAVICON_VERSION = "v5";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eastatwest.com"),
-  title: "East @ West — Lebanese Fusion Restaurant in Brussels",
+  title: "East At West — Lebanese Fusion Restaurant in Brussels",
   description:
-    "Authentic Lebanese cuisine in Brussels. Fresh Mediterranean dishes, warm hospitality & halal options. Book your table at East @ West today!",
+    "Authentic Lebanese cuisine in Brussels. Fresh Mediterranean dishes, warm hospitality & halal options. Book your table at East At West today!",
   keywords:
     "Lebanese restaurant Brussels, Mediterranean cuisine, fusion restaurant, Brussels dining, Lebanese food, mezze, authentic cuisine, Restaurant Guru recommended",
-  authors: [{ name: "East @ West" }],
+  authors: [{ name: "East At West" }],
   alternates: {
     canonical: "https://eastatwest.com",
     languages: {
@@ -116,25 +116,25 @@ export const metadata: Metadata = {
   },
   manifest: `/site.webmanifest?${FAVICON_VERSION}`,
   openGraph: {
-    title: "East @ West — Lebanese Fusion Restaurant in Brussels",
+    title: "East At West — Lebanese Fusion Restaurant in Brussels",
     description:
       "Authentic Lebanese cuisine meets modern flavors in the heart of Brussels. Experience handcrafted Mediterranean dishes with fresh ingredients.",
     type: "website",
     locale: "en_US",
     url: "https://eastatwest.com",
-    siteName: "East @ West Restaurant",
+    siteName: "East At West Restaurant",
     images: [
       {
         url: "https://eastatwest.com/images/banner.webp",
         width: 1200,
         height: 630,
-        alt: "East @ West Lebanese Restaurant Brussels",
+        alt: "East At West Lebanese Restaurant Brussels",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "East @ West — Lebanese Fusion Restaurant in Brussels",
+    title: "East At West — Lebanese Fusion Restaurant in Brussels",
     description:
       "Authentic Lebanese cuisine meets modern flavors in the heart of Brussels. Experience handcrafted Mediterranean dishes with fresh ingredients.",
     images: ["https://eastatwest.com/images/banner.webp"],
@@ -188,8 +188,8 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Restaurant",
                 "@id": "https://eastatwest.com/#restaurant",
-                name: "East @ West",
-                alternateName: "East at West Lebanese Restaurant",
+                name: "East At West",
+                alternateName: "East At West Lebanese Restaurant",
                 description: "Authentic Lebanese restaurant in Brussels serving fresh mezze, grilled specialties, and traditional desserts. Halal-certified with vegetarian and vegan options.",
                 image: [
                   "https://eastatwest.com/images/banner.webp",
@@ -312,7 +312,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "@id": "https://eastatwest.com/#organization",
-                name: "East @ West",
+                name: "East At West",
                 url: "https://eastatwest.com",
                 logo: `https://eastatwest.com/android-chrome-512x512.png?${FAVICON_VERSION}`,
                 description: "Authentic Lebanese restaurant in Brussels offering dine-in, takeaway, and catering services",
