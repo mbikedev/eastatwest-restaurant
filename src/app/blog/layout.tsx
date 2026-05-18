@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Blog - East @ West Lebanese Restaurant Brussels',
-  description: 'Lebanese cuisine blog: recipes, cooking tips & culinary traditions. Discover authentic Mediterranean food culture from East @ West Brussels.',
+  title: 'Blog - East At West Lebanese Restaurant Brussels',
+  description: 'Lebanese cuisine blog: recipes, cooking tips & culinary traditions. Discover authentic Mediterranean food culture from East At West Brussels.',
   alternates: {
     canonical: 'https://eastatwest.com/blog',
     languages: {
