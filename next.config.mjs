@@ -109,26 +109,10 @@ export default {
 
       // === EXISTING REDIRECTS ===
       // Reservation redirects
-      {
-        source: '/reservation',
-        destination: '/reservations',
-        permanent: true,
-      },
-      {
-        source: '/Reservation',
-        destination: '/reservations',
-        permanent: true,
-      },
-      {
-        source: '/reserve',
-        destination: '/reservations',
-        permanent: true,
-      },
-      {
-        source: '/booking',
-        destination: '/reservations',
-        permanent: true,
-      },
+      { source: '/reservation', destination: 'https://reservations.eastatwest.com/?tab=reserve', permanent: true },
+      { source: '/Reservation', destination: 'https://reservations.eastatwest.com/?tab=reserve', permanent: true },
+      { source: '/reserve',     destination: 'https://reservations.eastatwest.com/?tab=reserve', permanent: true },
+      { source: '/booking',     destination: 'https://reservations.eastatwest.com/?tab=reserve', permanent: true },
       // Explicit trailing slash redirects - redirect URLs with trailing slash to without
       {
         source: '/:path+/',
